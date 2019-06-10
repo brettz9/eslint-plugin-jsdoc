@@ -725,5 +725,18 @@ export default {
         },
       ],
     },
+    {
+      code: `
+          /**
+           *
+           */
+          function quux () {
+            throw new Error('This function purposely throws, and without returning.');
+          }
+      `,
+      options: [{
+        forceReturnsWithAsync: true,
+      }],
+    },
   ],
 };

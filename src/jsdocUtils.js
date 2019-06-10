@@ -356,6 +356,315 @@ const tagMustHaveEitherTypeOrNamepath = (tag) => {
   return tagsWithMandatoryTypeOrNamepath.includes(tag);
 };
 
+const RETURNFREE_STATEMENTS = [
+  'VariableDeclaration',
+  'ThrowStatement',
+  'FunctionDeclaration',
+  'BreakStatement',
+  'ContinueStatement',
+  'LabeledStatement',
+  'DebuggerStatement',
+  'EmptyStatement',
+  'WithStatement',
+  'ExpressionStatement',
+];
+
+const ENTRY_POINTS = ['FunctionDeclaration', 'ArrowFunctionExpression', 'FunctionExpression'];
+
+const LOOP_STATEMENTS = ['WhileStatement', 'DoWhileStatement', 'ForStatement', 'ForInStatement', 'ForOfStatement'];
+
+const STATEMENTS_WITH_CHILDREN = [
+  '@loop',
+  'SwitchStatement',
+  'IfStatement',
+  'BlockStatement',
+  'TryStatement',
+];
+
+/* eslint-disable sort-keys */
+const lookupTable = {
+  ReturnStatement: {
+    is (node) {
+      return node.type === 'ReturnStatement';
+    },
+    check (node) {
+      /* istanbul ignore next */
+      if (!lookupTable.ReturnStatement.is(node)) {
+        return false;
+      }
+
+      // A return without any arguments just exits the function
+      // and is typically not documented at all in jsdoc.
+      if (node.argument === null) {
+        return false;
+      }
+
+      return true;
+    },
+    checkAllThrows () {
+      /* istanbul ignore next */
+      return false;
+    },
+  },
+  ThrowStatement: {
+    is (node) {
+      /* istanbul ignore next */
+      return node.type === 'ThrowStatement';
+    },
+    checkAllThrows (node) {
+      /* istanbul ignore next */
+      if (!lookupTable.ThrowStatement.is(node)) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      return true;
+    },
+  },
+  IfStatement: {
+    is (node) {
+      return node.type === 'IfStatement';
+    },
+    check (node) {
+      /* istanbul ignore next */
+      if (!lookupTable.IfStatement.is(node)) {
+        return false;
+      }
+
+      if (lookupTable['@default'].check(node.consequent)) {
+        return true;
+      }
+
+      if (node.alternate && lookupTable['@default'].check(node.alternate)) {
+        return true;
+      }
+
+      return false;
+    },
+    checkAllThrows (node) {
+      /* istanbul ignore next */
+      if (!lookupTable.IfStatement.is(node)) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      if (lookupTable['@default'].check(node.consequent) &&
+        (!node.alternate || lookupTable['@default'].checkAllThrows(node.alternate))) {
+        return true;
+      }
+
+      /* istanbul ignore next */
+      return false;
+    },
+  },
+  '@loop': {
+    is (node) {
+      return LOOP_STATEMENTS.includes(node.type);
+    },
+    check (node) {
+      return lookupTable['@default'].check(node.body);
+    },
+    checkAllThrows (node) {
+      /* istanbul ignore next */
+      return lookupTable['@default'].checkAllThrows(node.body);
+    },
+  },
+  SwitchStatement: {
+    is (node) {
+      return node.type === 'SwitchStatement';
+    },
+    check (node) {
+      return lookupTable.SwitchStatement.checkAllChildren('check', node);
+    },
+    checkAllChildren (method, node) {
+      for (const item of node.cases) {
+        for (const statement of item.consequent) {
+          if (lookupTable['@default'][method](statement)) {
+            return true;
+          }
+        }
+      }
+
+      return false;
+    },
+    checkAllThrows (node) {
+      /* istanbul ignore next */
+      if (!lookupTable.TryStatement.is(node)) {
+        /* istanbul ignore next */
+        return false;
+      }
+
+      /* istanbul ignore next */
+      if (!lookupTable.BlockStatement.checkAllThrows(node.block)) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      if (node.handler && node.handler.block) {
+        if (!lookupTable['@default'].checkAllThrows(node)) {
+          return false;
+        }
+      }
+
+      /* istanbul ignore next */
+      if (node.finalizer && !lookupTable.BlockStatement.checkAllThrows(node.finalizer)) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      return true;
+    },
+  },
+  BlockStatement: {
+    is (node) {
+      return node.type === 'BlockStatement';
+    },
+    check (node, context) {
+      // E.g. the catch block statement is optional.
+      /* istanbul ignore next */
+      if (typeof node === 'undefined' || node === null) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      if (!lookupTable.BlockStatement.is(node)) {
+        return false;
+      }
+
+      for (const item of node.body) {
+        if (lookupTable['@default'].check(item, context)) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    checkAllThrows (node, context) {
+      // E.g. the catch block statement is optional.
+      /* istanbul ignore next */
+      if (typeof node === 'undefined' || node === null) {
+        /* istanbul ignore next */
+        return false;
+      }
+
+      /* istanbul ignore next */
+      if (!lookupTable.BlockStatement.is(node)) {
+        return false;
+      }
+
+      for (const item of node.body) {
+        /* istanbul ignore next */
+        if (!lookupTable['@default'].checkAllThrows(item, context)) {
+          return false;
+        }
+      }
+
+      return node.body.length;
+    },
+  },
+  FunctionExpression: {
+    is (node) {
+      return node.type === 'FunctionExpression';
+    },
+    check (node, context, ignoreAsync) {
+      return !ignoreAsync && node.async || lookupTable.BlockStatement.check(node.body, context);
+    },
+    checkAllThrows (node, context, ignoreAsync) {
+      /* istanbul ignore next */
+      return !ignoreAsync && !node.async &&
+        lookupTable.BlockStatement.checkAllThrows(node.body, context);
+    },
+  },
+  ArrowFunctionExpression: {
+    is (node) {
+      return node.type === 'ArrowFunctionExpression';
+    },
+    check (node, context, ignoreAsync) {
+      // An expression always has a return value.
+      return node.expression ||
+        !ignoreAsync && node.async ||
+        lookupTable.BlockStatement.check(node.body, context);
+    },
+    checkAllThrows (node, context) {
+      /* istanbul ignore next */
+      return !node.expression && !node.async &&
+        lookupTable.BlockStatement.checkAllThrows(node.body, context);
+    },
+  },
+  FunctionDeclaration: {
+    is (node) {
+      return node.type === 'FunctionDeclaration';
+    },
+    check (node, context, ignoreAsync) {
+      return !ignoreAsync && node.async || lookupTable.BlockStatement.check(node.body, context);
+    },
+    checkAllThrows (node, context) {
+      return !node.async &&
+        lookupTable.BlockStatement.checkAllThrows(node.body, context);
+    },
+  },
+  '@default': {
+    check (node, context) {
+      // In case it is a `ReturnStatement`, we found what we were looking for
+      if (lookupTable.ReturnStatement.is(node)) {
+        return lookupTable.ReturnStatement.check(node, context);
+      }
+
+      // In case the element has children, we need to traverse them.
+      // Examples are BlockStatement, Choices, TryStatement, Loops, ...
+      for (const item of STATEMENTS_WITH_CHILDREN) {
+        if (lookupTable[item].is(node)) {
+          return lookupTable[item].check(node, context);
+        }
+      }
+
+      // Everything else cannot return anything.
+      /* istanbul ignore next */
+      if (RETURNFREE_STATEMENTS.includes(node.type)) {
+        return false;
+      }
+
+      /* istanbul ignore next */
+      // If we end up here, we stumbled upon an unknown element.
+      // Most likely it is enough to add it to the blacklist.
+      //
+      // throw new Error('Unknown node type: ' + node.type);
+      return false;
+    },
+    checkAllThrows (node, context) {
+      // In case it is a `ThrowStatement`, we found what we were looking for
+      /* istanbul ignore next */
+      if (lookupTable.ThrowStatement.is(node)) {
+        return lookupTable.ThrowStatement.checkAllThrows(node, context);
+      }
+
+      // In case the element has children, we need to traverse them.
+      // Examples are BlockStatement, Choices, TryStatement, Loops, ...
+      /* istanbul ignore next */
+      for (const item of STATEMENTS_WITH_CHILDREN) {
+        if (lookupTable[item].is(node)) {
+          return lookupTable[item].checkAllThrows(node, context);
+        }
+      }
+
+      /* istanbul ignore next */
+      return false;
+    },
+  },
+};
+
+const checkAllEntryChildren = (method, node, context) => {
+  // Loop through all of our entry points
+  for (const item of ENTRY_POINTS) {
+    if (lookupTable[item].is(node)) {
+      return lookupTable[item][method](node, context);
+    }
+  }
+
+  /* istanbul ignore next */
+  throw new Error('Unknown element ' + node.type);
+};
+
 /**
  * Checks if a node has a return statement. Void return does not count.
  *
@@ -413,6 +722,20 @@ const hasReturnValue = (node) => {
     return false;
   }
   }
+};
+
+/**
+ * Checks if all branches exit with a throw.
+ * It traverses the parsed source code and returns as
+ * soon as it stumbles upon the first non-throwing root branch.
+ *
+ * @param {object} node
+ *   the node which should be checked.
+ * @returns {boolean}
+ *   true in case all branches exit with a throw.
+ */
+const throwsWithoutReturn = (node, context) => {
+  return checkAllEntryChildren('checkAllThrows', node, context);
 };
 
 /** @param {string} tag */
@@ -527,6 +850,7 @@ export default {
   filterTags,
   getAncestor,
   getContextObject,
+  throwsWithoutReturn,
   getFunctionParameterNames,
   getIndent,
   getJsdocParameterNames,

@@ -170,6 +170,10 @@ const getUtils = (
     return jsdocUtils.hasTag(jsdoc, name);
   };
 
+  utils.throwsWithoutReturn = () => {
+    return jsdocUtils.throwsWithoutReturn(node);
+  };
+
   utils.avoidDocs = () => {
     if (
       overrideReplacesDocs !== false &&

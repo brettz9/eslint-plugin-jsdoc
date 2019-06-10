@@ -78,7 +78,7 @@ export default iterateJsdoc(({
       return false;
     }
 
-    if (forceRequireReturn) {
+    if (forceRequireReturn && !utils.throwsWithoutReturn()) {
       return true;
     }
 
