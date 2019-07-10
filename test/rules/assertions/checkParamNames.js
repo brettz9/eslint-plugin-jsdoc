@@ -21,6 +21,60 @@ export default {
           message: 'Expected @param names to be "foo". Got "Foo".',
         },
       ],
+      output: `
+          /**
+           * @param foo
+           */
+          function quux (foo = 'FOO') {
+
+          }
+      `,
+    },
+    {
+      code: `
+/**
+ * @param Foo
+ */
+function quux (foo = 'FOO') {
+
+}
+      `,
+      errors: [
+        {
+          line: 3,
+          message: 'Expected @param names to be "foo". Got "Foo".',
+        },
+      ],
+      output: `
+/**
+ * @param foo
+ */
+function quux (foo = 'FOO') {
+
+}
+      `,
+    },
+    {
+      code: `
+/** @param Foo */
+function quux (foo = 'FOO') {
+
+}
+      `,
+      errors: [
+        {
+          line: 2,
+          message: 'Expected @param names to be "foo". Got "Foo".',
+        },
+      ],
+      output: `
+/**
+ * @param foo
+ */
+function quux (foo = 'FOO') {
+
+}
+      `,
     },
     {
       code: `

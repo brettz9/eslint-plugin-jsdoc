@@ -51,10 +51,12 @@ const validateParameterNames = (targetTagName : string, functionParameterNames :
         return name;
       }).join(', ');
 
-      report(
+      utils.reportJSDoc(
         `Expected @${targetTagName} names to be "${expectedNames}". Got "${actualNames}".`,
-        null,
         tag,
+        () => {
+          tag.name = functionParameterName;
+        },
       );
 
       return true;

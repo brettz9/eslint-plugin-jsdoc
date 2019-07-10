@@ -1153,6 +1153,20 @@ function quux (foo = 'FOO') {
 // Message: Expected @param names to be "foo". Got "Foo".
 
 /**
+ * @param Foo
+ */
+function quux (foo = 'FOO') {
+
+}
+// Message: Expected @param names to be "foo". Got "Foo".
+
+/** @param Foo */
+function quux (foo = 'FOO') {
+
+}
+// Message: Expected @param names to be "foo". Got "Foo".
+
+/**
  * @arg Foo
  */
 function quux (foo = 'FOO') {
