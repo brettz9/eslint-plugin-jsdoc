@@ -82,7 +82,7 @@ export default iterateJsdoc(({
       return true;
     }
 
-    if (forceReturnsWithAsync && utils.isAsync() && !utils.hasReturnValue()) {
+    if (forceReturnsWithAsync && utils.isAsync() && !utils.hasReturnValue({ignoreAsync: true})) {
       return true;
     }
 

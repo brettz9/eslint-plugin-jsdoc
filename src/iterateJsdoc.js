@@ -227,8 +227,11 @@ const getUtils = (
     return jsdocUtils.hasDefinedTypeReturnTag(tag);
   };
 
-  utils.hasReturnValue = () => {
-    return jsdocUtils.hasReturnValue(node);
+  utils.hasReturnValue = ({ignoreAsync = false, yieldAsReturn} = {}) => {
+    return jsdocUtils.hasReturnValue(node, context, {
+      ignoreAsync,
+      yieldAsReturn,
+    });
   };
 
   utils.isAsync = () => {
@@ -345,7 +348,7 @@ const getSettings = (context) => {
   settings.implementsReplacesDocs = _.get(context, 'settings.jsdoc.implementsReplacesDocs');
   settings.augmentsExtendsReplacesDocs = _.get(context, 'settings.jsdoc.augmentsExtendsReplacesDocs');
 
-  // Many rules, e.g., `check-tag-names`
+  // Many rules, e.g., `check-tag-names`, `require-returns-check`
   settings.mode = _.get(context, 'settings.jsdoc.mode') || 'jsdoc';
 
   return settings;

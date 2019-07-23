@@ -151,6 +151,134 @@ export default {
         },
       ],
     },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+        }
+      `,
+      errors: [
+        {
+          message: 'JSDoc @returns declaration present but return expression not available in function.',
+        },
+      ],
+      options: [
+        {
+          yieldAsReturn: 'always',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+        }
+      `,
+      errors: [
+        {
+          message: 'JSDoc @returns declaration present but return expression not available in function.',
+        },
+      ],
+      options: [
+        {
+          yieldAsReturn: 'argument',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          yield;
+        }
+      `,
+      errors: [
+        {
+          message: 'JSDoc @returns declaration present but return expression not available in function.',
+        },
+      ],
+      options: [
+        {
+          yieldAsReturn: 'argument',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          var a = 5, b = yield;
+        }
+      `,
+      errors: [
+        {
+          message: 'JSDoc @returns declaration present but return expression not available in function.',
+        },
+      ],
+      options: [
+        {
+          yieldAsReturn: 'argument',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          yield true;
+        }
+      `,
+      errors: [
+        {
+          message: 'JSDoc @returns declaration present but return expression not available in function.',
+        },
+      ],
+      options: [
+        {
+          yieldAsReturn: 'always',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'jsdoc',
+        },
+      },
+    },
   ],
   valid: [
     {
@@ -555,6 +683,90 @@ export default {
             return;
           }
       `,
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          yield true;
+        }
+      `,
+      options: [
+        {
+          yieldAsReturn: 'always',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          return true;
+        }
+      `,
+      options: [
+        {
+          yieldAsReturn: 'always',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          yield true;
+        }
+      `,
+      options: [
+        {
+          yieldAsReturn: 'argument',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
+    },
+    {
+      code: `
+        /**
+         *
+         * @returns {boolean}
+         */
+        function * quux () {
+          var a = 5, b = yield true;
+        }
+      `,
+      options: [
+        {
+          yieldAsReturn: 'argument',
+        },
+      ],
+      settings: {
+        jsdoc: {
+          mode: 'typescript',
+        },
+      },
     },
   ],
 };

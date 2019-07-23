@@ -12,8 +12,9 @@ JSDoc linting rules for ESLint.
     * [Installation](#eslint-plugin-jsdoc-installation)
     * [Configuration](#eslint-plugin-jsdoc-configuration)
     * [Settings](#eslint-plugin-jsdoc-settings)
-        * [Allow `@private` to disable rules for that comment block](#eslint-plugin-jsdoc-settings-allow-private-to-disable-rules-for-that-comment-block)
         * [Mode](#eslint-plugin-jsdoc-settings-mode)
+        * [Allow `@private` to disable rules for that comment block](#eslint-plugin-jsdoc-settings-allow-private-to-disable-rules-for-that-comment-block)
+        * [Mode](#eslint-plugin-jsdoc-settings-mode-1)
         * [Alias Preference](#eslint-plugin-jsdoc-settings-alias-preference)
         * [`@override`/`@augments`/`@extends`/`@implements` Without Accompanying `@param`/`@description`/`@example`/`@returns`](#eslint-plugin-jsdoc-settings-override-augments-extends-implements-without-accompanying-param-description-example-returns)
         * [Settings to Configure `check-types` and `no-undefined-types`](#eslint-plugin-jsdoc-settings-settings-to-configure-check-types-and-no-undefined-types)
@@ -123,13 +124,20 @@ You can then selectively add to or override the recommended rules.
 <a name="eslint-plugin-jsdoc-settings"></a>
 ## Settings
 
+<a name="eslint-plugin-jsdoc-settings-mode"></a>
+### Mode
+
+While TypeScript and the Google Closure Compiler (GCC) support some jsdoc tags,
+there are some differences. The `settings.jsdoc.mode` lets you choose the precise
+mode (`"typescript"`, `"gcc"`, or `"jsdoc"` (the default)).
+
 <a name="eslint-plugin-jsdoc-settings-allow-private-to-disable-rules-for-that-comment-block"></a>
 ### Allow <code>@private</code> to disable rules for that comment block
 
 - `settings.jsdoc.ignorePrivate` - Disables all rules for the comment block
   on which a `@private` tag occurs. Defaults to `false`.
 
-<a name="eslint-plugin-jsdoc-settings-mode"></a>
+<a name="eslint-plugin-jsdoc-settings-mode-1"></a>
 ### Mode
 
 - `settings.jsdoc.mode` - Set to `jsdoc` (the default), `typescript`, or `closure`.
@@ -7054,6 +7062,21 @@ Requires a return statement in function body if a `@returns` tag is specified in
 
 Will also report if multiple `@returns` tags are present.
 
+<a name="eslint-plugin-jsdoc-rules-require-returns-check-options-13"></a>
+#### Options
+
+<a name="eslint-plugin-jsdoc-rules-require-returns-check-options-13-yieldasreturn"></a>
+##### <code>yieldAsReturn</code>
+
+If the setting `settings.jsdoc.mode` is set to `typescript` or `gcc`, this option
+will allow `yield` statements to be treated as `@returns` for the purposes of this
+rule. (If the mode is instead `jsdoc`, then this option will have no effect, since
+the jsdoc approach is to instead use the `@yields` tag.)
+
+The allowable values are `"always"` which will treat any `yield` as a `return`,
+or `argument`, which will only treat a `yield` as a `return` when `yield` is
+followed by an argument.
+
 |||
 |---|---|
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
@@ -7137,6 +7160,59 @@ function f () {
     return 5
   }
 }
+// Message: JSDoc @returns declaration present but return expression not available in function.
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"always"}]
+// Message: JSDoc @returns declaration present but return expression not available in function.
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"argument"}]
+// Message: JSDoc @returns declaration present but return expression not available in function.
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  yield;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"argument"}]
+// Message: JSDoc @returns declaration present but return expression not available in function.
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  var a = 5, b = yield;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"argument"}]
+// Message: JSDoc @returns declaration present but return expression not available in function.
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  yield true;
+}
+// Settings: {"jsdoc":{"mode":"jsdoc"}}
+// Options: [{"yieldAsReturn":"always"}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
 ````
 
@@ -7431,6 +7507,46 @@ function quux () {
   }
   return;
 }
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  yield true;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"always"}]
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  return true;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"always"}]
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  yield true;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"argument"}]
+
+/**
+ *
+ * @returns {boolean}
+ */
+function * quux () {
+  var a = 5, b = yield true;
+}
+// Settings: {"jsdoc":{"mode":"typescript"}}
+// Options: [{"yieldAsReturn":"argument"}]
 ````
 
 
@@ -7576,7 +7692,7 @@ Requires returns are documented.
 
 Will also report if multiple `@returns` tags are present.
 
-<a name="eslint-plugin-jsdoc-rules-require-returns-options-13"></a>
+<a name="eslint-plugin-jsdoc-rules-require-returns-options-14"></a>
 #### Options
 
 - `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the document
@@ -8041,7 +8157,7 @@ Also impacts behaviors on namepath (or event)-defining and pointing tags:
    allow `#`, `.`, or `~` at the end (which is not allowed at the end of
    normal paths).
 
-<a name="eslint-plugin-jsdoc-rules-valid-types-options-14"></a>
+<a name="eslint-plugin-jsdoc-rules-valid-types-options-15"></a>
 #### Options
 
 - `allowEmptyNamepaths` (default: true) - Set to `false` to disallow
