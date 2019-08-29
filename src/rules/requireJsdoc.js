@@ -14,6 +14,10 @@ const OPTIONS_SCHEMA = {
       },
       type: 'array',
     },
+    disableFixer: {
+      default: false,
+      type: 'boolean',
+    },
     exemptEmptyFunctions: {
       default: false,
       type: 'boolean',
@@ -90,6 +94,7 @@ const getOption = (context, baseObject, option, key) => {
 
 const getOptions = (context) => {
   return {
+    disableFixer: context.options[0] ? context.options[0].disableFixer : false,
     exemptEmptyFunctions: context.options[0] ? context.options[0].exemptEmptyFunctions : false,
     publicOnly: ((baseObj) => {
       const publicOnly = _.get(context, 'options[0].publicOnly');
@@ -142,7 +147,9 @@ export default {
 
     const sourceCode = context.getSourceCode();
 
-    const {require: requireOption, publicOnly, exemptEmptyFunctions} = getOptions(context);
+    const {
+      require: requireOption, publicOnly, exemptEmptyFunctions, disableFixer,
+    } = getOptions(context);
 
     const settings = getSettings(context);
 
@@ -178,7 +185,7 @@ export default {
           start: node.loc.start,
         };
         context.report({
-          fix,
+          fix: disableFixer ? null : fix,
           messageId: 'missingJsDoc',
           node,
           loc,

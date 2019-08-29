@@ -1140,6 +1140,52 @@ export default {
         },
       ],
     },
+    {
+      code: `
+          function quux (foo) {
+
+          }
+      `,
+      errors: [
+        {
+          message: 'Missing JSDoc comment.',
+          type: 'FunctionDeclaration',
+        },
+      ],
+      options: [
+        {
+          disableFixer: true,
+        },
+      ],
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
+    {
+      code: `
+          export var test = function () {
+
+          };
+      `,
+      errors: [
+        {
+          message: 'Missing JSDoc comment.',
+          type: 'FunctionExpression',
+        },
+      ],
+      options: [
+        {
+          disableFixer: true,
+          publicOnly: true,
+          require: {
+            FunctionExpression: true,
+          },
+        },
+      ],
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
   ],
   valid: [{
     code: `

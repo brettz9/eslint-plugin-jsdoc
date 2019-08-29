@@ -5726,6 +5726,18 @@ const myObject = {
 };
 // Options: [{"contexts":["Property"]}]
 // Message: Missing JSDoc comment.
+
+function quux (foo) {
+
+}
+// Options: [{"disableFixer":true}]
+// Message: Missing JSDoc comment.
+
+export var test = function () {
+
+};
+// Options: [{"disableFixer":true,"publicOnly":true,"require":{"FunctionExpression":true}}]
+// Message: Missing JSDoc comment.
 ````
 
 The following patterns are not considered problems:
