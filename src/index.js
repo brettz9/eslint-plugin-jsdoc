@@ -26,6 +26,41 @@ import requireReturnsType from './rules/requireReturnsType';
 import validTypes from './rules/validTypes';
 import requireJsdoc from './rules/requireJsdoc';
 
+const rules = {
+  'check-alignment': checkAlignment,
+  'check-examples': checkExamples,
+  'check-indentation': checkIndentation,
+  'check-param-names': checkParamNames,
+  'check-syntax': checkSyntax,
+  'check-tag-names': checkTagNames,
+  'check-types': checkTypes,
+  'implements-on-classes': implementsOnClasses,
+  'match-description': matchDescription,
+  'newline-after-description': newlineAfterDescription,
+  'no-types': noTypes,
+  'no-undefined-types': noUndefinedTypes,
+  'require-description': requireDescription,
+  'require-description-complete-sentence': requireDescriptionCompleteSentence,
+  'require-example': requireExample,
+  'require-hyphen-before-param-description': requireHyphenBeforeParamDescription,
+  'require-jsdoc': requireJsdoc,
+  'require-param': requireParam,
+  'require-param-description': requireParamDescription,
+  'require-param-name': requireParamName,
+  'require-param-type': requireParamType,
+  'require-returns': requireReturns,
+  'require-returns-check': requireReturnsCheck,
+  'require-returns-description': requireReturnsDescription,
+  'require-returns-type': requireReturnsType,
+  'valid-types': validTypes,
+};
+
+Object.entries(rules).forEach(([name, definition]) => {
+  definition.meta.docs = {
+    url: `https://github.com/gajus/eslint-plugin-jsdoc/blob/master/.README/rules/${name}.md#${name}`,
+  };
+});
+
 export default {
   configs: {
     recommended: {
@@ -60,32 +95,5 @@ export default {
       },
     },
   },
-  rules: {
-    'check-alignment': checkAlignment,
-    'check-examples': checkExamples,
-    'check-indentation': checkIndentation,
-    'check-param-names': checkParamNames,
-    'check-syntax': checkSyntax,
-    'check-tag-names': checkTagNames,
-    'check-types': checkTypes,
-    'implements-on-classes': implementsOnClasses,
-    'match-description': matchDescription,
-    'newline-after-description': newlineAfterDescription,
-    'no-types': noTypes,
-    'no-undefined-types': noUndefinedTypes,
-    'require-description': requireDescription,
-    'require-description-complete-sentence': requireDescriptionCompleteSentence,
-    'require-example': requireExample,
-    'require-hyphen-before-param-description': requireHyphenBeforeParamDescription,
-    'require-jsdoc': requireJsdoc,
-    'require-param': requireParam,
-    'require-param-description': requireParamDescription,
-    'require-param-name': requireParamName,
-    'require-param-type': requireParamType,
-    'require-returns': requireReturns,
-    'require-returns-check': requireReturnsCheck,
-    'require-returns-description': requireReturnsDescription,
-    'require-returns-type': requireReturnsType,
-    'valid-types': validTypes,
-  },
+  rules,
 };
