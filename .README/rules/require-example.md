@@ -14,6 +14,14 @@ This rule has an object option.
 Array of tags (e.g., `['type']`) whose presence on the document
 block avoids the need for an `@example`. Defaults to an empty array.
 
+##### `permittedTags`
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that
+the rule will only be enforced when the whitelisted tags
+are present. (When absent, the default behavior will be followed of the
+rule being enforced on all blocks in all allowable contexts (assuming
+there are no `exemptedBy` tags present).)
+
 ##### `avoidExampleOnConstructors`
 
 Set to `true` to avoid the need for an example on a constructor (whether
@@ -35,7 +43,7 @@ report a missing example description after this is added.
 |---|---|
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
 |Tags|`example`|
-|Options|`exemptedBy`, `avoidExampleOnConstructors`, `contexts`|
+|Options|`avoidExampleOnConstructors`, `contexts`, `exemptedBy`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 <!-- assertions requireExample -->

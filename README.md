@@ -4739,6 +4739,11 @@ An options object may have any of the following properties:
 - `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the
     document block avoids the need for a `@description`. Defaults to an
     empty array.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `descriptionStyle` - Whether to accept implicit descriptions (`"body"`) or
     `@description` tags (`"tag"`) as satisfying the rule. Set to `"any"` to
     accept either style. Defaults to `"body"`.
@@ -4748,7 +4753,7 @@ An options object may have any of the following properties:
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
 |Tags|`description` or jsdoc block|
 |Aliases|`desc`|
-|Options|`contexts`, `exemptedBy`, `descriptionStyle`|
+|Options|`contexts`, `descriptionStyle`, `exemptedBy`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:
@@ -5024,6 +5029,15 @@ This rule has an object option.
 Array of tags (e.g., `['type']`) whose presence on the document
 block avoids the need for an `@example`. Defaults to an empty array.
 
+<a name="eslint-plugin-jsdoc-rules-require-example-options-9-permittedtags"></a>
+##### <code>permittedTags</code>
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that
+the rule will only be enforced when the whitelisted tags
+are present. (When absent, the default behavior will be followed of the
+rule being enforced on all blocks in all allowable contexts (assuming
+there are no `exemptedBy` tags present).)
+
 <a name="eslint-plugin-jsdoc-rules-require-example-options-9-avoidexampleonconstructors"></a>
 ##### <code>avoidExampleOnConstructors</code>
 
@@ -5048,7 +5062,7 @@ report a missing example description after this is added.
 |---|---|
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
 |Tags|`example`|
-|Options|`exemptedBy`, `avoidExampleOnConstructors`, `contexts`|
+|Options|`avoidExampleOnConstructors`, `contexts`, `exemptedBy`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:
@@ -6508,15 +6522,20 @@ Requires that all function parameters are documented.
 
 An options object accepts one optional property:
 
-- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the document
-    block avoids the need for a `@param`. Defaults to an empty array.
+- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the
+    document block avoids the need for a `@param`. Defaults to an empty array.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 
 |||
 |---|---|
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
 |Tags|`param`|
 |Aliases|`arg`, `argument`|
-|Options|`exemptedBy`|
+|Options|`exemptedBy`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:
@@ -7579,8 +7598,14 @@ Will also report if multiple `@returns` tags are present.
 <a name="eslint-plugin-jsdoc-rules-require-returns-options-13"></a>
 #### Options
 
-- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the document
-    block avoids the need for a `@returns`. Defaults to an empty array.
+- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the
+    document block avoids the need for a `@returns`. Defaults to an empty
+    array.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `forceRequireReturn` - Set to `true` to always insist on
   `@returns` documentation regardless of implicit or explicit `return`'s
   in the function. May be desired to flag that a project is aware of an
@@ -7596,7 +7621,7 @@ Will also report if multiple `@returns` tags are present.
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
 |Tags|`returns`|
 |Aliases|`return`|
-|Options|`exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`|
+|Options|`exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:

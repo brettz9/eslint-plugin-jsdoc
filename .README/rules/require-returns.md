@@ -6,8 +6,14 @@ Will also report if multiple `@returns` tags are present.
 
 #### Options
 
-- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the document
-    block avoids the need for a `@returns`. Defaults to an empty array.
+- `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the
+    document block avoids the need for a `@returns`. Defaults to an empty
+    array.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `forceRequireReturn` - Set to `true` to always insist on
   `@returns` documentation regardless of implicit or explicit `return`'s
   in the function. May be desired to flag that a project is aware of an
@@ -23,7 +29,7 @@ Will also report if multiple `@returns` tags are present.
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
 |Tags|`returns`|
 |Aliases|`return`|
-|Options|`exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`|
+|Options|`exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`, `permittedTags`|
 |Settings|`overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 <!-- assertions requireReturns -->

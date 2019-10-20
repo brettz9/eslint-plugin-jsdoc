@@ -82,6 +82,12 @@ export default iterateJsdoc(({
             },
             type: 'array',
           },
+          permittedTags: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
         },
         type: 'object',
       },

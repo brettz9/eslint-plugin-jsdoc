@@ -192,6 +192,13 @@ const getUtils = (
       return true;
     }
 
+    const permittedTags = _.get(context, 'options[0].permittedTags');
+
+    // Presence of this option suggests a whitelist
+    if (permittedTags) {
+      return !permittedTags.length || !utils.getPresentTags(permittedTags).length;
+    }
+
     return false;
   };
 
