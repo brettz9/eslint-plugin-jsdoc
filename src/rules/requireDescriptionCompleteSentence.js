@@ -1,6 +1,8 @@
 import _ from 'lodash';
-import {RegExtras} from 'regextras/dist/main-umd';
+import English from 'parse-english';
 import iterateJsdoc from '../iterateJsdoc';
+
+const english = new English();
 
 const otherDescriptiveTags = [
   // 'copyright' and 'see' might be good addition, but as the former may be
@@ -11,32 +13,15 @@ const otherDescriptiveTags = [
 ];
 
 const extractParagraphs = (text) => {
-  // Todo [engine:node@>8.11.0]: Uncomment following line with neg. lookbehind instead
-  // return text.split(/(?<![;:])\n\n/u);
-  return [...text].reverse().join('').split(/\n\n(?![;:])/u).map((par) => {
-    return [...par].reverse().join('');
-  }).reverse();
+  return english.parse(text).children.filter(({type}) => {
+    return type === 'ParagraphNode';
+  });
 };
 
 const extractSentences = (text) => {
-  const txt = text
-
-    // Remove all {} tags.
-    .replace(/\{[\s\S]*?\}\s*/gu, '');
-
-  const sentenceEndGrouping = /([.?!])(?:\s+|$)/u;
-  const puncts = RegExtras(sentenceEndGrouping).map(txt, (punct) => {
-    return punct;
+  return text.filter(({type}) => {
+    return type === 'SentenceNode';
   });
-
-  return txt
-
-    .split(/[.?!](?:\s+|$)/u)
-
-    // Re-add the dot.
-    .map((sentence, idx) => {
-      return /^\s*$/u.test(sentence) ? sentence : `${sentence}${puncts[idx] || ''}`;
-    });
 };
 
 const isNewLinePrecededByAPeriod = (text) => {
@@ -72,7 +57,10 @@ const validateDescription = (description, reportOrig, jsdocNode, sourceCode, tag
     return false;
   }
 
-  const paragraphs = extractParagraphs(description);
+  // Remove all {} tags.
+  const descriptionNoTags = description.replace(/\{[\s\S]*?\}\s*/gu, '');
+
+  const paragraphs = extractParagraphs(descriptionNoTags);
 
   return paragraphs.some((paragraph, parIdx) => {
     const sentences = extractSentences(paragraph);
