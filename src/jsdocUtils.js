@@ -15,11 +15,21 @@ const getFunctionParameterNames = (functionNode : Object) : Array<string> => {
     }
 
     if (param.type === 'ObjectPattern' || _.get(param, 'left.type') === 'ObjectPattern') {
-      return '<ObjectPattern>';
+      return {
+        names: (param.properties || param.left.properties).map((prop) => {
+          return prop.key.name;
+        }),
+        type: 'ObjectPattern',
+      };
     }
 
     if (param.type === 'ArrayPattern' || _.get(param, 'left.type') === 'ArrayPattern') {
-      return '<ArrayPattern>';
+      return {
+        names: (param.elements || param.left.elements).map((elem) => {
+          return elem.name;
+        }),
+        type: 'ArrayPattern',
+      };
     }
 
     if (param.type === 'RestElement') {

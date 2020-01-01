@@ -53,7 +53,7 @@ const validateParameterNames = (
       return false;
     }
 
-    if (functionParameterName !== tag.name.trim()) {
+    if (typeof functionParameterName === 'string' && functionParameterName !== tag.name.trim()) {
       const expectedNames = functionParameterNames.join(', ');
       const actualNames = paramTagsNonNested.map(([, {name}]) => {
         return name.trim();
@@ -125,6 +125,7 @@ export default iterateJsdoc(({
   if (!jsdocParameterNamesDeep.length) {
     return;
   }
+
   const functionParameterNames = utils.getFunctionParameterNames();
   const targetTagName = utils.getPreferredTagName({tagName: 'param'});
   const isError = validateParameterNames(

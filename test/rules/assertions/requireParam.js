@@ -412,7 +412,9 @@ export default {
     {
       code: `
       /**
-       *
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
        */
       function quux ({bar, baz}, foo) {
       }
@@ -424,6 +426,9 @@ export default {
       ],
       output: `
       /**
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
        * @param foo
        */
       function quux ({bar, baz}, foo) {
@@ -450,6 +455,139 @@ export default {
       function quux (foo, {bar, baz}) {
       }
       `,
+    },
+    {
+      code: `
+      /**
+       * @param {string} bar
+       * @param {string} baz
+       * @param {string} foo
+       */
+      function quux ({bar, baz}, foo) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration is not nested while the parameter "bar" is nested.',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {string} bar
+       * @param {string} baz
+       */
+      function quux (foo, {bar, baz}) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration is not nested while the parameter "bar" is nested.',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       * @param {string} foo
+       */
+      function quux (bar, baz, foo) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration is nested (under "args") while the parameter "bar" is not nested.',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, bar, baz) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration is nested (under "args") while the parameter "bar" is not nested.',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       * @param {string} foo
+       */
+      function quux ({bar, bax}, foo) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "baz" declaration (nested under "args") does not match the nested parameter name "bax".',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, {bar, bax}) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "baz" declaration (nested under "args") does not match the nested parameter name "bax".',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, {bar, baz}) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration does not have a definition for the item under which it is nested, "args".',
+        },
+      ],
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, {beez: bar, bax}) {
+      }
+      `,
+      errors: [
+        {
+          message: 'The JSDoc @param "bar" declaration (nested under "args") does not match the nested parameter name "beez".',
+        },
+      ],
     },
     {
       code: `
@@ -1046,6 +1184,42 @@ export default {
     }
       `,
       parser: require.resolve('@typescript-eslint/parser'),
+    },
+    {
+      code: `
+      /**
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       * @param {number} foo
+       */
+      function quux ({bar, baz}, foo) {
+      }
+      `,
+    },
+    {
+      code: `
+      /**
+       * @param {number} foo
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, {bar, baz}) {
+      }
+      `,
+    },
+    {
+      code: `
+      /**
+       * @param {string} foo
+       * @param {object} args
+       * @param {string} args.bar
+       * @param {string} args.baz
+       */
+      function quux (foo, {bar: beez, bax}) {
+      }
+      `,
     },
   ],
 };

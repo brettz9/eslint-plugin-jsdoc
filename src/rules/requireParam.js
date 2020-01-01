@@ -5,7 +5,7 @@ export default iterateJsdoc(({
   utils,
 }) => {
   const functionParameterNames = utils.getFunctionParameterNames();
-  const jsdocParameterNames = utils.getJsdocTags('param');
+  const jsdocParameterNames = utils.getJsdocTagsDeep('param');
   if (!jsdocParameterNames) {
     return;
   }
@@ -41,10 +41,23 @@ export default iterateJsdoc(({
   const missingTags = [];
 
   functionParameterNames.forEach((functionParameterName, functionParameterIdx) => {
-    if (['<ObjectPattern>', '<ArrayPattern>'].includes(functionParameterName)) {
+    if (functionParameterName && typeof functionParameterName === 'object' &&
+      functionParameterName.type === 'ArrayPattern'
+    ) {
+      // No formal array destructuring syntax in jsdoc yet: https://github.com/google/closure-compiler/issues/1970
       return;
     }
 
+    // Todo: Handle `functionParameterName.names` and `jsdocParameterNames`
+    //   with periods
+    /**
+    Cases:
+    1. OK: jsdocParameterNames with no period; functionParameterName as string
+    2. OK: jsdocParameterNames with period; functionParameterName.names
+    3. BAD: jsdocParameterNames with no period; functionParameterName.names
+    4. BAD: jsdocParameterNames with period; functionParameterName as string
+    5. BAD: jsdocParameterNames with period but no preceding non-nested
+    */
     if (jsdocParameterNames && !jsdocParameterNames.find(({name}) => {
       return name === functionParameterName;
     })) {
