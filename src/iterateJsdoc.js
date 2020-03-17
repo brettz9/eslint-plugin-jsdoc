@@ -249,6 +249,14 @@ const getUtils = (
       return true;
     }
 
+    // Todo: While could add here, probably better to use `contextDefaults`,
+    //  which is available on more functions, and we could auto-attach
+    //  the string to the selector, as a `:not()` esquery.
+    const exemptedContexts = _.get(context, 'options[0].exemptedContexts');
+    if (exemptedContexts && exemptedContexts.length && utils.getPresentTags(exemptedBy).length) {
+      return true;
+    }
+
     return false;
   };
 

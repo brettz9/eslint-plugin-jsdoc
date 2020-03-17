@@ -82,6 +82,12 @@ export default iterateJsdoc(({
             },
             type: 'array',
           },
+          exemptedContexts: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
         },
         type: 'object',
       },
