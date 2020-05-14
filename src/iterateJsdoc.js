@@ -153,6 +153,10 @@ const getUtils = (
     return iteratingAll && utils.hasATag(['callback', 'function', 'func', 'method']);
   };
 
+  utils.getParameterNamesString = (functionParameterName) => {
+    return jsdocUtils.getParameterNamesString(functionParameterName);
+  };
+
   utils.stringify = (tagBlock, tag) => {
     const indent = tag ?
       jsdocUtils.getIndent({
@@ -184,8 +188,8 @@ const getUtils = (
     return jsdocUtils.flattenRoots(params);
   };
 
-  utils.getFunctionParameterNames = () => {
-    return jsdocUtils.getFunctionParameterNames(node);
+  utils.getFunctionParameterNames = (flatten) => {
+    return jsdocUtils.getFunctionParameterNames(node, flatten);
   };
 
   utils.isConstructor = () => {

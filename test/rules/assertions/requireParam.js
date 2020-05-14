@@ -9,6 +9,57 @@ export default {
     {
       code: `
           /**
+           * @param root
+           * @param root.foo.bar.baz
+           */
+          function quux ({foo: {bar: {baz}}}) {
+
+          }
+      `,
+      errors: [
+        {
+          message: 'Missing JSDoc @param "foo" in "{{foo:{{bar:{baz}}}" declaration.',
+        },
+        {
+          message: 'Missing JSDoc @param "foo.bar" in "root.foo.bar" declaration.',
+        },
+      ],
+      output: `
+          /**
+           * @param foo
+           */
+          function quux (foo) {
+
+          }
+      `,
+    },
+    {
+      code: `
+          /**
+           * @param root
+           * @param root.foo
+           */
+          function quux ({foo: {bar: {baz}}}) {
+
+          }
+      `,
+      errors: [
+        {
+          message: 'Missing JSDoc @param "baz" declaration.',
+        },
+      ],
+      output: `
+          /**
+           * @param foo
+           */
+          function quux (foo) {
+
+          }
+      `,
+    },
+    {
+      code: `
+          /**
            *
            */
           function quux (foo) {
@@ -68,10 +119,10 @@ export default {
       `,
       errors: [
         {
-          message: 'Missing JSDoc @param "root0" declaration.',
+          message: 'Missing JSDoc @param "{foo}" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root0.foo" declaration.',
+          message: 'Missing JSDoc @param "foo" in "{foo}" declaration.',
         },
       ],
       output: `
@@ -98,7 +149,7 @@ export default {
           message: 'Missing JSDoc @param "bar" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root0" declaration.',
+          message: 'Missing JSDoc @param "{baz}" declaration.',
         },
       ],
       options: [
@@ -128,10 +179,10 @@ export default {
       `,
       errors: [
         {
-          message: 'Missing JSDoc @param "root0" declaration.',
+          message: 'Missing JSDoc @param "{foo}" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root0.foo" declaration.',
+          message: 'Missing JSDoc @param "foo" in "{foo}" declaration.',
         },
       ],
       options: [
@@ -159,10 +210,10 @@ export default {
       `,
       errors: [
         {
-          message: 'Missing JSDoc @param "root0" declaration.',
+          message: 'Missing JSDoc @param "{foo}" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root0.foo" declaration.',
+          message: 'Missing JSDoc @param "foo" in "{foo}" declaration.',
         },
       ],
       output: `
@@ -186,10 +237,10 @@ export default {
       `,
       errors: [
         {
-          message: 'Missing JSDoc @param "root0" declaration.',
+          message: 'Missing JSDoc @param "{foo}" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root0.foo" declaration.',
+          message: 'Missing JSDoc @param "foo" in "{foo}" declaration.',
         },
       ],
       output: `
@@ -213,10 +264,10 @@ export default {
       `,
       errors: [
         {
-          message: 'Missing JSDoc @param "root1" declaration.',
+          message: 'Missing JSDoc @param "{foo}" declaration.',
         },
         {
-          message: 'Missing JSDoc @param "root1.foo" declaration.',
+          message: 'Missing JSDoc @param "foo" in "{foo}" declaration.',
         },
       ],
       options: [
@@ -2745,6 +2796,19 @@ export default {
           checkDestructured: false,
         },
       ],
+    },
+    {
+      code: `
+          /**
+           *
+           */
+          function quux ({foo, bar: {baz, ...bug}}) {
+
+          }
+      `,
+      parserOptions: {
+        ecmaVersion: 2018,
+      },
     },
   ],
 };

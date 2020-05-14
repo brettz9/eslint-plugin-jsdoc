@@ -138,6 +138,7 @@ export default iterateJsdoc(({
 
           if (emptyParamIdx > -1) {
             missingTags.push({
+              destructured: true,
               functionParameterIdx: emptyParamIdx,
               functionParameterName: rootName,
               inc,
@@ -145,6 +146,7 @@ export default iterateJsdoc(({
             });
           } else {
             missingTags.push({
+              destructured: true,
               functionParameterIdx: _.has(paramIndex, rootName) ?
                 paramIndex[rootName] :
                 paramIndex[paramName],
@@ -168,9 +170,11 @@ export default iterateJsdoc(({
           return name === fullParamName;
         })) {
           missingTags.push({
+            destructured: true,
             functionParameterIdx: paramIndex[functionParameterName[0] ? fullParamName : paramName],
             functionParameterName: fullParamName,
             inc,
+            shortName: paramName,
             type: hasRestElement && !hasPropertyRest ? '...any' : undefined,
           });
         }
@@ -236,13 +240,23 @@ export default iterateJsdoc(({
     });
   };
 
-  missingTags.forEach(({functionParameterName}) => {
-    utils.reportJSDoc(
-      `Missing JSDoc @${preferredTagName} "${functionParameterName}" declaration.`,
-      null,
-      enableFixer ? fixer : null,
-    );
-  });
+  if (missingTags.length) {
+    const nestedFunctionParameterNames = utils.getFunctionParameterNames(false);
+    missingTags.forEach(({functionParameterName, functionParameterIdx, shortName, destructured}) => {
+      console.log('aaa', nestedFunctionParameterNames, functionParameterIdx, nestedFunctionParameterNames[functionParameterIdx]);
+      let str = utils.getParameterNamesString(nestedFunctionParameterNames[functionParameterIdx]) || functionParameterName;
+      if (str.length > 100) {
+        str = `${str.slice(0, 100)} <snip>}`;
+      }
+      utils.reportJSDoc(
+        `Missing JSDoc @${preferredTagName} ${
+          shortName && destructured ? `"${shortName}" in ` : ''
+        }"${str}" declaration.`,
+        null,
+        enableFixer ? fixer : null,
+      );
+    });
+  }
 }, {
   contextDefaults: true,
   meta: {

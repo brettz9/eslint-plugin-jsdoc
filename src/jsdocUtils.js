@@ -83,7 +83,24 @@ const getPropertiesFromPropertySignature = (propSignature): T => {
   return propSignature.key.name;
 };
 
-const getFunctionParameterNames = (functionNode : Object) : Array<T> => {
+const getParameterNamesString = (functionParameterName) => {
+  if (Array.isArray(functionParameterName)) {
+    // eslint-disable-next-line unicorn/no-reduce
+    return `{${functionParameterName[0] ? `${functionParameterName[0]}:{` : ''}${functionParameterName[1].reduce((acc, nameItem) => {
+      return `${acc}${getParameterNamesString(nameItem)},`;
+    }, '').slice(0, -1)}}`;
+  }
+  if (typeof functionParameterName === 'object') {
+    // isRestProperty
+    const {name, restElement} = functionParameterName;
+
+    return restElement ? `...${name}` : name;
+  }
+
+  return functionParameterName;
+};
+
+const getFunctionParameterNames = (functionNode : Object, flatten = true) : Array<T> => {
   // eslint-disable-next-line complexity
   const getParamName = (param, isProperty) => {
     if (_.has(param, 'typeAnnotation') || _.has(param, 'left.typeAnnotation')) {
@@ -92,12 +109,12 @@ const getFunctionParameterNames = (functionNode : Object) : Array<T> => {
         const propertyNames = typeAnnotation.typeAnnotation.members.map((member) => {
           return getPropertiesFromPropertySignature(member);
         });
-        const flattened = flattenRoots(propertyNames);
+        const children = flatten ? flattenRoots(propertyNames) : propertyNames;
         if (_.has(param, 'name') || _.has(param, 'left.name')) {
-          return [_.has(param, 'left.name') ? param.left.name : param.name, flattened];
+          return [_.has(param, 'left.name') ? param.left.name : param.name, children];
         }
 
-        return [undefined, flattened];
+        return [undefined, children];
       }
     }
 
@@ -115,7 +132,7 @@ const getFunctionParameterNames = (functionNode : Object) : Array<T> => {
         return getParamName(prop, true);
       });
 
-      return [undefined, flattenRoots(roots)];
+      return [undefined, flatten ? flattenRoots(roots) : roots];
     }
 
     if (param.type === 'Property') {
@@ -141,7 +158,7 @@ const getFunctionParameterNames = (functionNode : Object) : Array<T> => {
         };
       });
 
-      return [undefined, flattenRoots(roots)];
+      return [undefined, flatten ? flattenRoots(roots) : roots];
     }
 
     if (['RestElement', 'ExperimentalRestProperty'].includes(param.type)) {
@@ -717,6 +734,7 @@ export default {
   getFunctionParameterNames,
   getIndent,
   getJsdocTagsDeep,
+  getParameterNamesString,
   getPreferredTagName,
   getTagsByType,
   hasATag,
