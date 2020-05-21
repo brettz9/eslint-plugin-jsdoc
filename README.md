@@ -8589,6 +8589,24 @@ export function bar(arg: boolean): boolean {
 }
 // Options: [{"contexts":["ExportNamedDeclaration[declaration.type=\"TSDeclareFunction\"]:not(ExportNamedDeclaration[declaration.type=\"TSDeclareFunction\"] + ExportNamedDeclaration[declaration.type=\"TSDeclareFunction\"])","ExportNamedDeclaration[declaration.type=\"FunctionDeclaration\"]:not(ExportNamedDeclaration[declaration.type=\"TSDeclareFunction\"] + ExportNamedDeclaration[declaration.type=\"FunctionDeclaration\"])"],"require":{"FunctionDeclaration":false}}]
 // Message: Missing JSDoc comment.
+
+class TestClass {
+    constructor() {
+        this.id = 1;
+    }
+
+    get ID() {
+        return this.id;
+    }
+
+    set ID(value) {
+        this.id = value;
+    }
+
+    sometMethod () {}
+}
+// Options: [{"contexts":["MethodDefinition:not([kind=\"constructor\"],[kind=\"get\"],[kind=\"set\"])","MethodDefinition[kind=\"get\"]:not(MethodDefinition[kind=\"set\"] + MethodDefinition[kind=\"get\"])","MethodDefinition[kind=\"set\"]:not(MethodDefinition[kind=\"get\"] + MethodDefinition[kind=\"set\"])"],"require":{"FunctionDeclaration":false}}]
+// Message: Missing JSDoc comment.
 ````
 
 The following patterns are not considered problems:

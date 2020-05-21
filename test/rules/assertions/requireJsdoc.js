@@ -2155,6 +2155,71 @@ export default {
       `,
       parser: require.resolve('@typescript-eslint/parser'),
     },
+    {
+      code: `
+      class TestClass {
+          constructor() {
+              this.id = 1;
+          }
+
+          get ID() {
+              return this.id;
+          }
+
+          set ID(value) {
+              this.id = value;
+          }
+
+          sometMethod () {}
+      }
+      `,
+      errors: [
+        {
+          line: 7,
+          message: 'Missing JSDoc comment.',
+        },
+        {
+          line: 15,
+          message: 'Missing JSDoc comment.',
+        },
+      ],
+      options: [
+        {
+          contexts: [
+            'MethodDefinition:not([kind="constructor"],[kind="get"],[kind="set"])',
+            'MethodDefinition[kind="get"]:not(MethodDefinition[kind="set"] + MethodDefinition[kind="get"])',
+            'MethodDefinition[kind="set"]:not(MethodDefinition[kind="get"] + MethodDefinition[kind="set"])',
+          ],
+          require: {
+            FunctionDeclaration: false,
+          },
+        },
+      ],
+      output: `
+      class TestClass {
+          constructor() {
+              this.id = 1;
+          }
+
+          /**
+           *
+           */
+          get ID() {
+              return this.id;
+          }
+
+          set ID(value) {
+              this.id = value;
+          }
+
+          /**
+           *
+           */
+          sometMethod () {}
+      }
+      `,
+      parser: require.resolve('@typescript-eslint/parser'),
+    },
   ],
   valid: [{
     code: `
