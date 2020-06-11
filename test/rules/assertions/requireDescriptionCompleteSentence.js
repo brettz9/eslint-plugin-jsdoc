@@ -1312,5 +1312,15 @@ export default {
       }
       `,
     },
+    {
+      code: `
+      /**
+       * Just a component.
+       * @param {Object} props Свойства.
+       * @return {ReactElement}.
+       */
+      const Component = props => {/* ... */}
+      `,
+    },
   ],
 };

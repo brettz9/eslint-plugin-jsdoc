@@ -23,14 +23,14 @@ const extractSentences = (text, abbreviationsRegex) => {
     // Remove custom abbreviations
     .replace(abbreviationsRegex, '');
 
-  const sentenceEndGrouping = /([.?!])(?:\s+|$)/u;
+  const sentenceEndGrouping = /(?<!^)([.?!])(?:\s+|$)/u;
   const puncts = RegExtras(sentenceEndGrouping).map(txt, (punct) => {
     return punct;
   });
 
   return txt
 
-    .split(/[.?!](?:\s+|$)/u)
+    .split(/(?<!^)[.?!](?:\s+|$)/u)
 
     // Re-add the dot.
     .map((sentence, idx) => {
@@ -56,10 +56,6 @@ const isNewLinePrecededByAPeriod = (text) => {
 
 const isCapitalized = (str) => {
   return str[0] === str[0].toUpperCase();
-};
-
-const isTable = (str) => {
-  return str.charAt() === '|';
 };
 
 const capitalize = (str) => {
@@ -89,8 +85,7 @@ const validateDescription = (
       }
 
       for (const sentence of sentences.filter((sentence_) => {
-        return !(/^\s*$/u).test(sentence_) && !isCapitalized(sentence_) &&
-          !isTable(sentence_);
+        return !(/^\s*$/u).test(sentence_) && !isCapitalized(sentence_);
       })) {
         const beginning = sentence.split('\n')[0];
 
@@ -117,7 +112,7 @@ const validateDescription = (
     };
 
     if (sentences.some((sentence) => {
-      return !(/^\s*$/u).test(sentence) && !isCapitalized(sentence) && !isTable(sentence);
+      return !(/^\s*$/u).test(sentence) && !isCapitalized(sentence);
     })) {
       report('Sentence should start with an uppercase character.', fix, tag);
     }
