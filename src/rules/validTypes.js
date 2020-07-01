@@ -22,7 +22,14 @@ export default iterateJsdoc(({
   jsdoc.tags.forEach((tag) => {
     const validNamepathParsing = function (namepath, tagName) {
       try {
-        parse(namepath, {mode});
+        parse(namepath, {
+          mode,
+
+          // BroadNamepathExpr
+          startRule: 'NamepathExpr',
+
+          // "ExternalNameExpr"|"ModuleNameExpr
+        });
       } catch {
         let handled = false;
 
