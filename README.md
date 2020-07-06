@@ -2905,7 +2905,6 @@ function quux (foo) {}
 // Message: Invalid JSDoc tag (preference). Replace "returns" JSDoc tag with "return".
 
 /** 
- * @modifies
  * @abstract
  * @access
  * @alias
@@ -2916,7 +2915,6 @@ function quux (foo) {}
  * @callback
  * @class
  * @classdesc
- * @constant
  * @constructs
  * @copyright
  * @default
@@ -2935,8 +2933,6 @@ function quux (foo) {}
  * @hideconstructor
  * @ignore
  * @implements
- * @inheritdoc
- * @inheritDoc
  * @inner
  * @instance
  * @interface
@@ -2945,8 +2941,6 @@ function quux (foo) {}
  * @license
  * @listens
  * @member
- * @memberof
- * @memberof!
  * @mixes
  * @mixin
  * @module
@@ -2959,7 +2953,6 @@ function quux (foo) {}
  * @property
  * @protected
  * @public
- * @readonly
  * @requires
  * @returns
  * @see
@@ -2974,6 +2967,13 @@ function quux (foo) {}
  * @typedef
  * @variation
  * @version
+ * @modifies
+ * @constant
+ * @inheritdoc
+ * @inheritDoc
+ * @memberof
+ * @memberof!
+ * @readonly
  * @yields
  */
 function quux (foo) {}
@@ -2981,7 +2981,6 @@ function quux (foo) {}
 // Message: Unrecognized value `badMode` for `settings.jsdoc.mode`.
 
 /** 
- * @modifies
  * @abstract
  * @access
  * @alias
@@ -2992,7 +2991,6 @@ function quux (foo) {}
  * @callback
  * @class
  * @classdesc
- * @constant
  * @constructs
  * @copyright
  * @default
@@ -3011,8 +3009,6 @@ function quux (foo) {}
  * @hideconstructor
  * @ignore
  * @implements
- * @inheritdoc
- * @inheritDoc
  * @inner
  * @instance
  * @interface
@@ -3021,8 +3017,6 @@ function quux (foo) {}
  * @license
  * @listens
  * @member
- * @memberof
- * @memberof!
  * @mixes
  * @mixin
  * @module
@@ -3035,7 +3029,6 @@ function quux (foo) {}
  * @property
  * @protected
  * @public
- * @readonly
  * @requires
  * @returns
  * @see
@@ -3050,7 +3043,6 @@ function quux (foo) {}
  * @typedef
  * @variation
  * @version
- * @yields
  * @template
  */
 function quux (foo) {}
@@ -3124,7 +3116,6 @@ function quux (foo) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /** 
- * @modifies
  * @abstract
  * @access
  * @alias
@@ -3135,7 +3126,6 @@ function quux (foo) {}
  * @callback
  * @class
  * @classdesc
- * @constant
  * @constructs
  * @copyright
  * @default
@@ -3154,8 +3144,6 @@ function quux (foo) {}
  * @hideconstructor
  * @ignore
  * @implements
- * @inheritdoc
- * @inheritDoc
  * @inner
  * @instance
  * @interface
@@ -3164,8 +3152,6 @@ function quux (foo) {}
  * @license
  * @listens
  * @member
- * @memberof
- * @memberof!
  * @mixes
  * @mixin
  * @module
@@ -3178,7 +3164,6 @@ function quux (foo) {}
  * @property
  * @protected
  * @public
- * @readonly
  * @requires
  * @returns
  * @see
@@ -3193,12 +3178,18 @@ function quux (foo) {}
  * @typedef
  * @variation
  * @version
+ * @modifies
+ * @constant
+ * @inheritdoc
+ * @inheritDoc
+ * @memberof
+ * @memberof!
+ * @readonly
  * @yields
  */
 function quux (foo) {}
 
 /** 
- * @modifies
  * @abstract
  * @access
  * @alias
@@ -3209,7 +3200,6 @@ function quux (foo) {}
  * @callback
  * @class
  * @classdesc
- * @constant
  * @constructs
  * @copyright
  * @default
@@ -3228,8 +3218,6 @@ function quux (foo) {}
  * @hideconstructor
  * @ignore
  * @implements
- * @inheritdoc
- * @inheritDoc
  * @inner
  * @instance
  * @interface
@@ -3238,8 +3226,6 @@ function quux (foo) {}
  * @license
  * @listens
  * @member
- * @memberof
- * @memberof!
  * @mixes
  * @mixin
  * @module
@@ -3252,7 +3238,6 @@ function quux (foo) {}
  * @property
  * @protected
  * @public
- * @readonly
  * @requires
  * @returns
  * @see
@@ -3267,7 +3252,6 @@ function quux (foo) {}
  * @typedef
  * @variation
  * @version
- * @yields
  * @template
  */
 function quux (foo) {}

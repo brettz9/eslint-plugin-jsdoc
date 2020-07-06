@@ -5,8 +5,7 @@ const jsdocTagsUndocumented = {
   modifies: [],
 };
 
-const jsdocTags = {
-  ...jsdocTagsUndocumented,
+const jsdocCommonTags = {
   abstract: [
     'virtual',
   ],
@@ -23,9 +22,6 @@ const jsdocTags = {
     'constructor',
   ],
   classdesc: [],
-  constant: [
-    'const',
-  ],
   constructs: [],
   copyright: [],
   default: [
@@ -58,10 +54,6 @@ const jsdocTags = {
   hideconstructor: [],
   ignore: [],
   implements: [],
-  inheritdoc: [],
-
-  // Allowing casing distinct from jsdoc `definitions.js` (required in Closure)
-  inheritDoc: [],
 
   inner: [],
   instance: [],
@@ -73,8 +65,6 @@ const jsdocTags = {
   member: [
     'var',
   ],
-  memberof: [],
-  'memberof!': [],
   mixes: [],
   mixin: [],
 
@@ -93,7 +83,6 @@ const jsdocTags = {
   ],
   protected: [],
   public: [],
-  readonly: [],
   requires: [],
   returns: [
     'return',
@@ -113,13 +102,32 @@ const jsdocTags = {
   typedef: [],
   variation: [],
   version: [],
+};
+
+const jsdocTags = {
+  ...jsdocCommonTags,
+  ...jsdocTagsUndocumented,
+  constant: [
+    'const',
+  ],
+
+  inheritdoc: [],
+
+  // Allowing casing distinct from jsdoc `definitions.js` (required in Closure)
+  inheritDoc: [],
+
+  memberof: [],
+  'memberof!': [],
+
+  readonly: [],
+
   yields: [
     'yield',
   ],
 };
 
 const typeScriptTags = {
-  ...jsdocTags,
+  ...jsdocCommonTags,
 
   // `@template` is also in TypeScript per:
   //      https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#supported-jsdoc
@@ -151,7 +159,10 @@ const {
   returns,
   /* eslint-enable no-unused-vars */
   ...typeScriptTagsInClosure
-} = typeScriptTags;
+} = {
+  ...typeScriptTags,
+  ...jsdocTags,
+};
 
 const closureTags = {
   ...typeScriptTagsInClosure,
