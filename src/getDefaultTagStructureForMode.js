@@ -57,6 +57,8 @@ const getDefaultTagStructureForMode = (mode) => {
       // Has no formal signature in the docs but shows curly brackets
       //   in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['argument', new Map([
@@ -68,6 +70,8 @@ const getDefaultTagStructureForMode = (mode) => {
       // Has no formal signature in the docs but shows curly brackets
       //   in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['augments', new Map([
@@ -79,6 +83,14 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // "namepath"
       ['typeOrNameRequired', true],
+    ])],
+
+    ['author', new Map([
+      ['contexts', ['Program > *']],
+    ])],
+
+    ['async', new Map([
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['borrows', new Map([
@@ -97,6 +109,8 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // "namepath"
       ['nameRequired', true],
+
+      ['contexts', ['Program > *']],
     ])],
 
     ['class', new Map([
@@ -104,6 +118,12 @@ const getDefaultTagStructureForMode = (mode) => {
       ['nameContents', 'namepath-defining'],
 
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'ClassDeclaration', 'ClassExpression']],
+    ])],
+
+    ['classdesc', new Map([
+      ['contexts', [':function', 'ClassDeclaration', 'ClassExpression']],
     ])],
 
     ['const', new Map([
@@ -111,18 +131,32 @@ const getDefaultTagStructureForMode = (mode) => {
       ['nameContents', 'namepath-defining'],
 
       ['typeAllowed', true],
+
+      ['contexts', ['VariableDeclaration[kind="const"]']],
     ])],
     ['constant', new Map([
       // Allows for "name"'s in signature, but indicated as optional
       ['nameContents', 'namepath-defining'],
 
       ['typeAllowed', true],
+
+      ['contexts', ['VariableDeclaration[kind="const"]']],
     ])],
     ['constructor', new Map([
       // Allows for "name"'s in signature, but indicated as optional
       ['nameContents', 'namepath-defining'],
 
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'ClassDeclaration', 'ClassExpression']],
+    ])],
+
+    ['constructs', new Map([
+      ['contexts', [':function', 'Program > *']],
+    ])],
+
+    ['copyright', new Map([
+      ['contexts', ['Program > *']],
     ])],
 
     ['define', new Map([
@@ -179,21 +213,39 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // "name" (and a special syntax for the `external` name)
       ['nameRequired', true],
+
+      ['contexts', ['Program > *']],
+    ])],
+
+    ['file', new Map([
+      ['contexts', ['Program > *']],
     ])],
 
     ['fires', new Map([
       // Signature seems to require a "name" (of an event) and no
       //  counter-examples
       ['nameContents', 'namepath-referencing'],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['function', new Map([
       // Allows for "name"'s in signature, but indicated as optional
       ['nameContents', 'namepath-defining'],
+
+      ['contexts', ['Program > *']],
     ])],
     ['func', new Map([
       // Allows for "name"'s in signature, but indicated as optional
       ['nameContents', 'namepath-defining'],
+    ])],
+
+    ['generator', new Map([
+      ['contexts', [':function', 'Program > *']],
+    ])],
+
+    ['hideconstructor', new Map([
+      ['contexts', [':function', 'ClassDeclaration', 'ClassExpression']],
     ])],
 
     ['host', new Map([
@@ -209,18 +261,25 @@ const getDefaultTagStructureForMode = (mode) => {
       ['typeOrNameRequired', true],
     ])],
 
+    ['implements', new Map([
+      // Shows curly brackets in the doc signature and examples
+      // "typeExpression"
+      ['typeRequired', true],
+
+      ['contexts', [':function', 'ClassDeclaration', 'ClassExpression', {
+        context: 'Program > *',
+        tags: ['callback', 'function'],
+      }]],
+    ])],
+
     ['interface', new Map([
       // Allows for "name" in signature, but indicates as optional
       [
         'nameContents',
         isJsdocTypescriptOrPermissive ? 'namepath-defining' : false,
       ],
-    ])],
 
-    ['implements', new Map([
-      // Shows curly brackets in the doc signature and examples
-      // "typeExpression"
-      ['typeRequired', true],
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['lends', new Map([
@@ -231,10 +290,16 @@ const getDefaultTagStructureForMode = (mode) => {
       ['typeOrNameRequired', true],
     ])],
 
+    ['license', new Map([
+      ['contexts', ['Program > *']],
+    ])],
+
     ['listens', new Map([
       // Signature seems to require a "name" (of an event) and no
       //  counter-examples
       ['nameContents', 'namepath-referencing'],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['member', new Map([
@@ -295,6 +360,8 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // Shows the signature with curly brackets but not in the example
       ['typeAllowed', true],
+
+      ['contexts', ['Program > *']],
     ])],
 
     ['name', new Map([
@@ -307,6 +374,8 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // "namepath"
       ['typeOrNameRequired', true],
+
+      ['disallowedCotags', ['function']],
     ])],
 
     ['namespace', new Map([
@@ -334,6 +403,8 @@ const getDefaultTagStructureForMode = (mode) => {
       // Has no formal signature in the docs but shows curly brackets
       //   in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['private', new Map([
@@ -379,10 +450,14 @@ const getDefaultTagStructureForMode = (mode) => {
     ['returns', new Map([
       // Shows curly brackets in the signature and in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
     ['return', new Map([
       // Shows curly brackets in the signature and in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['see', new Map([
@@ -414,6 +489,8 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // namepath
       ['typeOrNameRequired', isJsdoc],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
 
     ['throws', new Map([
@@ -440,6 +517,8 @@ const getDefaultTagStructureForMode = (mode) => {
 
       // "namepath"
       ['typeOrNameRequired', true],
+
+      ['contexts', ['Program > *']],
     ])],
 
     ['var', new Map([
@@ -453,10 +532,14 @@ const getDefaultTagStructureForMode = (mode) => {
     ['yields', new Map([
       // Shows curly brackets in the signature and in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
     ['yield', new Map([
       // Shows curly brackets in the signature and in the examples
       ['typeAllowed', true],
+
+      ['contexts', [':function', 'Program > *']],
     ])],
   ]);
 };
