@@ -512,6 +512,7 @@ selector).
 {"gitdown": "include", "file": "./rules/no-defaults.md"}
 {"gitdown": "include", "file": "./rules/no-types.md"}
 {"gitdown": "include", "file": "./rules/no-undefined-types.md"}
+{"gitdown": "include", "file": "./rules/require-cli-args.md"}
 {"gitdown": "include", "file": "./rules/require-description-complete-sentence.md"}
 {"gitdown": "include", "file": "./rules/require-description.md"}
 {"gitdown": "include", "file": "./rules/require-example.md"}

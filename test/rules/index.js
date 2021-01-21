@@ -26,6 +26,7 @@ const ruleTester = new RuleTester();
   'no-defaults',
   'no-types',
   'no-undefined-types',
+  'require-cli-args',
   'require-description',
   'require-description-complete-sentence',
   'require-example',
