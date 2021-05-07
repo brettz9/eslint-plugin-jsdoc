@@ -8569,11 +8569,37 @@ array's items will be considered as defined for the purposes of that tag.
 <a name="eslint-plugin-jsdoc-rules-no-undefined-types-options-20"></a>
 #### Options
 
-An option object may have the following key:
+An option object may have the following keys, helping indicate types or
+file sources of types:
 
 - `definedTypes` - This array can be populated to indicate other types which
   are automatically considered as defined (in addition to globals, etc.).
   Defaults to an empty array.
+
+- `entryFiles` - Array of entry files objects indicating JavaScript or HTML
+  files whose `import` or `require` statements should be resolved recursively
+  and be analyzed for `@typedef`'s, globals, etc. (see `typeSources`) to treat
+  as "defined" for the purposes of this rule. Each object should have a
+  `file` array and with an optional `node` boolean property to indicate whether
+  to use the Node Resolution Algorithm (e.g., for Node.js) and/or a `cjs`
+  boolean property (if following `require`) properties. Set one of the `file`
+  items to `<main>`, `<exports>`, `<exports.imports>`, or `<exports.require>`
+  to use the file referenced in the correpsonding property in `package.json`.
+
+- `jsdocConfig` - Object with:
+  - `file` string pointing to a path for a
+    [jsdoc config file](https://jsdoc.app/about-configuring-jsdoc.html)
+    which will be parsed for [input files](https://jsdoc.app/about-configuring-jsdoc.html#specifying-input-files),
+    including `include`, `exclude`, `includePattern`, and `excludePattern`
+    properties within the file as well as `opts.recurse`. See `entryFiles`
+    on how the (JavaScript) files will be treated (with
+    `sourceType: 'module'` in the jsdoc config file causing "cjs" to be
+    set to `false`).
+
+- `typeSources` - Array with `globals`, `exports`, and/or `locals` indicating
+    the source types that will be treated as valid types when found in the
+    current file or any entry files (`locals` will only apply to the
+    current file). Defaults to `['typedefs', 'globals', 'exports', 'locals']`.
 
 |||
 |---|---|
@@ -9113,6 +9139,31 @@ class Test {
     return this;
   }
 }
+
+import {myTypesA} from '../internal/file.js'; // ERROR
+import {myTypesB} from '../internal/file.js'; // NO ERROR
+
+/**
+* @typedef newType
+* @property {myTypesA.someType} someProp - Some prop.
+*/
+
+/**
+* @param {newType} arg - Arg.
+*/
+function myFunctionA(arg) {
+    return arg;
+}
+
+/**
+* @param {myTypesB.someType} arg - Arg.
+*/
+function myFunctionB(arg) {
+    return arg;
+}
+
+export {myFunctionA, myFunctionB};
+// "jsdoc/no-undefined-types": ["error"|"warn", {"entryFiles":[]}]
 ````
 
 

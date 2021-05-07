@@ -997,5 +997,43 @@ export default {
       `,
       parser: require.resolve('@typescript-eslint/parser'),
     },
+    {
+      code: `
+      import {myTypesA} from '../internal/file.js'; // ERROR
+      import {myTypesB} from '../internal/file.js'; // NO ERROR
+
+      /**
+      * @typedef newType
+      * @property {myTypesA.someType} someProp - Some prop.
+      */
+
+      /**
+      * @param {newType} arg - Arg.
+      */
+      function myFunctionA(arg) {
+          return arg;
+      }
+
+      /**
+      * @param {myTypesB.someType} arg - Arg.
+      */
+      function myFunctionB(arg) {
+          return arg;
+      }
+
+      export {myFunctionA, myFunctionB};
+      `,
+      options: [
+        {
+          entryFiles: [],
+        },
+      ],
+      parserOptions: {
+        sourceType: 'module',
+      },
+      rules: {
+        'no-unused-vars': ['error'],
+      },
+    },
   ],
 };

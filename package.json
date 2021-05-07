@@ -8,6 +8,7 @@
     "@es-joy/jsdoccomment": "^0.6.0",
     "comment-parser": "1.1.5",
     "debug": "^4.3.1",
+    "es-file-traverse": "^0.10.0",
     "esquery": "^1.4.0",
     "jsdoctypeparser": "^9.0.0",
     "lodash": "^4.17.21",

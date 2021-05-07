@@ -2,6 +2,9 @@ import {
   getJSDocComment,
 } from '@es-joy/jsdoccomment';
 import {
+  traverse as esFileTraverse,
+} from 'es-file-traverse';
+import {
   parse as parseType, traverse,
 } from 'jsdoctypeparser';
 import _ from 'lodash';
@@ -23,9 +26,9 @@ const stripPseudoTypes = (str) => {
   return str && str.replace(/(?:\.|<>|\.<>|\[\])$/u, '');
 };
 
-export default iterateJsdoc(({
+export default iterateJsdoc(async ({
   context,
-  node,
+  node: jsdocNode,
   report,
   settings,
   sourceCode,
@@ -34,7 +37,57 @@ export default iterateJsdoc(({
   const {scopeManager} = sourceCode;
   const {globalScope} = scopeManager;
 
-  const {definedTypes = []} = context.options[0] || {};
+  const {
+    definedTypes = [],
+    entryFiles = [
+      // {file, cjs, node}
+    ],
+    jsdocConfig: {file: jsdocConfigFile},
+    typeSources = ['typedefs', 'globals', 'exports', 'locals'],
+  } = context.options[0] || {};
+
+  // eslint-disable-next-line no-console
+  console.log('entryFiles', entryFiles, jsdocConfigFile, typeSources);
+
+  // No async rules yet per ESLint Discord
+  // chat response from nzakas
+  await Promise.all(entryFiles.map(({file, node, cjs}) => {
+    if ([
+      '<main>', '<exports>', '<exports.imports>', '<exports.require>',
+    ].includes(file)) {
+      // Todo: Replace `file` with `package.json`-pointed value
+    }
+
+    return esFileTraverse({
+      /**
+       * @callback PromiseReturner
+       * @returns {Promise<void>}
+       */
+      /**
+       * @typedef {PlainObject} ESFileTraverseInfo
+       * @property {string} fullPath
+       * @property {string} text
+       * @property {AST} ast
+       * @property {"esm"|"cjs"|"amd"} [type]
+       * @property {PromiseReturner[]} [promMethods]
+       * @property {Set<string>} [resolvedSet]
+       */
+      /**
+       * @param {"enter"|"exit"} state
+       * @param {ESFileTraverseInfo} info
+       * @returns {void}
+       */
+      callback (state, info) {
+        // Todo: Handle
+        // eslint-disable-next-line no-console
+        console.log('state', state, info);
+      },
+
+      cjs,
+      file,
+      node,
+    });
+  }));
 
   let definedPreferredTypes = [];
   const {preferredTypes, structuredTags, mode} = settings;
@@ -77,7 +130,7 @@ export default iterateJsdoc(({
     .value();
 
   const ancestorNodes = [];
-  let currentScope = scopeManager.acquire(node);
+  let currentScope = scopeManager.acquire(jsdocNode);
 
   while (currentScope && currentScope.block.type !== 'Program') {
     ancestorNodes.push(currentScope.block);
@@ -178,6 +231,44 @@ export default iterateJsdoc(({
         properties: {
           definedTypes: {
             items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
+          entryFiles: {
+            items: {
+              properties: {
+                cjs: {
+                  type: 'boolean',
+                },
+                file: {
+                  items: {
+                    type: 'string',
+                  },
+                  type: 'array',
+                },
+                node: {
+                  type: 'boolean',
+                },
+              },
+              require: ['file'],
+              type: 'object',
+            },
+            type: 'array',
+          },
+          jsdocConfig: {
+            properties: {
+              file: {
+                type: 'string',
+              },
+            },
+            type: 'object',
+          },
+          typeSources: {
+            items: {
+              enum: [
+                'globals', 'exports', 'locals',
+              ],
               type: 'string',
             },
             type: 'array',
