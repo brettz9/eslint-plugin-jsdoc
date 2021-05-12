@@ -5577,6 +5577,8 @@ This rule checks the values for a handful of tags:
     is a value present, and that it is an integer (otherwise, jsdoc allows any
     value).
 
+See also the `tags` option regarding defining allowable values.
+
 <a name="eslint-plugin-jsdoc-rules-check-values-options-8"></a>
 #### Options
 
@@ -5612,12 +5614,20 @@ your expression as a string, but like a literal, e.g., `/^mit$/ui`.
 Whether to enable validation that `@variation` must be a number. Defaults to
 `false`.
 
+<a name="eslint-plugin-jsdoc-rules-check-values-options-8-tags-1"></a>
+##### <code>tags</code>
+
+Allows customization of allowed values per tag.
+
+An object whose keys are tag names and whose values are arrays of allowable
+string values.
+
 |||
 |---|---|
 |Context|everywhere|
 |Tags|`@version`, `@since`, `@license`, `@author`, `@variation`|
 |Recommended|true|
-|Options|`allowedAuthors`, `allowedLicenses`, `licensePattern`|
+|Options|`allowedAuthors`, `allowedLicenses`, `licensePattern`, `tags`|
 |Settings|`tagNamePreference`|
 
 The following patterns are considered problems:
@@ -5900,7 +5910,7 @@ Similarly, `@internal` will still be checked for content by this rule even with
 <a name="eslint-plugin-jsdoc-rules-empty-tags-options-9"></a>
 #### Options
 
-<a name="eslint-plugin-jsdoc-rules-empty-tags-options-9-tags-1"></a>
+<a name="eslint-plugin-jsdoc-rules-empty-tags-options-9-tags-2"></a>
 ##### <code>tags</code>
 
 If you want additional tags to be checked for their descriptions, you may
@@ -6290,7 +6300,7 @@ You can supply your own expression to override the default, passing a
 }
 ```
 
-<a name="eslint-plugin-jsdoc-rules-match-description-options-11-tags-2"></a>
+<a name="eslint-plugin-jsdoc-rules-match-description-options-11-tags-3"></a>
 ##### <code>tags</code>
 
 If you want different regular expressions to apply to tags, you may use
@@ -9132,7 +9142,7 @@ and use the `tags` option to apply to specific tags only.
 
 After the string option, one may add an object with the following.
 
-<a name="eslint-plugin-jsdoc-rules-require-asterisk-prefix-options-21-tags-3"></a>
+<a name="eslint-plugin-jsdoc-rules-require-asterisk-prefix-options-21-tags-4"></a>
 ##### <code>tags</code>
 
 If you want different values to apply to specific tags, you may use
@@ -9409,7 +9419,7 @@ Requires that block description, explicit `@description`, and
 <a name="eslint-plugin-jsdoc-rules-require-description-complete-sentence-options-22"></a>
 #### Options
 
-<a name="eslint-plugin-jsdoc-rules-require-description-complete-sentence-options-22-tags-4"></a>
+<a name="eslint-plugin-jsdoc-rules-require-description-complete-sentence-options-22-tags-5"></a>
 ##### <code>tags</code>
 
 If you want additional tags to be checked for their descriptions, you may
@@ -10974,7 +10984,7 @@ Checks that:
 <a name="eslint-plugin-jsdoc-rules-require-file-overview-options-25"></a>
 #### Options
 
-<a name="eslint-plugin-jsdoc-rules-require-file-overview-options-25-tags-5"></a>
+<a name="eslint-plugin-jsdoc-rules-require-file-overview-options-25-tags-6"></a>
 ##### <code>tags</code>
 
 The keys of this object are tag names, and the values are configuration

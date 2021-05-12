@@ -14,6 +14,8 @@ This rule checks the values for a handful of tags:
     is a value present, and that it is an integer (otherwise, jsdoc allows any
     value).
 
+See also the `tags` option regarding defining allowable values.
+
 #### Options
 
 ##### `allowedAuthors`
@@ -44,12 +46,19 @@ your expression as a string, but like a literal, e.g., `/^mit$/ui`.
 Whether to enable validation that `@variation` must be a number. Defaults to
 `false`.
 
+##### `tags`
+
+Allows customization of allowed values per tag.
+
+An object whose keys are tag names and whose values are arrays of allowable
+string values.
+
 |||
 |---|---|
 |Context|everywhere|
 |Tags|`@version`, `@since`, `@license`, `@author`, `@variation`|
 |Recommended|true|
-|Options|`allowedAuthors`, `allowedLicenses`, `licensePattern`|
+|Options|`allowedAuthors`, `allowedLicenses`, `licensePattern`, `tags`|
 |Settings|`tagNamePreference`|
 
 <!-- assertions checkValues -->
