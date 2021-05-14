@@ -289,6 +289,7 @@ export default {
       `,
       errors: [
         {
+          line: 3,
           message: 'Missing JSDoc @param "options.foo" declaration.',
         },
       ],

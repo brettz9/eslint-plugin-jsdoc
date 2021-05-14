@@ -293,10 +293,22 @@ export default iterateJsdoc(({
     });
   };
 
-  missingTags.forEach(({functionParameterName}) => {
+  missingTags.forEach(({functionParameterIdx, functionParameterName}) => {
+    const tagIdx = functionParameterIdx;
+    const tag = jsdoc.tags[tagIdx]?.source?.[0]?.number;
+
+    const missingIndex = jsdocParameterNames.findIndex(({name}) => {
+      return utils.pathDoesNotBeginWith(functionParameterName, name);
+    });
+    const line = missingIndex > -1 ? missingIndex : jsdocParameterNames.length;
+    // eslint-disable-next-line no-console -- CLI
+    console.log('tag', tag ? tag - 1 + line : line);
+
     utils.reportJSDoc(
       `Missing JSDoc @${preferredTagName} "${functionParameterName}" declaration.`,
-      null,
+      {
+        line: tag ? tag - 1 + line : line,
+      },
       enableFixer ? fixer : null,
     );
   });
