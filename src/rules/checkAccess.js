@@ -7,7 +7,7 @@ export default iterateJsdoc(({
   utils,
 }) => {
   utils.forEachPreferredTag('access', (jsdocParameter, targetTagName) => {
-    const desc = jsdocParameter.name + ' ' + jsdocParameter.description;
+    const desc = jsdocParameter.description;
 
     if (!accessLevels.includes(desc.trim())) {
       report(

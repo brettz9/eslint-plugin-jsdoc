@@ -1296,6 +1296,15 @@ export default {
           },
         },
       ],
+      settings: {
+        jsdoc: {
+          structuredTags: {
+            'x-tag': {
+              name: false,
+            },
+          },
+        },
+      },
     },
     {
       code: `

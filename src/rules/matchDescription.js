@@ -57,7 +57,7 @@ export default iterateJsdoc(({
   };
 
   utils.forEachPreferredTag('description', (matchingJsdocTag, targetTagName) => {
-    const description = (matchingJsdocTag.name + ' ' + utils.getTagDescription(matchingJsdocTag)).trim();
+    const description = utils.getTagDescription(matchingJsdocTag).trim();
     if (hasOptionTag(targetTagName)) {
       validateDescription(description, matchingJsdocTag);
     }
@@ -75,7 +75,7 @@ export default iterateJsdoc(({
   });
 
   tagsWithoutNames.some((tag) => {
-    const description = (tag.name + ' ' + utils.getTagDescription(tag)).trim();
+    const description = utils.getTagDescription(tag).trim();
 
     return validateDescription(description, tag);
   });
