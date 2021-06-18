@@ -1236,5 +1236,27 @@ export default {
         checkEslintrc: false,
       }],
     },
+    {
+      code: `
+        /**
+        * @example
+          quux(function () {
+              bar();
+          });
+        */
+        function quux () {
+
+        }
+      `,
+      options: [{
+        baseConfig: {
+          rules: {
+            indent: ['error'],
+          },
+        },
+        checkEslintrc: false,
+        noDefaultExampleRules: false,
+      }],
+    },
   ],
 };
