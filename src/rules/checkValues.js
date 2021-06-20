@@ -1,6 +1,6 @@
 import semver from 'semver';
 import spdxExpressionParse from 'spdx-expression-parse';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 export default iterateJsdoc(({
   utils,

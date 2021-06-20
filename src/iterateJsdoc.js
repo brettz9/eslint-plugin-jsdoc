@@ -7,9 +7,9 @@ import {
 import {
   rewireSpecs,
   seedTokens,
-} from 'comment-parser/lib/util';
+} from 'comment-parser/lib/util.js';
 import _ from 'lodash';
-import jsdocUtils from './jsdocUtils';
+import jsdocUtils from './jsdocUtils.js';
 
 /*
 const {

@@ -7,8 +7,8 @@ import {
 import _ from 'lodash';
 import iterateJsdoc, {
   parseComment,
-} from '../iterateJsdoc';
-import jsdocUtils from '../jsdocUtils';
+} from '../iterateJsdoc.js';
+import jsdocUtils from '../jsdocUtils.js';
 
 const extraTypes = [
   'null', 'undefined', 'void', 'string', 'boolean', 'object',

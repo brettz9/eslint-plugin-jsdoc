@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 // https://babeljs.io/docs/en/babel-plugin-transform-react-jsx/
 const jsxTagNames = new Set([

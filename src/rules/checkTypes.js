@@ -1,7 +1,7 @@
 import {
   parse, stringify, traverse, tryParse,
 } from 'jsdoc-type-pratt-parser';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 const strictNativeTypes = [
   'undefined',

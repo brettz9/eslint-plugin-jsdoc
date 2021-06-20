@@ -1,7 +1,7 @@
 import {
   parse as commentParser,
 } from 'comment-parser';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 // Neither a single nor 3+ asterisks are valid jsdoc per
 //  https://jsdoc.app/about-getting-started.html#adding-documentation-comments-to-your-code

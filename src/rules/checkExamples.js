@@ -4,7 +4,7 @@
 import {
   CLIEngine,
 } from 'eslint';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 const zeroBasedLineIndexAdjust = -1;
 const likelyNestedJSDocIndentSpace = 1;

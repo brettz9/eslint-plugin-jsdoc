@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 export default iterateJsdoc(({
   jsdoc,

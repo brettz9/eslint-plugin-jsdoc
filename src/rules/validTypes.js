@@ -1,7 +1,7 @@
 import {
   tryParse, parse,
 } from 'jsdoc-type-pratt-parser';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 const asExpression = /as\s+/u;
 

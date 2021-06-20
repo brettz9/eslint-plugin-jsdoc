@@ -1,8 +1,18 @@
 import _ from 'lodash';
-import iterateJsdoc from '../iterateJsdoc';
+import iterateJsdoc from '../iterateJsdoc.js';
 
-type T = [string, () => T];
-const rootNamer = (desiredRoots: string[], currentIndex: number): T => {
+/**
+* @typedef {Array} RootNamer
+* @property {string} 0
+* @property {() => RootNamer}} 1
+*/
+
+/**
+ * @param {string[]} desiredRoots
+ * @param {number} currentIndex
+ * @returns {RootNamer}
+ */
+const rootNamer = (desiredRoots, currentIndex) => {
   let name;
   let idx = currentIndex;
   const incremented = desiredRoots.length <= 1;

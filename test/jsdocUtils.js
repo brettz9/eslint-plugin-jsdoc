@@ -3,7 +3,7 @@
 import {
   expect,
 } from 'chai';
-import jsdocUtils from '../src/jsdocUtils';
+import jsdocUtils from '../src/jsdocUtils.js';
 
 describe('jsdocUtils', () => {
   describe('getPreferredTagName()', () => {

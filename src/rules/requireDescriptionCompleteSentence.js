@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import {
   RegExtras,
-} from 'regextras/dist/main-umd';
-import iterateJsdoc from '../iterateJsdoc';
+} from 'regextras/dist/main-umd.js';
+import iterateJsdoc from '../iterateJsdoc.js';
 
 const otherDescriptiveTags = new Set([
   // 'copyright' and 'see' might be good addition, but as the former may be

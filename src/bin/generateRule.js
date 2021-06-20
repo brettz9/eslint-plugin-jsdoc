@@ -48,7 +48,7 @@ const recommended = options.includes('--recommended');
   await fs.writeFile(ruleNamesPath, JSON.stringify(ruleNames, null, 2) + '\n');
   console.log('ruleNames', ruleNames);
 
-  const ruleTemplate = `import iterateJsdoc from '../iterateJsdoc';
+  const ruleTemplate = `import iterateJsdoc from '../iterateJsdoc.js';
 
 export default iterateJsdoc(({
   context,

@@ -5,6 +5,7 @@ const generateTS = {
     if (!node.elements) {
       return [];
     }
+
     return node.elements.map((element) => {
       return element.value;
     });
