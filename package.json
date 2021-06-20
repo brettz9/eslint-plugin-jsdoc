@@ -5,8 +5,8 @@
     "url": "http://gajus.com"
   },
   "dependencies": {
-    "@es-joy/jsdoccomment": "^0.9.0-alpha.1",
-    "comment-parser": "1.1.6-beta.0",
+    "@es-joy/jsdoccomment": "^0.9.0-alpha.2",
+    "comment-parser": "1.1.6-beta.1",
     "debug": "^4.3.2",
     "esquery": "^1.4.0",
     "jsdoc-type-pratt-parser": "^1.0.4",
@@ -33,6 +33,7 @@
     "cross-env": "^7.0.3",
     "eslint": "7.31.0",
     "eslint-config-canonical": "^26.2.3",
+    "find-es-resources": "^3.0.2",
     "gitdown": "^3.1.4",
     "glob": "^7.1.7",
     "husky": "^7.0.1",
@@ -76,6 +77,7 @@
     "check-readme": "babel-node ./src/bin/generateReadme.js --check",
     "create-readme": "babel-node ./src/bin/generateReadme.js",
     "create-rule": "babel-node ./src/bin/generateRule.js",
+    "create-typescript": "find-es-resources -i ./src/rules/*.js --singleFiles --queryModule ./src/bin/generateTS.js",
     "install-offline": "npm install --prefer-offline --no-audit",
     "lint-fix": "eslint --report-unused-disable-directives --fix ./src ./test",
     "lint": "eslint --report-unused-disable-directives --ignore-pattern '!.ncurc.js' ./src ./test .ncurc.js",
