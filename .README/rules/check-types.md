@@ -110,8 +110,30 @@ actually [currently requires](https://github.com/microsoft/TypeScript/issues/205
 adhere to what [JSDoc documents](https://jsdoc.app/tags-type.html).
 
 So, for optimal compatibility with TypeScript (especially since TypeScript
-tools can be used on plain JavaScript with JSDoc), we are now allowing this
-TypeScript approach by default.
+tools can be used on plain JavaScript with JSDoc), we are now enforcing this
+TypeScript approach as the default (without the dot) as well as disallowing
+`object.<>` or `object<>`, styles which TypeScript doesn't support in favor
+of `Object<>`, and disallowing plain `Object`—which [it discourages](https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html#general-types)
+([for](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#unions) [reasons](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html#object-type)
+[similar](https://www.typescriptlang.org/docs/handbook/2/functions.html#object)
+to ours here)—in favor of `object`. (You might wish to use `preferredTypes` to
+prevent `Object<>` too, whether for simplicity and/or because of a general
+preference of the object shorthand TypeScript allows (e.g., `{prop: number}`).)
+Although earlier versions of TypeScript only worked with the dotted `Object.<>`
+form, and although the TypeScript docs currently use this on its [JSDoc page](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#type)
+as did [JSDoc](https://jsdoc.app/tags-type.html),
+the dot-less form has nevertheless been supported for some time in both
+environments, and seems to be favored by the community, so we are enforcing
+that now.
+
+"preferredTypes": {
+  // Use 'object' in typescript mode, see TypeScript's Do's and Dont's
+  "Object": "object",
+  "object.<>": "Object<>", // see https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/101
+  "Object.<>": "Object<>",
+  "object<>": "Object<>", // see https://github.com/jsdoc-type-pratt-parser/jsdoc-type-pratt-parser/issues/101
+},
+
 
 Basically, for primitives, we want to define the type as a primitive, because
 that's what we use in 99.9% of cases. For everything else, we use the type
