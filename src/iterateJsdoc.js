@@ -559,6 +559,7 @@ const getUtils = (
     return jsdocUtils.dropPathSegmentQuotes(name);
   };
 
+  // eslint-disable-next-line complexity -- Actually simple
   utils.avoidDocs = () => {
     if (
       ignoreReplacesDocs !== false &&
@@ -591,6 +592,13 @@ const getUtils = (
     ];
     if (exemptedBy.length && utils.getPresentTags(exemptedBy).length) {
       return true;
+    }
+
+    const permittedTags = context.options[0]?.permittedTags;
+
+    // Presence of this option suggests a whitelist
+    if (permittedTags) {
+      return !permittedTags.length || !utils.getPresentTags(permittedTags).length;
     }
 
     return false;

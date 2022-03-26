@@ -471,6 +471,12 @@ export default iterateJsdoc(({
             },
             type: 'array',
           },
+          permittedTags: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
           unnamedRootBase: {
             items: {
               type: 'string',

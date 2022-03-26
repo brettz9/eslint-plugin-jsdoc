@@ -102,6 +102,12 @@ export default iterateJsdoc(({
             default: false,
             type: 'boolean',
           },
+          permittedTags: {
+            items: {
+              type: 'string',
+            },
+            type: 'array',
+          },
         },
         type: 'object',
       },

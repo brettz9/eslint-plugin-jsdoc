@@ -22,6 +22,11 @@ An options object may have any of the following properties:
     array with `inheritdoc`. If you set this array, it will overwrite the
     default, so be sure to add back `inheritdoc` if you wish its presence
     to cause exemption of the rule.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `descriptionStyle` - Whether to accept implicit descriptions (`"body"`) or
     `@description` tags (`"tag"`) as satisfying the rule. Set to `"any"` to
     accept either style. Defaults to `"body"`.
@@ -38,7 +43,7 @@ An options object may have any of the following properties:
 | Tags     | `description` or jsdoc block                                                                                  |
 | Aliases  | `desc`                                                                                                        |
 | Recommended | false |
-| Options  | `contexts`, `exemptedBy`, `descriptionStyle`, `checkConstructors`, `checkGetters`, `checkSetters`             |
+| Options  | `contexts`, `exemptedBy`, `descriptionStyle`, `checkConstructors`, `checkGetters`, `checkSetters`, `permittedTags`             |
 | Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`                               |
 
 <!-- assertions requireDescription -->

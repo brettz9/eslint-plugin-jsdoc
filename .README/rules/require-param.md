@@ -362,6 +362,14 @@ implied to be `false` (i.e., the inside of the roots will not be checked
 either, e.g., it will also not complain if `a` or `b` do not have their own
 documentation). Defaults to `true`.
 
+##### `permittedTags`
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that the rule
+will only be enforced when the whitelisted tags are present. (When absent,
+the default behavior will be followed of the rule being enforced on all
+blocks in all allowable contexts (assuming there are no `exemptedBy`
+tags present).)
+
 ##### `useDefaultObjectProperties`
 
 Set to `true` if you wish to expect documentation of properties on objects
@@ -373,7 +381,7 @@ supplied as default values. Defaults to `false`.
 | Tags     | `param` |
 | Aliases  | `arg`, `argument` |
 |Recommended | true|
-| Options  | `autoIncrementBase`, `checkDestructured`, `checkDestructuredRoots`, `contexts`, `enableFixer`, `enableRootFixer`, `enableRestElementFixer`, `checkRestProperty`, `exemptedBy`, `checkConstructors`, `checkGetters`, `checkSetters`, `checkTypesPattern`, `unnamedRootBase`, `useDefaultObjectProperties`|
+| Options  | `autoIncrementBase`, `checkDestructured`, `checkDestructuredRoots`, `contexts`, `enableFixer`, `enableRootFixer`, `enableRestElementFixer`, `checkRestProperty`, `exemptedBy`, `checkConstructors`, `checkGetters`, `checkSetters`, `checkTypesPattern`, `permittedTags`, `unnamedRootBase`, `useDefaultObjectProperties`|
 | Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 <!-- assertions requireParam -->

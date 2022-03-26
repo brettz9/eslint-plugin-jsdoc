@@ -11275,6 +11275,11 @@ An options object may have any of the following properties:
     array with `inheritdoc`. If you set this array, it will overwrite the
     default, so be sure to add back `inheritdoc` if you wish its presence
     to cause exemption of the rule.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `descriptionStyle` - Whether to accept implicit descriptions (`"body"`) or
     `@description` tags (`"tag"`) as satisfying the rule. Set to `"any"` to
     accept either style. Defaults to `"body"`.
@@ -11291,7 +11296,7 @@ An options object may have any of the following properties:
 | Tags     | `description` or jsdoc block                                                                                  |
 | Aliases  | `desc`                                                                                                        |
 | Recommended | false |
-| Options  | `contexts`, `exemptedBy`, `descriptionStyle`, `checkConstructors`, `checkGetters`, `checkSetters`             |
+| Options  | `contexts`, `exemptedBy`, `descriptionStyle`, `checkConstructors`, `checkGetters`, `checkSetters`, `permittedTags`             |
 | Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`                               |
 
 The following patterns are considered problems:
@@ -11828,6 +11833,20 @@ block avoids the need for an `@example`. Defaults to an array with
 so be sure to add back `inheritdoc` if you wish its presence to cause
 exemption of the rule.
 
+<a name="user-content-eslint-plugin-jsdoc-rules-require-example-options-25-permittedtags"></a>
+<a name="eslint-plugin-jsdoc-rules-require-example-options-25-permittedtags"></a>
+##### <code>permittedTags</code>
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that
+the rule will only be enforced when the whitelisted tags
+are present. (When absent, the default behavior will be followed of the
+rule being enforced on all blocks in all allowable contexts (assuming
+there are no `exemptedBy` tags present).)
+
+<a name="user-content-eslint-plugin-jsdoc-rules-require-example-options-25-avoidexampleonconstructors"></a>
+<a name="eslint-plugin-jsdoc-rules-require-example-options-25-avoidexampleonconstructors"></a>
+##### <code>avoidExampleOnConstructors</code>
+
 <a name="user-content-eslint-plugin-jsdoc-rules-require-example-options-25-exemptnoarguments"></a>
 <a name="eslint-plugin-jsdoc-rules-require-example-options-25-exemptnoarguments"></a>
 ##### <code>exemptNoArguments</code>
@@ -11879,7 +11898,7 @@ report a missing example description after this is added.
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
 |Tags|`example`|
 |Recommended|false|
-|Options|`exemptedBy`, `exemptNoArguments`, `avoidExampleOnConstructors`, `contexts`|
+|Options|`avoidExampleOnConstructors`, `contexts`, `exemptNoArguments`, `exemptedBy`, `permittedTags`|
 |Settings|`ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:
@@ -15166,6 +15185,16 @@ implied to be `false` (i.e., the inside of the roots will not be checked
 either, e.g., it will also not complain if `a` or `b` do not have their own
 documentation). Defaults to `true`.
 
+<a name="user-content-eslint-plugin-jsdoc-rules-require-param-options-32-permittedtags-1"></a>
+<a name="eslint-plugin-jsdoc-rules-require-param-options-32-permittedtags-1"></a>
+##### <code>permittedTags</code>
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that the rule
+will only be enforced when the whitelisted tags are present. (When absent,
+the default behavior will be followed of the rule being enforced on all
+blocks in all allowable contexts (assuming there are no `exemptedBy`
+tags present).)
+
 <a name="user-content-eslint-plugin-jsdoc-rules-require-param-options-32-usedefaultobjectproperties-1"></a>
 <a name="eslint-plugin-jsdoc-rules-require-param-options-32-usedefaultobjectproperties-1"></a>
 ##### <code>useDefaultObjectProperties</code>
@@ -15179,7 +15208,7 @@ supplied as default values. Defaults to `false`.
 | Tags     | `param` |
 | Aliases  | `arg`, `argument` |
 |Recommended | true|
-| Options  | `autoIncrementBase`, `checkDestructured`, `checkDestructuredRoots`, `contexts`, `enableFixer`, `enableRootFixer`, `enableRestElementFixer`, `checkRestProperty`, `exemptedBy`, `checkConstructors`, `checkGetters`, `checkSetters`, `checkTypesPattern`, `unnamedRootBase`, `useDefaultObjectProperties`|
+| Options  | `autoIncrementBase`, `checkDestructured`, `checkDestructuredRoots`, `contexts`, `enableFixer`, `enableRootFixer`, `enableRestElementFixer`, `checkRestProperty`, `exemptedBy`, `checkConstructors`, `checkGetters`, `checkSetters`, `checkTypesPattern`, `permittedTags`, `unnamedRootBase`, `useDefaultObjectProperties`|
 | Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 The following patterns are considered problems:
@@ -17708,6 +17737,11 @@ Will also report if multiple `@returns` tags are present.
     with `inheritdoc`. If you set this array, it will overwrite the default,
     so be sure to add back `inheritdoc` if you wish its presence to cause
     exemption of the rule.
+- `permittedTags` - Array of tags (e.g., `['typedef']`) whose presence will
+    indicate that the rule will only be enforced when the whitelisted tags
+    are present. (When absent, the default behavior will be followed of the
+    rule being enforced on all blocks in all allowable contexts (assuming
+    there are no `exemptedBy` tags present).)
 - `forceRequireReturn` - Set to `true` to always insist on
     `@returns` documentation regardless of implicit or explicit `return`'s
     in the function. May be desired to flag that a project is aware of an
@@ -17740,7 +17774,7 @@ Will also report if multiple `@returns` tags are present.
 | Tags     | `returns` |
 | Aliases  | `return` |
 |Recommended|true|
-| Options  | `checkConstructors`, `checkGetters`, `contexts`, `exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync` |
+| Options  | `checkConstructors`, `checkGetters`, `contexts`, `exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`, `permittedTags` |
 | Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs` |
 
 The following patterns are considered problems:

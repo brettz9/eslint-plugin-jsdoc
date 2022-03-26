@@ -18,6 +18,16 @@ block avoids the need for an `@example`. Defaults to an array with
 so be sure to add back `inheritdoc` if you wish its presence to cause
 exemption of the rule.
 
+##### `permittedTags`
+
+Array of tags (e.g., `['typedef']`) whose presence will indicate that
+the rule will only be enforced when the whitelisted tags
+are present. (When absent, the default behavior will be followed of the
+rule being enforced on all blocks in all allowable contexts (assuming
+there are no `exemptedBy` tags present).)
+
+##### `avoidExampleOnConstructors`
+
 ##### `exemptNoArguments`
 
 Boolean to indicate that no-argument functions should not be reported for
@@ -57,7 +67,7 @@ report a missing example description after this is added.
 |Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
 |Tags|`example`|
 |Recommended|false|
-|Options|`exemptedBy`, `exemptNoArguments`, `avoidExampleOnConstructors`, `contexts`|
+|Options|`avoidExampleOnConstructors`, `contexts`, `exemptNoArguments`, `exemptedBy`, `permittedTags`|
 |Settings|`ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
 
 <!-- assertions requireExample -->
