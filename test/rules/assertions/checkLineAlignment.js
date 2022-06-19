@@ -1577,5 +1577,20 @@ export default {
         'always',
       ],
     },
+    {
+      code: `
+      /**
+       * Function description.
+       *
+       * @param   lorem Description.
+       * @param   sit   Description multi words.
+       * @returns       Return description.
+       */
+      const fn = ( lorem, sit ) => {};
+      `,
+      options: [
+        'always',
+      ],
+    },
   ],
 };

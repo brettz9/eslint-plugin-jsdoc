@@ -79,7 +79,7 @@ const alignTransform = ({
   let intoTags = false;
   let width;
 
-  const alignTokens = (tokens, hasNoTypes) => {
+  const alignTokens = (tokens, hasNoTypesOrDifferentTagLengths) => {
     const nothingAfter = {
       delim: false,
       name: false,
@@ -107,7 +107,7 @@ const alignTransform = ({
       }
     }
 
-    if (hasNoTypes) {
+    if (hasNoTypesOrDifferentTagLengths) {
       nothingAfter.tag = true;
       tokens.postTag = '';
     }
@@ -142,7 +142,7 @@ const alignTransform = ({
     return tokens;
   };
 
-  const update = (line, index, source, hasNoTypes) => {
+  const update = (line, index, source, hasNoTypesOrDifferentTagLengths) => {
     const tokens = {
       ...line.tokens,
     };
@@ -205,7 +205,7 @@ const alignTransform = ({
 
     return {
       ...line,
-      tokens: alignTokens(tokens, hasNoTypes),
+      tokens: alignTokens(tokens, hasNoTypesOrDifferentTagLengths),
     };
   };
 
@@ -216,16 +216,25 @@ const alignTransform = ({
     width = source.reduce(getWidth(tags), {
       ...zeroWidth,
     });
-    const hasNoTypes = fields.tags.every(({
+
+    let lastLength = 0;
+    const hasNoTypesOrDifferentTagLengths = fields.tags.every(({
+      tag,
       type,
     }) => {
-      return !type;
+      if (type) {
+        return false;
+      }
+
+      const sameLength = !lastLength || tag.length === lastLength;
+      lastLength = tag.length;
+      return sameLength;
     });
 
     return rewireSource({
       ...fields,
       source: source.map((line, index) => {
-        return update(line, index, source, hasNoTypes);
+        return update(line, index, source, hasNoTypesOrDifferentTagLengths);
       }),
     });
   };

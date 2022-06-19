@@ -2698,6 +2698,16 @@ const fn = ( lorem, sit ) => {};
  */
 const fn2 = () => {}
 // "jsdoc/check-line-alignment": ["error"|"warn", "always"]
+
+/**
+ * Function description.
+ *
+ * @param lorem Description.
+ * @param sit   Description multi words.
+ * @returns     Return description.
+ */
+const fn = ( lorem, sit ) => {};
+// "jsdoc/check-line-alignment": ["error"|"warn", "always"]
 ````
 
 
