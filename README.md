@@ -17680,6 +17680,20 @@ function * quux() {}
 function * quux() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptGenerators":true}]
+
+/**
+ * Read a test fixture.
+ *
+ * @param path The path to resolve relative to the fixture base. It will be normalized for the
+ * operating system.
+ * @param encoding The text encoding of the file.
+ * @returns The file contents as a string or buffer.
+ */
+export function readFixture(path: string): Promise<Buffer>;
+export function readFixture(path: string, encoding: BufferEncoding): Promise<string>;
+export function readFixture(path: string, encoding?: BufferEncoding): Promise<Buffer | string> {
+  return readFile(resolveFixture(path), encoding);
+}
 ````
 
 

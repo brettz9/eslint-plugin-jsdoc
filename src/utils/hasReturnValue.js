@@ -35,6 +35,7 @@ const hasReturnValue = (node, promFilter) => {
   }
 
   switch (node.type) {
+  case 'TSDeclareFunction':
   case 'TSFunctionType':
   case 'TSMethodSignature':
     return ![
