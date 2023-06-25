@@ -11,6 +11,7 @@ import isBuiltinModule from 'is-builtin-module';
 import {
   join,
 } from 'path';
+import * as resolve from 'resolve.exports';
 
 /**
  * @type {Set<string>|null}
@@ -103,7 +104,11 @@ export default iterateJsdoc(({
             // Ignore
           }
 
-          if (!pkg || (!pkg.types && !pkg.typings)) {
+          if (!pkg || (!pkg.types && !pkg.typings && resolve.exports(pkg, undefined, {
+            conditions: [
+              'types', 'typings',
+            ],
+          }) === undefined)) {
             mod = `@types/${mod}`;
           }
 

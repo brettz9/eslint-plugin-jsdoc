@@ -137,5 +137,12 @@ export default {
          */
       `,
     },
+    {
+      code: `
+        /**
+         * @type {null|import('eventtargeter').ListenerInfo}
+         */
+      `,
+    },
   ],
 };
