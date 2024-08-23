@@ -653,9 +653,9 @@ export default {
         'always',
         {
           tags: {
-            template: 'always'
-          }
-        }
+            template: 'always',
+          },
+        },
       ],
     },
   ],
