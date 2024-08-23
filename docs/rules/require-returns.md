@@ -1,12 +1,12 @@
 <a name="user-content-require-returns"></a>
 <a name="require-returns"></a>
+
 # <code>require-returns</code>
 
-* [Options](#user-content-require-returns-options)
-* [Context and settings](#user-content-require-returns-context-and-settings)
-* [Failing examples](#user-content-require-returns-failing-examples)
-* [Passing examples](#user-content-require-returns-passing-examples)
-
+- [Options](#user-content-require-returns-options)
+- [Context and settings](#user-content-require-returns-context-and-settings)
+- [Failing examples](#user-content-require-returns-failing-examples)
+- [Passing examples](#user-content-require-returns-passing-examples)
 
 Requires that return statements are documented.
 
@@ -14,71 +14,73 @@ Will also report if multiple `@returns` tags are present.
 
 <a name="user-content-require-returns-options"></a>
 <a name="require-returns-options"></a>
+
 ## Options
 
 - `checkConstructors` - A value indicating whether `constructor`s should
-    be checked for `@returns` tags. Defaults to `false`.
+  be checked for `@returns` tags. Defaults to `false`.
 - `checkGetters` - Boolean to determine whether getter methods should
-    be checked for `@returns` tags. Defaults to `true`.
+  be checked for `@returns` tags. Defaults to `true`.
 - `exemptedBy` - Array of tags (e.g., `['type']`) whose presence on the
-    document block avoids the need for a `@returns`. Defaults to an array
-    with `inheritdoc`. If you set this array, it will overwrite the default,
-    so be sure to add back `inheritdoc` if you wish its presence to cause
-    exemption of the rule.
+  document block avoids the need for a `@returns`. Defaults to an array
+  with `inheritdoc`. If you set this array, it will overwrite the default,
+  so be sure to add back `inheritdoc` if you wish its presence to cause
+  exemption of the rule.
 - `forceRequireReturn` - Set to `true` to always insist on
-    `@returns` documentation regardless of implicit or explicit `return`'s
-    in the function. May be desired to flag that a project is aware of an
-    `undefined`/`void` return. Defaults to `false`.
+  `@returns` documentation regardless of implicit or explicit `return`'s
+  in the function. May be desired to flag that a project is aware of an
+  `undefined`/`void` return. Defaults to `false`.
 - `forceReturnsWithAsync` - By default `async` functions that do not explicitly
-    return a value pass this rule as an `async` function will always return a
-    `Promise`, even if the `Promise` resolves to void. You can force all
-    `async` functions (including ones with an explicit `Promise` but no
-    detected non-`undefined` `resolve` value) to require `@return`
-    documentation by setting `forceReturnsWithAsync` to `true` on the options
-    object. This may be useful for flagging that there has been consideration
-    of return type. Defaults to `false`.
+  return a value pass this rule as an `async` function will always return a
+  `Promise`, even if the `Promise` resolves to void. You can force all
+  `async` functions (including ones with an explicit `Promise` but no
+  detected non-`undefined` `resolve` value) to require `@return`
+  documentation by setting `forceReturnsWithAsync` to `true` on the options
+  object. This may be useful for flagging that there has been consideration
+  of return type. Defaults to `false`.
 - `contexts` - Set this to an array of strings representing the AST context
-    (or an object with `context` and `comment` properties) where you wish
-    the rule to be applied.
-    Overrides the default contexts (see below). Set to `"any"` if you want
-    the rule to apply to any jsdoc block throughout your files (as is necessary
-    for finding function blocks not attached to a function declaration or
-    expression, i.e., `@callback` or `@function` (or its aliases `@func` or
-    `@method`) (including those associated with an `@interface`). This
-    rule will only apply on non-default contexts when there is such a tag
-    present and the `forceRequireReturn` option is set or if the
-    `forceReturnsWithAsync` option is set with a present `@async` tag
-    (since we are not checking against the actual `return` values in these
-    cases).
+  (or an object with `context` and `comment` properties) where you wish
+  the rule to be applied.
+  Overrides the default contexts (see below). Set to `"any"` if you want
+  the rule to apply to any jsdoc block throughout your files (as is necessary
+  for finding function blocks not attached to a function declaration or
+  expression, i.e., `@callback` or `@function` (or its aliases `@func` or
+  `@method`) (including those associated with an `@interface`). This
+  rule will only apply on non-default contexts when there is such a tag
+  present and the `forceRequireReturn` option is set or if the
+  `forceReturnsWithAsync` option is set with a present `@async` tag
+  (since we are not checking against the actual `return` values in these
+  cases).
 - `enableFixer` - Whether to enable the fixer to add a blank `@returns`.
-    Defaults to `false`.
+  Defaults to `false`.
 - `publicOnly` - See docs for `require-jsdoc`.
 
 <a name="user-content-require-returns-context-and-settings"></a>
 <a name="require-returns-context-and-settings"></a>
+
 ## Context and settings
 
-|          |         |
-| -------- | ------- |
-| Context  | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
-| Tags     | `returns` |
-| Aliases  | `return` |
-|Recommended|true|
-| Options  |`checkConstructors`, `checkGetters`, `contexts`, `enableFixer`, `exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`, `publicOnly`|
-| Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs` |
+|             |                                                                                                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled                             |
+| Tags        | `returns`                                                                                                                                 |
+| Aliases     | `return`                                                                                                                                  |
+| Recommended | true                                                                                                                                      |
+| Options     | `checkConstructors`, `checkGetters`, `contexts`, `enableFixer`, `exemptedBy`, `forceRequireReturn`, `forceReturnsWithAsync`, `publicOnly` |
+| Settings    | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`                                     |
 
 <a name="user-content-require-returns-failing-examples"></a>
 <a name="require-returns-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 // Message: Missing JSDoc @returns declaration.
@@ -86,8 +88,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 // "jsdoc/require-returns": ["error"|"warn", {"enableFixer":true}]
@@ -97,27 +98,26 @@ function quux (foo) {
  *
  */
 const foo = () => ({
-  bar: 'baz'
-})
+  bar: "baz",
+});
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-const foo = bar=>({ bar })
+const foo = (bar) => ({ bar });
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-const foo = bar => bar.baz()
+const foo = (bar) => bar.baz();
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":"return"}}}
@@ -126,45 +126,42 @@ function quux (foo) {
 /**
  *
  */
-async function quux() {
-}
+async function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-const quux = async function () {}
+const quux = async function () {};
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-const quux = async () => {}
+const quux = async () => {};
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-async function quux () {}
+async function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"contexts":["any"],"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
 
@@ -186,15 +183,14 @@ const language = {
    */
   get name() {
     return this._name;
-  }
-}
+  },
+};
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-async function quux () {
-}
+async function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
 // Message: Missing JSDoc @returns declaration.
 
@@ -216,8 +212,7 @@ async function quux () {
  * @returns {undefined}
  * @returns {void}
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 // Message: Found more than one @returns declaration.
@@ -225,17 +220,15 @@ function quux (foo) {
 /**
  * @returns
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":false}}}
 // Message: Unexpected tag `@returns`
 
 /**
  * @param foo
  */
-function quux (foo) {
-  return 'bar';
+function quux(foo) {
+  return "bar";
 }
 // "jsdoc/require-returns": ["error"|"warn", {"exemptedBy":["notPresent"]}]
 // Message: Missing JSDoc @returns declaration.
@@ -293,8 +286,7 @@ class quux {
   /**
    *
    */
-  quux () {
-  }
+  quux() {}
 }
 // "jsdoc/require-returns": ["error"|"warn", {"contexts":["any"],"forceRequireReturn":true}]
 // Message: Missing JSDoc @returns declaration.
@@ -302,8 +294,7 @@ class quux {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     resolve(foo);
   });
@@ -313,8 +304,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     setTimeout(() => {
       resolve(true);
@@ -326,8 +316,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     foo(resolve);
   });
@@ -337,9 +326,9 @@ function quux (foo) {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
-    while(true) {
+    while (true) {
       resolve(true);
     }
   });
@@ -349,12 +338,11 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     do {
       resolve(true);
-    }
-    while(true)
+    } while (true);
   });
 }
 // Message: Missing JSDoc @returns declaration.
@@ -362,7 +350,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     if (true) {
       resolve(true);
@@ -375,7 +363,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     if (true) {
       resolve(true);
@@ -387,7 +375,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   var a = {};
   return new Promise((resolve, reject) => {
     with (a) {
@@ -400,7 +388,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   var a = {};
   return new Promise((resolve, reject) => {
     try {
@@ -413,7 +401,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   var a = {};
   return new Promise((resolve, reject) => {
     try {
@@ -427,7 +415,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   var a = {};
   return new Promise((resolve, reject) => {
     try {
@@ -442,12 +430,12 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   var a = {};
   return new Promise((resolve, reject) => {
     switch (a) {
-    case 'abc':
-      resolve(true);
+      case "abc":
+        resolve(true);
     }
   });
 }
@@ -456,7 +444,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     if (true) {
       resolve();
@@ -470,9 +458,9 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < 5 ; i++) {
+    for (let i = 0; i < 5; i++) {
       resolve(true);
     }
   });
@@ -482,7 +470,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     for (const i of obj) {
       resolve(true);
@@ -494,7 +482,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     for (const i in obj) {
       resolve(true);
@@ -506,7 +494,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     if (true) {
       return;
@@ -520,9 +508,9 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
-    function a () {
+    function a() {
       resolve(true);
     }
     a();
@@ -533,7 +521,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise();
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
@@ -542,7 +530,7 @@ function quux () {
 /**
  *
  */
-async function quux () {
+async function quux() {
   return new Promise();
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
@@ -551,7 +539,7 @@ async function quux () {
 /**
  *
  */
-async function quux () {
+async function quux() {
   return new Promise((resolve, reject) => {});
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
@@ -651,7 +639,7 @@ export default async function demo() {
 /**
  *
  */
-function quux () {}
+function quux() {}
 
 class Test {
   /**
@@ -665,18 +653,16 @@ class Test {
 /**
  *
  */
-module.exports = function quux (foo) {
-
+module.exports = function quux(foo) {
   return foo;
-}
+};
 // "jsdoc/require-returns": ["error"|"warn", {"publicOnly":true}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-const a = function quux (foo) {
-
+const a = function quux(foo) {
   return foo;
 };
 
@@ -687,18 +673,16 @@ export default a;
 /**
  *
  */
-export default function quux (foo) {
-
+export default function quux(foo) {
   return foo;
-};
+}
 // "jsdoc/require-returns": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true,"esm":true}}]
 // Message: Missing JSDoc @returns declaration.
 
 /**
  *
  */
-exports.quux = function quux (foo) {
-
+exports.quux = function quux(foo) {
   return foo;
 };
 // "jsdoc/require-returns": ["error"|"warn", {"publicOnly":{"cjs":true}}]
@@ -707,36 +691,32 @@ exports.quux = function quux (foo) {
 /**
  *
  */
-window.quux = function quux (foo) {
-
+window.quux = function quux(foo) {
   return foo;
 };
 // "jsdoc/require-returns": ["error"|"warn", {"publicOnly":{"window":true}}]
 // Message: Missing JSDoc @returns declaration.
-````
-
-
+```
 
 <a name="user-content-require-returns-passing-examples"></a>
 <a name="require-returns-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @returns Foo.
  */
-function quux () {
-
+function quux() {
   return foo;
 }
 
 /**
  * @returns Foo.
  */
-function quux () {
-
+function quux() {
   return foo;
 }
 // "jsdoc/require-returns": ["error"|"warn", {"contexts":["any"]}]
@@ -744,139 +724,123 @@ function quux () {
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 
 /**
  *
  */
-function quux (bar) {
-  bar.filter(baz => {
+function quux(bar) {
+  bar.filter((baz) => {
     return baz.corge();
-  })
+  });
 }
 
 /**
  * @returns Array
  */
-function quux (bar) {
-  return bar.filter(baz => {
+function quux(bar) {
+  return bar.filter((baz) => {
     return baz.corge();
-  })
+  });
 }
 
 /**
  * @returns Array
  */
-const quux = (bar) => bar.filter(({ corge }) => corge())
+const quux = (bar) => bar.filter(({ corge }) => corge());
 
 /**
  * @inheritdoc
  */
-function quux (foo) {
-}
+function quux(foo) {}
 
 /**
  * @override
  */
-function quux (foo) {
-}
+function quux(foo) {}
 
 /**
  * @constructor
  */
-function quux (foo) {
+function quux(foo) {
   return true;
 }
 
 /**
  * @implements
  */
-function quux (foo) {
+function quux(foo) {
   return true;
 }
 
 /**
  * @override
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 
 /**
  * @class
  */
-function quux (foo) {
+function quux(foo) {
   return true;
 }
 
 /**
  * @constructor
  */
-function quux (foo) {
+function quux(foo) {}
 
+/**
+ * @returns {object}
+ */
+function quux() {
+  return { a: foo };
 }
 
 /**
  * @returns {object}
  */
-function quux () {
-
-  return {a: foo};
-}
-
-/**
- * @returns {object}
- */
-const quux = () => ({a: foo});
+const quux = () => ({ a: foo });
 
 /**
  * @returns {object}
  */
 const quux = () => {
-  return {a: foo}
+  return { a: foo };
 };
 
 /**
  * @returns {void}
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {void}
  */
-const quux = () => {
-
-}
+const quux = () => {};
 
 /**
  * @returns {undefined}
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {undefined}
  */
-const quux = () => {
-
-}
+const quux = () => {};
 
 /**
  *
  */
-const quux = () => {
-
-}
+const quux = () => {};
 
 class Foo {
   /**
    *
    */
-  constructor () {
-  }
+  constructor() {}
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 
@@ -886,27 +850,26 @@ const language = {
    */
   set name(name) {
     this._name = name;
-  }
-}
+  },
+};
 
 /**
  * @returns {void}
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 
 /**
  * @returns {void}
  */
-function quux () {
+function quux() {
   return undefined;
 }
 
 /**
  * @returns {void}
  */
-function quux () {
+function quux() {
   return undefined;
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
@@ -914,56 +877,54 @@ function quux () {
 /**
  * @returns {void}
  */
-function quux () {
+function quux() {
   return;
 }
 
 /**
  * @returns {void}
  */
-function quux () {
+function quux() {
   return;
 }
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 
 /** @type {RequestHandler} */
-function quux (req, res , next) {
+function quux(req, res, next) {
   return;
 }
 
 /**
  * @returns {Promise}
  */
-async function quux () {
-}
+async function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceRequireReturn":true}]
 
 /**
  * @returns {Promise}
  */
-async function quux () {
-}
+async function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
 
 /**
  *
  */
-async function quux () {}
+async function quux() {}
 
 /**
  *
  */
-const quux = async function () {}
+const quux = async function () {};
 
 /**
  *
  */
-const quux = async () => {}
+const quux = async () => {};
 
 /** foo class */
 class foo {
   /** foo constructor */
-  constructor () {
+  constructor() {
     // =>
     this.bar = true;
   }
@@ -974,16 +935,13 @@ export default foo;
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"forceReturnsWithAsync":true}]
 
 /**
  * @type {MyCallback}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-returns": ["error"|"warn", {"exemptedBy":["type"]}]
 
 /**
@@ -1062,7 +1020,7 @@ class TestClass {
   /**
    *
    */
-  constructor() { }
+  constructor() {}
 }
 
 class TestClass {
@@ -1078,7 +1036,7 @@ class TestClass {
   /**
    *
    */
-  constructor() { }
+  constructor() {}
 }
 // "jsdoc/require-returns": ["error"|"warn", {"checkConstructors":false}]
 
@@ -1086,7 +1044,7 @@ class TestClass {
   /**
    *
    */
-  get Test() { }
+  get Test() {}
 }
 
 class TestClass {
@@ -1111,8 +1069,7 @@ class TestClass {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     resolve();
   });
@@ -1121,8 +1078,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     setTimeout(() => {
       resolve();
@@ -1133,8 +1089,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     foo();
   });
@@ -1143,8 +1098,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     abc((resolve) => {
       resolve(true);
@@ -1155,8 +1109,7 @@ function quux (foo) {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return new Promise(function (resolve, reject) {
     abc(function (resolve) {
       resolve(true);
@@ -1167,7 +1120,7 @@ function quux (foo) {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise((resolve, reject) => {
     if (true) {
       resolve();
@@ -1179,7 +1132,7 @@ function quux () {
 /**
  *
  */
-function quux () {
+function quux() {
   return new Promise();
 }
 
@@ -1187,7 +1140,7 @@ function quux () {
  * Description.
  */
 async function foo() {
-  return new Promise(resolve => resolve());
+  return new Promise((resolve) => resolve());
 }
 
 /**
@@ -1230,7 +1183,7 @@ export function readFixture(path: string);
 /**
  *
  */
-function quux () {}
+function quux() {}
 
 class Test {
   /**
@@ -1243,10 +1196,8 @@ class Test {
 /**
  *
  */
-function quux (foo) {
-
+function quux(foo) {
   return foo;
 }
 // "jsdoc/require-returns": ["error"|"warn", {"publicOnly":true}]
-````
-
+```

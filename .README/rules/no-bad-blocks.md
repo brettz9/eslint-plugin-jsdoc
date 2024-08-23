@@ -35,12 +35,12 @@ apparent tag content.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|Everywhere|
-|Tags|N/A|
-|Recommended|false|
-|Options|`ignore`, `preventAllMultiAsteriskBlocks`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | Everywhere                                |
+| Tags        | N/A                                       |
+| Recommended | false                                     |
+| Options     | `ignore`, `preventAllMultiAsteriskBlocks` |
 
 ## Failing examples
 

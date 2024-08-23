@@ -51,9 +51,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -73,9 +71,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -95,9 +91,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -120,7 +114,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -138,7 +132,7 @@ export default {
         {
           column: 1,
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -163,7 +157,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing root type for @param.',
+          message: "Missing root type for @param.",
         },
       ],
       options: [
@@ -196,12 +190,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing root type for @param.',
+          message: "Missing root type for @param.",
         },
       ],
       options: [
         {
-          defaultDestructuredRootType: 'Object',
+          defaultDestructuredRootType: "Object",
           setDefaultDestructuredRootType: true,
         },
       ],
@@ -272,9 +266,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

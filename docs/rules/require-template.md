@@ -1,5 +1,6 @@
 <a name="user-content-require-template"></a>
 <a name="require-template"></a>
+
 # <code>require-template</code>
 
 Checks to see that `@template` tags are present for any detected type
@@ -27,10 +28,12 @@ letters are templates.
 
 <a name="user-content-require-template-options"></a>
 <a name="require-template-options"></a>
+
 ## Options
 
 <a name="user-content-require-template-options-requireseparatetemplates"></a>
 <a name="require-template-options-requireseparatetemplates"></a>
+
 ### <code>requireSeparateTemplates</code>
 
 Requires that each template have its own separate line, i.e., preventing
@@ -44,21 +47,22 @@ templates of this format:
 
 Defaults to `false`.
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`template`|
-|Recommended|false|
-|Settings||
-|Options|`requireSeparateTemplates`|
+|             |                            |
+| ----------- | -------------------------- |
+| Context     | everywhere                 |
+| Tags        | `template`                 |
+| Recommended | false                      |
+| Settings    |                            |
+| Options     | `requireSeparateTemplates` |
 
 <a name="user-content-require-template-failing-examples"></a>
 <a name="require-template-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  *
  */
@@ -194,7 +198,7 @@ export default class GenericNumber<NumType> {
 /**
  *
  */
-export default class <NumType> {
+export default class<NumType> {
   zeroValue: NumType;
   add: (x: NumType, y: NumType) => NumType;
 }
@@ -211,17 +215,16 @@ export default class <NumType> {
  * @returns {[D, V | undefined]}
  */
 // Message: Missing @template D
-````
-
-
+```
 
 <a name="user-content-require-template-passing-examples"></a>
 <a name="require-template-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @template D
  * @template V
@@ -331,7 +334,7 @@ export default class GenericNumber<NumType> {
 /**
  * @template NumType
  */
-export default class <NumType> {
+export default class<NumType> {
   zeroValue: NumType;
   add: (x: NumType, y: NumType) => NumType;
 }
@@ -354,5 +357,4 @@ export default class <NumType> {
  * @callback
  * @returns {[Something | undefined]}
  */
-````
-
+```

@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax should not be Google Closure Compiler style.',
+          message: "Syntax should not be Google Closure Compiler style.",
         },
       ],
     },
@@ -29,7 +29,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },

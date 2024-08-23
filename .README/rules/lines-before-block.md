@@ -20,13 +20,13 @@ An array of tags whose presence in the JSDoc block will prevent the
 application of the rule. Defaults to `['type']` (i.e., if `@type` is present,
 lines before the block will not be added).
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|false|
-|Settings||
-|Options|`excludedTags`, `ignoreSameLine`, `lines`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | everywhere                                |
+| Tags        | N/A                                       |
+| Recommended | false                                     |
+| Settings    |                                           |
+| Options     | `excludedTags`, `ignoreSameLine`, `lines` |
 
 ## Failing examples
 

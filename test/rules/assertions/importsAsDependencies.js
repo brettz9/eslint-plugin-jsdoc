@@ -9,7 +9,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'import points to package which is not found in dependencies',
+          message:
+            "import points to package which is not found in dependencies",
         },
       ],
     },
@@ -22,12 +23,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'import points to package which is not found in dependencies',
+          message:
+            "import points to package which is not found in dependencies",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -40,7 +42,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'import points to package which is not found in dependencies',
+          message:
+            "import points to package which is not found in dependencies",
         },
       ],
     },
@@ -53,7 +56,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'import points to package which is not found in dependencies',
+          message:
+            "import points to package which is not found in dependencies",
         },
       ],
     },

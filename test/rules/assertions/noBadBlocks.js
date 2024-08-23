@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       output: `
@@ -33,7 +33,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       output: `
@@ -51,7 +51,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -59,20 +60,18 @@ export default {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'name',
-              ],
+              required: ["name"],
             },
           },
         },
       },
     },
     {
-      code: '/* @ts-ignore */',
+      code: "/* @ts-ignore */",
       errors: [
         {
           line: 1,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       options: [
@@ -80,7 +79,7 @@ export default {
           ignore: [],
         },
       ],
-      output: '/** @ts-ignore */',
+      output: "/** @ts-ignore */",
     },
     {
       code: `
@@ -96,7 +95,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       output: `
@@ -122,7 +121,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       output: `
@@ -146,7 +145,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc-like comment to begin with two asterisks.',
+          message: "Expected JSDoc-like comment to begin with two asterisks.",
         },
       ],
       options: [
@@ -208,30 +207,28 @@ export default {
       `,
     },
     {
-      code: '/* @ts-check */',
+      code: "/* @ts-check */",
     },
     {
-      code: '/* @ts-expect-error */',
+      code: "/* @ts-expect-error */",
     },
     {
-      code: '/* @ts-ignore */',
+      code: "/* @ts-ignore */",
     },
     {
-      code: '/* @ts-nocheck */',
+      code: "/* @ts-nocheck */",
     },
     {
-      code: '/* */',
+      code: "/* */",
     },
     {
-      code: '/** */',
+      code: "/** */",
     },
     {
-      code: '/* @custom */',
+      code: "/* @custom */",
       options: [
         {
-          ignore: [
-            'custom',
-          ],
+          ignore: ["custom"],
         },
       ],
     },
@@ -248,16 +245,16 @@ export default {
       `,
     },
     {
-      code: '/***/',
+      code: "/***/",
     },
     {
-      code: '/* eslint-disable @stylistic/max-len  */',
+      code: "/* eslint-disable @stylistic/max-len  */",
       plugins: {
-        '@stylistic': {
+        "@stylistic": {
           rules: {
-            'max-len': () => {}
-          }
-        }
+            "max-len": () => {},
+          },
+        },
       },
     },
   ],

@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,12 +14,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -35,12 +35,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc block description or @description declaration.',
+          message:
+            "Missing JSDoc block description or @description declaration.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'any',
+          descriptionStyle: "any",
         },
       ],
     },
@@ -56,12 +57,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'body',
+          descriptionStyle: "body",
         },
       ],
     },
@@ -77,12 +78,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Remove the @desc tag to leave a plain block description or add additional description text above the @desc line.',
+          message:
+            "Remove the @desc tag to leave a plain block description or add additional description text above the @desc line.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'body',
+          descriptionStyle: "body",
         },
       ],
     },
@@ -98,12 +100,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Remove the @description tag to leave a plain block description or add additional description text above the @description line.',
+          message:
+            "Remove the @description tag to leave a plain block description or add additional description text above the @description line.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'body',
+          descriptionStyle: "body",
         },
       ],
     },
@@ -119,15 +122,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
-          descriptionStyle: 'tag',
+          contexts: ["ClassDeclaration"],
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -143,19 +144,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
         jsdoc: {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       },
     },
@@ -168,15 +167,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
-          descriptionStyle: 'tag',
+          contexts: ["any"],
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -192,12 +189,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @description description.',
+          message: "Missing JSDoc @description description.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -213,20 +210,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
-          descriptionStyle: 'tag',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
+      options: [
+        {
+          contexts: ["TSInterfaceDeclaration"],
+          descriptionStyle: "tag",
+        },
+      ],
     },
     {
       code: `
@@ -240,15 +235,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassExpression',
-          ],
-          descriptionStyle: 'tag',
+          contexts: ["ClassExpression"],
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -264,15 +257,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ObjectExpression',
-          ],
-          descriptionStyle: 'tag',
+          contexts: ["ObjectExpression"],
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -288,20 +279,21 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @someDesc description.',
+          message: "Missing JSDoc @someDesc description.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
             description: {
-              message: 'Please avoid `{{tagName}}`; use `{{replacement}}` instead',
-              replacement: 'someDesc',
+              message:
+                "Please avoid `{{tagName}}`; use `{{replacement}}` instead",
+              replacement: "someDesc",
             },
           },
         },
@@ -319,12 +311,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@description`',
+          message: "Unexpected tag `@description`",
         },
       ],
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -347,12 +339,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc block description or @description declaration.',
+          message:
+            "Missing JSDoc block description or @description declaration.",
         },
       ],
       options: [
         {
-          descriptionStyle: 'any',
+          descriptionStyle: "any",
         },
       ],
       settings: {
@@ -374,14 +367,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
         {
-          exemptedBy: [
-            'notPresent',
-          ],
+          exemptedBy: ["notPresent"],
         },
       ],
     },
@@ -397,7 +388,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
     },
@@ -413,7 +404,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
@@ -434,7 +425,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
     },
@@ -450,7 +441,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
@@ -471,7 +462,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
     },
@@ -487,7 +478,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
@@ -516,15 +507,13 @@ export default {
       errors: [
         {
           line: 11,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
         {
           checkConstructors: false,
-          contexts: [
-            'MethodDefinition',
-          ],
+          contexts: ["MethodDefinition"],
         },
       ],
     },
@@ -540,18 +529,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="Bar"])',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="Bar"])',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -574,18 +564,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="Bar"])',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="Bar"])',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -607,18 +598,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Bar"]:nth-child(1))',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Bar"]:nth-child(1))',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -639,18 +631,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[tag="implements"])',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[tag="implements"])',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -671,18 +664,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @description declaration.',
+          message: "Missing JSDoc @description declaration.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[tag="implements"])',
-              context: 'any',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[tag="implements"])',
+              context: "any",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -703,7 +697,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
     },
@@ -721,7 +715,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
     },
@@ -733,14 +727,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc block description.',
+          message: "Missing JSDoc block description.",
         },
       ],
       options: [
         {
-          contexts: [
-            'AssignmentExpression',
-          ],
+          contexts: ["AssignmentExpression"],
         },
       ],
     },
@@ -765,7 +757,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -781,7 +773,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -800,7 +792,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -815,7 +807,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -830,9 +822,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       ],
     },
@@ -847,9 +837,7 @@ export default {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },
@@ -862,14 +850,14 @@ export default {
 
           }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -880,16 +868,14 @@ export default {
             checked?: boolean
           }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSPropertySignature',
-          ],
+          contexts: ["TSPropertySignature"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -902,7 +888,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -917,7 +903,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -932,7 +918,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'body',
+          descriptionStyle: "body",
         },
       ],
     },
@@ -957,7 +943,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'any',
+          descriptionStyle: "any",
         },
       ],
     },
@@ -972,7 +958,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'any',
+          descriptionStyle: "any",
         },
       ],
     },
@@ -1096,7 +1082,7 @@ export default {
       `,
       options: [
         {
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -1113,11 +1099,12 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=/\\s{4}/]:has(JsdocTag[rawType="class"])',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=/\\s{4}/]:has(JsdocTag[rawType="class"])',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
       settings: {
@@ -1140,11 +1127,12 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
-              context: 'ClassDeclaration',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
+              context: "ClassDeclaration",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -1162,11 +1150,12 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
-              context: 'any',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
+              context: "any",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },
@@ -1181,11 +1170,12 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
-              context: 'any',
+              comment:
+                'JsdocBlock[postDelimiter=""]:has(JsdocTag[rawType="{Bar}"])',
+              context: "any",
             },
           ],
-          descriptionStyle: 'tag',
+          descriptionStyle: "tag",
         },
       ],
     },

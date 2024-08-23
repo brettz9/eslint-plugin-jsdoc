@@ -6,10 +6,10 @@
  * @returns {TagStructure}
  */
 const getDefaultTagStructureForMode = (mode) => {
-  const isJsdoc = mode === 'jsdoc';
-  const isClosure = mode === 'closure';
-  const isTypescript = mode === 'typescript';
-  const isPermissive = mode === 'permissive';
+  const isJsdoc = mode === "jsdoc";
+  const isClosure = mode === "closure";
+  const isTypescript = mode === "typescript";
+  const isPermissive = mode === "permissive";
 
   const isJsdocOrPermissive = isJsdoc || isPermissive;
   const isJsdocOrTypescript = isJsdoc || isTypescript;
@@ -49,919 +49,853 @@ const getDefaultTagStructureForMode = (mode) => {
    */
   return new Map([
     [
-      'alias', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples)
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "alias",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples)
+          ["namepathRole", "namepath-defining"],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'arg', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "arg",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
 
-        // See `param`
-        [
-          'nameRequired', true,
-        ],
+          // See `param`
+          ["nameRequired", true],
 
-        // Has no formal signature in the docs but shows curly brackets
-        //   in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // Has no formal signature in the docs but shows curly brackets
+          //   in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'argument', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "argument",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
 
-        // See `param`
-        [
-          'nameRequired', true,
-        ],
+          // See `param`
+          ["nameRequired", true],
 
-        // Has no formal signature in the docs but shows curly brackets
-        //   in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // Has no formal signature in the docs but shows curly brackets
+          //   in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'augments', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples)
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "augments",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples)
+          ["namepathRole", "namepath-referencing"],
 
-        // Does not show curly brackets in either the signature or examples
-        [
-          'typeAllowed', true,
-        ],
+          // Does not show curly brackets in either the signature or examples
+          ["typeAllowed", true],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'borrows', new Map(/** @type {[string, string|boolean][]} */ ([
-        // `borrows` has a different format, however, so needs special parsing;
-        //   seems to require both, and as "namepath"'s
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "borrows",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // `borrows` has a different format, however, so needs special parsing;
+          //   seems to require both, and as "namepath"'s
+          ["namepathRole", "namepath-referencing"],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'callback', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Seems to require a "namepath" in the signature (with no
-        //   counter-examples); TypeScript does not enforce but seems
-        //   problematic as not attached so presumably not useable without it
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "callback",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Seems to require a "namepath" in the signature (with no
+          //   counter-examples); TypeScript does not enforce but seems
+          //   problematic as not attached so presumably not useable without it
+          ["namepathRole", "namepath-defining"],
 
-        // "namepath"
-        [
-          'nameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["nameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'class', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "class",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Not in use, but should be this value if using to power `empty-tags`
+          ["nameAllowed", true],
 
-        // Not in use, but should be this value if using to power `empty-tags`
-        [
-          'nameAllowed', true,
-        ],
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'const', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "const",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
     [
-      'constant', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "constant",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
     [
-      'constructor', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "constructor",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'constructs', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "constructs",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'nameRequired', false,
-        ],
+          ["nameRequired", false],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'define', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'typeRequired', isClosure,
-        ],
-      ])),
+      "define",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["typeRequired", isClosure],
+        ]),
+      ),
     ],
 
     [
-      'emits', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "name" (of an event) and no counter-examples
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "emits",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "name" (of an event) and no counter-examples
+          ["namepathRole", "namepath-referencing"],
 
-        [
-          'nameRequired', true,
-        ],
+          ["nameRequired", true],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'enum', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Has example showing curly brackets but not in doc signature
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "enum",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Has example showing curly brackets but not in doc signature
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'event', new Map(/** @type {[string, string|boolean][]} */ ([
-        // The doc signature of `event` seems to require a "name"
-        [
-          'nameRequired', true,
-        ],
+      "event",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          //  at https://jsdoc.app/about-namepaths.html )
+          ["namepathRole", "namepath-defining"],
 
-        // Appears to require a "name" in its signature, albeit somewhat
-        //  different from other "name"'s (including as described
-        //  at https://jsdoc.app/about-namepaths.html )
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-      ])),
+          // Appears to require a "name" in its signature, albeit somewhat
+          //  different from other "name"'s (including as described
+          // The doc signature of `event` seems to require a "name"
+          ["nameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'exception', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "exception",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     // Closure
     [
-      'export', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+      "export",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'exports', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "exports",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
 
-        [
-          'nameRequired', isJsdoc,
-        ],
+          ["nameRequired", isJsdoc],
 
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'extends', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples)
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "extends",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples)
+          ["namepathRole", "namepath-referencing"],
 
-        // Does not show curly brackets in either the signature or examples
-        [
-          'typeAllowed', isTypescriptOrClosure || isPermissive,
-        ],
+          ["nameRequired", isJsdoc],
 
-        [
-          'nameRequired', isJsdoc,
-        ],
+          // Does not show curly brackets in either the signature or examples
+          ["typeAllowed", isTypescriptOrClosure || isPermissive],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', isTypescriptOrClosure || isPermissive,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", isTypescriptOrClosure || isPermissive],
+        ]),
+      ),
     ],
 
     [
-      'external', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Appears to require a "name" in its signature, albeit somewhat
-        //  different from other "name"'s (including as described
-        //  at https://jsdoc.app/about-namepaths.html )
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "external",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Appears to require a "name" in its signature, albeit somewhat
+          //  different from other "name"'s (including as described
+          //  at https://jsdoc.app/about-namepaths.html )
+          ["namepathRole", "namepath-defining"],
 
-        // "name" (and a special syntax for the `external` name)
-        [
-          'nameRequired', true,
-        ],
+          // "name" (and a special syntax for the `external` name)
+          ["nameRequired", true],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'fires', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "name" (of an event) and no
-        //  counter-examples
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "fires",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "name" (of an event) and no
+          //  counter-examples
+          ["namepathRole", "namepath-referencing"],
 
-        [
-          'nameRequired', true,
-        ],
+          ["nameRequired", true],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'function', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-
-        [
-          'nameRequired', false,
-        ],
-
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+      "func",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
+        ]),
+      ),
     ],
     [
-      'func', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-      ])),
+      "function",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
+
+          ["nameRequired", false],
+
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'host', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Appears to require a "name" in its signature, albeit somewhat
-        //  different from other "name"'s (including as described
-        //  at https://jsdoc.app/about-namepaths.html )
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "host",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Appears to require a "name" in its signature, albeit somewhat
+          //  different from other "name"'s (including as described
+          //  at https://jsdoc.app/about-namepaths.html )
+          ["namepathRole", "namepath-defining"],
 
-        // See `external`
-        [
-          'nameRequired', true,
-        ],
+          // See `external`
+          ["nameRequired", true],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'interface', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name" in signature, but indicates as optional
-        [
-          'namepathRole',
-          isJsdocTypescriptOrPermissive ? 'namepath-defining' : false,
-        ],
-
-        // Not in use, but should be this value if using to power `empty-tags`
-        [
-          'nameAllowed', isClosure,
-        ],
-
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+      "implements",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the doc signature and examples
+          // "typeExpression"
+          ["typeRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'internal', new Map(/** @type {[string, string|boolean][]} */ ([
-        // https://www.typescriptlang.org/tsconfig/#stripInternal
-        [
-          'namepathRole', false,
-        ],
-        // Not in use, but should be this value if using to power `empty-tags`
-        [
-          'nameAllowed', false,
-        ],
-      ])),
+      "interface",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Not in use, but should be this value if using to power `empty-tags`
+          ["nameAllowed", isClosure],
+
+          // Allows for "name" in signature, but indicates as optional
+          [
+            "namepathRole",
+            isJsdocTypescriptOrPermissive ? "namepath-defining" : false,
+          ],
+
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'implements', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the doc signature and examples
-        // "typeExpression"
-        [
-          'typeRequired', true,
-        ],
-      ])),
+      "internal",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Not in use, but should be this value if using to power `empty-tags`
+          ["nameAllowed", false],
+          // https://www.typescriptlang.org/tsconfig/#stripInternal
+          ["namepathRole", false],
+        ]),
+      ),
     ],
 
     [
-      'lends', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples)
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "lends",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples)
+          ["namepathRole", "namepath-referencing"],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'link', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a namepath OR URL and might be checked as such.
-        [
-          'namepathRole', 'namepath-or-url-referencing',
-        ],
-
-      ])),
+      "link",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a namepath OR URL and might be checked as such.
+          ["namepathRole", "namepath-or-url-referencing"],
+        ]),
+      ),
     ],
 
     [
-      'linkcode', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Synonym for "link"
-        // Signature seems to require a namepath OR URL and might be checked as such.
-        [
-          'namepathRole', 'namepath-or-url-referencing',
-        ],
-      ])),
+      "linkcode",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Synonym for "link"
+          // Signature seems to require a namepath OR URL and might be checked as such.
+          ["namepathRole", "namepath-or-url-referencing"],
+        ]),
+      ),
     ],
 
     [
-      'linkplain', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Synonym for "link"
-        // Signature seems to require a namepath OR URL and might be checked as such.
-        [
-          'namepathRole', 'namepath-or-url-referencing',
-        ],
-      ])),
+      "linkplain",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Synonym for "link"
+          // Signature seems to require a namepath OR URL and might be checked as such.
+          ["namepathRole", "namepath-or-url-referencing"],
+        ]),
+      ),
     ],
 
     [
-      'listens', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "name" (of an event) and no
-        //  counter-examples
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "listens",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "name" (of an event) and no
+          //  counter-examples
+          ["namepathRole", "namepath-referencing"],
 
-        [
-          'nameRequired', true,
-        ],
+          ["nameRequired", true],
 
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'member', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "member",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        // Has example showing curly brackets but not in doc signature
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // Has example showing curly brackets but not in doc signature
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'memberof', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples),
-        //  though it allows an incomplete namepath ending with connecting symbol
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "memberof!",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples),
+          //  though it allows an incomplete namepath ending with connecting symbol
+          ["namepathRole", "namepath-referencing"],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
     [
-      'memberof!', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples),
-        //  though it allows an incomplete namepath ending with connecting symbol
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "memberof",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples),
+          //  though it allows an incomplete namepath ending with connecting symbol
+          ["namepathRole", "namepath-referencing"],
 
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'method', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-      ])),
+      "method",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
+        ]),
+      ),
     ],
     [
-      'mixes', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "OtherObjectPath" with no
-        //   counter-examples
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
+      "mixes",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "OtherObjectPath" with no
+          //   counter-examples
+          ["namepathRole", "namepath-referencing"],
 
-        // "OtherObjectPath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
-    ],
-
-    [
-      'mixin', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-
-        [
-          'nameRequired', false,
-        ],
-
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+          // "OtherObjectPath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'modifies', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Has no documentation, but test example has curly brackets, and
-        //  "name" would be suggested rather than "namepath" based on example;
-        //  not sure if name is required
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "mixin",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
+
+          ["nameRequired", false],
+
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'module', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Optional "name" and no curly brackets
-        //  this block impacts `no-undefined-types` and `valid-types` (search for
-        //  "isNamepathDefiningTag|tagMightHaveNamepath|tagMightHaveEitherTypeOrNamePosition")
-        [
-          'namepathRole', isJsdoc ? 'namepath-defining' : 'text',
-        ],
-
-        // Shows the signature with curly brackets but not in the example
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "modifies",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Has no documentation, but test example has curly brackets, and
+          //  "name" would be suggested rather than "namepath" based on example;
+          //  not sure if name is required
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'name', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Seems to require a "namepath" in the signature (with no
-        //   counter-examples)
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "module",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Optional "name" and no curly brackets
+          //  this block impacts `no-undefined-types` and `valid-types` (search for
+          //  "isNamepathDefiningTag|tagMightHaveNamepath|tagMightHaveEitherTypeOrNamePosition")
+          ["namepathRole", isJsdoc ? "namepath-defining" : "text"],
 
-        // "namepath"
-        [
-          'nameRequired', true,
-        ],
-
-        // "namepath"
-        [
-          'typeOrNameRequired', true,
-        ],
-      ])),
+          // Shows the signature with curly brackets but not in the example
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'namespace', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "name",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Seems to require a "namepath" in the signature (with no
+          //   counter-examples)
+          ["namepathRole", "namepath-defining"],
 
-        // Shows the signature with curly brackets but not in the example
-        [
-          'typeAllowed', true,
-        ],
-      ])),
-    ],
-    [
-      'package', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows the signature with curly brackets but not in the example
-        // "typeExpression"
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+          // "namepath"
+          ["nameRequired", true],
+
+          // "namepath"
+          ["typeOrNameRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'param', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "namespace",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
 
-        // Though no signature provided requiring, per
-        //  https://jsdoc.app/tags-param.html:
-        // "The @param tag requires you to specify the name of the parameter you
-        //  are documenting."
-        [
-          'nameRequired', true,
-        ],
-
-        // Has no formal signature in the docs but shows curly brackets
-        //   in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // Shows the signature with curly brackets but not in the example
+          ["typeAllowed", true],
+        ]),
+      ),
+    ],
+    [
+      "package",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows the signature with curly brackets but not in the example
+          // "typeExpression"
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'private', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows the signature with curly brackets but not in the example
-        // "typeExpression"
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+      "param",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
+
+          // Though no signature provided requiring, per
+          //  https://jsdoc.app/tags-param.html:
+          // "The @param tag requires you to specify the name of the parameter you
+          //  are documenting."
+          ["nameRequired", true],
+
+          // Has no formal signature in the docs but shows curly brackets
+          //   in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'prop', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-
-        // See `property`
-        [
-          'nameRequired', true,
-        ],
-
-        // Has no formal signature in the docs but shows curly brackets
-        //   in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "private",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows the signature with curly brackets but not in the example
+          // "typeExpression"
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'property', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "prop",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
 
-        // No docs indicate required, but since parallel to `param`, we treat as
-        //   such:
-        [
-          'nameRequired', true,
-        ],
+          // See `property`
+          ["nameRequired", true],
 
-        // Has no formal signature in the docs but shows curly brackets
-        //   in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // Has no formal signature in the docs but shows curly brackets
+          //   in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'protected', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows the signature with curly brackets but not in the example
-        // "typeExpression"
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+      "property",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", "namepath-defining"],
+
+          // No docs indicate required, but since parallel to `param`, we treat as
+          //   such:
+          ["nameRequired", true],
+
+          // Has no formal signature in the docs but shows curly brackets
+          //   in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'public', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Does not show a signature nor show curly brackets in the example
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+      "protected",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows the signature with curly brackets but not in the example
+          // "typeExpression"
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'requires', new Map(/** @type {[string, string|boolean][]} */ ([
-        // <someModuleName>
-        [
-          'namepathRole', 'namepath-referencing',
-        ],
-
-        [
-          'nameRequired', true,
-        ],
-
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+      "public",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Does not show a signature nor show curly brackets in the example
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'returns', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
-    ],
-    [
-      'return', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "requires",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // <someModuleName>
+          ["namepathRole", "namepath-referencing"],
+
+          ["nameRequired", true],
+
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'satisfies', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the doc signature and examples
-        [
-          'typeRequired', true,
-        ],
-      ])),
+      "return",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
+    ],
+    [
+      "returns",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'see', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature allows for "namepath" or text, so user must configure to
-        //  'namepath-referencing' to enforce checks
-        [
-          'namepathRole', 'text',
-        ],
-      ])),
+      "satisfies",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the doc signature and examples
+          ["typeRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'static', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Does not show a signature nor show curly brackets in the example
-        [
-          'typeAllowed', isClosureOrPermissive,
-        ],
-      ])),
+      "see",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature allows for "namepath" or text, so user must configure to
+          //  'namepath-referencing' to enforce checks
+          ["namepathRole", "text"],
+        ]),
+      ),
     ],
 
     [
-      'suppress', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', !isClosure,
-        ],
-        [
-          'typeRequired', isClosure,
-        ],
-      ])),
+      "static",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Does not show a signature nor show curly brackets in the example
+          ["typeAllowed", isClosureOrPermissive],
+        ]),
+      ),
     ],
 
     [
-      'template', new Map(/** @type {[string, string|boolean][]} */ ([
-        [
-          'namepathRole', isJsdoc ? 'text' : 'namepath-referencing',
-        ],
-
-        [
-          'nameRequired', !isJsdoc,
-        ],
-
-        // Though defines `namepathRole: 'namepath-defining'` in a sense, it is
-        //   not parseable in the same way for template (e.g., allowing commas),
-        //   so not adding
-        [
-          'typeAllowed', isTypescriptOrClosure || isPermissive,
-        ],
-      ])),
+      "suppress",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", !isClosure],
+          ["typeRequired", isClosure],
+        ]),
+      ),
     ],
 
     [
-      'this', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Signature seems to require a "namepath" (and no counter-examples)
-        // Not used with namepath in Closure/TypeScript, however
-        [
-          'namepathRole', isJsdoc ? 'namepath-referencing' : false,
-        ],
+      "template",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          ["namepathRole", isJsdoc ? "text" : "namepath-referencing"],
 
-        [
-          'typeRequired', isTypescriptOrClosure,
-        ],
+          ["nameRequired", !isJsdoc],
 
-        // namepath
-        [
-          'typeOrNameRequired', isJsdoc,
-        ],
-      ])),
+          // Though defines `namepathRole: 'namepath-defining'` in a sense, it is
+          //   not parseable in the same way for template (e.g., allowing commas),
+          //   so not adding
+          ["typeAllowed", isTypescriptOrClosure || isPermissive],
+        ]),
+      ),
     ],
 
     [
-      'throws', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "this",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Signature seems to require a "namepath" (and no counter-examples)
+          // Not used with namepath in Closure/TypeScript, however
+          ["namepathRole", isJsdoc ? "namepath-referencing" : false],
+
+          // namepath
+          ["typeOrNameRequired", isJsdoc],
+
+          ["typeRequired", isTypescriptOrClosure],
+        ]),
+      ),
     ],
 
     [
-      'tutorial', new Map(/** @type {[string, string|boolean][]} */ ([
-        // (a tutorial ID)
-        [
-          'nameRequired', true,
-        ],
-
-        [
-          'typeAllowed', false,
-        ],
-      ])),
+      "throws",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
 
     [
-      'type', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the doc signature and examples
-        // "typeName"
-        [
-          'typeRequired', true,
-        ],
-      ])),
+      "tutorial",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // (a tutorial ID)
+          ["nameRequired", true],
+
+          ["typeAllowed", false],
+        ]),
+      ),
     ],
 
     [
-      'typedef', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Seems to require a "namepath" in the signature (with no
-        //  counter-examples)
-        [
-          'namepathRole', 'namepath-defining',
-        ],
-
-        // TypeScript may allow it to be dropped if followed by @property or @member;
-        //   also shown as missing in Closure
-        // "namepath"
-        [
-          'nameRequired', isJsdocOrPermissive,
-        ],
-
-        // Is not `typeRequired` for TypeScript because it gives an error:
-        // JSDoc '@typedef' tag should either have a type annotation or be followed by '@property' or '@member' tags.
-
-        // Has example showing curly brackets but not in doc signature
-        [
-          'typeAllowed', true,
-        ],
-
-        // TypeScript may allow it to be dropped if followed by @property or @member
-        // "namepath"
-        [
-          'typeOrNameRequired', !isTypescript,
-        ],
-      ])),
+      "type",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the doc signature and examples
+          // "typeName"
+          ["typeRequired", true],
+        ]),
+      ),
     ],
 
     [
-      'var', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Allows for "name"'s in signature, but indicated as optional
-        [
-          'namepathRole', 'namepath-defining',
-        ],
+      "typedef",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Seems to require a "namepath" in the signature (with no
+          //  counter-examples)
+          ["namepathRole", "namepath-defining"],
 
-        // Has example showing curly brackets but not in doc signature
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+          // TypeScript may allow it to be dropped if followed by @property or @member;
+          //   also shown as missing in Closure
+          // "namepath"
+          ["nameRequired", isJsdocOrPermissive],
+
+          // Is not `typeRequired` for TypeScript because it gives an error:
+          // JSDoc '@typedef' tag should either have a type annotation or be followed by '@property' or '@member' tags.
+
+          // Has example showing curly brackets but not in doc signature
+          ["typeAllowed", true],
+
+          // TypeScript may allow it to be dropped if followed by @property or @member
+          // "namepath"
+          ["typeOrNameRequired", !isTypescript],
+        ]),
+      ),
     ],
 
     [
-      'yields', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "var",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Allows for "name"'s in signature, but indicated as optional
+          ["namepathRole", "namepath-defining"],
+
+          // Has example showing curly brackets but not in doc signature
+          ["typeAllowed", true],
+        ]),
+      ),
+    ],
+
+    [
+      "yield",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
     [
-      'yield', new Map(/** @type {[string, string|boolean][]} */ ([
-        // Shows curly brackets in the signature and in the examples
-        [
-          'typeAllowed', true,
-        ],
-      ])),
+      "yields",
+      new Map(
+        /** @type {[string, string|boolean][]} */ ([
+          // Shows curly brackets in the signature and in the examples
+          ["typeAllowed", true],
+        ]),
+      ),
     ],
   ]);
 };

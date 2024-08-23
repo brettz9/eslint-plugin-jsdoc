@@ -1,5 +1,5 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
-import * as babelEslintParser from '@babel/eslint-parser';
+import * as babelEslintParser from "@babel/eslint-parser";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -37,7 +37,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -291,7 +291,7 @@ export default {
         },
       ],
       languageOptions: {
-        sourceType: 'script',
+        sourceType: "script",
       },
       options: [
         {
@@ -537,7 +537,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -558,7 +558,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -596,7 +596,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -618,7 +618,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -633,7 +633,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -696,14 +696,14 @@ export default {
           message: 'Missing @param "options.extra"',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_018,
+      },
       options: [
         {
           checkRestProperty: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_018,
-      },
     },
     {
       code: `
@@ -723,14 +723,14 @@ export default {
           message: '@param "cfg.bar" does not exist on cfg',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_018,
+      },
       options: [
         {
           checkRestProperty: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_018,
-      },
     },
     {
       code: `
@@ -762,7 +762,7 @@ export default {
       ],
       options: [
         {
-          checkTypesPattern: 'SVGRect',
+          checkTypesPattern: "SVGRect",
         },
       ],
     },
@@ -816,14 +816,14 @@ export default {
           message: 'Missing @param "fetchOptions.options"',
         },
       ],
+      languageOptions: {
+        parser: babelEslintParser,
+      },
       options: [
         {
           checkRestProperty: true,
         },
       ],
-      languageOptions: {
-        parser: babelEslintParser
-      },
     },
     {
       code: `
@@ -854,7 +854,7 @@ export default {
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -869,7 +869,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -877,9 +878,7 @@ export default {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'name',
-              ],
+              required: ["name"],
             },
           },
         },
@@ -983,14 +982,14 @@ export default {
           message: '@param "props.prop.b" does not exist on props',
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           useDefaultObjectProperties: false,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1171,7 +1170,7 @@ export default {
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1183,15 +1182,15 @@ export default {
         function quux (bar, foo) {
         }
       `,
-      options: [
-        {
-          disableMissingParamChecks: false,
-        },
-      ],
       errors: [
         {
           line: 3,
           message: 'Expected @param names to be "bar, foo". Got "foo".',
+        },
+      ],
+      options: [
+        {
+          disableMissingParamChecks: false,
         },
       ],
     },
@@ -1203,15 +1202,15 @@ export default {
         function quux (bar, baz) {
         }
       `,
-      options: [
-        {
-          disableMissingParamChecks: true,
-        },
-      ],
       errors: [
         {
           line: 3,
           message: 'Expected @param names to be "bar, baz". Got "foo".',
+        },
+      ],
+      options: [
+        {
+          disableMissingParamChecks: true,
         },
       ],
     },
@@ -1224,15 +1223,15 @@ export default {
         function quux (foo, bar) {
         }
       `,
-      options: [
-        {
-          disableMissingParamChecks: true,
-        },
-      ],
       errors: [
         {
           line: 3,
           message: 'Expected @param names to be "foo, bar". Got "bar, foo".',
+        },
+      ],
+      options: [
+        {
+          disableMissingParamChecks: true,
         },
       ],
     },
@@ -1245,15 +1244,16 @@ export default {
         function quux (foo) {
         }
       `,
-      options: [
-        {
-          disableMissingParamChecks: true,
-        },
-      ],
       errors: [
         {
           line: 4,
-          message: '@param "bar" does not match an existing function parameter.',
+          message:
+            '@param "bar" does not match an existing function parameter.',
+        },
+      ],
+      options: [
+        {
+          disableMissingParamChecks: true,
         },
       ],
     },
@@ -1274,7 +1274,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1289,7 +1289,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected @param names to be "key, ...params". Got "params".',
+          message:
+            'Expected @param names to be "key, ...params". Got "params".',
         },
       ],
       languageOptions: {
@@ -1313,7 +1314,7 @@ export default {
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
   ],
@@ -1467,7 +1468,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1483,7 +1484,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1499,7 +1500,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1515,7 +1516,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1628,7 +1629,7 @@ export default {
       `,
       options: [
         {
-          checkTypesPattern: 'SVGRect',
+          checkTypesPattern: "SVGRect",
         },
       ],
     },
@@ -1645,7 +1646,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1662,7 +1663,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1679,7 +1680,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1713,7 +1714,7 @@ export default {
 `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1737,7 +1738,7 @@ export default {
       `,
       options: [
         {
-          checkTypesPattern: 'FooBar',
+          checkTypesPattern: "FooBar",
         },
       ],
     },
@@ -1771,7 +1772,7 @@ export default {
       }
       `,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1806,14 +1807,14 @@ export default {
       export function testFn1 ({ prop = { a: 1, b: 2 } }) {
       }
       `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           useDefaultObjectProperties: true,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1849,7 +1850,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1870,7 +1871,7 @@ export default {
       function foo(this: void, arg1: number): void;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1883,7 +1884,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1900,7 +1901,7 @@ export default {
       `,
       ignoreReadme: true,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1918,7 +1919,7 @@ export default {
       `,
       ignoreReadme: true,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1938,7 +1939,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1954,7 +1955,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2012,7 +2013,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -2028,14 +2029,12 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
       settings: {
         jsdoc: {
-          contexts: [
-            'VariableDeclaration',
-          ]
-        }
+          contexts: ["VariableDeclaration"],
+        },
       },
     },
   ],

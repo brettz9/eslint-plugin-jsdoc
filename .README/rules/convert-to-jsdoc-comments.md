@@ -28,12 +28,15 @@ line breaks. (Non-JSDoc (mulitline) comments with line breaks will always
 be converted to `multi` style JSDoc comments.)
 
 - `multi` - Convert to multi-line style
+
 ```js
 /**
  * Some text
  */
 ```
+
 - `single` - Convert to single-line style
+
 ```js
 /** Some text */
 ```
@@ -68,13 +71,13 @@ line after.
 
 Defaults to `VariableDeclarator`, `TSPropertySignature`, `PropertyDefinition`.
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
-|Tags|(N/A)|
-|Recommended|false|
-|Settings|`minLines`, `maxLines`|
-|Options|`enableFixer`, `enforceJsdocLineStyle`, `lineOrBlockStyle`, `allowedPrefixes`, `contexts`, `contextsAfter`, `contextsBeforeAndAfter`|
+|             |                                                                                                                                      |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`                                                               |
+| Tags        | (N/A)                                                                                                                                |
+| Recommended | false                                                                                                                                |
+| Settings    | `minLines`, `maxLines`                                                                                                               |
+| Options     | `enableFixer`, `enforceJsdocLineStyle`, `lineOrBlockStyle`, `allowedPrefixes`, `contexts`, `contextsAfter`, `contextsBeforeAndAfter` |
 
 ## Failing examples
 

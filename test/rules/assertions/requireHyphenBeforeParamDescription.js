@@ -12,12 +12,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
           /**
            * @param foo - Foo.
@@ -39,14 +37,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           tags: {
-            '*': 'never',
+            "*": "never",
           },
         },
       ],
@@ -72,15 +70,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           tags: {
-            '*': 'never',
-            returns: 'always',
+            "*": "never",
+            returns: "always",
           },
         },
       ],
@@ -106,7 +104,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
       output: `
@@ -130,12 +128,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be no hyphen before @param description.',
+          message: "There must be no hyphen before @param description.",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
           /**
            * @param foo Foo.
@@ -157,12 +153,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be no hyphen before @param description.',
+          message: "There must be no hyphen before @param description.",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
           /**
            * @param foo    Foo.
@@ -185,12 +179,10 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
           /**
            * @param foo - foo
@@ -215,12 +207,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
           /**
            * @param foo - foo
@@ -244,7 +234,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -265,13 +255,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be a hyphen before @property description.',
+          message: "There must be a hyphen before @property description.",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            property: 'always',
+            property: "always",
           },
         },
       ],
@@ -291,13 +282,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @template description.',
+          message: "There must be a hyphen before @template description.",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            template: 'always',
+            template: "always",
           },
         },
       ],
@@ -317,13 +309,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be no hyphen before @property description.',
+          message: "There must be no hyphen before @property description.",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            property: 'never',
+            property: "never",
           },
         },
       ],
@@ -347,17 +340,18 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
         {
           line: 4,
-          message: 'There must be no hyphen before @returns description.',
+          message: "There must be no hyphen before @returns description.",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            returns: 'never',
+            returns: "never",
           },
         },
       ],
@@ -389,15 +383,15 @@ export default {
       errors: [
         {
           line: 10,
-          message: 'There must be no hyphen before @returns description.',
+          message: "There must be no hyphen before @returns description.",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           tags: {
-            '*': 'never',
-            property: 'always',
+            "*": "never",
+            property: "always",
           },
         },
       ],
@@ -427,15 +421,15 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'There must be no hyphen before @returns description.',
+          message: "There must be no hyphen before @returns description.",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           tags: {
-            '*': 'never',
-            property: 'always',
+            "*": "never",
+            property: "always",
           },
         },
       ],
@@ -460,7 +454,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
       output: `
@@ -484,7 +478,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be a hyphen before @param description.',
+          message: "There must be a hyphen before @param description.",
         },
       ],
       ignoreReadme: true,
@@ -507,9 +501,7 @@ export default {
 
           }
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -520,9 +512,7 @@ export default {
 
           }
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -535,9 +525,10 @@ export default {
           }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            returns: 'never',
+            returns: "never",
           },
         },
       ],
@@ -551,9 +542,7 @@ export default {
 
           }
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -575,9 +564,10 @@ export default {
           }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            '*': 'always',
+            "*": "always",
           },
         },
       ],
@@ -590,9 +580,10 @@ export default {
            */
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            property: 'always',
+            property: "always",
           },
         },
       ],
@@ -605,9 +596,10 @@ export default {
            */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            property: 'never',
+            property: "never",
           },
         },
       ],
@@ -620,9 +612,10 @@ export default {
            */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            '*': 'always',
+            "*": "always",
           },
         },
       ],
@@ -636,9 +629,7 @@ export default {
       function main(argv) {
       };
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -650,12 +641,12 @@ export default {
          */
       `,
       options: [
-        'always',
+        "always",
         {
           tags: {
-            template: 'always'
-          }
-        }
+            template: "always",
+          },
+        },
       ],
     },
   ],

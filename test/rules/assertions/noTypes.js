@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,7 +14,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       output: `
@@ -40,7 +40,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       output: `
@@ -66,14 +66,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -99,14 +97,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -130,14 +126,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -157,14 +151,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -186,7 +178,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Types are not permitted on @returns.',
+          message: "Types are not permitted on @returns.",
         },
       ],
       output: `
@@ -213,7 +205,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Types are not permitted on @returns.',
+          message: "Types are not permitted on @returns.",
         },
       ],
       output: `
@@ -240,11 +232,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Types are not permitted on @param.',
+          message: "Types are not permitted on @param.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
       output: `
         export interface B {
@@ -254,7 +246,7 @@ export default {
           methodB(paramB: string): void
         }
       `,
-    }
+    },
   ],
   valid: [
     {
@@ -275,9 +267,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

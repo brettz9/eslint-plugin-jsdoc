@@ -1,4 +1,4 @@
-import iterateJsdoc from '../iterateJsdoc.js';
+import iterateJsdoc from "../iterateJsdoc.js";
 
 /**
  * @param {string} targetTagName
@@ -24,54 +24,56 @@ const validateParameterNames = (
   disableExtraPropertyReporting,
   disableMissingParamChecks,
   enableFixer,
-  functionParameterNames, jsdoc, utils, report,
+  functionParameterNames,
+  jsdoc,
+  utils,
+  report,
 ) => {
-  const paramTags = Object.entries(jsdoc.tags).filter(([
-    , tag,
-  ]) => {
+  const paramTags = Object.entries(jsdoc.tags).filter(([, tag]) => {
     return tag.tag === targetTagName;
   });
-  const paramTagsNonNested = paramTags.filter(([
-    , tag,
-  ]) => {
-    return !tag.name.includes('.');
+  const paramTagsNonNested = paramTags.filter(([, tag]) => {
+    return !tag.name.includes(".");
   });
 
   let dotted = 0;
   let thisOffset = 0;
 
   // eslint-disable-next-line complexity
-  return paramTags.some(([
-    , tag,
-  ], index) => {
+  return paramTags.some(([, tag], index) => {
     /** @type {import('../iterateJsdoc.js').Integer} */
     let tagsIndex;
-    const dupeTagInfo = paramTags.find(([
-      tgsIndex,
-      tg,
-    ], idx) => {
+    const dupeTagInfo = paramTags.find(([tgsIndex, tg], idx) => {
       tagsIndex = Number(tgsIndex);
 
       return tg.name === tag.name && idx !== index;
     });
     if (dupeTagInfo) {
-      utils.reportJSDoc(`Duplicate @${targetTagName} "${tag.name}"`, dupeTagInfo[1], enableFixer ? () => {
-        utils.removeTag(tagsIndex);
-      } : null);
+      utils.reportJSDoc(
+        `Duplicate @${targetTagName} "${tag.name}"`,
+        dupeTagInfo[1],
+        enableFixer
+          ? () => {
+              utils.removeTag(tagsIndex);
+            }
+          : null,
+      );
 
       return true;
     }
 
-    if (tag.name.includes('.')) {
+    if (tag.name.includes(".")) {
       dotted++;
 
       return false;
     }
 
-    let functionParameterName = functionParameterNames[index - dotted + thisOffset];
-    if (functionParameterName === 'this' && tag.name.trim() !== 'this') {
+    let functionParameterName =
+      functionParameterNames[index - dotted + thisOffset];
+    if (functionParameterName === "this" && tag.name.trim() !== "this") {
       ++thisOffset;
-      functionParameterName = functionParameterNames[index - dotted + thisOffset];
+      functionParameterName =
+        functionParameterNames[index - dotted + thisOffset];
     }
 
     if (!functionParameterName) {
@@ -87,10 +89,11 @@ const validateParameterNames = (
 
       return true;
     }
+
     if (
-      typeof functionParameterName === 'object' &&
-        'name' in functionParameterName &&
-        Array.isArray(functionParameterName.name)
+      typeof functionParameterName === "object" &&
+      "name" in functionParameterName &&
+      Array.isArray(functionParameterName.name)
     ) {
       const actualName = tag.name.trim();
       const expectedName = functionParameterName.name[index];
@@ -98,6 +101,7 @@ const validateParameterNames = (
         thisOffset--;
         return false;
       }
+
       report(
         `Expected @${targetTagName} name to be "${expectedName}". Got "${actualName}".`,
         null,
@@ -117,36 +121,31 @@ const validateParameterNames = (
 
       const [
         parameterName,
-        {
-          names: properties,
-          hasPropertyRest,
-          rests,
-          annotationParamName,
-        },
-      ] =
-        /**
+        { annotationParamName, hasPropertyRest, names: properties, rests },
+      ] = /**
          * @type {[string | undefined, import('../jsdocUtils.js').FlattendRootInfo & {
          *   annotationParamName?: string | undefined;
           }]} */ (functionParameterName);
       if (annotationParamName !== undefined) {
         const name = tag.name.trim();
         if (name !== annotationParamName) {
-          report(`@${targetTagName} "${name}" does not match parameter name "${annotationParamName}"`, null, tag);
+          report(
+            `@${targetTagName} "${name}" does not match parameter name "${annotationParamName}"`,
+            null,
+            tag,
+          );
         }
       }
 
-      const tagName = parameterName === undefined ? tag.name.trim() : parameterName;
+      const tagName =
+        parameterName === undefined ? tag.name.trim() : parameterName;
       const expectedNames = properties.map((name) => {
         return `${tagName}.${name}`;
       });
-      const actualNames = paramTags.map(([
-        , paramTag,
-      ]) => {
+      const actualNames = paramTags.map(([, paramTag]) => {
         return paramTag.name.trim();
       });
-      const actualTypes = paramTags.map(([
-        , paramTag,
-      ]) => {
+      const actualTypes = paramTags.map(([, paramTag]) => {
         return paramTag.type;
       });
 
@@ -155,13 +154,12 @@ const validateParameterNames = (
       /** @type {string[]} */
       const notCheckingNames = [];
 
-      for (const [
-        idx,
-        name,
-      ] of expectedNames.entries()) {
-        if (notCheckingNames.some((notCheckingName) => {
-          return name.startsWith(notCheckingName);
-        })) {
+      for (const [idx, name] of expectedNames.entries()) {
+        if (
+          notCheckingNames.some((notCheckingName) => {
+            return name.startsWith(notCheckingName);
+          })
+        ) {
           continue;
         }
 
@@ -176,14 +174,20 @@ const validateParameterNames = (
           const missingIndex = actualNames.findIndex((actualName) => {
             return utils.pathDoesNotBeginWith(name, actualName);
           });
-          const line = tag.source[0].number - 1 + (missingIndex > -1 ? missingIndex : actualNames.length);
+          const line =
+            tag.source[0].number -
+            1 +
+            (missingIndex > -1 ? missingIndex : actualNames.length);
           missingProperties.push({
             name,
             tagPlacement: {
               line: line === 0 ? 1 : line,
             },
           });
-        } else if (actualTypes[actualNameIdx].search(checkTypesRegex) === -1 && actualTypes[actualNameIdx] !== '') {
+        } else if (
+          actualTypes[actualNameIdx].search(checkTypesRegex) === -1 &&
+          actualTypes[actualNameIdx] !== ""
+        ) {
           notCheckingNames.push(name);
         }
       }
@@ -191,41 +195,42 @@ const validateParameterNames = (
       const hasMissing = missingProperties.length;
       if (hasMissing) {
         for (const {
-          tagPlacement,
           name: missingProperty,
+          tagPlacement,
         } of missingProperties) {
-          report(`Missing @${targetTagName} "${missingProperty}"`, null, tagPlacement);
+          report(
+            `Missing @${targetTagName} "${missingProperty}"`,
+            null,
+            tagPlacement,
+          );
         }
       }
 
       if (!hasPropertyRest || checkRestProperty) {
         /** @type {[string, import('comment-parser').Spec][]} */
         const extraProperties = [];
-        for (const [
-          idx,
-          name,
-        ] of actualNames.entries()) {
-          const match = name.startsWith(tag.name.trim() + '.');
+        for (const [idx, name] of actualNames.entries()) {
+          const match = name.startsWith(tag.name.trim() + ".");
           if (
-            match && !expectedNames.some(
-              utils.comparePaths(name),
-            ) && !utils.comparePaths(name)(tag.name) &&
-            (!disableExtraPropertyReporting || properties.some((prop) => {
-              return prop.split('.').length >= name.split('.').length - 1;
-            }))
+            match &&
+            !expectedNames.some(utils.comparePaths(name)) &&
+            !utils.comparePaths(name)(tag.name) &&
+            (!disableExtraPropertyReporting ||
+              properties.some((prop) => {
+                return prop.split(".").length >= name.split(".").length - 1;
+              }))
           ) {
-            extraProperties.push([
-              name, paramTags[idx][1],
-            ]);
+            extraProperties.push([name, paramTags[idx][1]]);
           }
         }
 
         if (extraProperties.length) {
-          for (const [
-            extraProperty,
-            tg,
-          ] of extraProperties) {
-            report(`@${targetTagName} "${extraProperty}" does not exist on ${tag.name}`, null, tg);
+          for (const [extraProperty, tg] of extraProperties) {
+            report(
+              `@${targetTagName} "${extraProperty}" does not exist on ${tag.name}`,
+              null,
+              tg,
+            );
           }
 
           return true;
@@ -236,10 +241,8 @@ const validateParameterNames = (
     }
 
     let funcParamName;
-    if (typeof functionParameterName === 'object') {
-      const {
-        name,
-      } = functionParameterName;
+    if (typeof functionParameterName === "object") {
+      const { name } = functionParameterName;
       funcParamName = name;
     } else {
       funcParamName = functionParameterName;
@@ -247,47 +250,55 @@ const validateParameterNames = (
 
     if (funcParamName !== tag.name.trim()) {
       // Todo: Improve for array or object child items
-      const actualNames = paramTagsNonNested.map(([
-        , {
-          name,
-        },
-      ]) => {
+      const actualNames = paramTagsNonNested.map(([, { name }]) => {
         return name.trim();
       });
 
-      const expectedNames = functionParameterNames.map((item, idx) => {
-        if (/**
+      const expectedNames = functionParameterNames
+        .map((item, idx) => {
+          if (
+            /**
              * @type {[string|undefined, (import('../jsdocUtils.js').FlattendRootInfo & {
              *   annotationParamName?: string,
-              })]} */ (item)?.[1]?.names) {
-          return actualNames[idx];
-        }
+              })]} */ (item)?.[1]?.names
+          ) {
+            return actualNames[idx];
+          }
 
-        return item;
-      }).filter((item) => {
-        return item !== 'this';
-      });
+          return item;
+        })
+        .filter((item) => {
+          return item !== "this";
+        });
 
       // When disableMissingParamChecks is true tag names can be omitted.
       // Report when the tag names do not match the expected names or they are used out of order.
       if (disableMissingParamChecks) {
-        const usedExpectedNames = expectedNames.map(a => a?.toString()).filter(expectedName => expectedName && actualNames.includes(expectedName));
-        const usedInOrder = actualNames.every((actualName, idx) => actualName === usedExpectedNames[idx]);
+        const usedExpectedNames = expectedNames
+          .map((a) => {
+            return a?.toString();
+          })
+          .filter((expectedName) => {
+            return expectedName && actualNames.includes(expectedName);
+          });
+        const usedInOrder = actualNames.every((actualName, idx) => {
+          return actualName === usedExpectedNames[idx];
+        });
         if (usedInOrder) {
           return false;
         }
       }
 
       report(
-        `Expected @${targetTagName} names to be "${
-          expectedNames.map((expectedName) => {
-            return typeof expectedName === 'object' &&
-              'name' in expectedName &&
+        `Expected @${targetTagName} names to be "${expectedNames
+          .map((expectedName) => {
+            return typeof expectedName === "object" &&
+              "name" in expectedName &&
               expectedName.restElement
-              ? '...' + expectedName.name
+              ? "..." + expectedName.name
               : expectedName;
-          }).join(', ')
-        }". Got "${actualNames.join(', ')}".`,
+          })
+          .join(", ")}". Got "${actualNames.join(", ")}".`,
         null,
         tag,
       );
@@ -311,35 +322,42 @@ const validateParameterNames = (
  * @returns {boolean}
  */
 const validateParameterNamesDeep = (
-  targetTagName, _allowExtraTrailingParamDocs,
-  jsdocParameterNames, jsdoc, report,
+  targetTagName,
+  _allowExtraTrailingParamDocs,
+  jsdocParameterNames,
+  jsdoc,
+  report,
 ) => {
   /** @type {string} */
   let lastRealParameter;
 
-  return jsdocParameterNames.some(({
-    name: jsdocParameterName,
-    idx,
-  }) => {
-    const isPropertyPath = jsdocParameterName.includes('.');
+  return jsdocParameterNames.some(({ idx, name: jsdocParameterName }) => {
+    const isPropertyPath = jsdocParameterName.includes(".");
 
     if (isPropertyPath) {
       if (!lastRealParameter) {
-        report(`@${targetTagName} path declaration ("${jsdocParameterName}") appears before any real parameter.`, null, jsdoc.tags[idx]);
+        report(
+          `@${targetTagName} path declaration ("${jsdocParameterName}") appears before any real parameter.`,
+          null,
+          jsdoc.tags[idx],
+        );
 
         return true;
       }
 
-      let pathRootNodeName = jsdocParameterName.slice(0, jsdocParameterName.indexOf('.'));
+      let pathRootNodeName = jsdocParameterName.slice(
+        0,
+        jsdocParameterName.indexOf("."),
+      );
 
-      if (pathRootNodeName.endsWith('[]')) {
+      if (pathRootNodeName.endsWith("[]")) {
         pathRootNodeName = pathRootNodeName.slice(0, -2);
       }
 
       if (pathRootNodeName !== lastRealParameter) {
         report(
           `@${targetTagName} path declaration ("${jsdocParameterName}") root node name ("${pathRootNodeName}") ` +
-          `does not match previous real parameter name ("${lastRealParameter}").`,
+            `does not match previous real parameter name ("${lastRealParameter}").`,
           null,
           jsdoc.tags[idx],
         );
@@ -355,112 +373,123 @@ const validateParameterNamesDeep = (
 };
 
 const allowedNodes = [
-  'ArrowFunctionExpression', 'FunctionDeclaration', 'FunctionExpression', 'TSDeclareFunction',
-    // Add this to above defaults
-    'TSMethodSignature'
+  "ArrowFunctionExpression",
+  "FunctionDeclaration",
+  "FunctionExpression",
+  "TSDeclareFunction",
+  // Add this to above defaults
+  "TSMethodSignature",
 ];
 
-export default iterateJsdoc(({
-  context,
-  jsdoc,
-  report,
-  utils,
-  node,
-}) => {
-  const {
-    allowExtraTrailingParamDocs,
-    checkDestructured = true,
-    checkRestProperty = false,
-    checkTypesPattern = '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
-    enableFixer = false,
-    useDefaultObjectProperties = false,
-    disableExtraPropertyReporting = false,
-    disableMissingParamChecks = false,
-  } = context.options[0] || {};
+export default iterateJsdoc(
+  ({ context, jsdoc, node, report, utils }) => {
+    const {
+      allowExtraTrailingParamDocs,
+      checkDestructured = true,
+      checkRestProperty = false,
+      checkTypesPattern = "/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/",
+      disableExtraPropertyReporting = false,
+      disableMissingParamChecks = false,
+      enableFixer = false,
+      useDefaultObjectProperties = false,
+    } = context.options[0] || {};
 
-  // Although we might just remove global settings contexts from applying to
-  //   this rule (as they can cause problems with `getFunctionParameterNames`
-  //   checks if they are not functions but say variables), the user may
-  //   instead wish to narrow contexts in those settings, so this check
-  //   is still useful
-  if (!allowedNodes.includes(/** @type {import('estree').Node} */ (node).type)) {
-    return;
-  }
+    // Although we might just remove global settings contexts from applying to
+    //   this rule (as they can cause problems with `getFunctionParameterNames`
+    //   checks if they are not functions but say variables), the user may
+    //   instead wish to narrow contexts in those settings, so this check
+    //   is still useful
+    if (
+      !allowedNodes.includes(/** @type {import('estree').Node} */ (node).type)
+    ) {
+      return;
+    }
 
-  const checkTypesRegex = utils.getRegexFromString(checkTypesPattern);
+    const checkTypesRegex = utils.getRegexFromString(checkTypesPattern);
 
-  const jsdocParameterNamesDeep = utils.getJsdocTagsDeep('param');
-  if (!jsdocParameterNamesDeep || !jsdocParameterNamesDeep.length) {
-    return;
-  }
+    const jsdocParameterNamesDeep = utils.getJsdocTagsDeep("param");
+    if (!jsdocParameterNamesDeep || !jsdocParameterNamesDeep.length) {
+      return;
+    }
 
-  const functionParameterNames = utils.getFunctionParameterNames(useDefaultObjectProperties);
+    const functionParameterNames = utils.getFunctionParameterNames(
+      useDefaultObjectProperties,
+    );
 
-  const targetTagName = /** @type {string} */ (utils.getPreferredTagName({
-    tagName: 'param',
-  }));
-  const isError = validateParameterNames(
-    targetTagName,
-    allowExtraTrailingParamDocs,
-    checkDestructured,
-    checkRestProperty,
-    checkTypesRegex,
-    disableExtraPropertyReporting,
-    disableMissingParamChecks,
-    enableFixer,
-    functionParameterNames,
-    jsdoc,
-    utils,
-    report,
-  );
+    const targetTagName = /** @type {string} */ (
+      utils.getPreferredTagName({
+        tagName: "param",
+      })
+    );
+    const isError = validateParameterNames(
+      targetTagName,
+      allowExtraTrailingParamDocs,
+      checkDestructured,
+      checkRestProperty,
+      checkTypesRegex,
+      disableExtraPropertyReporting,
+      disableMissingParamChecks,
+      enableFixer,
+      functionParameterNames,
+      jsdoc,
+      utils,
+      report,
+    );
 
-  if (isError || !checkDestructured) {
-    return;
-  }
+    if (isError || !checkDestructured) {
+      return;
+    }
 
-  validateParameterNamesDeep(
-    targetTagName, allowExtraTrailingParamDocs, jsdocParameterNamesDeep, jsdoc, report,
-  );
-}, {
-  contextDefaults: allowedNodes,
-  meta: {
-    docs: {
-      description: 'Ensures that parameter names in JSDoc match those in the function declaration.',
-      url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-param-names.md#repos-sticky-header',
-    },
-    fixable: 'code',
-    schema: [
-      {
-        additionalProperties: false,
-        properties: {
-          allowExtraTrailingParamDocs: {
-            type: 'boolean',
-          },
-          checkDestructured: {
-            type: 'boolean',
-          },
-          checkRestProperty: {
-            type: 'boolean',
-          },
-          checkTypesPattern: {
-            type: 'string',
-          },
-          disableExtraPropertyReporting: {
-            type: 'boolean',
-          },
-          disableMissingParamChecks: {
-            type: 'boolean',
-          },
-          enableFixer: {
-            type: 'boolean',
-          },
-          useDefaultObjectProperties: {
-            type: 'boolean',
-          },
-        },
-        type: 'object',
-      },
-    ],
-    type: 'suggestion',
+    validateParameterNamesDeep(
+      targetTagName,
+      allowExtraTrailingParamDocs,
+      jsdocParameterNamesDeep,
+      jsdoc,
+      report,
+    );
   },
-});
+  {
+    contextDefaults: allowedNodes,
+    meta: {
+      docs: {
+        description:
+          "Ensures that parameter names in JSDoc match those in the function declaration.",
+        url: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-param-names.md#repos-sticky-header",
+      },
+      fixable: "code",
+      schema: [
+        {
+          additionalProperties: false,
+          properties: {
+            allowExtraTrailingParamDocs: {
+              type: "boolean",
+            },
+            checkDestructured: {
+              type: "boolean",
+            },
+            checkRestProperty: {
+              type: "boolean",
+            },
+            checkTypesPattern: {
+              type: "string",
+            },
+            disableExtraPropertyReporting: {
+              type: "boolean",
+            },
+            disableMissingParamChecks: {
+              type: "boolean",
+            },
+            enableFixer: {
+              type: "boolean",
+            },
+            useDefaultObjectProperties: {
+              type: "boolean",
+            },
+          },
+          type: "object",
+        },
+      ],
+      type: "suggestion",
+    },
+  },
+);

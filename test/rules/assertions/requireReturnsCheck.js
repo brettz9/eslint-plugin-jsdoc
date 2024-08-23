@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,7 +14,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -30,13 +31,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @return declaration present but return expression not available in function.',
+          message:
+            "JSDoc @return declaration present but return expression not available in function.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            returns: 'return',
+            returns: "return",
           },
         },
       },
@@ -51,7 +53,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -69,7 +72,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Found more than one @returns declaration.',
+          message: "Found more than one @returns declaration.",
         },
       ],
     },
@@ -88,7 +91,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -105,7 +109,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -121,7 +126,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@returns`',
+          message: "Unexpected tag `@returns`",
         },
       ],
       settings: {
@@ -150,7 +155,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -164,17 +170,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           exemptAsync: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -186,7 +193,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       languageOptions: {
@@ -194,7 +202,7 @@ export default {
       },
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -208,20 +216,21 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           exemptGenerators: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -237,7 +246,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       options: [
@@ -262,7 +272,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       options: [
@@ -284,17 +295,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
-        },
-      ],
-      options: [
-        {
-          exemptAsync: false,
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          exemptAsync: false,
+        },
+      ],
     },
     {
       code: `
@@ -309,18 +321,19 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           exemptAsync: false,
           reportMissingReturnForUndefinedTypes: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -332,7 +345,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       options: [
@@ -353,7 +367,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration set with "never" but return expression is present in function.',
+          message:
+            'JSDoc @returns declaration set with "never" but return expression is present in function.',
         },
       ],
     },
@@ -369,7 +384,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration set with "never" but return expression is present in function.',
+          message:
+            'JSDoc @returns declaration set with "never" but return expression is present in function.',
         },
       ],
     },
@@ -388,11 +404,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -410,11 +427,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -432,7 +450,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -453,11 +472,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -474,7 +494,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -493,7 +514,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -514,7 +536,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -532,7 +555,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -551,7 +575,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -573,7 +598,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -593,7 +619,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -613,7 +640,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
       ignoreReadme: true,
@@ -636,7 +664,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
@@ -658,11 +687,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @returns declaration present but return expression not available in function.',
+          message:
+            "JSDoc @returns declaration present but return expression not available in function.",
         },
       ],
     },
-
   ],
   valid: [
     {
@@ -814,7 +843,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1054,8 +1083,8 @@ export default {
           }
       `,
       languageOptions: {
-        sourceType: 'script'
-      }
+        sourceType: "script",
+      },
     },
     {
       code: `
@@ -1094,14 +1123,14 @@ export default {
             return 5;
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           exemptAsync: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -1132,14 +1161,14 @@ export default {
           return new Promise(resolve => resolve());
         }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           reportMissingReturnForUndefinedTypes: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -1183,7 +1212,7 @@ export default {
       },
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1194,17 +1223,17 @@ export default {
            */
           function * quux() {}
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           exemptGenerators: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -1232,7 +1261,7 @@ export default {
       export function readFixture(path: string): Promise<Buffer>;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1248,7 +1277,7 @@ export default {
       export function readFixture(path: string): Promise<Buffer>;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1266,7 +1295,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1282,7 +1311,7 @@ export default {
       export function readFixture(path: string);
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1449,7 +1478,7 @@ export default {
       ignoreReadme: true,
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -1499,7 +1528,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {

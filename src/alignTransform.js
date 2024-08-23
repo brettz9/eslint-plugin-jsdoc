@@ -7,7 +7,7 @@
 import {
   // `comment-parser/primitives` export
   util,
-} from 'comment-parser';
+} from "comment-parser";
 
 /**
  * @typedef {{
@@ -17,9 +17,7 @@ import {
  * }} TypelessInfo
  */
 
-const {
-  rewireSource,
-} = util;
+const { rewireSource } = util;
 
 /**
  * @typedef {{
@@ -45,21 +43,21 @@ const zeroWidth = {
  * @returns {boolean}
  */
 const shouldAlign = (tags, index, source) => {
-  const tag = source[index].tokens.tag.replace('@', '');
+  const tag = source[index].tokens.tag.replace("@", "");
   const includesTag = tags.includes(tag);
 
   if (includesTag) {
     return true;
   }
 
-  if (tag !== '') {
+  if (tag !== "") {
     return false;
   }
 
   for (let iterator = index; iterator >= 0; iterator--) {
-    const previousTag = source[iterator].tokens.tag.replace('@', '');
+    const previousTag = source[iterator].tokens.tag.replace("@", "");
 
-    if (previousTag !== '') {
+    if (previousTag !== "") {
       if (tags.includes(previousTag)) {
         return true;
       }
@@ -83,16 +81,14 @@ const shouldAlign = (tags, index, source) => {
  * ) => Width}
  */
 const getWidth = (tags) => {
-  return (width, {
-    tokens,
-  }, index, source) => {
+  return (width, { tokens }, index, source) => {
     if (!shouldAlign(tags, index, source)) {
       return width;
     }
 
     return {
       name: Math.max(width.name, tokens.name.length),
-      start: tokens.delimiter === '/**' ? tokens.start.length : width.start,
+      start: tokens.delimiter === "/**" ? tokens.start.length : width.start,
       tag: Math.max(width.tag, tokens.tag.length),
       type: Math.max(width.type, tokens.type.length),
     };
@@ -108,27 +104,29 @@ const getWidth = (tags) => {
  * @returns {TypelessInfo}
  */
 const getTypelessInfo = (fields) => {
-  const hasNoTypes = fields.tags.every(({
-    type,
-  }) => {
+  const hasNoTypes = fields.tags.every(({ type }) => {
     return !type;
   });
-  const maxNamedTagLength = Math.max(...fields.tags.map(({
-    tag,
-    name,
-  }) => {
-    return name.length === 0 ? -1 : tag.length;
-  }).filter((length) => {
-    return length !== -1;
-  })) + 1;
-  const maxUnnamedTagLength = Math.max(...fields.tags.map(({
-    tag,
-    name,
-  }) => {
-    return name.length === 0 ? tag.length : -1;
-  }).filter((length) => {
-    return length !== -1;
-  })) + 1;
+  const maxNamedTagLength =
+    Math.max(
+      ...fields.tags
+        .map(({ name, tag }) => {
+          return name.length === 0 ? -1 : tag.length;
+        })
+        .filter((length) => {
+          return length !== -1;
+        }),
+    ) + 1;
+  const maxUnnamedTagLength =
+    Math.max(
+      ...fields.tags
+        .map(({ name, tag }) => {
+          return name.length === 0 ? tag.length : -1;
+        })
+        .filter((length) => {
+          return length !== -1;
+        }),
+    ) + 1;
   return {
     hasNoTypes,
     maxNamedTagLength,
@@ -141,7 +139,7 @@ const getTypelessInfo = (fields) => {
  * @returns {string}
  */
 const space = (len) => {
-  return ''.padStart(len, ' ');
+  return "".padStart(len, " ");
 };
 
 /**
@@ -159,11 +157,11 @@ const space = (len) => {
  */
 const alignTransform = ({
   customSpacings,
-  tags,
+  disableWrapIndent,
   indent,
   preserveMainDescriptionPostDelimiter,
+  tags,
   wrapIndent,
-  disableWrapIndent,
 }) => {
   let intoTags = false;
   /** @type {Width} */
@@ -182,20 +180,20 @@ const alignTransform = ({
       type: false,
     };
 
-    if (tokens.description === '') {
+    if (tokens.description === "") {
       nothingAfter.name = true;
-      tokens.postName = '';
+      tokens.postName = "";
 
-      if (tokens.name === '') {
+      if (tokens.name === "") {
         nothingAfter.type = true;
-        tokens.postType = '';
+        tokens.postType = "";
 
-        if (tokens.type === '') {
+        if (tokens.type === "") {
           nothingAfter.tag = true;
-          tokens.postTag = '';
+          tokens.postTag = "";
 
           /* c8 ignore next: Never happens because the !intoTags return. But it's here for consistency with the original align transform */
-          if (tokens.tag === '') {
+          if (tokens.tag === "") {
             nothingAfter.delim = true;
           }
         }
@@ -206,18 +204,26 @@ const alignTransform = ({
     let untypedTypeAdjustment = 0;
     if (typelessInfo.hasNoTypes) {
       nothingAfter.tag = true;
-      tokens.postTag = '';
-      if (tokens.name === '') {
-        untypedNameAdjustment = typelessInfo.maxNamedTagLength - tokens.tag.length;
+      tokens.postTag = "";
+      if (tokens.name === "") {
+        untypedNameAdjustment =
+          typelessInfo.maxNamedTagLength - tokens.tag.length;
       } else {
-        untypedNameAdjustment = typelessInfo.maxNamedTagLength > typelessInfo.maxUnnamedTagLength ? 0 :
-          Math.max(0, typelessInfo.maxUnnamedTagLength - (tokens.tag.length + tokens.name.length + 1));
-        untypedTypeAdjustment = typelessInfo.maxNamedTagLength - tokens.tag.length;
+        untypedNameAdjustment =
+          typelessInfo.maxNamedTagLength > typelessInfo.maxUnnamedTagLength
+            ? 0
+            : Math.max(
+                0,
+                typelessInfo.maxUnnamedTagLength -
+                  (tokens.tag.length + tokens.name.length + 1),
+              );
+        untypedTypeAdjustment =
+          typelessInfo.maxNamedTagLength - tokens.tag.length;
       }
     }
 
     // Todo: Avoid fixing alignment of blocks with multiline wrapping of type
-    if (tokens.tag === '' && tokens.type) {
+    if (tokens.tag === "" && tokens.type) {
       return tokens;
     }
 
@@ -228,19 +234,34 @@ const alignTransform = ({
       postType: customSpacings?.postType || 1,
     };
 
-    tokens.postDelimiter = nothingAfter.delim ? '' : space(spacings.postDelimiter);
+    tokens.postDelimiter = nothingAfter.delim
+      ? ""
+      : space(spacings.postDelimiter);
 
     if (!nothingAfter.tag) {
       tokens.postTag = space(width.tag - tokens.tag.length + spacings.postTag);
     }
 
     if (!nothingAfter.type) {
-      tokens.postType = space(width.type - tokens.type.length + spacings.postType + untypedTypeAdjustment);
+      tokens.postType = space(
+        width.type -
+          tokens.type.length +
+          spacings.postType +
+          untypedTypeAdjustment,
+      );
     }
 
     if (!nothingAfter.name) {
       // If post name is empty for all lines (name width 0), don't add post name spacing.
-      tokens.postName = width.name === 0 ? '' : space(width.name - tokens.name.length + spacings.postName + untypedNameAdjustment);
+      tokens.postName =
+        width.name === 0
+          ? ""
+          : space(
+              width.name -
+                tokens.name.length +
+                spacings.postName +
+                untypedNameAdjustment,
+            );
     }
 
     return tokens;
@@ -260,19 +281,19 @@ const alignTransform = ({
       ...line.tokens,
     };
 
-    if (tokens.tag !== '') {
+    if (tokens.tag !== "") {
       intoTags = true;
     }
 
     const isEmpty =
-      tokens.tag === '' &&
-      tokens.name === '' &&
-      tokens.type === '' &&
-      tokens.description === '';
+      tokens.tag === "" &&
+      tokens.name === "" &&
+      tokens.type === "" &&
+      tokens.description === "";
 
     // dangling '*/'
-    if (tokens.end === '*/' && isEmpty) {
-      tokens.start = indent + ' ';
+    if (tokens.end === "*/" && isEmpty) {
+      tokens.start = indent + " ";
 
       return {
         ...line,
@@ -281,24 +302,24 @@ const alignTransform = ({
     }
 
     switch (tokens.delimiter) {
-    case '/**':
-      tokens.start = indent;
-      break;
-    case '*':
-      tokens.start = indent + ' ';
-      break;
-    default:
-      tokens.delimiter = '';
+      case "/**":
+        tokens.start = indent;
+        break;
+      case "*":
+        tokens.start = indent + " ";
+        break;
+      default:
+        tokens.delimiter = "";
 
-      // compensate delimiter
-      tokens.start = indent + '  ';
+        // compensate delimiter
+        tokens.start = indent + "  ";
     }
 
     if (!intoTags) {
-      if (tokens.description === '') {
-        tokens.postDelimiter = '';
+      if (tokens.description === "") {
+        tokens.postDelimiter = "";
       } else if (!preserveMainDescriptionPostDelimiter) {
-        tokens.postDelimiter = ' ';
+        tokens.postDelimiter = " ";
       }
 
       return {
@@ -310,7 +331,8 @@ const alignTransform = ({
     const postHyphenSpacing = customSpacings?.postHyphen ?? 1;
     const hyphenSpacing = /^\s*-\s+/u;
     tokens.description = tokens.description.replace(
-      hyphenSpacing, '-' + ''.padStart(postHyphenSpacing, ' '),
+      hyphenSpacing,
+      "-" + "".padStart(postHyphenSpacing, " "),
     );
 
     // Not align.
@@ -327,10 +349,7 @@ const alignTransform = ({
     };
   };
 
-  return ({
-    source,
-    ...fields
-  }) => {
+  return ({ source, ...fields }) => {
     width = source.reduce(getWidth(tags), {
       ...zeroWidth,
     });
@@ -342,7 +361,11 @@ const alignTransform = ({
     return rewireSource({
       ...fields,
       source: source.map((line, index) => {
-        const indentTag = !disableWrapIndent && tagIndentMode && !line.tokens.tag && line.tokens.description;
+        const indentTag =
+          !disableWrapIndent &&
+          tagIndentMode &&
+          !line.tokens.tag &&
+          line.tokens.description;
         const ret = update(line, index, source, typelessInfo, indentTag);
 
         if (!disableWrapIndent && line.tokens.tag) {

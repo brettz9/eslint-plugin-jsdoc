@@ -10,11 +10,11 @@ Fixes alignment.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|true|
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | N/A        |
+| Recommended | true       |
 
 ## Failing examples
 

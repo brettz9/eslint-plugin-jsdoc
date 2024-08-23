@@ -48,13 +48,13 @@ Prevent the likes of this:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|(any)|
-|Recommended|true|
-|Settings||
-|Options|`allowWhitespace`, `preventAtEnd`, `preventAtMiddleLines`|
+|             |                                                           |
+| ----------- | --------------------------------------------------------- |
+| Context     | everywhere                                                |
+| Tags        | (any)                                                     |
+| Recommended | true                                                      |
+| Settings    |                                                           |
+| Options     | `allowWhitespace`, `preventAtEnd`, `preventAtMiddleLines` |
 
 ## Failing examples
 

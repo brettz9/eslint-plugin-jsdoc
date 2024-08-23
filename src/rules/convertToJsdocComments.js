@@ -1,22 +1,19 @@
-import iterateJsdoc from '../iterateJsdoc.js';
+import { getSettings } from "../iterateJsdoc.js";
 import {
-  getSettings,
-} from '../iterateJsdoc.js';
-import {
-  getIndent,
-  getContextObject,
   enforcedContexts,
-} from '../jsdocUtils.js';
+  getContextObject,
+  getIndent,
+} from "../jsdocUtils.js";
 import {
-  getNonJsdocComment,
   getDecorator,
-  getReducedASTNode,
   getFollowingComment,
-} from '@es-joy/jsdoccomment';
+  getNonJsdocComment,
+  getReducedASTNode,
+} from "@es-joy/jsdoccomment";
 
 /** @type {import('eslint').Rule.RuleModule} */
 export default {
-  create (context) {
+  create(context) {
     /**
      * @typedef {import('eslint').AST.Token | import('estree').Comment | {
      *   type: import('eslint').AST.TokenType|"Line"|"Block"|"Shebang",
@@ -35,24 +32,31 @@ export default {
      */
 
     /* c8 ignore next -- Fallback to deprecated method */
-    const {
-      sourceCode = context.getSourceCode(),
-    } = context;
+    const { sourceCode = context.getSourceCode() } = context;
     const settings = getSettings(context);
     if (!settings) {
       return {};
     }
 
     const {
+      allowedPrefixes = [
+        "@ts-",
+        "istanbul ",
+        "c8 ",
+        "v8 ",
+        "eslint",
+        "prettier-",
+      ],
       contexts = settings.contexts || [],
       contextsAfter = /** @type {string[]} */ ([]),
       contextsBeforeAndAfter = [
-        'VariableDeclarator', 'TSPropertySignature', 'PropertyDefinition'
+        "VariableDeclarator",
+        "TSPropertySignature",
+        "PropertyDefinition",
       ],
       enableFixer = true,
-      enforceJsdocLineStyle = 'multi',
-      lineOrBlockStyle = 'both',
-      allowedPrefixes = ['@ts-', 'istanbul ', 'c8 ', 'v8 ', 'eslint', 'prettier-']
+      enforceJsdocLineStyle = "multi",
+      lineOrBlockStyle = "both",
     } = context.options[0] ?? {};
 
     let reportingNonJsdoc = false;
@@ -69,13 +73,13 @@ export default {
           column: 0,
           /* c8 ignore next 2 -- Guard */
           // @ts-expect-error Ok
-          line: (comment.loc?.start?.line ?? 1),
+          line: comment.loc?.start?.line ?? 1,
         },
         start: {
           column: 0,
           /* c8 ignore next 2 -- Guard */
           // @ts-expect-error Ok
-          line: (comment.loc?.start?.line ?? 1)
+          line: comment.loc?.start?.line ?? 1,
         },
       };
 
@@ -100,37 +104,35 @@ export default {
     const getFixer = (node, comment, addComment, ctxts) => {
       return /** @type {import('eslint').Rule.ReportFixer} */ (fixer) => {
         // Default to one line break if the `minLines`/`maxLines` settings allow
-        const lines = settings.minLines === 0 && settings.maxLines >= 1 ? 1 : settings.minLines;
-        let baseNode =
-          /**
-           * @type {import('@typescript-eslint/types').TSESTree.Node|import('eslint').Rule.Node}
-           */ (
-            getReducedASTNode(node, sourceCode)
-          );
+        const lines =
+          settings.minLines === 0 && settings.maxLines >= 1
+            ? 1
+            : settings.minLines;
+        let baseNode = /**
+         * @type {import('@typescript-eslint/types').TSESTree.Node|import('eslint').Rule.Node}
+         */ (getReducedASTNode(node, sourceCode));
 
         const decorator = getDecorator(
           /** @type {import('eslint').Rule.Node} */
-          (baseNode)
+          (baseNode),
         );
         if (decorator) {
-          baseNode = /** @type {import('@typescript-eslint/types').TSESTree.Decorator} */ (
-            decorator
-          );
+          baseNode =
+            /** @type {import('@typescript-eslint/types').TSESTree.Decorator} */ (
+              decorator
+            );
         }
 
         const indent = getIndent({
           text: sourceCode.getText(
             /** @type {import('eslint').Rule.Node} */ (baseNode),
             /** @type {import('eslint').AST.SourceLocation} */
-            (
-              /** @type {import('eslint').Rule.Node} */ (baseNode).loc
-            ).start.column,
+            (/** @type {import('eslint').Rule.Node} */ (baseNode).loc).start
+              .column,
           ),
         });
 
-        const {
-          inlineCommentBlock,
-        } =
+        const { inlineCommentBlock } =
           /**
            * @type {{
            *     context: string,
@@ -138,13 +140,11 @@ export default {
            *     minLineCount: import('../iterateJsdoc.js').Integer
            *   }[]}
            */ (ctxts).find((contxt) => {
-            if (typeof contxt === 'string') {
+            if (typeof contxt === "string") {
               return false;
             }
 
-            const {
-              context: ctxt,
-            } = contxt;
+            const { context: ctxt } = contxt;
             return ctxt === node.type;
           }) || {};
 
@@ -165,19 +165,21 @@ export default {
     const reportings = (comment, node, addComment, ctxts) => {
       const fixer = getFixer(node, comment, addComment, ctxts);
 
-      if (comment.type === 'Block') {
-        if (lineOrBlockStyle === 'line') {
+      if (comment.type === "Block") {
+        if (lineOrBlockStyle === "line") {
           return;
         }
-        report('blockCommentsJsdocStyle', comment, node, fixer);
+
+        report("blockCommentsJsdocStyle", comment, node, fixer);
         return;
       }
 
-      if (comment.type === 'Line') {
-        if (lineOrBlockStyle === 'block') {
+      if (comment.type === "Line") {
+        if (lineOrBlockStyle === "block") {
           return;
         }
-        report('lineCommentsJsdocStyle', comment, node, fixer);
+
+        report("lineCommentsJsdocStyle", comment, node, fixer);
       }
     };
 
@@ -199,18 +201,19 @@ export default {
 
       reportingNonJsdoc = true;
 
+      /* eslint-disable unicorn/consistent-function-scoping */
       /** @type {AddComment} */
-      const addComment = (inlineCommentBlock, comment, indent, lines, fixer) => {
-        const insertion = (
-          inlineCommentBlock || enforceJsdocLineStyle === 'single'
-            ? `/** ${comment.value.trim()} `
-            : `/**\n${indent}*${comment.value.trimEnd()}\n${indent}`
-        ) +
-            `*/${'\n'.repeat((lines || 1) - 1)}`;
+      const addComment = (inlineCommentBlock, cmmnt, indent, lines, fixer) => {
+        /* eslint-enable unicorn/consistent-function-scoping */
+        const insertion =
+          (inlineCommentBlock || enforceJsdocLineStyle === "single"
+            ? `/** ${cmmnt.value.trim()} `
+            : `/**\n${indent}*${cmmnt.value.trimEnd()}\n${indent}`) +
+          `*/${"\n".repeat((lines || 1) - 1)}`;
 
         return fixer.replaceText(
           /** @type {import('eslint').AST.Token} */
-          (comment),
+          (cmmnt),
           insertion,
         );
       };
@@ -227,7 +230,7 @@ export default {
 
       if (
         !comment ||
-        comment.value.startsWith('*') ||
+        comment.value.startsWith("*") ||
         /** @type {string[]} */
         (allowedPrefixes).some((prefix) => {
           return comment.value.trimStart().startsWith(prefix);
@@ -237,24 +240,32 @@ export default {
       }
 
       /** @type {AddComment} */
-      const addComment = (inlineCommentBlock, comment, indent, lines, fixer) => {
-        const insertion = (
-          inlineCommentBlock || enforceJsdocLineStyle === 'single'
-            ? `/** ${comment.value.trim()} `
-            : `/**\n${indent}*${comment.value.trimEnd()}\n${indent}`
-        ) +
-            `*/${'\n'.repeat((lines || 1) - 1)}${lines ? `\n${indent.slice(1)}` : ' '}`;
+      const addCommentAfter = (
+        inlineCommentBlock,
+        cmmnt,
+        indent,
+        lines,
+        fixer,
+      ) => {
+        const insertion =
+          (inlineCommentBlock || enforceJsdocLineStyle === "single"
+            ? `/** ${cmmnt.value.trim()} `
+            : `/**\n${indent}*${cmmnt.value.trimEnd()}\n${indent}`) +
+          `*/${"\n".repeat((lines || 1) - 1)}${lines ? `\n${indent.slice(1)}` : " "}`;
 
-        return [fixer.remove(
-          /** @type {import('eslint').AST.Token} */
-          (comment)
-        ), fixer.insertTextBefore(
-          node.type === 'VariableDeclarator' ? node.parent : node,
-          insertion,
-        )];
+        return [
+          fixer.remove(
+            /** @type {import('eslint').AST.Token} */
+            (cmmnt),
+          ),
+          fixer.insertTextBefore(
+            node.type === "VariableDeclarator" ? node.parent : node,
+            insertion,
+          ),
+        ];
       };
 
-      reportings(comment, node, addComment, ctxts);
+      reportings(comment, node, addCommentAfter, ctxts);
     };
 
     // Todo: add contexts to check after (and handle if want both before and after)
@@ -263,126 +274,121 @@ export default {
         enforcedContexts(context, true, settings),
         checkNonJsdoc,
       ),
-      ...getContextObject(
-        contextsAfter,
-        (_info, _handler, node) => {
-          checkNonJsdocAfter(node, contextsAfter);
-        },
-      ),
-      ...getContextObject(
-        contextsBeforeAndAfter,
-        (_info, _handler, node) => {
-          checkNonJsdoc({}, null, node);
-          if (!reportingNonJsdoc) {
-            checkNonJsdocAfter(node, contextsBeforeAndAfter);
-          }
+      ...getContextObject(contextsAfter, (_info, _handler, node) => {
+        checkNonJsdocAfter(node, contextsAfter);
+      }),
+      ...getContextObject(contextsBeforeAndAfter, (_info, _handler, node) => {
+        checkNonJsdoc({}, null, node);
+        if (!reportingNonJsdoc) {
+          checkNonJsdocAfter(node, contextsBeforeAndAfter);
         }
-      )
+      }),
     };
   },
   meta: {
-    fixable: 'code',
-
-    messages: {
-      blockCommentsJsdocStyle: 'Block comments should be JSDoc-style.',
-      lineCommentsJsdocStyle: 'Line comments should be JSDoc-style.',
+    docs: {
+      description:
+        "Converts non-JSDoc comments preceding or following nodes into JSDoc ones",
+      url: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/convert-to-jsdoc-comments.md#repos-sticky-header",
     },
 
-    docs: {
-      description: 'Converts non-JSDoc comments preceding or following nodes into JSDoc ones',
-      url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/convert-to-jsdoc-comments.md#repos-sticky-header',
+    fixable: "code",
+
+    messages: {
+      blockCommentsJsdocStyle: "Block comments should be JSDoc-style.",
+      lineCommentsJsdocStyle: "Line comments should be JSDoc-style.",
     },
     schema: [
       {
         additionalProperties: false,
         properties: {
           allowedPrefixes: {
-            type: 'array',
             items: {
-              type: 'string'
-            }
+              type: "string",
+            },
+            type: "array",
           },
           contexts: {
             items: {
               anyOf: [
                 {
-                  type: 'string',
+                  type: "string",
                 },
                 {
                   additionalProperties: false,
                   properties: {
                     context: {
-                      type: 'string',
+                      type: "string",
                     },
                     inlineCommentBlock: {
-                      type: 'boolean',
+                      type: "boolean",
                     },
                   },
-                  type: 'object',
+                  type: "object",
                 },
               ],
             },
-            type: 'array',
+            type: "array",
           },
           contextsAfter: {
             items: {
               anyOf: [
                 {
-                  type: 'string',
+                  type: "string",
                 },
                 {
                   additionalProperties: false,
                   properties: {
                     context: {
-                      type: 'string',
+                      type: "string",
                     },
                     inlineCommentBlock: {
-                      type: 'boolean',
+                      type: "boolean",
                     },
                   },
-                  type: 'object',
+                  type: "object",
                 },
               ],
             },
-            type: 'array',
+            type: "array",
           },
           contextsBeforeAndAfter: {
             items: {
               anyOf: [
                 {
-                  type: 'string',
+                  type: "string",
                 },
                 {
                   additionalProperties: false,
                   properties: {
                     context: {
-                      type: 'string',
+                      type: "string",
                     },
                     inlineCommentBlock: {
-                      type: 'boolean',
+                      type: "boolean",
                     },
                   },
-                  type: 'object',
+                  type: "object",
                 },
               ],
             },
-            type: 'array',
+            type: "array",
           },
           enableFixer: {
-            type: 'boolean'
+            type: "boolean",
           },
           enforceJsdocLineStyle: {
-            type: 'string',
-            enum: ['multi', 'single']
+            enum: ["multi", "single"],
+            type: "string",
           },
           lineOrBlockStyle: {
-            type: 'string',
-            enum: ['block', 'line', 'both']
+            enum: ["block", "line", "both"],
+            type: "string",
           },
         },
-        type: 'object',
+        type: "object",
       },
     ],
-    type: 'suggestion',
+    type: "suggestion",
   },
 };

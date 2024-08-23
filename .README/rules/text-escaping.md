@@ -29,13 +29,13 @@ Defaults to `false`.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|``|
-|Recommended|false|
-|Settings||
-|Options|`escapeHTML`, `escapeMarkdown`|
+|             |                                |
+| ----------- | ------------------------------ |
+| Context     | everywhere                     |
+| Tags        | ``                             |
+| Recommended | false                          |
+| Settings    |                                |
+| Options     | `escapeHTML`, `escapeMarkdown` |
 
 ## Failing examples
 

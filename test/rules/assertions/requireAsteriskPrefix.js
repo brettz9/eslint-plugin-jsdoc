@@ -13,7 +13,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       output: `
@@ -39,15 +39,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       options: [
-        'any', {
+        "any",
+        {
           tags: {
-            always: [
-              'param',
-            ],
+            always: ["param"],
           },
         },
       ],
@@ -75,7 +74,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       output: `
@@ -103,7 +102,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       output: `
@@ -131,12 +130,10 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have no prefix.',
+          message: "Expected JSDoc line to have no prefix.",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
 
         /**
@@ -161,15 +158,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            any: [
-              'someOtherTag',
-            ],
+            any: ["someOtherTag"],
           },
         },
       ],
@@ -196,15 +192,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have no prefix.',
+          message: "Expected JSDoc line to have no prefix.",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            always: [
-              'someOtherTag',
-            ],
+            always: ["someOtherTag"],
           },
         },
       ],
@@ -231,15 +226,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have no prefix.',
+          message: "Expected JSDoc line to have no prefix.",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            never: [
-              'param',
-            ],
+            never: ["param"],
           },
         },
       ],
@@ -266,15 +260,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            always: [
-              'param',
-            ],
+            always: ["param"],
           },
         },
       ],
@@ -299,7 +292,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc line to have the prefix.',
+          message: "Expected JSDoc line to have the prefix.",
         },
       ],
       output: `
@@ -323,12 +316,10 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc line to have no prefix.',
+          message: "Expected JSDoc line to have no prefix.",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
 
         /**
@@ -350,12 +341,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc line to have no prefix.',
+          message: "Expected JSDoc line to have no prefix.",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
         /**
           @param {Number} foo
@@ -422,11 +411,10 @@ export default {
         }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            any: [
-              'param',
-            ],
+            any: ["param"],
           },
         },
       ],
@@ -442,11 +430,10 @@ export default {
         }
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            always: [
-              'param',
-            ],
+            always: ["param"],
           },
         },
       ],
@@ -462,11 +449,10 @@ export default {
         }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            never: [
-              'someOtherTag',
-            ],
+            never: ["someOtherTag"],
           },
         },
       ],
@@ -482,11 +468,10 @@ export default {
         }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            never: [
-              'param',
-            ],
+            never: ["param"],
           },
         },
       ],
@@ -502,11 +487,10 @@ export default {
         }
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            always: [
-              'someOtherTag',
-            ],
+            always: ["someOtherTag"],
           },
         },
       ],
@@ -523,11 +507,10 @@ export default {
         }
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
-            any: [
-              '*description',
-            ],
+            any: ["*description"],
           },
         },
       ],
@@ -544,11 +527,10 @@ export default {
         }
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
-            any: [
-              '*description',
-            ],
+            any: ["*description"],
           },
         },
       ],
@@ -564,11 +546,10 @@ export default {
         }
       `,
       options: [
-        'any', {
+        "any",
+        {
           tags: {
-            always: [
-              'someOtherTag',
-            ],
+            always: ["someOtherTag"],
           },
         },
       ],

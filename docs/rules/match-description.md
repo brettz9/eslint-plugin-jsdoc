@@ -1,18 +1,18 @@
 <a name="user-content-match-description"></a>
 <a name="match-description"></a>
+
 # <code>match-description</code>
 
-* [Options](#user-content-match-description-options)
-    * [`matchDescription`](#user-content-match-description-options-matchdescription)
-    * [`message`](#user-content-match-description-options-message)
-    * [`nonemptyTags`](#user-content-match-description-options-nonemptytags)
-    * [`tags`](#user-content-match-description-options-tags)
-    * [`mainDescription`](#user-content-match-description-options-maindescription)
-    * [`contexts`](#user-content-match-description-options-contexts)
-* [Context and settings](#user-content-match-description-context-and-settings)
-* [Failing examples](#user-content-match-description-failing-examples)
-* [Passing examples](#user-content-match-description-passing-examples)
-
+- [Options](#user-content-match-description-options)
+  - [`matchDescription`](#user-content-match-description-options-matchdescription)
+  - [`message`](#user-content-match-description-options-message)
+  - [`nonemptyTags`](#user-content-match-description-options-nonemptytags)
+  - [`tags`](#user-content-match-description-options-tags)
+  - [`mainDescription`](#user-content-match-description-options-maindescription)
+  - [`contexts`](#user-content-match-description-options-contexts)
+- [Context and settings](#user-content-match-description-context-and-settings)
+- [Failing examples](#user-content-match-description-failing-examples)
+- [Passing examples](#user-content-match-description-passing-examples)
 
 Enforces a regular expression pattern on descriptions.
 
@@ -38,7 +38,7 @@ literal, e.g., `/[A-Z].*\\./ui`.
 Note that `/` delimiters are optional, but necessary to add flags (besides
 `u`).
 
-Also note that the default or optional regular expressions is *not*
+Also note that the default or optional regular expressions is _not_
 case-insensitive unless one opts in to add the `i` flag.
 
 You can add the `s` flag if you want `.` to match newlines. Note, however,
@@ -46,10 +46,12 @@ that the trailing newlines of a description will not be matched.
 
 <a name="user-content-match-description-options"></a>
 <a name="match-description-options"></a>
+
 ## Options
 
 <a name="user-content-match-description-options-matchdescription"></a>
 <a name="match-description-options-matchdescription"></a>
+
 ### <code>matchDescription</code>
 
 You can supply your own expression to override the default, passing a
@@ -63,6 +65,7 @@ You can supply your own expression to override the default, passing a
 
 <a name="user-content-match-description-options-message"></a>
 <a name="match-description-options-message"></a>
+
 ### <code>message</code>
 
 You may provide a custom default message by using the following format:
@@ -80,6 +83,7 @@ This can be overridden per tag or for the main block description by setting
 
 <a name="user-content-match-description-options-nonemptytags"></a>
 <a name="match-description-options-nonemptytags"></a>
+
 ### <code>nonemptyTags</code>
 
 If not set to `false`, will enforce that the following tags have at least
@@ -95,6 +99,7 @@ your description will take precedence.
 
 <a name="user-content-match-description-options-tags"></a>
 <a name="match-description-options-tags"></a>
+
 ### <code>tags</code>
 
 If you want different regular expressions to apply to tags, you may use
@@ -145,6 +150,7 @@ is `xyz`).
 
 <a name="user-content-match-description-options-maindescription"></a>
 <a name="match-description-options-maindescription"></a>
+
 ### <code>mainDescription</code>
 
 If you wish to override the main block description without changing the
@@ -186,6 +192,7 @@ You may also provide an object with `message`:
 
 <a name="user-content-match-description-options-contexts"></a>
 <a name="match-description-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -199,39 +206,37 @@ section of our README for more on the expected format.
 
 <a name="user-content-match-description-context-and-settings"></a>
 <a name="match-description-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|docblock and `@description` by default but more with `tags`|
-|Aliases|`@desc`|
-|Recommended|false|
-|Settings||
-|Options|`contexts`, `mainDescription`, `matchDescription`, `message`, `nonemptyTags`, `tags`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | docblock and `@description` by default but more with `tags`                                                   |
+| Aliases     | `@desc`                                                                                                       |
+| Recommended | false                                                                                                         |
+| Settings    |                                                                                                               |
+| Options     | `contexts`, `mainDescription`, `matchDescription`, `message`, `nonemptyTags`, `tags`                          |
 
 <a name="user-content-match-description-failing-examples"></a>
 <a name="match-description-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * foo.
  */
-const q = class {
-
-}
+const q = class {};
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["ClassExpression"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * foo.
  */
-const q = class {
-
-}
+const q = class {};
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["ClassExpression"],"message":"Needs to begin with a capital letter and end with an end mark."}]
 // Message: Needs to begin with a capital letter and end with an end mark.
 
@@ -244,70 +249,54 @@ const q = class {
 /**
  * foo.
  */
-const q = {
-
-};
+const q = {};
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["ObjectExpression"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * Foo)
  */
-function quux () {
-
-}
+function quux() {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"matchDescription":"[А-Я][А-я]+\\."}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"matchDescription":"[А-Я][А-я]+\\.","message":"Needs to begin with a capital letter and end with an end mark."}]
 // Message: Needs to begin with a capital letter and end with an end mark.
 
 /**
  * Abc.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":"[А-Я][А-я]+\\.","tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * Abc.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":{"match":"[А-Я][А-я]+\\.","message":"Needs to begin with a Cyrillic capital letter and end with a period."},"tags":{"param":true}}]
 // Message: Needs to begin with a Cyrillic capital letter and end with a period.
 
 /**
  * Foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
@@ -315,9 +304,7 @@ function quux () {
  *
  * @param foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -326,9 +313,7 @@ function quux (foo) {
  *
  * @template Abc, Def foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"template":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -337,9 +322,7 @@ function quux (foo) {
  *
  * @prop foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"prop":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -348,9 +331,7 @@ function quux (foo) {
  *
  * @summary foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
@@ -358,9 +339,7 @@ function quux () {
  *
  * @author
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"author":".+"}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -369,9 +348,7 @@ function quux () {
  *
  * @x-tag
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"x-tag":".+"}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -380,9 +357,7 @@ function quux () {
  *
  * @description foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
@@ -390,9 +365,7 @@ function quux (foo) {
  *
  * @param foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":"^[a-zA-Z]*\\s*$","tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -401,9 +374,7 @@ function quux (foo) {
  *
  * @param foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":{"match":"^[a-zA-Z]*\\s*$","message":"Letters only"},"tags":{"param":{"match":true,"message":"Needs to begin with a capital letter and end with a period."}}}]
 // Message: Needs to begin with a capital letter and end with a period.
 
@@ -412,9 +383,7 @@ function quux (foo) {
  *
  * @param foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":false,"tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -423,18 +392,14 @@ function quux (foo) {
  *
  * @param foo bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * {@see Foo.bar} buz
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
@@ -442,9 +407,7 @@ function quux (foo) {
  *
  * @returns {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"returns":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -453,9 +416,7 @@ function quux (foo) {
  *
  * @returns foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"returns":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -467,35 +428,27 @@ function quux (foo) {
  * proin ut nulla at quam convallis gravida in id elit. sed dolor mauris, blandit quis ante at,
  * consequat auctor magna. duis pharetra purus in porttitor mollis.
  */
-function longDescription (foo) {
-
-}
+function longDescription(foo) {}
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * @arg {number} foo - Foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"arg":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * @argument {number} foo - Foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"argument":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * @return {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"return":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -504,9 +457,7 @@ function quux (foo) {
  *
  * @return {number} bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"return":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -514,9 +465,7 @@ function quux (foo) {
  * @param notRet
  * @returns Тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":"[А-Я][А-я]+\\."}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -524,18 +473,14 @@ function quux () {
  * @description notRet
  * @returns Тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"description":"[А-Я][А-я]+\\."}}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
 /**
  * foo.
  */
-class quux {
-
-}
+class quux {}
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["ClassDeclaration"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -543,7 +488,7 @@ class MyClass {
   /**
    * Abc
    */
-  myClassField = 1
+  myClassField = 1;
 }
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["PropertyDefinition"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
@@ -551,9 +496,7 @@ class MyClass {
 /**
  * foo.
  */
-interface quux {
-
-}
+interface quux {}
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["TSInterfaceDeclaration"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -561,7 +504,7 @@ const myObject = {
   /**
    * Bad description
    */
-  myProp: true
+  myProp: true,
 };
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["Property"]}]
 // Message: JSDoc description does not satisfy the regex pattern.
@@ -569,9 +512,7 @@ const myObject = {
 /**
  * @param foo Foo bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"description":false}}}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":true}}]
 // Message: JSDoc description does not satisfy the regex pattern.
@@ -579,9 +520,7 @@ function quux (foo) {
 /**
  * Foo bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"description":false}}}
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -589,9 +528,7 @@ function quux (foo) {
  * Description with extra new line
  *
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"matchDescription":"[\\s\\S]*\\S$"}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -599,9 +536,7 @@ function quux () {
  *
  * This function does lots of things.
  */
- function quux () {
-
- }
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"matchDescription":"^\\S[\\s\\S]*\\S$"}]
 // Message: JSDoc description does not satisfy the regex pattern.
 
@@ -620,20 +555,18 @@ function foo(): string;
 /**
  * @copyright
  */
-function quux () {
-}
+function quux() {}
 // Message: JSDoc description must not be empty.
-````
-
-
+```
 
 <a name="user-content-match-description-passing-examples"></a>
 <a name="match-description-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
@@ -641,144 +574,108 @@ The following patterns are not considered problems:
 /**
  *
  */
- function quux () {
-
- }
+function quux() {}
 
 /**
  * @param foo - Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":true}}]
 
 /**
  * Foo.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo.
  * Bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo.
  *
  * Bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo.
  *
  * Bar.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"message":"This won't be shown"}]
 
 /**
  * Тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"matchDescription":"[А-Я][А-я]+\\."}]
 
 /**
  * @param notRet
  * @returns Тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"returns":"[А-Я][А-я]+\\."}}]
 
 /**
  * @param notRet
  * @description Тест.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"description":"[А-Я][А-я]+\\."}}]
 
 /**
  * Foo
  * bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns Foo bar.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"returns":true}}]
 
 /**
  * @returns {type1} Foo bar.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"returns":true}}]
 
 /**
  * @description Foo bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @description Foo
  * bar.
  * @param
  */
-function quux () {
-
-}
+function quux() {}
 
 /** @description Foo bar. */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @description Foo
  * bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo. {@see Math.sin}.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo {@see Math.sin} bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo?
@@ -789,111 +686,87 @@ function quux () {
  *   1. Foo.
  *   2. Bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Hello:
  * World.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Hello: world.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo
  * Bar.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo.
  *
  * foo.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":false}]
 
 /**
  * foo.
  */
-class quux {
-
-}
+class quux {}
 
 /**
  * foo.
  */
-class quux {
-
-}
+class quux {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":true}]
 
 class MyClass {
   /**
    * Abc.
    */
-  myClassField = 1
+  myClassField = 1;
 }
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["PropertyDefinition"]}]
 
 /**
  * Foo.
  */
-interface quux {
-
-}
+interface quux {}
 // "jsdoc/match-description": ["error"|"warn", {"contexts":["TSInterfaceDeclaration"]}]
 
 const myObject = {
   /**
    * Bad description
    */
-  myProp: true
+  myProp: true,
 };
 // "jsdoc/match-description": ["error"|"warn", {"contexts":[]}]
 
 /**
  * foo.
  */
-const q = class {
-
-}
+const q = class {};
 // "jsdoc/match-description": ["error"|"warn", {"contexts":[]}]
 
 /**
  * foo.
  */
-const q = {
-
-};
+const q = {};
 // "jsdoc/match-description": ["error"|"warn", {"contexts":[]}]
 
 /**
  * @deprecated foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"param":true}}]
 
 /**
@@ -901,18 +774,14 @@ function quux () {
  *
  * @summary Foo.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * Foo.
  *
  * @author Somebody
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"author":".+"}}]
 
 /**
@@ -920,9 +789,7 @@ function quux () {
  *
  * @x-tag something
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"x-tag":".+"}}]
 
 /**
@@ -930,25 +797,19 @@ function quux () {
  *
  * @prop foo Foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"prop":true}}]
 
 /**
  * @param foo Foo bar.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"description":false}}}
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"description":false}}}
 
 /**
@@ -956,9 +817,7 @@ function quux () {
  *
  * @template Abc, Def Foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/match-description": ["error"|"warn", {"tags":{"template":true}}]
 
 /**
@@ -976,8 +835,7 @@ function quux (foo) {
  * @constructor
  * @todo Ok.
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"mainDescription":false,"tags":{"todo":true}}]
 
 /** Does something very important. */
@@ -995,8 +853,6 @@ function foo(): void;
 /**
  * @copyright
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/match-description": ["error"|"warn", {"nonemptyTags":false}]
-````
-
+```

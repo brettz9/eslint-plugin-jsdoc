@@ -1,32 +1,34 @@
 <a name="user-content-require-property-type"></a>
 <a name="require-property-type"></a>
+
 # <code>require-property-type</code>
 
-* [Context and settings](#user-content-require-property-type-context-and-settings)
-* [Failing examples](#user-content-require-property-type-failing-examples)
-* [Passing examples](#user-content-require-property-type-passing-examples)
-
+- [Context and settings](#user-content-require-property-type-context-and-settings)
+- [Failing examples](#user-content-require-property-type-failing-examples)
+- [Passing examples](#user-content-require-property-type-passing-examples)
 
 Requires that each `@property` tag has a type value (within curly brackets).
 
 <a name="user-content-require-property-type-context-and-settings"></a>
 <a name="require-property-type-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`property`|
-|Aliases|`prop`|
-|Recommended|true|
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | `property` |
+| Aliases     | `prop`     |
+| Recommended | true       |
 
 <a name="user-content-require-property-type-failing-examples"></a>
 <a name="require-property-type-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @typedef {SomeType} SomeTypedef
  * @property foo
@@ -46,17 +48,16 @@ The following patterns are considered problems:
  */
 // Settings: {"jsdoc":{"tagNamePreference":{"property":false}}}
 // Message: Unexpected tag `@property`
-````
-
-
+```
 
 <a name="user-content-require-property-type-passing-examples"></a>
 <a name="require-property-type-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @typedef {SomeType} SomeTypedef
  */
@@ -75,5 +76,4 @@ The following patterns are not considered problems:
  * @class
  * @property {number} foo
  */
-````
-
+```

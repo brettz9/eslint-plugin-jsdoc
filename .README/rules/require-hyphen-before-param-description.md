@@ -29,13 +29,13 @@ other tags besides the `@param` tag (or the `@arg` tag if so set):
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`param` and optionally other tags within `tags`|
-|Aliases|`arg`, `argument`; potentially `prop` or other aliases|
-|Recommended|false|
-|Options|string ("always", "never") followed by object with `tags`|
+|             |                                                           |
+| ----------- | --------------------------------------------------------- |
+| Context     | everywhere                                                |
+| Tags        | `param` and optionally other tags within `tags`           |
+| Aliases     | `arg`, `argument`; potentially `prop` or other aliases    |
+| Recommended | false                                                     |
+| Options     | string ("always", "never") followed by object with `tags` |
 
 ## Failing examples
 

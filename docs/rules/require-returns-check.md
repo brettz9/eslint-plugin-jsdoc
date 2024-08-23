@@ -1,12 +1,12 @@
 <a name="user-content-require-returns-check"></a>
 <a name="require-returns-check"></a>
+
 # <code>require-returns-check</code>
 
-* [Options](#user-content-require-returns-check-options)
-* [Context and settings](#user-content-require-returns-check-context-and-settings)
-* [Failing examples](#user-content-require-returns-check-failing-examples)
-* [Passing examples](#user-content-require-returns-check-passing-examples)
-
+- [Options](#user-content-require-returns-check-options)
+- [Context and settings](#user-content-require-returns-check-context-and-settings)
+- [Failing examples](#user-content-require-returns-check-failing-examples)
+- [Passing examples](#user-content-require-returns-check-passing-examples)
 
 Requires a return statement (or non-`undefined` Promise resolve value)
 be present in a
@@ -21,6 +21,7 @@ Will also report if multiple `@returns` tags are present.
 
 <a name="user-content-require-returns-check-options"></a>
 <a name="require-returns-check-options"></a>
+
 ## Options
 
 - `exemptGenerators`- Because a generator might be labeled as having a
@@ -31,68 +32,65 @@ Will also report if multiple `@returns` tags are present.
   one might be more likely to take advantage of `@yields`). Set it to `false`
   if you wish for a missing `return` to be flagged regardless.
 - `exemptAsync` - By default, functions which return a `Promise` that are not
-    detected as resolving with a non-`undefined` value and `async` functions
-    (even ones that do not explicitly return a value, as these are returning a
-    `Promise` implicitly) will be exempted from reporting by this rule.
-    If you wish to insist that only `Promise`'s which resolve to
-    non-`undefined` values or `async` functions with explicit `return`'s will
-    be exempted from reporting (i.e., that `async` functions can be reported
-    if they lack an explicit (non-`undefined`) `return` when a `@returns` is
-    present), you can set `exemptAsync` to `false` on the options object.
+  detected as resolving with a non-`undefined` value and `async` functions
+  (even ones that do not explicitly return a value, as these are returning a
+  `Promise` implicitly) will be exempted from reporting by this rule.
+  If you wish to insist that only `Promise`'s which resolve to
+  non-`undefined` values or `async` functions with explicit `return`'s will
+  be exempted from reporting (i.e., that `async` functions can be reported
+  if they lack an explicit (non-`undefined`) `return` when a `@returns` is
+  present), you can set `exemptAsync` to `false` on the options object.
 - `reportMissingReturnForUndefinedTypes` - If `true` and no return or
-    resolve value is found, this setting will even insist that reporting occur
-    with `void` or `undefined` (including as an indicated `Promise` type).
-    Unlike `require-returns`, with this option in the rule, one can
-     *discourage* the labeling of `undefined` types. Defaults to `false`.
+  resolve value is found, this setting will even insist that reporting occur
+  with `void` or `undefined` (including as an indicated `Promise` type).
+  Unlike `require-returns`, with this option in the rule, one can
+  _discourage_ the labeling of `undefined` types. Defaults to `false`.
 
 <a name="user-content-require-returns-check-context-and-settings"></a>
 <a name="require-returns-check-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
-|Tags|`returns`|
-|Aliases|`return`|
-|Options|`exemptAsync`, `exemptGenerators`, `reportMissingReturnForUndefinedTypes`|
-|Recommended|true|
+|             |                                                                           |
+| ----------- | ------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`    |
+| Tags        | `returns`                                                                 |
+| Aliases     | `return`                                                                  |
+| Options     | `exemptAsync`, `exemptGenerators`, `reportMissingReturnForUndefinedTypes` |
+| Recommended | true                                                                      |
 
 <a name="user-content-require-returns-check-failing-examples"></a>
 <a name="require-returns-check-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @returns
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @return
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":"return"}}}
 // Message: JSDoc @return declaration present but return expression not available in function.
 
 /**
  * @returns
  */
-const quux = () => {}
+const quux = () => {};
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns {undefined} Foo.
  * @returns {String} Foo.
  */
-function quux () {
-
+function quux() {
   return foo;
 }
 // Message: Found more than one @returns declaration.
@@ -104,39 +102,36 @@ const language = {
    */
   get name() {
     this._name = name;
-  }
-}
+  },
+};
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 class Foo {
   /**
    * @returns {string}
    */
-  bar () {
-  }
+  bar() {}
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":false}}}
 // Message: Unexpected tag `@returns`
 
 /**
  * @returns {string}
  */
-function f () {
+function f() {
   function g() {
-    return 'foo'
+    return "foo";
   }
 
   () => {
-    return 5
-  }
+    return 5;
+  };
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
@@ -150,14 +145,14 @@ async function quux() {}
 /**
  * @returns {IterableIterator<any>}
  */
-function * quux() {}
+function* quux() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns {IterableIterator<any>}
  */
-function * quux() {}
+function* quux() {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptGenerators":false}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -166,7 +161,7 @@ function * quux() {}
  * @returns {Promise<void>}
  */
 function quux() {
-  return new Promise((resolve, reject) => {})
+  return new Promise((resolve, reject) => {});
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptAsync":false}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -179,7 +174,7 @@ function quux() {
     setTimeout(() => {
       resolve();
     });
-  })
+  });
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptAsync":false}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -189,7 +184,7 @@ function quux() {
  * @returns {string}
  */
 async function foo() {
-  return new Promise(resolve => resolve());
+  return new Promise((resolve) => resolve());
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptAsync":false}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -199,7 +194,7 @@ async function foo() {
  * @returns {void}
  */
 async function foo() {
-  return new Promise(resolve => resolve());
+  return new Promise((resolve) => resolve());
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptAsync":false,"reportMissingReturnForUndefinedTypes":true}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -207,14 +202,14 @@ async function foo() {
 /**
  * @returns { void } Foo.
  */
-function quux () {}
+function quux() {}
 // "jsdoc/require-returns-check": ["error"|"warn", {"reportMissingReturnForUndefinedTypes":true}]
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns {never} Foo.
  */
-function quux () {
+function quux() {
   return undefined;
 }
 // Message: JSDoc @returns declaration set with "never" but return expression is present in function.
@@ -222,7 +217,7 @@ function quux () {
 /**
  * @returns {never}
  */
-function quux (foo) {
+function quux(foo) {
   return foo;
 }
 // Message: JSDoc @returns declaration set with "never" but return expression is present in function.
@@ -252,12 +247,12 @@ export function readFixture(path: string);
 /**
  * @returns {SomeType}
  */
-function quux (path) {
+function quux(path) {
   if (true) {
     return;
   }
   return 15;
-};
+}
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
@@ -270,13 +265,13 @@ function quux (path) {
  */
 export function readFixture(path: string): void {
   return;
-};
+}
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
     return true;
   }
@@ -286,7 +281,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
   } else {
     return;
@@ -297,12 +292,12 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux (someVar) {
+function quux(someVar) {
   switch (someVar) {
-  case 1:
-    return true;
-  case 2:
-    return;
+    case 1:
+      return true;
+    case 2:
+      return;
   }
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
@@ -320,18 +315,17 @@ const quux = (someVar) => {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
     return true;
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
     return true;
   } catch (error) {
@@ -345,12 +339,12 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
-    throw new Error('abc');
+    throw new Error("abc");
   }
 
-  throw new Error('def');
+  throw new Error("def");
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
@@ -358,14 +352,15 @@ function quux () {
  * @returns {SomeType} Baz.
  */
 function foo() {
-    switch (true) {
+  switch (true) {
+    default:
+      switch (false) {
         default:
-            switch (false) {
-                default: return;
-            }
-            return "baz";
-    }
-};
+          return;
+      }
+      return "baz";
+  }
+}
 // Message: JSDoc @returns declaration present but return expression not available in function.
 
 /**
@@ -381,38 +376,34 @@ function foo() {
   }
 }
 // Message: JSDoc @returns declaration present but return expression not available in function.
-````
-
-
+```
 
 <a name="user-content-require-returns-check-passing-examples"></a>
 <a name="require-returns-check-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @returns Foo.
  */
-function quux () {
-
+function quux() {
   return foo;
 }
 
 /**
  * @returns {string} Foo.
  */
-function quux () {
-
+function quux() {
   return foo;
 }
 
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {SomeType} Foo.
@@ -422,12 +413,12 @@ const quux = () => foo;
 /**
  * @returns {undefined} Foo.
  */
-function quux () {}
+function quux() {}
 
 /**
  * @returns { void } Foo.
  */
-function quux () {}
+function quux() {}
 
 /**
  * @returns {Promise<void>}
@@ -437,35 +428,34 @@ async function quux() {}
 /**
  * @returns {Promise<void>}
  */
-const quux = async function () {}
+const quux = async function () {};
 
 /**
  * @returns {Promise<void>}
  */
-const quux = async () => {}
+const quux = async () => {};
 
 /**
  * @returns Foo.
  * @abstract
  */
-function quux () {
-  throw new Error('must be implemented by subclass!');
+function quux() {
+  throw new Error("must be implemented by subclass!");
 }
 
 /**
  * @returns Foo.
  * @virtual
  */
-function quux () {
-  throw new Error('must be implemented by subclass!');
+function quux() {
+  throw new Error("must be implemented by subclass!");
 }
 
 /**
  * @returns Foo.
  * @constructor
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @interface
@@ -474,8 +464,7 @@ class Foo {
   /**
    * @returns {string}
    */
-  bar () {
-  }
+  bar() {}
 }
 
 /**
@@ -485,72 +474,67 @@ class Foo {
   /**
    * @returns {string}
    */
-  bar () {
-  }
+  bar() {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @returns {undefined} Foo.
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {void} Foo.
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {void} Foo.
  */
-function quux () {
+function quux() {
   return undefined;
 }
 
 /**
  * @returns {never} Foo.
  */
-function quux () {
-}
+function quux() {}
 
 /**
  * @returns {void} Foo.
  */
-function quux () {
+function quux() {
   return;
 }
 
 /**
  *
  */
-function quux () {
+function quux() {
   return undefined;
 }
 
 /**
  *
  */
-function quux () {
+function quux() {
   return;
 }
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
     return true;
-  } catch (err) {
-  }
+  } catch (err) {}
   return true;
 }
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
   } finally {
     return true;
@@ -561,7 +545,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
     something();
   } catch (err) {
@@ -573,10 +557,10 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   switch (true) {
-  case 'abc':
-    return true;
+    case "abc":
+      return true;
   }
   return true;
 }
@@ -584,7 +568,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   for (const i of abc) {
     return true;
   }
@@ -594,7 +578,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   for (const a in b) {
     return true;
   }
@@ -603,7 +587,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   for (const a of b) {
     return true;
   }
@@ -612,7 +596,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   loop: for (const a of b) {
     return true;
   }
@@ -621,8 +605,8 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
-  for (let i=0; i<n; i+=1) {
+function quux() {
+  for (let i = 0; i < n; i += 1) {
     return true;
   }
 }
@@ -630,26 +614,25 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
-  while(true) {
-    return true
+function quux() {
+  while (true) {
+    return true;
   }
 }
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   do {
-    return true
-  }
-  while(true)
+    return true;
+  } while (true);
 }
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
     return true;
   }
@@ -659,7 +642,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   var a = {};
   with (a) {
     return true;
@@ -669,7 +652,7 @@ function quux () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
     return true;
   } else {
@@ -701,7 +684,7 @@ function quux() {
     setTimeout(() => {
       resolve(true);
     });
-  })
+  });
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptAsync":false}]
 
@@ -710,14 +693,14 @@ function quux() {
  * @returns {void}
  */
 async function foo() {
-  return new Promise(resolve => resolve());
+  return new Promise((resolve) => resolve());
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"reportMissingReturnForUndefinedTypes":true}]
 
 /**
  * @returns { void } Foo.
  */
-function quux () {
+function quux() {
   return undefined;
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"reportMissingReturnForUndefinedTypes":true}]
@@ -725,21 +708,21 @@ function quux () {
 /**
  * @returns { string } Foo.
  */
-function quux () {
-  return 'abc';
+function quux() {
+  return "abc";
 }
 // "jsdoc/require-returns-check": ["error"|"warn", {"reportMissingReturnForUndefinedTypes":true}]
 
 /**
  * @returns {IterableIterator<any>}
  */
-function * quux() {}
+function* quux() {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
 /**
  * @returns {IterableIterator<any>}
  */
-function * quux() {}
+function* quux() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // "jsdoc/require-returns-check": ["error"|"warn", {"exemptGenerators":true}]
 
@@ -748,7 +731,7 @@ function * quux() {}
  * @returns { asserts val is number }
  */
 function assertNumber(val) {
-  assert(typeof val === 'number');
+  assert(typeof val === "number");
 }
 
 /**
@@ -796,19 +779,20 @@ export function readFixture(path: string);
 /**
  * @returns {SomeType}
  */
-function quux (path) {
+function quux(path) {
   if (true) {
     return 5;
   }
   return 15;
-};
+}
 
 /**
  * @returns {SomeType} Foo.
  */
-const quux = () => new Promise((resolve) => {
-  resolve(3);
-});
+const quux = () =>
+  new Promise((resolve) => {
+    resolve(3);
+  });
 
 /**
  * @returns {SomeType} Foo.
@@ -822,26 +806,27 @@ const quux = function () {
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   if (true) {
     return true;
   }
 
-  throw new Error('Fail');
+  throw new Error("Fail");
 }
 
 /**
  * @returns Baz.
  */
 function foo() {
-    switch (true) {
+  switch (true) {
+    default:
+      switch (false) {
         default:
-            switch (false) {
-                default: break;
-            }
-            return "baz";
-    }
-};
+          break;
+      }
+      return "baz";
+  }
+}
 
 /**
  * Return a V1 style query identifier.
@@ -850,16 +835,16 @@ function foo() {
  * @returns {string} V1 style query identifier.
  */
 function v1QueryId(id) {
-    switch (id) {
-        case 'addq':
-        case 'aliq':
-        case 'locq':
-            return id.substring(3);
-        case 'lost':
-            return id.substring(4);
-        default:
-            return id;
-    }
+  switch (id) {
+    case "addq":
+    case "aliq":
+    case "locq":
+      return id.substring(3);
+    case "lost":
+      return id.substring(4);
+    default:
+      return id;
+  }
 }
 
 /**
@@ -871,18 +856,18 @@ function v1QueryId(id) {
  * @returns {object} Object with parsed header fields.
  */
 function parseSipHeaders(logPrefix, sipMessage, headers) {
-    try {
-        return esappSip.parseHeaders(sipMessage, headers);
-    } catch (err) {
-        logger.error(logPrefix, 'Failed to parse');
-        return {};
-    }
+  try {
+    return esappSip.parseHeaders(sipMessage, headers);
+  } catch (err) {
+    logger.error(logPrefix, "Failed to parse");
+    return {};
+  }
 }
 
 /**
  * @returns {true}
  */
-function quux () {
+function quux() {
   try {
   } catch (error) {
   } finally {
@@ -898,7 +883,7 @@ function getTrue() {
   try {
     return true;
   } finally {
-    console.log('returning...');
+    console.log("returning...");
   }
 }
 
@@ -918,13 +903,13 @@ function maybeTrue() {
  */
 const getTSFunctionComment = function (astNode) {
   switch (greatGrandparent.type) {
-  case 'VariableDeclarator':
-    if (greatGreatGrandparent.type === 'VariableDeclaration') {
-      return greatGreatGrandparent;
-    }
+    case "VariableDeclarator":
+      if (greatGreatGrandparent.type === "VariableDeclaration") {
+        return greatGreatGrandparent;
+      }
 
-  default:
-    return astNode;
+    default:
+      return astNode;
   }
 };
 
@@ -953,8 +938,8 @@ export function f(): string {
  * @param {boolean} bar A fun variable.
  * @returns {*} Anything at all!
  */
-function foo( bar ) {
-  if ( bar ) {
+function foo(bar) {
+  if (bar) {
     return functionWithUnknownReturnType();
   }
 }
@@ -963,14 +948,15 @@ function foo( bar ) {
  * @returns Baz.
  */
 function foo() {
-    switch (true) {
+  switch (true) {
+    default:
+      switch (false) {
         default:
-            switch (false) {
-                default: return;
-            }
-            return "baz";
-    }
-};
+          return;
+      }
+      return "baz";
+  }
+}
 
 /**
  * @returns
@@ -1004,5 +990,4 @@ function foo() {
     }
   }
 }
-````
-
+```

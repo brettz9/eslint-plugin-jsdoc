@@ -1,4 +1,4 @@
-import defaultTagOrder from '../../../src/defaultTagOrder.js';
+import defaultTagOrder from "../../../src/defaultTagOrder.js";
 
 const tagList = defaultTagOrder.flatMap((obj) => {
   return obj.tags;
@@ -6,87 +6,55 @@ const tagList = defaultTagOrder.flatMap((obj) => {
 
 const tagSequenceUser = [
   {
-    tags: [
-      'since', 'access',
-    ],
+    tags: ["since", "access"],
   },
   {
-    tags: [
-      'class', 'augments', 'mixes',
-    ],
+    tags: ["class", "augments", "mixes"],
   },
   {
-    tags: [
-      'alias', 'memberof',
-    ],
+    tags: ["alias", "memberof"],
   },
   {
-    tags: [
-      'see', 'link', 'global',
-    ],
+    tags: ["see", "link", "global"],
   },
   {
-    tags: [
-      'fires', 'listens',
-    ],
+    tags: ["fires", "listens"],
   },
   {
-    tags: [
-      'param',
-    ],
+    tags: ["param"],
   },
   {
-    tags: [
-      'yields',
-    ],
+    tags: ["yields"],
   },
   {
-    tags: [
-      'returns',
-    ],
+    tags: ["returns"],
   },
 ];
 
 const tagSequenceUser2 = [
   {
-    tags: [
-      'since', 'access',
-    ],
+    tags: ["since", "access"],
   },
   {
-    tags: [
-      'class', 'augments', 'mixes',
-    ],
+    tags: ["class", "augments", "mixes"],
   },
   {
-    tags: [
-      'alias', 'memberof',
-    ],
+    tags: ["alias", "memberof"],
   },
   {
-    tags: [
-      'see', 'link', 'global',
-    ],
+    tags: ["see", "link", "global"],
   },
   {
-    tags: [
-      'fires', '-other', 'listens',
-    ],
+    tags: ["fires", "-other", "listens"],
   },
   {
-    tags: [
-      'param',
-    ],
+    tags: ["param"],
   },
   {
-    tags: [
-      'yields',
-    ],
+    tags: ["yields"],
   },
   {
-    tags: [
-      'returns',
-    ],
+    tags: ["returns"],
   },
 ];
 
@@ -108,7 +76,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -133,7 +102,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -159,7 +129,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -186,7 +157,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -213,7 +185,8 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -237,7 +210,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -260,7 +234,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       options: [
@@ -289,16 +264,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: def, xyz, abc',
+          message: "Tags are not in the prescribed order: def, xyz, abc",
         },
       ],
       options: [
         {
           tagSequence: [
             {
-              tags: [
-                'def', 'xyz', 'abc',
-              ],
+              tags: ["def", "xyz", "abc"],
             },
           ],
         },
@@ -324,21 +297,17 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: def, xyz, abc',
+          message: "Tags are not in the prescribed order: def, xyz, abc",
         },
       ],
       options: [
         {
           tagSequence: [
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -367,7 +336,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -396,7 +366,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       options: [
@@ -427,7 +398,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: ' + tagList.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagList.join(", "),
         },
       ],
       output: `
@@ -451,7 +423,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
@@ -459,19 +431,13 @@ export default {
           linesBetween: 2,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -501,7 +467,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
@@ -509,19 +475,13 @@ export default {
           linesBetween: 1,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -549,7 +509,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
@@ -557,19 +517,13 @@ export default {
           linesBetween: 2,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -601,7 +555,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
@@ -609,19 +563,13 @@ export default {
           linesBetween: 1,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -653,7 +601,8 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Tags are not in the prescribed order: ' + tagListUser.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagListUser.join(", "),
         },
       ],
       options: [
@@ -718,7 +667,8 @@ export default {
       errors: [
         {
           line: 19,
-          message: 'Tags are not in the prescribed order: ' + tagListUser.join(', '),
+          message:
+            "Tags are not in the prescribed order: " + tagListUser.join(", "),
         },
       ],
       options: [
@@ -811,7 +761,7 @@ export default {
       errors: [
         {
           line: 32,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -907,7 +857,7 @@ export default {
       errors: [
         {
           line: 35,
-          message: 'Intra-group tags have unexpected whitespace',
+          message: "Intra-group tags have unexpected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -1002,7 +952,7 @@ export default {
       errors: [
         {
           line: 19,
-          message: 'Intra-group tags have unexpected whitespace',
+          message: "Intra-group tags have unexpected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -1097,7 +1047,7 @@ export default {
       errors: [
         {
           line: 21,
-          message: 'Intra-group tags have unexpected whitespace',
+          message: "Intra-group tags have unexpected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -1188,7 +1138,7 @@ export default {
       errors: [
         {
           line: 22,
-          message: 'Intra-group tags have unexpected whitespace',
+          message: "Intra-group tags have unexpected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -1246,7 +1196,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
@@ -1254,19 +1204,13 @@ export default {
           linesBetween: 1,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', '-other', 'xyz',
-              ],
+              tags: ["def", "-other", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -1312,7 +1256,7 @@ export default {
       errors: [
         {
           line: 21,
-          message: 'Intra-group tags have unexpected whitespace',
+          message: "Intra-group tags have unexpected whitespace",
         },
       ],
       ignoreReadme: true,
@@ -1360,7 +1304,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tags are not in the prescribed order: (alphabetical)',
+          message: "Tags are not in the prescribed order: (alphabetical)",
         },
       ],
       options: [
@@ -1396,51 +1340,35 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag groups do not have the expected whitespace',
+          message: "Tag groups do not have the expected whitespace",
         },
       ],
       options: [
         {
           tagSequence: [
             {
-              tags: [
-                'internal',
-              ],
+              tags: ["internal"],
             },
             {
-              tags: [
-                'template', 'param',
-              ],
+              tags: ["template", "param"],
             },
             {
-              tags: [
-                'returns',
-              ],
+              tags: ["returns"],
             },
             {
-              tags: [
-                'throws',
-              ],
+              tags: ["throws"],
             },
             {
-              tags: [
-                'see',
-              ],
+              tags: ["see"],
             },
             {
-              tags: [
-                'example',
-              ],
+              tags: ["example"],
             },
             {
-              tags: [
-                'since',
-              ],
+              tags: ["since"],
             },
             {
-              tags: [
-                'deprecated',
-              ],
+              tags: ["deprecated"],
             },
           ],
         },
@@ -1516,9 +1444,7 @@ export default {
         {
           tagSequence: [
             {
-              tags: [
-                'def', 'xyz', 'abc',
-              ],
+              tags: ["def", "xyz", "abc"],
             },
           ],
         },
@@ -1545,19 +1471,13 @@ export default {
           linesBetween: 1,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -1579,19 +1499,13 @@ export default {
           linesBetween: 1,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },
@@ -1630,54 +1544,34 @@ export default {
         {
           tagSequence: [
             {
-              tags: [
-                'since', 'access',
-              ],
+              tags: ["since", "access"],
             },
             {
-              tags: [
-                'class', 'augments', 'mixes',
-              ],
+              tags: ["class", "augments", "mixes"],
             },
             {
-              tags: [
-                'alias', 'memberof',
-              ],
+              tags: ["alias", "memberof"],
             },
             {
-              tags: [
-                'public', 'protected', 'private', 'override',
-              ],
+              tags: ["public", "protected", "private", "override"],
             },
             {
-              tags: [
-                'override', 'async',
-              ],
+              tags: ["override", "async"],
             },
             {
-              tags: [
-                'see', 'link', 'global',
-              ],
+              tags: ["see", "link", "global"],
             },
             {
-              tags: [
-                'param',
-              ],
+              tags: ["param"],
             },
             {
-              tags: [
-                'yields',
-              ],
+              tags: ["yields"],
             },
             {
-              tags: [
-                'returns',
-              ],
+              tags: ["returns"],
             },
             {
-              tags: [
-                'fires', '-other', 'listens',
-              ],
+              tags: ["fires", "-other", "listens"],
             },
           ],
         },
@@ -1701,44 +1595,28 @@ export default {
         {
           tagSequence: [
             {
-              tags: [
-                'internal',
-              ],
+              tags: ["internal"],
             },
             {
-              tags: [
-                'template', 'param',
-              ],
+              tags: ["template", "param"],
             },
             {
-              tags: [
-                'returns',
-              ],
+              tags: ["returns"],
             },
             {
-              tags: [
-                'throws',
-              ],
+              tags: ["throws"],
             },
             {
-              tags: [
-                'see',
-              ],
+              tags: ["see"],
             },
             {
-              tags: [
-                'example',
-              ],
+              tags: ["example"],
             },
             {
-              tags: [
-                'since',
-              ],
+              tags: ["since"],
             },
             {
-              tags: [
-                'deprecated',
-              ],
+              tags: ["deprecated"],
             },
           ],
         },
@@ -1764,44 +1642,28 @@ export default {
         {
           tagSequence: [
             {
-              tags: [
-                'internal',
-              ],
+              tags: ["internal"],
             },
             {
-              tags: [
-                'template', 'param',
-              ],
+              tags: ["template", "param"],
             },
             {
-              tags: [
-                'returns',
-              ],
+              tags: ["returns"],
             },
             {
-              tags: [
-                'throws',
-              ],
+              tags: ["throws"],
             },
             {
-              tags: [
-                'see',
-              ],
+              tags: ["see"],
             },
             {
-              tags: [
-                'example',
-              ],
+              tags: ["example"],
             },
             {
-              tags: [
-                'since',
-              ],
+              tags: ["since"],
             },
             {
-              tags: [
-                'deprecated',
-              ],
+              tags: ["deprecated"],
             },
           ],
         },
@@ -1822,19 +1684,13 @@ export default {
           reportTagGroupSpacing: false,
           tagSequence: [
             {
-              tags: [
-                'qrs',
-              ],
+              tags: ["qrs"],
             },
             {
-              tags: [
-                'def', 'xyz',
-              ],
+              tags: ["def", "xyz"],
             },
             {
-              tags: [
-                'abc',
-              ],
+              tags: ["abc"],
             },
           ],
         },

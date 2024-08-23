@@ -7,7 +7,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
       options: [
@@ -26,7 +26,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
       options: [
@@ -46,7 +46,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
       options: [
@@ -67,7 +67,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
       options: [
@@ -88,7 +88,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
       options: [
@@ -107,7 +107,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'No empty blocks',
+          message: "No empty blocks",
         },
       ],
     },

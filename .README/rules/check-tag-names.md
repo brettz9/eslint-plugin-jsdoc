@@ -181,14 +181,14 @@ tag to `false`:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "todo": false
-            }
-        }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "todo": false
+      }
     }
+  }
 }
 ```
 
@@ -283,13 +283,13 @@ this
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|true|
-|Options|`definedTags`, `enableFixer`, `jsxTags`, `typed`|
-|Settings|`tagNamePreference`, `mode`|
+|             |                                                  |
+| ----------- | ------------------------------------------------ |
+| Context     | everywhere                                       |
+| Tags        | N/A                                              |
+| Recommended | true                                             |
+| Options     | `definedTags`, `enableFixer`, `jsxTags`, `typed` |
+| Settings    | `tagNamePreference`, `mode`                      |
 
 ## Failing examples
 

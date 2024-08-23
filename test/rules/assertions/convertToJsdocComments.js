@@ -1,4 +1,5 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+/* eslint-disable no-useless-concat */
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -10,18 +11,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+        },
       ],
       output: `
         /** A single line comment */
         function quux () {}
-      `
+      `,
     },
     {
       code: `
@@ -31,23 +32,23 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              context: 'FunctionDeclaration',
-              inlineCommentBlock: true
-            }
-          ]
-        }
+              context: "FunctionDeclaration",
+              inlineCommentBlock: true,
+            },
+          ],
+        },
       ],
       output: `
         /** A single line comment */
         function quux () {}
-      `
+      `,
     },
     {
       code: `
@@ -57,14 +58,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
           enableFixer: false,
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+        },
       ],
     },
     {
@@ -75,35 +76,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          lineOrBlockStyle: 'line',
-          enforceJsdocLineStyle: 'single'
-        }
-      ],
-      output: `
-        /** A single line comment */
-        function quux () {}
-      `
-    },
-    {
-      code: `
-        /* A single line comment */
-        function quux () {}
-      `,
-      errors: [
-        {
-          line: 2,
-          message: 'Block comments should be JSDoc-style.',
+          enforceJsdocLineStyle: "single",
+          lineOrBlockStyle: "line",
         },
-      ],
-      options: [
-        {
-          enforceJsdocLineStyle: 'single'
-        }
       ],
       output: `
         /** A single line comment */
@@ -118,14 +98,35 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Block comments should be JSDoc-style.',
+          message: "Block comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          lineOrBlockStyle: 'block',
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+        },
+      ],
+      output: `
+        /** A single line comment */
+        function quux () {}
+      `,
+    },
+    {
+      code: `
+        /* A single line comment */
+        function quux () {}
+      `,
+      errors: [
+        {
+          line: 2,
+          message: "Block comments should be JSDoc-style.",
+        },
+      ],
+      options: [
+        {
+          enforceJsdocLineStyle: "single",
+          lineOrBlockStyle: "block",
+        },
       ],
       output: `
         /** A single line comment */
@@ -140,13 +141,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          enforceJsdocLineStyle: 'multi'
-        }
+          enforceJsdocLineStyle: "multi",
+        },
       ],
       output: `
         /**
@@ -163,7 +164,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       output: `
@@ -181,13 +182,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Block comments should be JSDoc-style.',
+          message: "Block comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          enforceJsdocLineStyle: 'multi'
-        }
+          enforceJsdocLineStyle: "multi",
+        },
       ],
       output: `
         /**
@@ -206,7 +207,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -214,9 +216,7 @@ export default {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'name',
-              ],
+              required: ["name"],
             },
           },
         },
@@ -232,13 +232,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Block comments should be JSDoc-style.',
+          message: "Block comments should be JSDoc-style.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: ['ClassDeclaration']
-        }
+          contexts: ["ClassDeclaration"],
+        },
       ],
       output: `
         /**
@@ -248,10 +252,6 @@ export default {
         export class User {
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -260,23 +260,23 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Block comments should be JSDoc-style.',
+          message: "Block comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          enforceJsdocLineStyle: 'single'
-        }
-      ],
-      settings: {
-        jsdoc: {
-          minLines: 0,
-          maxLines: 0,
+          enforceJsdocLineStyle: "single",
         },
-      },
+      ],
       output: `
         /** A single line comment */ function quux () {}
-      `
+      `,
+      settings: {
+        jsdoc: {
+          maxLines: 0,
+          minLines: 0,
+        },
+      },
     },
     {
       code: `
@@ -285,20 +285,22 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
+          contextsAfter: ["VariableDeclarator"],
           contextsBeforeAndAfter: [],
-          contextsAfter: ['VariableDeclarator']
-        }
+        },
       ],
-      output: `
+      output:
+        `
         /**
          * Test comment
          */
-        var a = []; ` + `
+        var a = []; ` +
+        `
       `,
     },
     {
@@ -308,23 +310,25 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          contextsBeforeAndAfter: [],
           contextsAfter: [
             {
-              context: 'VariableDeclarator',
-              inlineCommentBlock: true
-            }
-          ]
-        }
+              context: "VariableDeclarator",
+              inlineCommentBlock: true,
+            },
+          ],
+          contextsBeforeAndAfter: [],
+        },
       ],
-      output: `
+      output:
+        `
         /** Test comment */
-        var a = []; ` + `
+        var a = []; ` +
+        `
       `,
     },
     {
@@ -334,27 +338,29 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          contextsBeforeAndAfter: [],
           contextsAfter: [
             {
-              context: 'VariableDeclarator',
-              inlineCommentBlock: true
-            }
-          ]
-        }
+              context: "VariableDeclarator",
+              inlineCommentBlock: true,
+            },
+          ],
+          contextsBeforeAndAfter: [],
+        },
       ],
-      output: `
-        /** Test comment */ var a = []; ` + `
+      output:
+        `
+        /** Test comment */ var a = []; ` +
+        `
       `,
       settings: {
         jsdoc: {
-          minLines: 0,
           maxLines: 0,
+          minLines: 0,
         },
       },
     },
@@ -366,20 +372,20 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          contextsBeforeAndAfter: ['VariableDeclaration']
-        }
+          contextsBeforeAndAfter: ["VariableDeclaration"],
+        },
       ],
       output: `
         /**
          * Test comment
          */
         var a = [];
-      `
+      `,
     },
     {
       code: `
@@ -388,19 +394,21 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          contextsBeforeAndAfter: ['VariableDeclaration']
-        }
+          contextsBeforeAndAfter: ["VariableDeclaration"],
+        },
       ],
-      output: `
+      output:
+        `
         /**
          * Test comment
          */
-        var a = []; ` + `
+        var a = []; ` +
+        `
       `,
     },
     {
@@ -412,24 +420,26 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
       options: [
         {
-          contextsBeforeAndAfter: ['TSPropertySignature']
-        }
+          contextsBeforeAndAfter: ["TSPropertySignature"],
+        },
       ],
-      output: `
+      output:
+        `
         interface B {
           /**
            * Test comment
            */
-          g: () => string; ` + `
+          g: () => string; ` +
+        `
         }
       `,
     },
@@ -442,24 +452,26 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
       options: [
         {
-          contextsBeforeAndAfter: ['PropertyDefinition']
-        }
+          contextsBeforeAndAfter: ["PropertyDefinition"],
+        },
       ],
-      output: `
+      output:
+        `
         class TestClass {
           /**
            * Test comment
            */
-          public Test: (id: number) => string; ` + `
+          public Test: (id: number) => string; ` +
+        `
         }
       `,
     },
@@ -470,19 +482,21 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Line comments should be JSDoc-style.',
+          message: "Line comments should be JSDoc-style.",
         },
       ],
       options: [
         {
-          contextsBeforeAndAfter: ['VariableDeclarator'],
-        }
+          contextsBeforeAndAfter: ["VariableDeclarator"],
+        },
       ],
-      output: `
+      output:
+        `
         /**
          * Test comment
          */
-        var a = []; ` + `
+        var a = []; ` +
+        `
       `,
     },
   ],
@@ -494,8 +508,8 @@ export default {
       `,
       options: [
         {
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+        },
       ],
     },
     {
@@ -505,8 +519,8 @@ export default {
       `,
       options: [
         {
-          enforceJsdocLineStyle: 'multi'
-        }
+          enforceJsdocLineStyle: "multi",
+        },
       ],
     },
     {
@@ -516,8 +530,8 @@ export default {
       `,
       options: [
         {
-          lineOrBlockStyle: 'line',
-        }
+          lineOrBlockStyle: "line",
+        },
       ],
     },
     {
@@ -527,8 +541,8 @@ export default {
       `,
       options: [
         {
-          lineOrBlockStyle: 'block',
-        }
+          lineOrBlockStyle: "block",
+        },
       ],
     },
     {
@@ -538,9 +552,9 @@ export default {
       `,
       options: [
         {
-          lineOrBlockStyle: 'line',
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+          lineOrBlockStyle: "line",
+        },
       ],
     },
     {
@@ -550,14 +564,16 @@ export default {
       `,
       options: [
         {
-          lineOrBlockStyle: 'block',
-          enforceJsdocLineStyle: 'single'
-        }
+          enforceJsdocLineStyle: "single",
+          lineOrBlockStyle: "block",
+        },
       ],
     },
     {
-      code: `
-        // ` + `@ts-expect-error
+      code:
+        `
+        // ` +
+        `@ts-expect-error
         function quux () {}
       `,
     },
@@ -568,8 +584,8 @@ export default {
       `,
       options: [
         {
-          allowedPrefixes: ['@custom-']
-        }
+          allowedPrefixes: ["@custom-"],
+        },
       ],
     },
     {
@@ -579,9 +595,9 @@ export default {
       `,
       options: [
         {
+          contextsAfter: ["VariableDeclarator"],
           contextsBeforeAndAfter: [],
-          contextsAfter: ['VariableDeclarator']
-        }
+        },
       ],
     },
   ],

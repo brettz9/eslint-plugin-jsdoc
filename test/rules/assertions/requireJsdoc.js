@@ -1,6 +1,6 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
-import * as babelEslintParser from '@babel/eslint-parser';
-import globals from 'globals';
+import * as babelEslintParser from "@babel/eslint-parser";
+import globals from "globals";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -16,16 +16,19 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
-          type: 'TSMethodSignature',
+          message: "Missing JSDoc comment.",
+          type: "TSMethodSignature",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
@@ -48,9 +51,6 @@ export default {
             catchJerry(): boolean;
           }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -64,16 +64,19 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
-          type: 'TSPropertySignature',
+          message: "Missing JSDoc comment.",
+          type: "TSPropertySignature",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
@@ -96,9 +99,6 @@ export default {
             jerry: number;
           }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -110,16 +110,19 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
-          type: 'TSMethodSignature',
+          message: "Missing JSDoc comment.",
+          type: "TSMethodSignature",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
@@ -135,9 +138,6 @@ export default {
             bar(): string;
           }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -149,16 +149,19 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
-          type: 'TSPropertySignature',
+          message: "Missing JSDoc comment.",
+          type: "TSPropertySignature",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
@@ -175,9 +178,6 @@ export default {
             bar: string;
           }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -196,14 +196,15 @@ export default {
       errors: [
         {
           line: 11,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSMethodSignature',
-          ],
+          contexts: ["TSMethodSignature"],
           publicOnly: {
             ancestorsOnly: true,
           },
@@ -225,9 +226,6 @@ export default {
         meow(): void;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -239,7 +237,7 @@ function quux (foo) {
           column: 1,
           endLine: 3,
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -262,7 +260,7 @@ function quux (foo) {
       errors: [
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -298,7 +296,7 @@ function quux (foo) {
       errors: [
         {
           line: 7,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -329,7 +327,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -355,7 +353,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -374,10 +372,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -394,9 +395,6 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -408,10 +406,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -429,9 +430,6 @@ function quux (foo) {
           }
           export var test2 = test;
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -442,10 +440,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -462,9 +463,6 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -475,15 +473,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'ArrowFunctionExpression',
-          ],
+          contexts: ["ArrowFunctionExpression"],
           publicOnly: true,
         },
       ],
@@ -495,9 +494,6 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -508,10 +504,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -525,14 +524,9 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
       settings: {
         jsdoc: {
-          contexts: [
-            'ArrowFunctionExpression',
-          ],
+          contexts: ["ArrowFunctionExpression"],
         },
       },
     },
@@ -545,15 +539,18 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           contexts: [
             {
-              context: 'ArrowFunctionExpression',
+              context: "ArrowFunctionExpression",
             },
           ],
           publicOnly: true,
@@ -567,9 +564,6 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -580,10 +574,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassExpression',
+          message: "Missing JSDoc comment.",
+          type: "ClassExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -600,9 +597,6 @@ function quux (foo) {
 
           };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -611,10 +605,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -633,9 +630,6 @@ function quux (foo) {
          */
         export default function () {}
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -644,10 +638,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -666,9 +663,6 @@ function quux (foo) {
          */
         export default () => {}
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -677,10 +671,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -699,9 +696,6 @@ function quux (foo) {
        */
       export default (function () {})
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -710,10 +704,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -732,9 +729,6 @@ function quux (foo) {
          */
         export default class {}
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -745,7 +739,7 @@ function quux (foo) {
         {
           endLine: 3,
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -764,7 +758,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -788,7 +782,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -817,8 +811,8 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
       output: `
@@ -829,8 +823,7 @@ function quux (foo) {
       `,
     },
     {
-      code:
-        `/**
+      code: `/**
           * Description for A.
           */
          class A {
@@ -841,10 +834,13 @@ function quux (foo) {
       errors: [
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -853,8 +849,7 @@ function quux (foo) {
           },
         },
       ],
-      output:
-        `/**
+      output: `/**
           * Description for A.
           */
          class A {
@@ -865,9 +860,6 @@ function quux (foo) {
                  this.a = xs;
             }
          }`,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -883,10 +875,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -908,9 +903,6 @@ function quux (foo) {
                 this.a = xs;
             }
         }`,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -926,10 +918,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -951,9 +946,6 @@ function quux (foo) {
                 this.a = xs;
             }
         }`,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -969,10 +961,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -994,9 +989,6 @@ function quux (foo) {
                 this.a = xs;
             }
         }`,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1012,10 +1004,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -1037,9 +1032,6 @@ function quux (foo) {
                 this.a = xs;
             }
         }`,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1048,10 +1040,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -1065,9 +1060,6 @@ function quux (foo) {
        */
       var myFunction = () => {}
       `,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -1076,10 +1068,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -1093,9 +1088,6 @@ function quux (foo) {
        */
       var myFunction = () => () => {}
       `,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -1104,8 +1096,8 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
       options: [
@@ -1129,10 +1121,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -1146,9 +1141,6 @@ function quux (foo) {
        */
       bar() {}}
       `,
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -1157,8 +1149,8 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
       options: [
@@ -1182,8 +1174,8 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
       options: [
@@ -1207,8 +1199,8 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
       options: [
@@ -1231,16 +1223,16 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1264,16 +1256,16 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: {
@@ -1301,16 +1293,16 @@ function quux (foo) {
             }
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1340,16 +1332,16 @@ function quux (foo) {
             }
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1381,16 +1373,16 @@ function quux (foo) {
             }
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: {
@@ -1420,16 +1412,16 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1458,16 +1450,16 @@ function quux (foo) {
 
           test.prototype.method = function() {}
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 9,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1499,16 +1491,16 @@ function quux (foo) {
             test: test
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1538,16 +1530,16 @@ function quux (foo) {
             test: test
           }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ArrowFunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "ArrowFunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1577,16 +1569,16 @@ function quux (foo) {
         }
         module.exports = Test;
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: true,
@@ -1616,10 +1608,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1636,9 +1631,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1649,10 +1641,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1671,9 +1666,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1685,10 +1677,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1706,9 +1701,6 @@ function quux (foo) {
           }
           export default quux;
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1719,10 +1711,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1739,9 +1734,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1752,10 +1744,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1774,9 +1769,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1789,9 +1781,12 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1810,9 +1805,6 @@ function quux (foo) {
           var test2 = 2;
           export { test, test2 }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1824,10 +1816,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1845,9 +1840,6 @@ function quux (foo) {
           }
           export { test as test2 }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1858,10 +1850,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -1878,9 +1873,6 @@ function quux (foo) {
 
          }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1891,10 +1883,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'ClassDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "ClassDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1913,9 +1908,6 @@ function quux (foo) {
 
          }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1926,10 +1918,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1948,9 +1943,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1961,10 +1953,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1983,9 +1978,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1996,10 +1988,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -2015,9 +2010,6 @@ function quux (foo) {
 
           }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2025,16 +2017,16 @@ function quux (foo) {
 
         }
       `,
-      languageOptions: {
-        globals: globals.node,
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionExpression',
+          message: "Missing JSDoc comment.",
+          type: "FunctionExpression",
         },
       ],
+      languageOptions: {
+        globals: globals.node,
+      },
       options: [
         {
           publicOnly: {
@@ -2062,18 +2054,18 @@ function quux (foo) {
 
         }
       `,
-      languageOptions: {
-        globals: globals.node,
-        ecmaVersion: 6,
-        sourceType: 'module',
-      },
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
-          type: 'FunctionDeclaration',
+          message: "Missing JSDoc comment.",
+          type: "FunctionDeclaration",
         },
       ],
+      languageOptions: {
+        ecmaVersion: 6,
+        globals: globals.node,
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -2104,15 +2096,13 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
-          type: 'Property',
+          message: "Missing JSDoc comment.",
+          type: "Property",
         },
       ],
       options: [
         {
-          contexts: [
-            'Property',
-          ],
+          contexts: ["Property"],
         },
       ],
       output: `
@@ -2141,14 +2131,15 @@ function quux (foo) {
       errors: [
         {
           line: 11,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSMethodSignature',
-          ],
+          contexts: ["TSMethodSignature"],
         },
       ],
       output: `
@@ -2167,9 +2158,6 @@ function quux (foo) {
         meow(): void;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -2180,9 +2168,36 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: babelEslintParser,
+        parserOptions: {
+          babelOptions: {
+            env: {
+              test: {
+                plugins: ["istanbul"],
+              },
+            },
+            plugins: [
+              "@babel/plugin-transform-flow-strip-types",
+              "@babel/plugin-syntax-class-properties",
+              "add-module-exports",
+            ],
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  targets: {
+                    node: 12,
+                  },
+                },
+              ],
+            ],
+          },
+        },
+      },
       options: [
         {
           exemptEmptyFunctions: true,
@@ -2199,35 +2214,6 @@ function quux (foo) {
         someProperty: boolean; // Flow type annotation.
       }
       `,
-      languageOptions: {
-        parser: babelEslintParser,
-        parserOptions: {
-          babelOptions: {
-            env: {
-              test: {
-                plugins: [
-                  'istanbul',
-                ],
-              },
-            },
-            plugins: [
-              '@babel/plugin-transform-flow-strip-types',
-              '@babel/plugin-syntax-class-properties',
-              'add-module-exports',
-            ],
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  targets: {
-                    node: 12,
-                  },
-                },
-              ],
-            ],
-          },
-        },
-      },
     },
     {
       code: `
@@ -2240,9 +2226,12 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -2266,9 +2255,6 @@ function quux (foo) {
         }
       }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2284,14 +2270,16 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
           publicOnly: true,
           require: {
             ArrowFunctionExpression: false,
@@ -2316,10 +2304,6 @@ function quux (foo) {
         }
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2329,7 +2313,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2364,9 +2348,13 @@ function quux (foo) {
       errors: [
         {
           line: 8,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -2390,10 +2378,6 @@ function quux (foo) {
           }
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2406,7 +2390,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2437,7 +2421,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2464,9 +2448,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -2481,10 +2469,6 @@ function quux (foo) {
        */
       export const loginSuccessAction = (): BaseActionPayload => ({ type: LOGIN_SUCCESSFUL });
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2497,27 +2481,30 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSTypeAliasDeclaration',
+            "TSTypeAliasDeclaration",
             {
-              context: 'TSPropertySignature',
+              context: "TSPropertySignature",
               inlineCommentBlock: true,
             },
           ],
@@ -2536,9 +2523,6 @@ function quux (foo) {
         helpers?: { [key in string]: AnyFunction };
       };
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -2551,18 +2535,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
-          contexts: [
-            'MethodDefinition[key.name!="constructor"]',
-          ],
+          contexts: ['MethodDefinition[key.name!="constructor"]'],
           require: {
             ClassDeclaration: true,
           },
@@ -2595,11 +2577,11 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 7,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2643,18 +2625,21 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSDeclareFunction:not(TSDeclareFunction + TSDeclareFunction)',
-            'FunctionDeclaration:not(TSDeclareFunction + FunctionDeclaration)',
+            "TSDeclareFunction:not(TSDeclareFunction + TSDeclareFunction)",
+            "FunctionDeclaration:not(TSDeclareFunction + FunctionDeclaration)",
           ],
           require: {
             FunctionDeclaration: false,
@@ -2678,9 +2663,6 @@ function quux (foo) {
         return arg;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -2697,13 +2679,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
@@ -2736,9 +2721,6 @@ function quux (foo) {
         return arg;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -2749,7 +2731,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2789,26 +2771,28 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 8,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 10,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
         },
       ],
       output: `
@@ -2836,10 +2820,6 @@ function quux (foo) {
         tail: boolean;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2849,9 +2829,13 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -2866,10 +2850,6 @@ function quux (foo) {
       @Entity('users')
       export class User {}
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2883,7 +2863,7 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2918,7 +2898,7 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2956,7 +2936,7 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -2994,7 +2974,8 @@ function quux (foo) {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -3002,9 +2983,7 @@ function quux (foo) {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'name',
-              ],
+              required: ["name"],
             },
           },
         },
@@ -3019,7 +2998,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -3054,12 +3033,16 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
-        }, {
+          message: "Missing JSDoc comment.",
+        },
+        {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: babelEslintParser,
+      },
       options: [
         {
           require: {
@@ -3084,9 +3067,6 @@ function quux (foo) {
         anotherFunc() {}
       }
       `,
-      languageOptions: {
-        parser: babelEslintParser,
-      }
     },
     {
       code: `
@@ -3097,14 +3077,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'TSEnumDeclaration',
-          ],
+          contexts: ["TSEnumDeclaration"],
           publicOnly: true,
         },
       ],
@@ -3116,10 +3098,6 @@ function quux (foo) {
         A, B
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3131,14 +3109,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
+          contexts: ["TSInterfaceDeclaration"],
           publicOnly: true,
         },
       ],
@@ -3151,10 +3131,6 @@ function quux (foo) {
         aVar: string;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3163,14 +3139,16 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'TSTypeAliasDeclaration',
-          ],
+          contexts: ["TSTypeAliasDeclaration"],
           publicOnly: true,
         },
       ],
@@ -3180,10 +3158,6 @@ function quux (foo) {
        */
       export type testType = string | number;
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3196,22 +3170,24 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'TSPropertySignature', 'TSMethodSignature',
-          ],
+          contexts: ["TSPropertySignature", "TSMethodSignature"],
           publicOnly: true,
         },
       ],
@@ -3231,10 +3207,6 @@ function quux (foo) {
           quux(): void;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3251,9 +3223,12 @@ function quux (foo) {
       errors: [
         {
           line: 8,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
@@ -3275,9 +3250,6 @@ function quux (foo) {
         public value = new EventEmitter();
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -3289,7 +3261,7 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       output: `
@@ -3311,15 +3283,13 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
-          checkSetters: 'no-getter',
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          checkSetters: "no-getter",
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
       output: `
@@ -3340,15 +3310,13 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
-          checkGetters: 'no-setter',
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          checkGetters: "no-setter",
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
       output: `
@@ -3369,15 +3337,13 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
-          checkGetters: 'no-setter',
-          contexts: [
-            'Property > FunctionExpression',
-          ],
+          checkGetters: "no-setter",
+          contexts: ["Property > FunctionExpression"],
         },
       ],
       output: `
@@ -3402,7 +3368,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       ignoreReadme: true,
@@ -3436,13 +3402,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
           enableFixer: true,
-          fixerMessage: ' TODO: add comment',
+          fixerMessage: " TODO: add comment",
         },
       ],
       output: `
@@ -3463,19 +3429,19 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
           contexts: [
-            'any',
+            "any",
             {
-              context: 'FunctionDeclaration',
+              context: "FunctionDeclaration",
               inlineCommentBlock: true,
             },
           ],
-          fixerMessage: 'TODO: add comment ',
+          fixerMessage: "TODO: add comment ",
         },
       ],
       output: `
@@ -3494,13 +3460,13 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
           enableFixer: false,
-          fixerMessage: ' TODO: add comment',
+          fixerMessage: " TODO: add comment",
         },
       ],
       output: null,
@@ -3514,14 +3480,16 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
           publicOnly: true,
         },
       ],
@@ -3533,10 +3501,6 @@ function quux (foo) {
         public disabled = false;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3545,9 +3509,12 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -3567,9 +3534,6 @@ function quux (foo) {
          */
         export default (arg) => arg;
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3584,9 +3548,12 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -3612,9 +3579,6 @@ function quux (foo) {
           inner();
       }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3629,9 +3593,12 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -3657,9 +3624,6 @@ function quux (foo) {
           inner();
       };
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3673,14 +3637,16 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
           publicOnly: true,
         },
       ],
@@ -3695,10 +3661,6 @@ function quux (foo) {
         public disabled = false;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3712,15 +3674,16 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           checkConstructors: false,
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
           publicOnly: true,
         },
       ],
@@ -3735,9 +3698,6 @@ function quux (foo) {
               public foo?: number;
           }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -3750,19 +3710,20 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 5,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSPropertySignature',
-          ],
+          contexts: ["TSPropertySignature"],
           publicOnly: true,
         },
       ],
@@ -3779,9 +3740,6 @@ function quux (foo) {
           two: number;
         };
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -3793,24 +3751,24 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSTypeAliasDeclaration',
-            'TSPropertySignature',
-          ],
+          contexts: ["TSTypeAliasDeclaration", "TSPropertySignature"],
           publicOnly: true,
         },
       ],
@@ -3829,9 +3787,6 @@ function quux (foo) {
           two: number;
         };
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -3849,7 +3804,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -3881,7 +3836,7 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -3910,7 +3865,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
@@ -3940,18 +3895,18 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              context: 'FunctionDeclaration',
+              context: "FunctionDeclaration",
               minLineCount: 2,
             },
             {
-              context: 'VariableDeclaration',
+              context: "VariableDeclaration",
               minLineCount: 2,
             },
           ],
@@ -3985,18 +3940,18 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       options: [
         {
           contexts: [
             {
-              context: 'FunctionDeclaration',
+              context: "FunctionDeclaration",
               minLineCount: 4,
             },
             {
-              context: 'VariableDeclaration',
+              context: "VariableDeclaration",
               minLineCount: 2,
             },
           ],
@@ -4030,14 +3985,17 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
-              context: 'MethodDefinition',
+              context: "MethodDefinition",
               minLineCount: 3,
             },
           ],
@@ -4058,9 +4016,6 @@ function quux (foo) {
           }
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -4078,14 +4033,15 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
           publicOnly: true,
         },
       ],
@@ -4104,9 +4060,6 @@ function quux (foo) {
           // ...
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -4115,14 +4068,20 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          },
+        },
+      },
       options: [
         {
-          contexts: [
-            'CallExpression[callee.name="observer"]',
-          ],
+          contexts: ['CallExpression[callee.name="observer"]'],
           enableFixer: false,
           publicOnly: true,
           require: {
@@ -4135,14 +4094,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        parserOptions: {
-          ecmaFeatures: {
-            jsx: true,
-          },
-        }
-      },
     },
     {
       code: `
@@ -4157,24 +4108,27 @@ function quux (foo) {
       errors: [
         {
           line: 6,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
         {
           line: 7,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
+          contexts: [
+            "TSTypeAliasDeclaration",
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
+          ],
           publicOnly: {
             ancestorsOnly: true,
           },
-          contexts: [
-            'TSTypeAliasDeclaration',
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
-          ],
         },
       ],
       output: `
@@ -4192,9 +4146,6 @@ function quux (foo) {
           password?: string;
         }>;
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-      },
     },
     {
       code: `
@@ -4207,7 +4158,7 @@ function quux (foo) {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc comment.',
+          message: "Missing JSDoc comment.",
         },
       ],
       languageOptions: {
@@ -4231,7 +4182,7 @@ function quux (foo) {
             "TSPropertySignature",
             "TSInterfaceDeclaration",
             "TSMethodSignature",
-            "TSEnumDeclaration"
+            "TSEnumDeclaration",
           ],
           enableFixer: true,
         },
@@ -4255,44 +4206,46 @@ function quux (foo) {
         fooBar: string;
       }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
-    }, {
+    },
+    {
       code: `
       /** This is comment */
       interface FooBar {
         fooBar: string;
       }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
-    }, {
+    },
+    {
       code: `
         /** This is comment */
         export class Foo {
@@ -4303,22 +4256,23 @@ function quux (foo) {
           }
         }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
-    }, {
+    },
+    {
       code: `
         /** This is comment */
         function someFunction() {
@@ -4328,22 +4282,23 @@ function quux (foo) {
         }
 
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
-    }, {
+    },
+    {
       code: `
         /** This is comment */
         export function foo() {
@@ -4352,28 +4307,30 @@ function quux (foo) {
           }
         }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'TSInterfaceDeclaration',
-            'TSMethodSignature',
-            'TSPropertySignature',
+            "TSInterfaceDeclaration",
+            "TSMethodSignature",
+            "TSPropertySignature",
           ],
           publicOnly: {
             ancestorsOnly: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
-    }, {
+    },
+    {
       code: `
         /**
          *
          */
     `,
-    }, {
+    },
+    {
       code: `
       var array = [1,2,3];
       array.forEach(function() {});
@@ -4464,7 +4421,7 @@ function quux (foo) {
       Object.keys(object).forEach(function() {})
     `,
       languageOptions: {
-        sourceType: 'script',
+        sourceType: "script",
       },
     },
     {
@@ -4533,7 +4490,7 @@ function quux (foo) {
       },
     },
     {
-      code: 'function myFunction() {}',
+      code: "function myFunction() {}",
       options: [
         {
           require: {
@@ -4545,7 +4502,7 @@ function quux (foo) {
       ],
     },
     {
-      code: 'var myFunction = function() {}',
+      code: "var myFunction = function() {}",
       options: [
         {
           require: {
@@ -4570,6 +4527,9 @@ function quux (foo) {
               this.a = xs;
           }
       }`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4578,13 +4538,9 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
         * Description for A.
         */
        class App extends Component {
@@ -4596,6 +4552,9 @@ function quux (foo) {
                this.a = xs;
            }
        }`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4604,13 +4563,9 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
        * Description for A.
        */
       export default class App extends Component {
@@ -4622,6 +4577,10 @@ function quux (foo) {
               this.a = xs;
           }
       }`,
+      languageOptions: {
+        ecmaVersion: 6,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -4630,14 +4589,9 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module',
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
          * Description for A.
          */
         export class App extends Component {
@@ -4649,6 +4603,10 @@ function quux (foo) {
                 this.a = xs;
             }
         }`,
+      languageOptions: {
+        ecmaVersion: 6,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -4657,18 +4615,16 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-        sourceType: 'module',
-      },
     },
     {
-      code:
-      `class A {
+      code: `class A {
           constructor(xs) {
               this.a = xs;
           }
       }`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4677,16 +4633,15 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
        * Function doing something
        */
        var myFunction = () => {}`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4694,16 +4649,15 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
        * Function doing something
        */
        var myFunction = function () {}`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4711,16 +4665,15 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
        * Function doing something
        */
        var myFunction = () => {}`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4728,16 +4681,15 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
         Function doing something
        */
        var myFunction = () => () => {}`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4745,12 +4697,12 @@ function quux (foo) {
           },
         },
       ],
+    },
+    {
+      code: "setTimeout(() => {}, 10);",
       languageOptions: {
         ecmaVersion: 6,
       },
-    },
-    {
-      code: 'setTimeout(() => {}, 10);',
       options: [
         {
           require: {
@@ -4758,13 +4710,9 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `/**
+      code: `/**
        JSDoc Block
        */
        var foo = function() {}`,
@@ -4777,11 +4725,13 @@ function quux (foo) {
       ],
     },
     {
-      code:
-      `const foo = {/**
+      code: `const foo = {/**
        JSDoc Block
        */
        bar() {}}`,
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4789,13 +4739,9 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
-      code:
-      `var foo = {/**
+      code: `var foo = {/**
        JSDoc Block
        */
        bar: function() {}}`,
@@ -4808,7 +4754,10 @@ function quux (foo) {
       ],
     },
     {
-      code: ' var foo = { [function() {}]: 1 };',
+      code: " var foo = { [function() {}]: 1 };",
+      languageOptions: {
+        ecmaVersion: 6,
+      },
       options: [
         {
           require: {
@@ -4816,9 +4765,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 6,
-      },
     },
     {
       code: `
@@ -5141,6 +5087,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5149,9 +5098,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5162,6 +5108,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5172,9 +5121,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5186,6 +5132,9 @@ function quux (foo) {
       }
       export default quux;
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5194,9 +5143,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5205,6 +5151,9 @@ function quux (foo) {
       }
       export default quux;
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5215,9 +5164,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5228,6 +5174,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5236,9 +5185,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5249,6 +5195,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5259,9 +5208,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5274,6 +5220,9 @@ function quux (foo) {
       var test2 = 2;
       export { test, test2 }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5282,9 +5231,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5296,6 +5242,9 @@ function quux (foo) {
       }
       export { test as test2 }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5304,9 +5253,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5317,6 +5263,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5327,9 +5276,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5340,6 +5286,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5350,9 +5299,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5360,6 +5306,9 @@ function quux (foo) {
 
       }
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -5370,9 +5319,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5414,9 +5360,9 @@ function quux (foo) {
       }
       `,
       languageOptions: {
-        globals: globals.node,
         ecmaVersion: 6,
-        sourceType: 'module',
+        globals: globals.node,
+        sourceType: "module",
       },
       options: [
         {
@@ -5430,7 +5376,8 @@ function quux (foo) {
           },
         },
       ],
-    }, {
+    },
+    {
       code: `
       exports.someMethod = function() {
 
@@ -5451,7 +5398,8 @@ function quux (foo) {
           },
         },
       ],
-    }, {
+    },
+    {
       code: `
         const myObject = {
           myProp: true
@@ -5462,7 +5410,8 @@ function quux (foo) {
           contexts: [],
         },
       ],
-    }, {
+    },
+    {
       code: `
       function bear() {}
       /**
@@ -5472,6 +5421,9 @@ function quux (foo) {
       }
       export default quux;
     `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -5480,10 +5432,8 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
-    }, {
+    },
+    {
       code: `
     /**
      * This example interface is great!
@@ -5495,17 +5445,15 @@ function quux (foo) {
       test: string
     }
     `,
-      options: [
-        {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
+      options: [
+        {
+          contexts: ["TSInterfaceDeclaration"],
+        },
+      ],
     },
     {
       code: `
@@ -5519,18 +5467,17 @@ function quux (foo) {
       test: string
     }
     `,
-      options: [
-        {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
-    }, {
+      options: [
+        {
+          contexts: ["TSInterfaceDeclaration"],
+        },
+      ],
+    },
+    {
       code: `
     /**
      * This example type is great!
@@ -5542,17 +5489,15 @@ function quux (foo) {
       test: string
     };
     `,
-      options: [
-        {
-          contexts: [
-            'TSTypeAliasDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
+      options: [
+        {
+          contexts: ["TSTypeAliasDeclaration"],
+        },
+      ],
     },
     {
       code: `
@@ -5566,18 +5511,17 @@ function quux (foo) {
       test: string
     };
     `,
-      options: [
-        {
-          contexts: [
-            'TSTypeAliasDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
-    }, {
+      options: [
+        {
+          contexts: ["TSTypeAliasDeclaration"],
+        },
+      ],
+    },
+    {
       code: `
     /**
      * This example enum is great!
@@ -5589,17 +5533,15 @@ function quux (foo) {
       test = 123
     }
     `,
-      options: [
-        {
-          contexts: [
-            'TSEnumDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
+      options: [
+        {
+          contexts: ["TSEnumDeclaration"],
+        },
+      ],
     },
     {
       code: `
@@ -5613,24 +5555,32 @@ function quux (foo) {
       test = 123
     }
     `,
-      options: [
-        {
-          contexts: [
-            'TSEnumDeclaration',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
+      options: [
+        {
+          contexts: ["TSEnumDeclaration"],
+        },
+      ],
     },
     {
-    // https://github.com/gajus/eslint-plugin-jsdoc/issues/378
+      // https://github.com/gajus/eslint-plugin-jsdoc/issues/378
       code: `
     const foo = {...{}};
     function bar() {}
     `,
+      languageOptions: {
+        ecmaVersion: 2_017,
+        parser: babelEslintParser,
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          },
+        },
+        sourceType: "module",
+      },
       options: [
         {
           exemptEmptyFunctions: false,
@@ -5645,16 +5595,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_017,
-        parser: babelEslintParser,
-        parserOptions: {
-          ecmaFeatures: {
-            jsx: true,
-          },
-        },
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5666,6 +5606,10 @@ function quux (foo) {
      // ....
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           exemptEmptyFunctions: false,
@@ -5674,10 +5618,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5688,19 +5628,17 @@ function quux (foo) {
 
     export default b;
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'ObjectExpression',
-          ],
+          contexts: ["ObjectExpression"],
           exemptEmptyFunctions: false,
           publicOnly: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5719,16 +5657,14 @@ function quux (foo) {
       meow(): void;
     }
     `,
-      options: [
-        {
-          contexts: [
-            'TSMethodSignature',
-          ],
-        },
-      ],
       languageOptions: {
         parser: typescriptEslintParser,
-      }
+      },
+      options: [
+        {
+          contexts: ["TSMethodSignature"],
+        },
+      ],
     },
     {
       code: `
@@ -5738,11 +5674,13 @@ function quux (foo) {
       }
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
           publicOnly: true,
           require: {
             ArrowFunctionExpression: false,
@@ -5754,10 +5692,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5777,6 +5711,10 @@ function quux (foo) {
       }
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -5789,10 +5727,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5803,6 +5737,10 @@ function quux (foo) {
     export class User {
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -5815,10 +5753,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5829,6 +5763,10 @@ function quux (foo) {
     export class User {
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           require: {
@@ -5841,10 +5779,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -5891,11 +5825,9 @@ function quux (foo) {
     `,
       options: [
         {
-          checkGetters: 'no-setter',
+          checkGetters: "no-setter",
           checkSetters: false,
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -5908,11 +5840,9 @@ function quux (foo) {
     `,
       options: [
         {
-          checkGetters: 'no-setter',
+          checkGetters: "no-setter",
           checkSetters: false,
-          contexts: [
-            'Property > FunctionExpression',
-          ],
+          contexts: ["Property > FunctionExpression"],
         },
       ],
     },
@@ -5925,9 +5855,7 @@ function quux (foo) {
       options: [
         {
           checkSetters: false,
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -5940,9 +5868,7 @@ function quux (foo) {
       options: [
         {
           checkGetters: false,
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -5957,10 +5883,8 @@ function quux (foo) {
     `,
       options: [
         {
-          checkSetters: 'no-getter',
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          checkSetters: "no-getter",
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -5975,10 +5899,8 @@ function quux (foo) {
     `,
       options: [
         {
-          checkGetters: 'no-setter',
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          checkGetters: "no-setter",
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -5992,10 +5914,8 @@ function quux (foo) {
       options: [
         {
           checkGetters: false,
-          checkSetters: 'no-getter',
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          checkSetters: "no-getter",
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
     },
@@ -6008,9 +5928,7 @@ function quux (foo) {
     `,
       options: [
         {
-          contexts: [
-            'MethodDefinition',
-          ],
+          contexts: ["MethodDefinition"],
           exemptEmptyConstructors: true,
         },
       ],
@@ -6022,19 +5940,17 @@ function quux (foo) {
      */
     export function a(); // Reports an error
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSDeclareFunction',
-          ],
+          contexts: ["TSDeclareFunction"],
           require: {
             FunctionDeclaration: true,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -6049,14 +5965,14 @@ function quux (foo) {
       console.log('foo');
     }
 `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           publicOnly: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -6068,9 +5984,7 @@ function quux (foo) {
     `,
       options: [
         {
-          contexts: [
-            ':not(Property) > ArrowFunctionExpression',
-          ],
+          contexts: [":not(Property) > ArrowFunctionExpression"],
           require: {
             ArrowFunctionExpression: false,
             ClassDeclaration: true,
@@ -6094,6 +6008,9 @@ function quux (foo) {
     })
     export class UserSettingsState { }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           require: {
@@ -6101,9 +6018,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -6114,20 +6028,18 @@ function quux (foo) {
     export class User {
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'Decorator',
-          ],
+          contexts: ["Decorator"],
           require: {
             FunctionDeclaration: false,
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -6219,13 +6131,13 @@ function quux (foo) {
       options: [
         {
           contexts: [
-            'ClassDeclaration',
+            "ClassDeclaration",
             {
-              context: 'FunctionDeclaration',
+              context: "FunctionDeclaration",
               minLineCount: 4,
             },
             {
-              context: 'VariableDeclaration',
+              context: "VariableDeclaration",
               minLineCount: 5,
             },
           ],
@@ -6243,11 +6155,14 @@ function quux (foo) {
           }
         }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
-              context: 'MethodDefinition',
+              context: "MethodDefinition",
               minLineCount: 4,
             },
           ],
@@ -6258,9 +6173,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -6270,6 +6182,10 @@ function quux (foo) {
       }
     }
     `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
@@ -6283,10 +6199,6 @@ function quux (foo) {
           },
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -6311,17 +6223,17 @@ function quux (foo) {
         }
       };
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(created|beforeUpdate)$/] > FunctionExpression',
-            'ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(watch|computed|methods)$/] > ObjectExpression > Property > FunctionExpression',
+            "ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(created|beforeUpdate)$/] > FunctionExpression",
+            "ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(watch|computed|methods)$/] > ObjectExpression > Property > FunctionExpression",
           ],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser,
-      }
     },
     {
       code: `
@@ -6336,8 +6248,8 @@ function quux (foo) {
       },
       options: [
         {
+          contexts: ["PropertyDefinition"],
           publicOnly: true,
-          contexts: ['PropertyDefinition'],
           require: {
             MethodDefinition: true,
           },
@@ -6359,9 +6271,9 @@ function quux (foo) {
         {
           publicOnly: true,
           require: {
-            ClassDeclaration: true
-          }
-        }
+            ClassDeclaration: true,
+          },
+        },
       ],
     },
   ],

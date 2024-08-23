@@ -38,8 +38,8 @@ how many line breaks to add when a block is missing.
     "typescript" modes
   - `check-syntax`: determines aspects that may be enforced
   - `valid-types`: in non-Closure mode, `@extends`, `@package` and access tags
-     (e.g., `@private`) with a bracketed type are reported as are missing
-     names with `@typedef`
+    (e.g., `@private`) with a bracketed type are reported as are missing
+    names with `@typedef`
   - For type/namepath-checking rules, determine which tags will be checked for
     types/namepaths (Closure allows types on some tags which the others do not,
     so these tags will additionally be checked in "closure" mode)
@@ -48,7 +48,7 @@ how many line breaks to add when a block is missing.
     dependency)
   - Check preferred tag names
   - Disallows namepath on `@interface` for "closure" mode in `valid-types` (and
-      avoids checking in other rules)
+    avoids checking in other rules)
 
 Note that if you are using TypeScript syntax (and not just the TypeScript
 flavor of JSDoc which `mode` set to "typescript" implies), you may wish
@@ -64,15 +64,15 @@ a JSDoc tag. The format of the configuration is:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "param": "arg",
-                "returns": "return"
-            }
-        }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "param": "arg",
+        "returns": "return"
+      }
     }
+  }
 }
 ```
 
@@ -88,17 +88,17 @@ upon encountering `@augments`.
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "augments": {
-                  "message": "@extends is to be used over @augments as it is more evocative of classes than @augments",
-                  "replacement": "extends"
-                }
-            }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "augments": {
+          "message": "@extends is to be used over @augments as it is more evocative of classes than @augments",
+          "replacement": "extends"
         }
+      }
     }
+  }
 }
 ```
 
@@ -107,14 +107,14 @@ tag to `false`:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "todo": false
-            }
-        }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "todo": false
+      }
     }
+  }
 }
 ```
 
@@ -126,16 +126,16 @@ without a `replacement` property:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "todo": {
-                  "message": "We expect immediate perfection, so don't leave to-dos in your code."
-                }
-            }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "todo": {
+          "message": "We expect immediate perfection, so don't leave to-dos in your code."
         }
+      }
     }
+  }
 }
 ```
 
@@ -192,25 +192,25 @@ on the JSDoc comment block of the function or that of its parent class
 for any of the "require" rules (i.e., `require-param`, `require-description`,
 `require-example`, `require-returns`, `require-throws`, `require-yields`).
 
-* `settings.jsdoc.ignoreReplacesDocs` (`@ignore`) - Defaults to `true`
-* `settings.jsdoc.overrideReplacesDocs` (`@override`) - Defaults to `true`
-* `settings.jsdoc.augmentsExtendsReplacesDocs` (`@augments` or its alias
-    `@extends`) - Defaults to `false`.
-* `settings.jsdoc.implementsReplacesDocs` (`@implements`) - Defaults to `false`
+- `settings.jsdoc.ignoreReplacesDocs` (`@ignore`) - Defaults to `true`
+- `settings.jsdoc.overrideReplacesDocs` (`@override`) - Defaults to `true`
+- `settings.jsdoc.augmentsExtendsReplacesDocs` (`@augments` or its alias
+  `@extends`) - Defaults to `false`.
+- `settings.jsdoc.implementsReplacesDocs` (`@implements`) - Defaults to `false`
 
 The format of the configuration is as follows:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "ignoreReplacesDocs": true,
-            "overrideReplacesDocs": true,
-            "augmentsExtendsReplacesDocs": true,
-            "implementsReplacesDocs": true
-        }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "ignoreReplacesDocs": true,
+      "overrideReplacesDocs": true,
+      "augmentsExtendsReplacesDocs": true,
+      "implementsReplacesDocs": true
     }
+  }
 }
 ```
 
@@ -221,23 +221,25 @@ The format of the configuration is as follows:
   have precedence over the default recommendations for `check-types`).
   The keys of this map are the types to be replaced (or forbidden).
   These keys may include:
+
   1. The "ANY" type, `*`
   1. The pseudo-type `[]` which we use to denote the parent (array)
-    types used in the syntax `string[]`, `number[]`, etc.
+     types used in the syntax `string[]`, `number[]`, etc.
   1. The pseudo-type `.<>` (or `.`) to represent the format `Array.<value>`
-    or `Object.<key, value>`
+     or `Object.<key, value>`
   1. The pseudo-type `<>` to represent the format `Array<value>` or
-    `Object<key, value>`
+     `Object<key, value>`
   1. A plain string type, e.g., `MyType`
   1. A plain string type followed by one of the above pseudo-types (except
-    for `[]` which is always assumed to be an `Array`), e.g., `Array.`, or
-    `SpecialObject<>`.
+     for `[]` which is always assumed to be an `Array`), e.g., `Array.`, or
+     `SpecialObject<>`.
 
   If a bare pseudo-type is used, it will match all parent types of that form.
   If a pseudo-type prefixed with a type name is used, it will only match
   parent types of that form and type name.
 
   The values can be:
+
   - `false` to forbid the type
   - a string to indicate the type that should be preferred in its place
     (and which `fix` mode can replace); this can be one of the formats
@@ -288,43 +290,44 @@ have predefined behavior or `allowEmptyNamepaths` behavior, this option will
 override that behavior for any specified tags, though this option can also be
 used for tags without predefined behavior. Its keys are tag names and its
 values are objects with the following optional properties:
-  - `name` - String set to one of the following:
-    - `"text"` - When a name is present, plain text will be allowed in the
-      name position (non-whitespace immediately after the tag and whitespace),
-      e.g., in `@throws This is an error`, "This" would normally be the name,
-      but "text" allows non-name text here also. This is the default.
-    - `"namepath-defining"` - As with `namepath-referencing`, but also
-      indicates the tag adds a namepath to definitions, e.g., to prevent
-      `no-undefined-types` from reporting references to that namepath.
-    - `"namepath-referencing"` - This will cause any name position to be
-      checked to ensure it is a valid namepath. You might use this to ensure
-      that tags which normally allow free text, e.g., `@see` will instead
-      require a namepath.
-    - `"namepath-or-url-referencing"` - For inline tags which may point to
-      a namepath or URL.
-    - `false` - This will disallow any text in the name position.
-  - `type`:
-      - `true` - Allows valid types within brackets. This is the default.
-      - `false` - Explicitly disallows any brackets or bracketed type. You
-        might use this with `@throws` to suggest that only free form text
-        is being input or with `@augments` (for jsdoc mode) to disallow
-        Closure-style bracketed usage along with a required namepath.
-      - (An array of strings) - A list of permissible types.
-  - `required` - Array of one of the following (defaults to an empty array,
-      meaning none are required):
-    - One or both of the following strings (if both are included, then both
-      are required):
-      - `"name"` - Indicates that a name position is required (not just that
-        if present, it is a valid namepath). You might use this with `see`
-        to insist that a value (or namepath, depending on the `name` value)
-        is always present.
-      - `"type"` - Indicates that the type position (within curly brackets)
-        is required (not just that if present, it is a valid type). You
-        might use this with `@throws` or `@typedef` which might otherwise
-        normally have their types optional. See the type groups 3-5 above.
-    - `"typeOrNameRequired"` - Must have either type (e.g., `@throws {aType}`) or
-        name (`@throws Some text`); does not require that both exist but
-        disallows just an empty tag.
+
+- `name` - String set to one of the following:
+  - `"text"` - When a name is present, plain text will be allowed in the
+    name position (non-whitespace immediately after the tag and whitespace),
+    e.g., in `@throws This is an error`, "This" would normally be the name,
+    but "text" allows non-name text here also. This is the default.
+  - `"namepath-defining"` - As with `namepath-referencing`, but also
+    indicates the tag adds a namepath to definitions, e.g., to prevent
+    `no-undefined-types` from reporting references to that namepath.
+  - `"namepath-referencing"` - This will cause any name position to be
+    checked to ensure it is a valid namepath. You might use this to ensure
+    that tags which normally allow free text, e.g., `@see` will instead
+    require a namepath.
+  - `"namepath-or-url-referencing"` - For inline tags which may point to
+    a namepath or URL.
+  - `false` - This will disallow any text in the name position.
+- `type`:
+  - `true` - Allows valid types within brackets. This is the default.
+  - `false` - Explicitly disallows any brackets or bracketed type. You
+    might use this with `@throws` to suggest that only free form text
+    is being input or with `@augments` (for jsdoc mode) to disallow
+    Closure-style bracketed usage along with a required namepath.
+  - (An array of strings) - A list of permissible types.
+- `required` - Array of one of the following (defaults to an empty array,
+  meaning none are required):
+  - One or both of the following strings (if both are included, then both
+    are required):
+    - `"name"` - Indicates that a name position is required (not just that
+      if present, it is a valid namepath). You might use this with `see`
+      to insist that a value (or namepath, depending on the `name` value)
+      is always present.
+    - `"type"` - Indicates that the type position (within curly brackets)
+      is required (not just that if present, it is a valid type). You
+      might use this with `@throws` or `@typedef` which might otherwise
+      normally have their types optional. See the type groups 3-5 above.
+  - `"typeOrNameRequired"` - Must have either type (e.g., `@throws {aType}`) or
+    name (`@throws Some text`); does not require that both exist but
+    disallows just an empty tag.
 
 ### `contexts`
 

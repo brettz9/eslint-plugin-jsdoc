@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -15,7 +15,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -32,7 +32,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -65,7 +65,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -82,7 +82,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -96,7 +96,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -110,7 +110,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -127,13 +127,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @return declaration.',
+          message: "Missing JSDoc @return declaration.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            returns: 'return',
+            returns: "return",
           },
         },
       },
@@ -149,17 +149,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireReturn: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireReturn: true,
+        },
+      ],
     },
     {
       code: `
@@ -171,17 +171,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireReturn: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireReturn: true,
+        },
+      ],
     },
     {
       code: `
@@ -193,17 +193,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireReturn: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireReturn: true,
+        },
+      ],
     },
     {
       code: `
@@ -215,17 +215,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireReturn: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireReturn: true,
+        },
+      ],
     },
     {
       code: `
@@ -238,7 +238,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -258,14 +258,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireReturn: true,
         },
       ],
@@ -279,14 +277,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireReturn: true,
         },
       ],
@@ -300,14 +296,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireReturn: true,
         },
       ],
@@ -326,7 +320,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -341,17 +335,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceReturnsWithAsync: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceReturnsWithAsync: true,
+        },
+      ],
     },
     {
       code: `
@@ -363,14 +357,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceReturnsWithAsync: true,
         },
       ],
@@ -385,14 +377,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceReturnsWithAsync: true,
         },
       ],
@@ -411,7 +401,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Found more than one @returns declaration.',
+          message: "Found more than one @returns declaration.",
         },
       ],
     },
@@ -427,7 +417,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@returns`',
+          message: "Unexpected tag `@returns`",
         },
       ],
       settings: {
@@ -450,14 +440,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          exemptedBy: [
-            'notPresent',
-          ],
+          exemptedBy: ["notPresent"],
         },
       ],
     },
@@ -473,17 +461,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceReturnsWithAsync: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceReturnsWithAsync: true,
+        },
+      ],
     },
     {
       code: `
@@ -497,17 +485,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceReturnsWithAsync: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceReturnsWithAsync: true,
+        },
+      ],
     },
     {
       code: `
@@ -521,17 +509,17 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          checkGetters: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          checkGetters: true,
+        },
+      ],
     },
     {
       code: `
@@ -547,7 +535,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -570,7 +558,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -592,14 +580,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireReturn: true,
         },
       ],
@@ -619,7 +605,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -640,7 +626,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -659,7 +645,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -679,7 +665,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -700,7 +686,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -721,7 +707,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -742,7 +728,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -763,7 +749,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -782,7 +768,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -804,12 +790,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
-        sourceType: 'script'
-      }
+        sourceType: "script",
+      },
     },
     {
       code: `
@@ -828,7 +814,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -850,7 +836,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -873,7 +859,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -895,7 +881,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -917,7 +903,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -937,7 +923,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -957,7 +943,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -977,7 +963,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -999,7 +985,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -1020,7 +1006,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
     },
@@ -1041,7 +1027,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1060,7 +1046,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1079,7 +1065,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1098,7 +1084,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1117,7 +1103,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1138,7 +1124,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1157,7 +1143,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1176,7 +1162,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1200,7 +1186,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1222,7 +1208,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1243,7 +1229,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1262,7 +1248,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1281,7 +1267,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1300,7 +1286,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1319,7 +1305,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1341,7 +1327,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1360,7 +1346,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1379,7 +1365,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1411,12 +1397,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1441,12 +1427,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1471,7 +1457,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1494,7 +1480,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1513,12 +1499,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       ignoreReadme: true,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1533,7 +1519,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -1554,17 +1540,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceReturnsWithAsync: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceReturnsWithAsync: true,
+        },
+      ],
     },
     {
       code: `
@@ -1578,17 +1564,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          forceReturnsWithAsync: true,
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceReturnsWithAsync: true,
+        },
+      ],
     },
     {
       code: `
@@ -1633,34 +1619,34 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
         {
           line: 12,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
         {
           line: 17,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
         {
           line: 33,
-          message: 'Missing JSDoc @returns declaration.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            ':not(BlockStatement) > FunctionDeclaration',
-            'MethodDefinition',
-            'TSMethodSignature',
-            'TSPropertySignature > TSTypeAnnotation > TSFunctionType',
-          ],
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
+      options: [
+        {
+          contexts: [
+            ":not(BlockStatement) > FunctionDeclaration",
+            "MethodDefinition",
+            "TSMethodSignature",
+            "TSPropertySignature > TSTypeAnnotation > TSFunctionType",
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1673,11 +1659,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1692,11 +1678,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1709,11 +1695,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1726,17 +1712,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           forceRequireReturn: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1748,17 +1734,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           forceRequireReturn: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1772,7 +1758,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
@@ -1791,12 +1777,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1816,23 +1802,23 @@ export default {
       errors: [
         {
           line: 8,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'FunctionDeclaration',
+            "FunctionDeclaration",
             {
-              context: 'TSEmptyBodyFunctionExpression',
+              context: "TSEmptyBodyFunctionExpression",
               forceRequireReturn: true,
             },
           ],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1847,7 +1833,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
       options: [
@@ -1871,17 +1857,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: true,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1896,9 +1882,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1907,9 +1896,6 @@ export default {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1924,9 +1910,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1934,9 +1923,6 @@ export default {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1951,9 +1937,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @returns declaration.',
+          message: "Missing JSDoc @returns declaration.",
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           publicOnly: {
@@ -1961,9 +1950,6 @@ export default {
           },
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
   ],
   valid: [
@@ -1990,9 +1976,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -2291,14 +2275,14 @@ export default {
           async function quux () {
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           forceRequireReturn: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -2308,14 +2292,14 @@ export default {
           async function quux () {
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           forceReturnsWithAsync: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -2364,7 +2348,7 @@ export default {
       export default foo;
       `,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -2392,9 +2376,7 @@ export default {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },
@@ -2419,9 +2401,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -2433,9 +2413,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -2497,9 +2475,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceReturnsWithAsync: true,
         },
       ],
@@ -2512,9 +2488,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceReturnsWithAsync: true,
         },
       ],
@@ -2527,14 +2501,14 @@ export default {
             }
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           checkGetters: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -2545,14 +2519,14 @@ export default {
             }
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           checkGetters: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -2563,14 +2537,14 @@ export default {
             }
           }
       `,
+      languageOptions: {
+        ecmaVersion: 8,
+      },
       options: [
         {
           checkGetters: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 8,
-      },
     },
     {
       code: `
@@ -2769,16 +2743,14 @@ export default {
       export default Gender;
       `,
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            ':not(:matches(VariableDeclarator))',
-          ],
+          contexts: [":not(:matches(VariableDeclarator))"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -2789,7 +2761,7 @@ export default {
           new Promise<void>((res) => setTimeout(res, ms));
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2802,7 +2774,7 @@ export default {
         };
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2815,7 +2787,7 @@ export default {
       export function readFixture(path: string): Promise<Buffer>;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2828,7 +2800,7 @@ export default {
       export function readFixture(path: string): void;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2839,7 +2811,7 @@ export default {
       export function readFixture(path: string): void;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2850,7 +2822,7 @@ export default {
       export function readFixture(path: string);
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -2867,20 +2839,20 @@ export default {
           abstract Test(): string;
         }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
-            'FunctionDeclaration',
+            "FunctionDeclaration",
             {
-              context: 'TSEmptyBodyFunctionExpression',
+              context: "TSEmptyBodyFunctionExpression",
               forceRequireReturn: true,
             },
           ],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `

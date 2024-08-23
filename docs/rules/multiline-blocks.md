@@ -1,8 +1,7 @@
 <a name="user-content-multiline-blocks"></a>
 <a name="multiline-blocks"></a>
+
 ### <code>multiline-blocks</code>
-
-
 
 Controls how and whether jsdoc blocks can be expressed as single or multiple
 line blocks.
@@ -15,18 +14,21 @@ Also allows for preventing text at the very beginning or very end of blocks.
 
 <a name="user-content-fixer"></a>
 <a name="fixer"></a>
+
 ## Fixer
 
 (TODO)
 
 <a name="user-content-options"></a>
 <a name="options"></a>
+
 ## Options
 
 A single options object with the following properties.
 
 <a name="user-content-options-nozerolinetext-defaults-to-true"></a>
 <a name="options-nozerolinetext-defaults-to-true"></a>
+
 ### <code>noZeroLineText</code> (defaults to <code>true</code>)
 
 For multiline blocks, any non-whitespace text immediately after the `/**` and
@@ -36,6 +38,7 @@ space will be reported. (Text after a newline is not reported.)
 
 <a name="user-content-options-nofinallinetext-defaults-to-true"></a>
 <a name="options-nofinallinetext-defaults-to-true"></a>
+
 ### <code>noFinalLineText</code> (defaults to <code>true</code>)
 
 For multiline blocks, any non-whitespace text preceding the `*/` on the final
@@ -45,6 +48,7 @@ line will be reported. (Text preceding a newline is not reported.)
 
 <a name="user-content-options-nosinglelineblocks-defaults-to-false"></a>
 <a name="options-nosinglelineblocks-defaults-to-false"></a>
+
 ### <code>noSingleLineBlocks</code> (defaults to <code>false</code>)
 
 If this is `true`, any single line blocks will be reported, except those which
@@ -52,16 +56,18 @@ are whitelisted in `singleLineTags`.
 
 <a name="user-content-options-singlelinetags-defaults-to-lends-type"></a>
 <a name="options-singlelinetags-defaults-to-lends-type"></a>
+
 ### <code>singleLineTags</code> (defaults to <code>[&#39;lends&#39;, &#39;type&#39;]</code>)
 
 An array of tags which can nevertheless be allowed as single line blocks when
-`noSingleLineBlocks` is set.  You may set this to a empty array to
+`noSingleLineBlocks` is set. You may set this to a empty array to
 cause all single line blocks to be reported. If `'*'` is present, then
 the presence of a tag will allow single line blocks (but not if a tag is
 missing).
 
 <a name="user-content-options-nomultilineblocks-defaults-to-false"></a>
 <a name="options-nomultilineblocks-defaults-to-false"></a>
+
 ### <code>noMultilineBlocks</code> (defaults to <code>false</code>)
 
 Requires that jsdoc blocks are restricted to single lines only unless impacted
@@ -70,6 +76,7 @@ by the options `minimumLengthForMultiline`, `multilineTags`, or
 
 <a name="user-content-options-minimumlengthformultiline-defaults-to-not-being-in-effect"></a>
 <a name="options-minimumlengthformultiline-defaults-to-not-being-in-effect"></a>
+
 ### <code>minimumLengthForMultiline</code> (defaults to not being in effect)
 
 If `noMultilineBlocks` is set with this numeric option, multiline blocks will
@@ -80,6 +87,7 @@ a relevant tag is present and `multilineTags` is set.
 
 <a name="user-content-options-multilinetags-defaults-to"></a>
 <a name="options-multilinetags-defaults-to"></a>
+
 ### <code>multilineTags</code> (defaults to <code>[&#39;*&#39;]</code>)
 
 If `noMultilineBlocks` is set with this option, multiline blocks may be allowed
@@ -97,6 +105,7 @@ lines.
 
 <a name="user-content-options-allowmultipletags-defaults-to-true"></a>
 <a name="options-allowmultipletags-defaults-to-true"></a>
+
 ### <code>allowMultipleTags</code> (defaults to <code>true</code>)
 
 If `noMultilineBlocks` is set to `true` with this option and multiple tags are
@@ -112,23 +121,25 @@ cannot be reliably added after the tag either).
 
 <a name="user-content-context-and-settings"></a>
 <a name="context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|Any (though `singleLineTags` and `multilineTags` control the application)|
-|Recommended|true|
-|Settings||
-|Options|`allowMultipleTags`, `minimumLengthForMultiline`, `multilineTags`, `noFinalLineText`, `noMultilineBlocks`, `noSingleLineBlocks`, `noZeroLineText`, `singleLineTags`|
+|             |                                                                                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | everywhere                                                                                                                                                          |
+| Tags        | Any (though `singleLineTags` and `multilineTags` control the application)                                                                                           |
+| Recommended | true                                                                                                                                                                |
+| Settings    |                                                                                                                                                                     |
+| Options     | `allowMultipleTags`, `minimumLengthForMultiline`, `multilineTags`, `noFinalLineText`, `noMultilineBlocks`, `noSingleLineBlocks`, `noZeroLineText`, `singleLineTags` |
 
 <a name="user-content-failing-examples"></a>
 <a name="failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /** Reported up here
  * because the rest is multiline
  */
@@ -283,17 +294,16 @@ The following patterns are considered problems:
  * Description */
 // "jsdoc/multiline-blocks": ["error"|"warn", {"noFinalLineText":true}]
 // Message: Should have no text on the final line (before the `*/`).
-````
-
-
+```
 
 <a name="user-content-passing-examples"></a>
 <a name="passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /** Not reported */
 
 /**
@@ -394,5 +404,4 @@ The following patterns are not considered problems:
 
 /** @someTag with Description */
 // "jsdoc/multiline-blocks": ["error"|"warn", {"noFinalLineText":true}]
-````
-
+```

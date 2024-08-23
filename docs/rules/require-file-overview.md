@@ -1,30 +1,32 @@
 <a name="user-content-require-file-overview"></a>
 <a name="require-file-overview"></a>
+
 # <code>require-file-overview</code>
 
-* [Options](#user-content-require-file-overview-options)
-    * [`tags`](#user-content-require-file-overview-options-tags)
-* [Context and settings](#user-content-require-file-overview-context-and-settings)
-* [Failing examples](#user-content-require-file-overview-failing-examples)
-* [Passing examples](#user-content-require-file-overview-passing-examples)
-
+- [Options](#user-content-require-file-overview-options)
+  - [`tags`](#user-content-require-file-overview-options-tags)
+- [Context and settings](#user-content-require-file-overview-context-and-settings)
+- [Failing examples](#user-content-require-file-overview-failing-examples)
+- [Passing examples](#user-content-require-file-overview-passing-examples)
 
 Checks that:
 
 1. All files have a `@file`, `@fileoverview`, or `@overview` tag.
 2. Duplicate file overview tags within a given file will be reported
 3. File overview tags will be reported which are not, as per
-  [the docs](https://jsdoc.app/tags-file.html), "at the beginning of
-  the file"–where beginning of the file is interpreted in this rule
-  as being when the overview tag is not preceded by anything other than
-  a comment.
+   [the docs](https://jsdoc.app/tags-file.html), "at the beginning of
+   the file"–where beginning of the file is interpreted in this rule
+   as being when the overview tag is not preceded by anything other than
+   a comment.
 
 <a name="user-content-require-file-overview-options"></a>
 <a name="require-file-overview-options"></a>
+
 ## Options
 
 <a name="user-content-require-file-overview-options-tags"></a>
 <a name="require-file-overview-options-tags"></a>
+
 ### <code>tags</code>
 
 The keys of this object are tag names, and the values are configuration
@@ -41,7 +43,7 @@ When no `tags` is present, the default is:
   "file": {
     "initialCommentsOnly": true,
     "mustExist": true,
-    "preventDuplicates": true,
+    "preventDuplicates": true
   }
 }
 ```
@@ -82,34 +84,32 @@ will be checked, but you must use `file` on the configuration object).
 
 <a name="user-content-require-file-overview-context-and-settings"></a>
 <a name="require-file-overview-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|Everywhere|
-|Tags|`file`; others when `tags` set|
-|Aliases|`fileoverview`, `overview`|
-|Recommended|false|
-|Options|`tags`|
+|             |                                |
+| ----------- | ------------------------------ |
+| Context     | Everywhere                     |
+| Tags        | `file`; others when `tags` set |
+| Aliases     | `fileoverview`, `overview`     |
+| Recommended | false                          |
+| Options     | `tags`                         |
 
 <a name="user-content-require-file-overview-failing-examples"></a>
 <a name="require-file-overview-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
-
+```ts
 // Message: Missing @file
-
 
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"file":{"initialCommentsOnly":true,"mustExist":true,"preventDuplicates":true}}}]
 // Message: Missing @file
 
-
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"file":{"mustExist":true}}}]
 // Message: Missing @file
-
 
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"author":{"initialCommentsOnly":false,"mustExist":true,"preventDuplicates":false}}}]
 // Message: Missing @author
@@ -122,34 +122,34 @@ The following patterns are considered problems:
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Message: Missing @file
 
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":"fileoverview"}}}
 // Message: Missing @fileoverview
 
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":"overview"}}}
 // Message: Missing @overview
 
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":false}}}
 // Message: `settings.jsdoc.tagNamePreference` cannot block @file for the `require-file-overview` rule
 
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":false}}}
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"file":{"initialCommentsOnly":false,"mustExist":true,"preventDuplicates":false}}}]
 // Message: `settings.jsdoc.tagNamePreference` cannot block @file for the `require-file-overview` rule
@@ -157,63 +157,60 @@ function quux () {}
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":{"message":"Don't use file"}}}}
 // Message: `settings.jsdoc.tagNamePreference` cannot block @file for the `require-file-overview` rule
 
 /**
  * @param a
  */
-function quux (a) {}
+function quux(a) {}
 // Message: Missing @file
 
 /**
  * @param a
  */
-function quux (a) {}
+function quux(a) {}
 
 /**
  * @param b
  */
-function bar (b) {}
+function bar(b) {}
 // Message: Missing @file
 
 /**
  * @file
  */
 
- /**
-  * @file
-  */
+/**
+ * @file
+ */
 // Message: Duplicate @file
 
 /**
  * @copyright
  */
 
- /**
-  * @copyright
-  */
+/**
+ * @copyright
+ */
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"copyright":{"initialCommentsOnly":false,"mustExist":false,"preventDuplicates":true}}}]
 // Message: Duplicate @copyright
 
-function quux () {
-}
+function quux() {}
 /**
  * @file
  */
 // Message: @file should be at the beginning of the file
 
-function quux () {
-}
+function quux() {}
 /**
  * @license
  */
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"license":{"initialCommentsOnly":true,"mustExist":false,"preventDuplicates":false}}}]
 // Message: @license should be at the beginning of the file
 
-function quux () {
-}
+function quux() {}
 /**
  * @license
  */
@@ -233,20 +230,19 @@ function quux () {
 /**
  *
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"file":{"replacement":"fileoverview"}}}}
 // Message: Missing @fileoverview
-````
-
-
+```
 
 <a name="user-content-require-file-overview-passing-examples"></a>
 <a name="require-file-overview-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @file
  */
@@ -282,29 +278,25 @@ The following patterns are not considered problems:
 /**
  * @file Description of file
  */
-function quux () {
-}
+function quux() {}
 
 /**
  *
  */
 
-function quux () {
-}
+function quux() {}
 /**
  *
  */
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"license":{"initialCommentsOnly":true,"mustExist":false,"preventDuplicates":false}}}]
 
-function quux () {
-}
+function quux() {}
 /**
  *
  */
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"license":{"initialCommentsOnly":false,"mustExist":false,"preventDuplicates":false}}}]
 
-function quux () {
-}
+function quux() {}
 /**
  *
  */
@@ -314,11 +306,10 @@ function quux () {
  * @license MIT
  */
 
- var a
+var a;
 
- /**
-  * @type {Array}
-  */
+/**
+ * @type {Array}
+ */
 // "jsdoc/require-file-overview": ["error"|"warn", {"tags":{"license":{"initialCommentsOnly":true,"mustExist":false,"preventDuplicates":false}}}]
-````
-
+```

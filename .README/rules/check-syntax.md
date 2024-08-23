@@ -17,11 +17,11 @@ rule is enforced (except under "permissive" and "closure" modes).
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|false|
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | N/A        |
+| Recommended | false      |
 
 ## Failing examples
 

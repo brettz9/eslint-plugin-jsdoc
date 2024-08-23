@@ -10,7 +10,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       output: `
@@ -30,13 +30,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       options: [
         {
-          ignoreSameLine: false
-        }
+          ignoreSameLine: false,
+        },
       ],
       output: `
         someCode;
@@ -53,13 +53,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       options: [
         {
-          ignoreSameLine: false
-        }
+          ignoreSameLine: false,
+        },
       ],
       output: `
         someCode;
@@ -77,7 +77,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Required 2 line(s) before JSDoc block',
+          message: "Required 2 line(s) before JSDoc block",
         },
       ],
       options: [
@@ -104,7 +104,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       output: `
@@ -125,7 +125,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       output: `
@@ -148,7 +148,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Required 1 line(s) before JSDoc block',
+          message: "Required 1 line(s) before JSDoc block",
         },
       ],
       output: `
@@ -164,7 +164,7 @@ export default {
   ],
   valid: [
     {
-      code: `/**\n *\n */`,
+      code: "/**\n *\n */",
     },
     {
       code: `
@@ -237,10 +237,10 @@ export default {
       `,
       options: [
         {
-          excludedTags: ['lends'],
-          ignoreSameLine: false
-        }
-      ]
+          excludedTags: ["lends"],
+          ignoreSameLine: false,
+        },
+      ],
     },
   ],
 };

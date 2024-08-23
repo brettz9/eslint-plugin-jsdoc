@@ -33,17 +33,17 @@ properties, all of which act to confine one another:
   the specified tags. If `tags` is omitted, then `*` is assumed.
 
 - `allowName` - Indicates which names are allowed for the given tag (or `*`).
-    Accepts a string regular expression (optionally wrapped between two
-    `/` delimiters followed by optional flags) used to match the name.
+  Accepts a string regular expression (optionally wrapped between two
+  `/` delimiters followed by optional flags) used to match the name.
 - `disallowName` - As with `allowName` but indicates names that are not
-    allowed.
+  allowed.
 - `replacement` - If `disallowName` is supplied and this value is present, it
-    will replace the matched `disallowName` text.
+  will replace the matched `disallowName` text.
 
 - `context` - AST to confine the allowing or disallowing to jsdoc blocks
-    associated with a particular context. See the
-    ["AST and Selectors"](../#advanced-ast-and-selectors)
-    section of our README for more on the expected format.
+  associated with a particular context. See the
+  ["AST and Selectors"](../#advanced-ast-and-selectors)
+  section of our README for more on the expected format.
 - `comment` - As with `context` but AST for the JSDoc block comment and types
 
 - `message` - An optional custom message to use when there is a match.
@@ -58,13 +58,13 @@ be applied, however.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|(The tags specified by `tags`, including any tag if `*` is set)|
-|Recommended|false|
-|Settings|`structuredTags`|
-|Options|`match`|
+|             |                                                                 |
+| ----------- | --------------------------------------------------------------- |
+| Context     | everywhere                                                      |
+| Tags        | (The tags specified by `tags`, including any tag if `*` is set) |
+| Recommended | false                                                           |
+| Settings    | `structuredTags`                                                |
+| Options     | `match`                                                         |
 
 ## Failing examples
 

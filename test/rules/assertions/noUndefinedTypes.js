@@ -1,6 +1,6 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
-import * as babelEslintParser from '@babel/eslint-parser';
-import globals from 'globals';
+import * as babelEslintParser from "@babel/eslint-parser";
+import globals from "globals";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -16,11 +16,12 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.',
+          message:
+            "Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.",
         },
         {
           line: 3,
-          message: 'The type \'HerType\' is undefined.',
+          message: "The type 'HerType' is undefined.",
         },
       ],
       settings: {
@@ -43,7 +44,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'HerType\' is undefined.',
+          message: "The type 'HerType' is undefined.",
         },
       ],
       settings: {
@@ -66,7 +67,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'strnig\' is undefined.',
+          message: "The type 'strnig' is undefined.",
         },
       ],
     },
@@ -83,14 +84,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'HisType\' is undefined.',
+          message: "The type 'HisType' is undefined.",
         },
       ],
       options: [
         {
-          definedTypes: [
-            'MyType',
-          ],
+          definedTypes: ["MyType"],
         },
       ],
     },
@@ -108,21 +107,19 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'HisType\' is undefined.',
+          message: "The type 'HisType' is undefined.",
         },
       ],
       options: [
         {
-          definedTypes: [
-            'MyType',
-          ],
+          definedTypes: ["MyType"],
         },
       ],
       settings: {
         jsdoc: {
           preferredTypes: {
             hertype: {
-              replacement: 'HerType',
+              replacement: "HerType",
             },
           },
         },
@@ -142,14 +139,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'The type \'HerType\' is undefined.',
+          message: "The type 'HerType' is undefined.",
         },
       ],
       options: [
         {
-          definedTypes: [
-            'MyType',
-          ],
+          definedTypes: ["MyType"],
         },
       ],
       settings: {
@@ -158,7 +153,7 @@ export default {
             hertype: {
               replacement: false,
             },
-            histype: 'HisType',
+            histype: "HisType",
           },
         },
       },
@@ -175,12 +170,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'WRONG_TEMPLATE_TYPE\' is undefined.',
+          message: "The type 'WRONG_TEMPLATE_TYPE' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -197,7 +192,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'TEMPLATE_TYPE\' is undefined.',
+          message: "The type 'TEMPLATE_TYPE' is undefined.",
         },
       ],
     },
@@ -225,12 +220,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'TEMPLATE_TYPE\' is undefined.',
+          message: "The type 'TEMPLATE_TYPE' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -246,7 +241,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'strnig\' is undefined.',
+          message: "The type 'strnig' is undefined.",
         },
       ],
     },
@@ -267,16 +262,16 @@ export default {
       errors: [
         {
           line: 7,
-          message: 'The type \'TEMPLATE_TYPE_A\' is undefined.',
+          message: "The type 'TEMPLATE_TYPE_A' is undefined.",
         },
         {
           line: 8,
-          message: 'The type \'TEMPLATE_TYPE_B\' is undefined.',
+          message: "The type 'TEMPLATE_TYPE_B' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -291,7 +286,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'VAR_TYPE\' is undefined.',
+          message: "The type 'VAR_TYPE' is undefined.",
         },
       ],
     },
@@ -305,12 +300,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'Navigator\' is undefined.',
+          message: "The type 'Navigator' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -324,12 +319,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -343,7 +338,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       settings: {
@@ -366,16 +361,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              type: [
-                'aType', 'anotherType',
-              ],
+              type: ["aType", "anotherType"],
             },
           },
         },
@@ -393,18 +386,18 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
         {
           line: 6,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             namepathReferencing: {
-              name: 'namepath-referencing',
+              name: "namepath-referencing",
             },
           },
         },
@@ -424,7 +417,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       ignoreReadme: true,
@@ -441,12 +434,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'TEMPLATE_TYPE\' is undefined.',
+          message: "The type 'TEMPLATE_TYPE' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -461,12 +454,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'visibility\' is undefined.',
+          message: "The type 'visibility' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -485,12 +478,12 @@ export default {
       errors: [
         {
           line: 8,
-          message: 'The type \'Omit\' is undefined.',
+          message: "The type 'Omit' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -503,7 +496,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'NotKnown\' is undefined.',
+          message: "The type 'NotKnown' is undefined.",
         },
       ],
     },
@@ -517,7 +510,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'The type \'NotKnown\' is undefined.',
+          message: "The type 'NotKnown' is undefined.",
         },
       ],
     },
@@ -532,7 +525,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'The type \'NotKnown\' is undefined.',
+          message: "The type 'NotKnown' is undefined.",
         },
       ],
     },
@@ -545,14 +538,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'The type \'SomeType\' is undefined.',
+          message: "The type 'SomeType' is undefined.",
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             namepathOrURLReferencer: {
-              name: 'namepath-or-url-referencing',
+              name: "namepath-or-url-referencing",
             },
           },
         },
@@ -592,15 +585,15 @@ export default {
       errors: [
         {
           line: 22,
-          message: 'The type \'BadImportIgnoredByThisRule\' is undefined.',
+          message: "The type 'BadImportIgnoredByThisRule' is undefined.",
         },
         {
           line: 25,
-          message: 'The type \'Sth\' is undefined.',
+          message: "The type 'Sth' is undefined.",
         },
         {
           line: 28,
-          message: 'The type \'Another\' is undefined.',
+          message: "The type 'Another' is undefined.",
         },
       ],
     },
@@ -627,7 +620,7 @@ export default {
       `,
       languageOptions: {
         globals: {
-          Promise: 'readonly',
+          Promise: "readonly",
         },
       },
     },
@@ -645,7 +638,7 @@ export default {
           quux(0);
       `,
       rules: {
-        'no-unused-vars': 'error',
+        "no-unused-vars": "error",
       },
     },
     {
@@ -660,7 +653,7 @@ export default {
         }
       `,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -692,7 +685,7 @@ export default {
         }
       `,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -779,9 +772,7 @@ export default {
       `,
       options: [
         {
-          definedTypes: [
-            'MyType', 'HisType',
-          ],
+          definedTypes: ["MyType", "HisType"],
         },
       ],
     },
@@ -798,18 +789,16 @@ export default {
       `,
       options: [
         {
-          definedTypes: [
-            'MyType',
-          ],
+          definedTypes: ["MyType"],
         },
       ],
       settings: {
         jsdoc: {
           preferredTypes: {
             hertype: {
-              replacement: 'HerType',
+              replacement: "HerType",
             },
-            histype: 'HisType',
+            histype: "HisType",
           },
         },
       },
@@ -827,18 +816,16 @@ export default {
       `,
       options: [
         {
-          definedTypes: [
-            'MyType',
-          ],
+          definedTypes: ["MyType"],
         },
       ],
       settings: {
         jsdoc: {
           preferredTypes: {
             hertype: {
-              replacement: 'HerType<>',
+              replacement: "HerType<>",
             },
-            histype: 'HisType.<>',
+            histype: "HisType.<>",
           },
         },
       },
@@ -855,7 +842,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -874,7 +861,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -897,7 +884,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -917,7 +904,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -937,7 +924,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -977,7 +964,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1009,7 +996,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1023,7 +1010,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1042,7 +1029,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1060,7 +1047,7 @@ export default {
 `,
       languageOptions: {
         globals: {
-          Promise: 'readonly',
+          Promise: "readonly",
         },
       },
     },
@@ -1078,12 +1065,12 @@ export default {
       `,
       languageOptions: {
         globals: {
-          Promise: 'readonly',
+          Promise: "readonly",
         },
       },
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1098,12 +1085,12 @@ export default {
       `,
       languageOptions: {
         globals: {
-          Promise: 'readonly',
+          Promise: "readonly",
         },
       },
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1135,9 +1122,7 @@ export default {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              type: [
-                'aType', 'SomeType',
-              ],
+              type: ["aType", "SomeType"],
             },
           },
         },
@@ -1156,7 +1141,7 @@ export default {
         jsdoc: {
           structuredTags: {
             namepathDefiner: {
-              name: 'namepath-defining',
+              name: "namepath-defining",
             },
           },
         },
@@ -1176,7 +1161,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1203,7 +1188,7 @@ export default {
       ignoreReadme: true,
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -1227,12 +1212,12 @@ export default {
           });
         };
       `,
+      ignoreReadme: true,
       languageOptions: {
         globals: {
-          Promise: 'readonly',
+          Promise: "readonly",
         },
       },
-      ignoreReadme: true,
     },
     {
       // https://github.com/gajus/eslint-plugin-jsdoc/issues/749
@@ -1260,7 +1245,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1282,7 +1267,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1301,7 +1286,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1326,7 +1311,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1345,11 +1330,11 @@ export default {
       }
       `,
       languageOptions: {
-        parser: babelEslintParser
+        parser: babelEslintParser,
       },
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1375,7 +1360,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1395,7 +1380,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1416,14 +1401,14 @@ export default {
           quux(0);
       `,
       ignoreReadme: true,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           markVariablesAsUsed: false,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1437,14 +1422,14 @@ export default {
 
       }
       `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           disableReporting: true,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1461,7 +1446,7 @@ export default {
           quux(0);
       `,
       rules: {
-        'no-unused-vars': 'error',
+        "no-unused-vars": "error",
       },
     },
     {
@@ -1479,7 +1464,7 @@ export default {
           quux(0);
       `,
       rules: {
-        'no-unused-vars': 'error',
+        "no-unused-vars": "error",
       },
     },
     {

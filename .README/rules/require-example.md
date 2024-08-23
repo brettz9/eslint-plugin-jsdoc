@@ -4,8 +4,8 @@
 
 Requires that all functions have examples.
 
-* All functions must have one or more `@example` tags.
-* Every example tag must have a non-empty description that explains the
+- All functions must have one or more `@example` tags.
+- Every example tag must have a non-empty description that explains the
   method's usage.
 
 ## Fixer
@@ -61,13 +61,13 @@ Defaults to `true`.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`example`|
-|Recommended|false|
-|Options|`checkConstructors`, `checkGetters`, `checkSetters`, `contexts`, `enableFixer`, `exemptedBy`, `exemptNoArguments`|
-|Settings|`ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
+|             |                                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled     |
+| Tags        | `example`                                                                                                         |
+| Recommended | false                                                                                                             |
+| Options     | `checkConstructors`, `checkGetters`, `checkSetters`, `contexts`, `enableFixer`, `exemptedBy`, `exemptNoArguments` |
+| Settings    | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`             |
 
 # Failing examples
 

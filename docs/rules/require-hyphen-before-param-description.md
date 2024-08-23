@@ -1,24 +1,26 @@
 <a name="user-content-require-hyphen-before-param-description"></a>
 <a name="require-hyphen-before-param-description"></a>
+
 # <code>require-hyphen-before-param-description</code>
 
-* [Fixer](#user-content-require-hyphen-before-param-description-fixer)
-* [Options](#user-content-require-hyphen-before-param-description-options)
-* [Context and settings](#user-content-require-hyphen-before-param-description-context-and-settings)
-* [Failing examples](#user-content-require-hyphen-before-param-description-failing-examples)
-* [Passing examples](#user-content-require-hyphen-before-param-description-passing-examples)
-
+- [Fixer](#user-content-require-hyphen-before-param-description-fixer)
+- [Options](#user-content-require-hyphen-before-param-description-options)
+- [Context and settings](#user-content-require-hyphen-before-param-description-context-and-settings)
+- [Failing examples](#user-content-require-hyphen-before-param-description-failing-examples)
+- [Passing examples](#user-content-require-hyphen-before-param-description-passing-examples)
 
 Requires (or disallows) a hyphen before the `@param` description.
 
 <a name="user-content-require-hyphen-before-param-description-fixer"></a>
 <a name="require-hyphen-before-param-description-fixer"></a>
+
 ## Fixer
 
 (Todo)
 
 <a name="user-content-require-hyphen-before-param-description-options"></a>
 <a name="require-hyphen-before-param-description-options"></a>
+
 ## Options
 
 This rule takes one optional string argument and an optional options object.
@@ -40,38 +42,36 @@ other tags besides the `@param` tag (or the `@arg` tag if so set):
 
 <a name="user-content-require-hyphen-before-param-description-context-and-settings"></a>
 <a name="require-hyphen-before-param-description-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`param` and optionally other tags within `tags`|
-|Aliases|`arg`, `argument`; potentially `prop` or other aliases|
-|Recommended|false|
-|Options|string ("always", "never") followed by object with `tags`|
+|             |                                                           |
+| ----------- | --------------------------------------------------------- |
+| Context     | everywhere                                                |
+| Tags        | `param` and optionally other tags within `tags`           |
+| Aliases     | `arg`, `argument`; potentially `prop` or other aliases    |
+| Recommended | false                                                     |
+| Options     | string ("always", "never") followed by object with `tags` |
 
 <a name="user-content-require-hyphen-before-param-description-failing-examples"></a>
 <a name="require-hyphen-before-param-description-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param foo Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always"]
 // Message: There must be a hyphen before @param description.
 
 /**
  * @param foo Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"*":"never"}}]
 // Message: There must be a hyphen before @param description.
 
@@ -79,35 +79,27 @@ function quux () {
  * @param foo Foo.
  * @returns {SomeType} - Hyphen here.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"*":"never","returns":"always"}}]
 // Message: There must be a hyphen before @param description.
 
 /**
  * @param foo Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: There must be a hyphen before @param description.
 
 /**
  * @param foo - Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "never"]
 // Message: There must be no hyphen before @param description.
 
 /**
  * @param foo    - Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "never"]
 // Message: There must be no hyphen before @param description.
 
@@ -115,9 +107,7 @@ function quux () {
  * @param foo - foo
  * @param foo foo
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always"]
 // Message: There must be a hyphen before @param description.
 
@@ -126,18 +116,14 @@ function quux () {
  * bar
  * @param bar - bar
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always"]
 // Message: There must be a hyphen before @param description.
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":false}}}
 // Message: Unexpected tag `@param`
 
@@ -165,9 +151,7 @@ function quux (foo) {
  * @param foo Foo.
  * @returns {SomeType} - A description.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"returns":"never"}}]
 // Message: There must be a hyphen before @param description.
 
@@ -202,63 +186,50 @@ function quux () {
  */
 function test(input) {}
 // Message: There must be a hyphen before @param description.
-````
-
-
+```
 
 <a name="user-content-require-hyphen-before-param-description-passing-examples"></a>
 <a name="require-hyphen-before-param-description-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param foo - Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always"]
 
 /**
  * @param foo     - Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always"]
 
 /**
  * @param foo - Foo.
  * @returns {SomeType} A description.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"returns":"never"}}]
 
 /**
  * @param foo Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "never"]
 
 /**
  * @param foo
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"*":"always"}}]
 
 /**
@@ -283,8 +254,7 @@ function quux () {
  *
  * @param {!Array<string>} argv Command-line arguments.
  */
-function main(argv) {
-};
+function main(argv) {}
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "never"]
 
 /**
@@ -294,5 +264,4 @@ function main(argv) {
  * @typedef {any} Test
  */
 // "jsdoc/require-hyphen-before-param-description": ["error"|"warn", "always",{"tags":{"template":"always"}}]
-````
-
+```

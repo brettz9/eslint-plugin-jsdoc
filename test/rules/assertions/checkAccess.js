@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,7 +14,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing valid JSDoc @access level.',
+          message: "Missing valid JSDoc @access level.",
         },
       ],
     },
@@ -30,7 +30,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing valid JSDoc @access level.',
+          message: "Missing valid JSDoc @access level.",
         },
       ],
       settings: {
@@ -51,13 +51,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing valid JSDoc @accessLevel level.',
+          message: "Missing valid JSDoc @accessLevel level.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            access: 'accessLevel',
+            access: "accessLevel",
           },
         },
       },
@@ -74,7 +74,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@access`',
+          message: "Unexpected tag `@access`",
         },
       ],
       settings: {
@@ -97,11 +97,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing valid JSDoc @access level.',
+          message: "Missing valid JSDoc @access level.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -117,7 +117,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'The @access tag may not be used with specific access-control tags (@package, @private, @protected, or @public).',
+          message:
+            "The @access tag may not be used with specific access-control tags (@package, @private, @protected, or @public).",
         },
       ],
     },
@@ -134,7 +135,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'At most one access-control tag may be present on a jsdoc block.',
+          message:
+            "At most one access-control tag may be present on a jsdoc block.",
         },
       ],
     },
@@ -151,7 +153,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'At most one access-control tag may be present on a jsdoc block.',
+          message:
+            "At most one access-control tag may be present on a jsdoc block.",
         },
       ],
       settings: {
@@ -173,7 +176,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'At most one access-control tag may be present on a jsdoc block.',
+          message:
+            "At most one access-control tag may be present on a jsdoc block.",
         },
       ],
     },
@@ -190,7 +194,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'At most one access-control tag may be present on a jsdoc block.',
+          message:
+            "At most one access-control tag may be present on a jsdoc block.",
         },
       ],
       settings: {
@@ -212,7 +217,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'At most one access-control tag may be present on a jsdoc block.',
+          message:
+            "At most one access-control tag may be present on a jsdoc block.",
         },
       ],
     },
@@ -250,7 +256,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            access: 'accessLevel',
+            access: "accessLevel",
           },
         },
       },
@@ -265,7 +271,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {

@@ -1,13 +1,13 @@
 <a name="user-content-implements-on-classes"></a>
 <a name="implements-on-classes"></a>
+
 # <code>implements-on-classes</code>
 
-* [Options](#user-content-implements-on-classes-options)
-    * [`contexts`](#user-content-implements-on-classes-options-contexts)
-* [Context and settings](#user-content-implements-on-classes-context-and-settings)
-* [Failing examples](#user-content-implements-on-classes-failing-examples)
-* [Passing examples](#user-content-implements-on-classes-passing-examples)
-
+- [Options](#user-content-implements-on-classes-options)
+  - [`contexts`](#user-content-implements-on-classes-options-contexts)
+- [Context and settings](#user-content-implements-on-classes-context-and-settings)
+- [Failing examples](#user-content-implements-on-classes-failing-examples)
+- [Passing examples](#user-content-implements-on-classes-passing-examples)
 
 Reports an issue with any non-constructor function using `@implements`.
 
@@ -20,10 +20,12 @@ function is adhering.
 
 <a name="user-content-implements-on-classes-options"></a>
 <a name="implements-on-classes-options"></a>
+
 ## Options
 
 <a name="user-content-implements-on-classes-options-contexts"></a>
 <a name="implements-on-classes-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -40,36 +42,34 @@ section of our README for more on the expected format.
 
 <a name="user-content-implements-on-classes-context-and-settings"></a>
 <a name="implements-on-classes-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`implements` (prevented)|
-|Recommended|true|
-|Options|`contexts`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `implements` (prevented)                                                                                      |
+| Recommended | true                                                                                                          |
+| Options     | `contexts`                                                                                                    |
 
 <a name="user-content-implements-on-classes-failing-examples"></a>
 <a name="implements-on-classes-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @implements {SomeClass}
  */
-function quux () {
-
-}
+function quux() {}
 // Message: @implements used on a non-constructor function
 
 /**
  * @implements {SomeClass}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/implements-on-classes": ["error"|"warn", {"contexts":["any"]}]
 // Message: @implements used on a non-constructor function
 
@@ -77,9 +77,7 @@ function quux () {
  * @function
  * @implements {SomeClass}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/implements-on-classes": ["error"|"warn", {"contexts":["any"]}]
 // Message: @implements used on a non-constructor function
 
@@ -93,65 +91,58 @@ function quux () {
 /**
  * @implements {SomeClass}
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"implements":false}}}
 // Message: Unexpected tag `@implements`
 
 class Foo {
-    /**
-     * @implements {SomeClass}
-     */
-    constructor() {}
+  /**
+   * @implements {SomeClass}
+   */
+  constructor() {}
 
-    /**
-     * @implements {SomeClass}
-     */
-    bar() {}
+  /**
+   * @implements {SomeClass}
+   */
+  bar() {}
 }
 // "jsdoc/implements-on-classes": ["error"|"warn", {"contexts":["MethodDefinition"]}]
 // Message: @implements used on a non-constructor function
 
 class Foo {
-    /**
-     * @implements {SomeClass}
-     */
-    constructor() {}
+  /**
+   * @implements {SomeClass}
+   */
+  constructor() {}
 
-    /**
-     * @implements {SomeClass}
-     */
-    bar() {}
+  /**
+   * @implements {SomeClass}
+   */
+  bar() {}
 }
 // "jsdoc/implements-on-classes": ["error"|"warn", {"contexts":["any"]}]
 // Message: @implements used on a non-constructor function
-````
-
-
+```
 
 <a name="user-content-implements-on-classes-passing-examples"></a>
 <a name="implements-on-classes-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @implements {SomeClass}
  * @class
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @implements {SomeClass}
  * @class
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/implements-on-classes": ["error"|"warn", {"contexts":["any"]}]
 
 /**
@@ -163,9 +154,7 @@ function quux () {
  * @implements {SomeClass}
  * @constructor
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  *
@@ -174,9 +163,7 @@ class quux {
   /**
    * @implements {SomeClass}
    */
-  constructor () {
-
-  }
+  constructor() {}
 }
 
 /**
@@ -186,24 +173,18 @@ const quux = class {
   /**
    * @implements {SomeClass}
    */
-  constructor () {
-
-  }
-}
+  constructor() {}
+};
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"implements":false}}}
 
 /**
@@ -215,5 +196,4 @@ function quux () {
  * @callback
  * @implements {SomeClass}
  */
-````
-
+```

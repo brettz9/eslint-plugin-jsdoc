@@ -1,12 +1,21 @@
-import iterateJsdoc from '../iterateJsdoc.js';
-import escapeStringRegexp from 'escape-string-regexp';
+import iterateJsdoc from "../iterateJsdoc.js";
+import escapeStringRegexp from "escape-string-regexp";
 
 const otherDescriptiveTags = new Set([
   // 'copyright' and 'see' might be good addition, but as the former may be
   //   sensitive text, and the latter may have just a link, they are not
   //   included by default
-  'summary', 'file', 'fileoverview', 'overview', 'classdesc', 'todo',
-  'deprecated', 'throws', 'exception', 'yields', 'yield',
+  "classdesc",
+  "deprecated",
+  "exception",
+  "file",
+  "fileoverview",
+  "overview",
+  "summary",
+  "throws",
+  "todo",
+  "yield",
+  "yields",
 ]);
 
 /**
@@ -14,7 +23,7 @@ const otherDescriptiveTags = new Set([
  * @returns {string[]}
  */
 const extractParagraphs = (text) => {
-  return text.split(/(?<![;:])\n\n+/u);
+  return text.split(/(?<![;:])\n{2,}/u);
 };
 
 /**
@@ -25,26 +34,28 @@ const extractParagraphs = (text) => {
 const extractSentences = (text, abbreviationsRegex) => {
   const txt = text
     // Remove all {} tags.
-    .replaceAll(/(?<!^)\{[\s\S]*?\}\s*/gu, '')
+    .replaceAll(/(?<!^)\{[\s\S]*?\}\s*/gu, "")
 
     // Remove custom abbreviations
-    .replace(abbreviationsRegex, '');
+    .replace(abbreviationsRegex, "");
 
-  const sentenceEndGrouping = /([.?!])(?:\s+|$)/ug;
+  const sentenceEndGrouping = /([.?!])(?:\s+|$)/gu;
 
-  const puncts = [
-    ...txt.matchAll(sentenceEndGrouping),
-  ].map((sentEnd) => {
+  const puncts = [...txt.matchAll(sentenceEndGrouping)].map((sentEnd) => {
     return sentEnd[0];
   });
 
-  return txt
-    .split(/[.?!](?:\s+|$)/u)
+  return (
+    txt
+      .split(/[.?!](?:\s+|$)/u)
 
-    // Re-add the dot.
-    .map((sentence, idx) => {
-      return !puncts[idx] && /^\s*$/u.test(sentence) ? sentence : `${sentence}${puncts[idx] || ''}`;
-    });
+      // Re-add the dot.
+      .map((sentence, idx) => {
+        return !puncts[idx] && /^\s*$/u.test(sentence)
+          ? sentence
+          : `${sentence}${puncts[idx] || ""}`;
+      })
+  );
 };
 
 /**
@@ -55,7 +66,7 @@ const isNewLinePrecededByAPeriod = (text) => {
   /** @type {boolean} */
   let lastLineEndsSentence;
 
-  const lines = text.split('\n');
+  const lines = text.split("\n");
 
   return !lines.some((line) => {
     if (lastLineEndsSentence === false && /^[A-Z][a-z]/u.test(line)) {
@@ -81,7 +92,7 @@ const isCapitalized = (str) => {
  * @returns {boolean}
  */
 const isTable = (str) => {
-  return str.charAt(0) === '|';
+  return str.charAt(0) === "|";
 };
 
 /**
@@ -105,14 +116,22 @@ const capitalize = (str) => {
  * @returns {boolean}
  */
 const validateDescription = (
-  description, reportOrig, jsdocNode, abbreviationsRegex,
-  sourceCode, tag, newlineBeforeCapsAssumesBadSentenceEnd,
+  description,
+  reportOrig,
+  jsdocNode,
+  abbreviationsRegex,
+  sourceCode,
+  tag,
+  newlineBeforeCapsAssumesBadSentenceEnd,
 ) => {
-  if (!description || (/^\n+$/u).test(description)) {
+  if (!description || /^\n+$/u.test(description)) {
     return false;
   }
 
-  const descriptionNoHeadings = description.replaceAll(/^\s*#[^\n]*(\n|$)/gm, '');
+  const descriptionNoHeadings = description.replaceAll(
+    /^\s*#[^\n]*(\n|$)/gmu,
+    "",
+  );
 
   const paragraphs = extractParagraphs(descriptionNoHeadings).filter(Boolean);
 
@@ -123,27 +142,45 @@ const validateDescription = (
       let text = sourceCode.getText(jsdocNode);
 
       if (!/[.:?!]$/u.test(paragraph)) {
-        const line = paragraph.split('\n').filter(Boolean).pop();
-        text = text.replace(new RegExp(`${escapeStringRegexp(
-          /** @type {string} */
-          (line),
-        )}$`, 'mu'), `${line}.`);
+        const line = paragraph.split("\n").findLast(Boolean);
+        text = text.replace(
+          new RegExp(
+            `${escapeStringRegexp(
+              /** @type {string} */
+              (line),
+            )}$`,
+            "mu",
+          ),
+          `${line}.`,
+        );
       }
 
       for (const sentence of sentences.filter((sentence_) => {
-        return !(/^\s*$/u).test(sentence_) && !isCapitalized(sentence_) &&
-          !isTable(sentence_);
+        return (
+          !/^\s*$/u.test(sentence_) &&
+          !isCapitalized(sentence_) &&
+          !isTable(sentence_)
+        );
       })) {
-        const beginning = sentence.split('\n')[0];
+        const beginning = sentence.split("\n")[0];
 
-        if ('tag' in tag && tag.tag) {
-          const reg = new RegExp(`(@${escapeStringRegexp(tag.tag)}.*)${escapeStringRegexp(beginning)}`, 'u');
+        if ("tag" in tag && tag.tag) {
+          const reg = new RegExp(
+            `(@${escapeStringRegexp(tag.tag)}.*)${escapeStringRegexp(beginning)}`,
+            "u",
+          );
 
           text = text.replace(reg, (_$0, $1) => {
             return $1 + capitalize(beginning);
           });
         } else {
-          text = text.replace(new RegExp('((?:[.?!]|\\*|\\})\\s*)' + escapeStringRegexp(beginning), 'u'), '$1' + capitalize(beginning));
+          text = text.replace(
+            new RegExp(
+              "((?:[.?!]|\\*|\\})\\s*)" + escapeStringRegexp(beginning),
+              "u",
+            ),
+            "$1" + capitalize(beginning),
+          );
         }
       }
 
@@ -163,7 +200,7 @@ const validateDescription = (
      * @returns {void}
      */
     const report = (msg, fixer, tagObj) => {
-      if ('line' in tagObj) {
+      if ("line" in tagObj) {
         /**
          * @type {{
          *   line: number;
@@ -180,27 +217,42 @@ const validateDescription = (
       reportOrig(msg, fixer, tagObj);
     };
 
-    if (sentences.some((sentence) => {
-      return (/^[.?!]$/u).test(sentence);
-    })) {
-      report('Sentences must be more than punctuation.', null, tag);
+    if (
+      sentences.some((sentence) => {
+        return /^[.?!]$/u.test(sentence);
+      })
+    ) {
+      report("Sentences must be more than punctuation.", null, tag);
     }
 
-    if (sentences.some((sentence) => {
-      return !(/^\s*$/u).test(sentence) && !isCapitalized(sentence) && !isTable(sentence);
-    })) {
-      report('Sentences should start with an uppercase character.', fix, tag);
+    if (
+      sentences.some((sentence) => {
+        return (
+          !/^\s*$/u.test(sentence) &&
+          !isCapitalized(sentence) &&
+          !isTable(sentence)
+        );
+      })
+    ) {
+      report("Sentences should start with an uppercase character.", fix, tag);
     }
 
-    const paragraphNoAbbreviations = paragraph.replace(abbreviationsRegex, '');
+    const paragraphNoAbbreviations = paragraph.replace(abbreviationsRegex, "");
 
     if (!/(?:[.?!|]|```)\s*$/u.test(paragraphNoAbbreviations)) {
-      report('Sentences must end with a period.', fix, tag);
+      report("Sentences must end with a period.", fix, tag);
       return true;
     }
 
-    if (newlineBeforeCapsAssumesBadSentenceEnd && !isNewLinePrecededByAPeriod(paragraphNoAbbreviations)) {
-      report('A line of text is started with an uppercase character, but the preceding line does not end the sentence.', null, tag);
+    if (
+      newlineBeforeCapsAssumesBadSentenceEnd &&
+      !isNewLinePrecededByAPeriod(paragraphNoAbbreviations)
+    ) {
+      report(
+        "A line of text is started with an uppercase character, but the preceding line does not end the sentence.",
+        null,
+        tag,
+      );
 
       return true;
     }
@@ -209,127 +261,159 @@ const validateDescription = (
   });
 };
 
-export default iterateJsdoc(({
-  sourceCode,
-  context,
-  jsdoc,
-  report,
-  jsdocNode,
-  utils,
-}) => {
-  const /** @type {{abbreviations: string[], newlineBeforeCapsAssumesBadSentenceEnd: boolean}} */ {
-    abbreviations = [],
-    newlineBeforeCapsAssumesBadSentenceEnd = false,
-  } = context.options[0] || {};
+export default iterateJsdoc(
+  ({ context, jsdoc, jsdocNode, report, sourceCode, utils }) => {
+    const /** @type {{abbreviations: string[], newlineBeforeCapsAssumesBadSentenceEnd: boolean}} */ {
+        abbreviations = [],
+        newlineBeforeCapsAssumesBadSentenceEnd = false,
+      } = context.options[0] || {};
 
-  const abbreviationsRegex = abbreviations.length ?
-    new RegExp('\\b' + abbreviations.map((abbreviation) => {
-      return escapeStringRegexp(abbreviation.replaceAll(/\.$/ug, '') + '.');
-    }).join('|') + '(?:$|\\s)', 'gu') :
-    '';
+    const abbreviationsRegex = abbreviations.length
+      ? new RegExp(
+          "\\b" +
+            abbreviations
+              .map((abbreviation) => {
+                return escapeStringRegexp(
+                  abbreviation.replaceAll(/\.$/gu, "") + ".",
+                );
+              })
+              .join("|") +
+            "(?:$|\\s)",
+          "gu",
+        )
+      : "";
 
-  let {
-    description,
-  } = utils.getDescription();
+    let { description } = utils.getDescription();
 
-  const indices = [
-    ...description.matchAll(/```[\s\S]*```/gu),
-  ].map((match) => {
-    const {
-      index,
-    } = match;
-    const [
-      {
-        length,
-      },
-    ] = match;
-    return {
-      index,
-      length,
-    };
-  }).reverse();
+    const indices = [...description.matchAll(/```[\s\S]*```/gu)]
+      .map((match) => {
+        const { index } = match;
+        const [{ length }] = match;
+        return {
+          index,
+          length,
+        };
+      })
+      .reverse();
 
-  for (const {
-    index,
-    length,
-  } of indices) {
-    description = description.slice(0, index) +
-      description.slice(/** @type {import('../iterateJsdoc.js').Integer} */ (
-        index
-      ) + length);
-  }
+    for (const { index, length } of indices) {
+      description =
+        description.slice(0, index) +
+        description.slice(
+          /** @type {import('../iterateJsdoc.js').Integer} */ (index) + length,
+        );
+    }
 
-  if (validateDescription(description, report, jsdocNode, abbreviationsRegex, sourceCode, {
-    line: jsdoc.source[0].number + 1,
-  }, newlineBeforeCapsAssumesBadSentenceEnd)) {
-    return;
-  }
-
-  utils.forEachPreferredTag('description', (matchingJsdocTag) => {
-    const desc = `${matchingJsdocTag.name} ${utils.getTagDescription(matchingJsdocTag)}`.trim();
-    validateDescription(desc, report, jsdocNode, abbreviationsRegex, sourceCode, matchingJsdocTag, newlineBeforeCapsAssumesBadSentenceEnd);
-  }, true);
-
-  const {
-    tagsWithNames,
-  } = utils.getTagsByType(jsdoc.tags);
-  const tagsWithoutNames = utils.filterTags(({
-    tag: tagName,
-  }) => {
-    return otherDescriptiveTags.has(tagName) ||
-      utils.hasOptionTag(tagName) && !tagsWithNames.some(({
-        tag,
-      }) => {
-        // If user accidentally adds tags with names (or like `returns`
-        //  get parsed as having names), do not add to this list
-        return tag === tagName;
-      });
-  });
-
-  tagsWithNames.some((tag) => {
-    const desc = /** @type {string} */ (
-      utils.getTagDescription(tag)
-    ).replace(/^- /u, '').trimEnd();
-
-    return validateDescription(desc, report, jsdocNode, abbreviationsRegex, sourceCode, tag, newlineBeforeCapsAssumesBadSentenceEnd);
-  });
-
-  tagsWithoutNames.some((tag) => {
-    const desc = `${tag.name} ${utils.getTagDescription(tag)}`.trim();
-
-    return validateDescription(desc, report, jsdocNode, abbreviationsRegex, sourceCode, tag, newlineBeforeCapsAssumesBadSentenceEnd);
-  });
-}, {
-  iterateAllJsdocs: true,
-  meta: {
-    docs: {
-      description: 'Requires that block description, explicit `@description`, and `@param`/`@returns` tag descriptions are written in complete sentences.',
-      url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description-complete-sentence.md#repos-sticky-header',
-    },
-    fixable: 'code',
-    schema: [
-      {
-        additionalProperties: false,
-        properties: {
-          abbreviations: {
-            items: {
-              type: 'string',
-            },
-            type: 'array',
-          },
-          newlineBeforeCapsAssumesBadSentenceEnd: {
-            type: 'boolean',
-          },
-          tags: {
-            items: {
-              type: 'string',
-            },
-            type: 'array',
-          },
+    if (
+      validateDescription(
+        description,
+        report,
+        jsdocNode,
+        abbreviationsRegex,
+        sourceCode,
+        {
+          line: jsdoc.source[0].number + 1,
         },
-        type: 'object',
+        newlineBeforeCapsAssumesBadSentenceEnd,
+      )
+    ) {
+      return;
+    }
+
+    utils.forEachPreferredTag(
+      "description",
+      (matchingJsdocTag) => {
+        const desc =
+          `${matchingJsdocTag.name} ${utils.getTagDescription(matchingJsdocTag)}`.trim();
+        validateDescription(
+          desc,
+          report,
+          jsdocNode,
+          abbreviationsRegex,
+          sourceCode,
+          matchingJsdocTag,
+          newlineBeforeCapsAssumesBadSentenceEnd,
+        );
       },
-    ],
-    type: 'suggestion',
+      true,
+    );
+
+    const { tagsWithNames } = utils.getTagsByType(jsdoc.tags);
+    const tagsWithoutNames = utils.filterTags(({ tag: tagName }) => {
+      return (
+        otherDescriptiveTags.has(tagName) ||
+        (utils.hasOptionTag(tagName) &&
+          !tagsWithNames.some(({ tag }) => {
+            // If user accidentally adds tags with names (or like `returns`
+            //  get parsed as having names), do not add to this list
+            return tag === tagName;
+          }))
+      );
+    });
+
+    tagsWithNames.some((tag) => {
+      const desc = /** @type {string} */ (utils.getTagDescription(tag))
+        .replace(/^- /u, "")
+        .trimEnd();
+
+      return validateDescription(
+        desc,
+        report,
+        jsdocNode,
+        abbreviationsRegex,
+        sourceCode,
+        tag,
+        newlineBeforeCapsAssumesBadSentenceEnd,
+      );
+    });
+
+    tagsWithoutNames.some((tag) => {
+      const desc = `${tag.name} ${utils.getTagDescription(tag)}`.trim();
+
+      return validateDescription(
+        desc,
+        report,
+        jsdocNode,
+        abbreviationsRegex,
+        sourceCode,
+        tag,
+        newlineBeforeCapsAssumesBadSentenceEnd,
+      );
+    });
   },
-});
+  {
+    iterateAllJsdocs: true,
+    meta: {
+      docs: {
+        description:
+          "Requires that block description, explicit `@description`, and `@param`/`@returns` tag descriptions are written in complete sentences.",
+        url: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description-complete-sentence.md#repos-sticky-header",
+      },
+      fixable: "code",
+      schema: [
+        {
+          additionalProperties: false,
+          properties: {
+            abbreviations: {
+              items: {
+                type: "string",
+              },
+              type: "array",
+            },
+            newlineBeforeCapsAssumesBadSentenceEnd: {
+              type: "boolean",
+            },
+            tags: {
+              items: {
+                type: "string",
+              },
+              type: "array",
+            },
+          },
+          type: "object",
+        },
+      ],
+      type: "suggestion",
+    },
+  },
+);

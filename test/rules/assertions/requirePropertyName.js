@@ -10,7 +10,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be an identifier after @property type.',
+          message: "There must be an identifier after @property type.",
         },
       ],
     },
@@ -24,7 +24,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be an identifier after @property tag.',
+          message: "There must be an identifier after @property tag.",
         },
       ],
     },
@@ -38,7 +38,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Unexpected tag `@property`',
+          message: "Unexpected tag `@property`",
         },
       ],
       settings: {

@@ -1,33 +1,34 @@
 <a name="user-content-require-description-complete-sentence"></a>
 <a name="require-description-complete-sentence"></a>
+
 # <code>require-description-complete-sentence</code>
 
-* [Fixer](#user-content-require-description-complete-sentence-fixer)
-* [Options](#user-content-require-description-complete-sentence-options)
-    * [`tags`](#user-content-require-description-complete-sentence-options-tags)
-    * [`abbreviations`](#user-content-require-description-complete-sentence-options-abbreviations)
-    * [`newlineBeforeCapsAssumesBadSentenceEnd`](#user-content-require-description-complete-sentence-options-newlinebeforecapsassumesbadsentenceend)
-* [Context and settings](#user-content-require-description-complete-sentence-context-and-settings)
-* [Failing examples](#user-content-require-description-complete-sentence-failing-examples)
-* [Passing examples](#user-content-require-description-complete-sentence-passing-examples)
-
+- [Fixer](#user-content-require-description-complete-sentence-fixer)
+- [Options](#user-content-require-description-complete-sentence-options)
+  - [`tags`](#user-content-require-description-complete-sentence-options-tags)
+  - [`abbreviations`](#user-content-require-description-complete-sentence-options-abbreviations)
+  - [`newlineBeforeCapsAssumesBadSentenceEnd`](#user-content-require-description-complete-sentence-options-newlinebeforecapsassumesbadsentenceend)
+- [Context and settings](#user-content-require-description-complete-sentence-context-and-settings)
+- [Failing examples](#user-content-require-description-complete-sentence-failing-examples)
+- [Passing examples](#user-content-require-description-complete-sentence-passing-examples)
 
 Requires that block description, explicit `@description`, and
 `@param`/`@returns` tag descriptions are written in complete sentences, i.e.,
 
-* Description must start with an uppercase alphabetical character.
-* Paragraphs must start with an uppercase alphabetical character.
-* Sentences must end with a period, question mark, exclamation mark, or triple backticks.
-* Every line in a paragraph (except the first) which starts with an uppercase
+- Description must start with an uppercase alphabetical character.
+- Paragraphs must start with an uppercase alphabetical character.
+- Sentences must end with a period, question mark, exclamation mark, or triple backticks.
+- Every line in a paragraph (except the first) which starts with an uppercase
   character must be preceded by a line ending with a period.
-* A colon or semi-colon followed by two line breaks is still part of the
+- A colon or semi-colon followed by two line breaks is still part of the
   containing paragraph (unlike normal dual line breaks).
-* Text within inline tags `{...}` or within triple backticks are not checked for sentence divisions.
-* Periods after items within the `abbreviations` option array are not treated
+- Text within inline tags `{...}` or within triple backticks are not checked for sentence divisions.
+- Periods after items within the `abbreviations` option array are not treated
   as sentence endings.
 
 <a name="user-content-require-description-complete-sentence-fixer"></a>
 <a name="require-description-complete-sentence-fixer"></a>
+
 ## Fixer
 
 If sentences do not end with terminal punctuation, a period will be added.
@@ -37,10 +38,12 @@ letter will be capitalized.
 
 <a name="user-content-require-description-complete-sentence-options"></a>
 <a name="require-description-complete-sentence-options"></a>
+
 ## Options
 
 <a name="user-content-require-description-complete-sentence-options-tags"></a>
 <a name="require-description-complete-sentence-options-tags"></a>
+
 ### <code>tags</code>
 
 If you want additional tags to be checked for their descriptions, you may
@@ -66,6 +69,7 @@ is `xyz`).
 
 <a name="user-content-require-description-complete-sentence-options-abbreviations"></a>
 <a name="require-description-complete-sentence-options-abbreviations"></a>
+
 ### <code>abbreviations</code>
 
 You can provide an `abbreviations` options array to avoid such strings of text
@@ -74,6 +78,7 @@ necessary at the end of the array items.
 
 <a name="user-content-require-description-complete-sentence-options-newlinebeforecapsassumesbadsentenceend"></a>
 <a name="require-description-complete-sentence-options-newlinebeforecapsassumesbadsentenceend"></a>
+
 ### <code>newlineBeforeCapsAssumesBadSentenceEnd</code>
 
 When `false` (the new default), we will not assume capital letters after
@@ -82,61 +87,53 @@ nouns, for example).
 
 <a name="user-content-require-description-complete-sentence-context-and-settings"></a>
 <a name="require-description-complete-sentence-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|doc block, `param`, `returns`, `description`, `property`, `summary`, `file`, `classdesc`, `todo`, `deprecated`, `throws`, 'yields' and others added by `tags`|
-|Aliases|`arg`, `argument`, `return`, `desc`, `prop`, `fileoverview`, `overview`, `exception`, `yield`|
-|Recommended|false|
-|Options|`abbreviations`, `newlineBeforeCapsAssumesBadSentenceEnd`, `tags`|
+|             |                                                                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | everywhere                                                                                                                                                    |
+| Tags        | doc block, `param`, `returns`, `description`, `property`, `summary`, `file`, `classdesc`, `todo`, `deprecated`, `throws`, 'yields' and others added by `tags` |
+| Aliases     | `arg`, `argument`, `return`, `desc`, `prop`, `fileoverview`, `overview`, `exception`, `yield`                                                                 |
+| Recommended | false                                                                                                                                                         |
+| Options     | `abbreviations`, `newlineBeforeCapsAssumesBadSentenceEnd`, `tags`                                                                                             |
 
 <a name="user-content-require-description-complete-sentence-failing-examples"></a>
 <a name="require-description-complete-sentence-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * foo?
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * @description foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * Foo)
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
  * `foo` is a variable
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
@@ -144,25 +141,19 @@ function quux () {
  *
  * foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * тест.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * Foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
@@ -170,18 +161,14 @@ function quux () {
  *
  * @param x
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
  * Foo
  * Bar.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"newlineBeforeCapsAssumesBadSentenceEnd":true}]
 // Message: A line of text is started with an uppercase character, but the preceding line does not end the sentence.
 
@@ -190,9 +177,7 @@ function quux () {
  *
  * @param foo foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
@@ -200,17 +185,13 @@ function quux (foo) {
  *
  * @param foo bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * {@see Foo.bar} buz
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences must end with a period.
 
 /**
@@ -218,9 +199,7 @@ function quux (foo) {
  *
  * @returns {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
@@ -228,9 +207,7 @@ function quux (foo) {
  *
  * @returns foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
@@ -241,33 +218,25 @@ function quux (foo) {
  * proin ut nulla at quam convallis gravida in id elit. sed dolor mauris, blandit quis ante at,
  * consequat auctor magna. duis pharetra purus in porttitor mollis.
  */
-function longDescription (foo) {
-
-}
+function longDescription(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * @arg {number} foo - Foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences must end with a period.
 
 /**
  * @argument {number} foo - Foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences must end with a period.
 
 /**
  * @return {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
@@ -275,48 +244,38 @@ function quux (foo) {
  *
  * @return {number} bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * @throws {object} Hello World
  * hello world
-*/
+ */
 // Message: Sentences must end with a period.
 
 /**
  * @summary Foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
  * @throws {SomeType} Foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences must end with a period.
 
 /**
  * @see Foo
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"tags":["see"]}]
 // Message: Sentences must end with a period.
 
 /**
  * @param foo Foo bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"description":false}}}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"tags":["param"]}]
 // Message: Sentences must end with a period.
@@ -324,89 +283,70 @@ function quux (foo) {
 /**
  * Sorry, but this isn't a complete sentence, Mr.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr"]}]
 // Message: Sentences must end with a period.
 
 /**
  * Sorry, but this isn't a complete sentence Mr.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr."]}]
 // Message: Sentences must end with a period.
 
 /**
- * Sorry, but this isn't a complete sentence Mr. 
+ * Sorry, but this isn't a complete sentence Mr.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr"]}]
 // Message: Sentences must end with a period.
 
 /**
  * Sorry, but this isn't a complete sentence Mr. and Mrs.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr","Mrs"]}]
 // Message: Sentences must end with a period.
 
 /**
  * This is a complete sentence. But this isn't, Mr.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr"]}]
 // Message: Sentences must end with a period.
 
 /**
  * This is a complete Mr. sentence. But this isn't, Mr.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr"]}]
 // Message: Sentences must end with a period.
 
 /**
  * This is a complete Mr. sentence.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * This is fun, i.e. enjoyable, but not superlatively so, e.g. not
  * super, wonderful, etc..
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * Do not have dynamic content; e.g. homepage. Here a simple unique id
  * suffices.
  */
- function quux () {
-
- }
+function quux() {}
 // Message: Sentences should start with an uppercase character.
 
 /**
  * Implements support for the
  * Swahili voice synthesizer.
  */
-function speak() {
-}
+function speak() {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"newlineBeforeCapsAssumesBadSentenceEnd":true}]
 // Message: A line of text is started with an uppercase character, but the preceding line does not end the sentence.
 
@@ -415,9 +355,7 @@ function speak() {
  *
  * @template TempA, TempB foo.
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"tags":["template"]}]
 // Message: Sentences should start with an uppercase character.
 
@@ -426,14 +364,13 @@ function quux (foo) {
  * @param {Object} props Свойства.
  * @return {ReactElement}.
  */
-function quux () {}
+function quux() {}
 // Message: Sentences must be more than punctuation.
-````
-
-
+```
 
 <a name="user-content-require-description-complete-sentence-passing-examples"></a>
 <a name="require-description-complete-sentence-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
@@ -684,7 +621,7 @@ function quux () {
 // "jsdoc/require-description-complete-sentence": ["error"|"warn", {"abbreviations":["Mr."]}]
 
 /**
- * Sorry, but this isn't a complete sentence Mr. 
+ * Sorry, but this isn't a complete sentence Mr.
  */
 function quux () {
 
@@ -842,4 +779,3 @@ const code = (parameter) => 123;
 export class ClassExemple {
 }
 ````
-

@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @version value.',
+          message: "Missing JSDoc @version value.",
         },
       ],
     },
@@ -44,7 +44,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @kind value.',
+          message: "Missing JSDoc @kind value.",
         },
       ],
     },
@@ -60,9 +60,10 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @kind: "-3"; must be one of: class, ' +
-            'constant, event, external, file, function, member, mixin, ' +
-            'module, namespace, typedef.',
+          message:
+            'Invalid JSDoc @kind: "-3"; must be one of: class, ' +
+            "constant, event, external, file, function, member, mixin, " +
+            "module, namespace, typedef.",
         },
       ],
     },
@@ -99,7 +100,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @since value.',
+          message: "Missing JSDoc @since value.",
         },
       ],
     },
@@ -131,7 +132,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @license value.',
+          message: "Missing JSDoc @license value.",
         },
       ],
     },
@@ -147,7 +148,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "FOO"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "FOO"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
     },
@@ -168,9 +170,7 @@ export default {
       ],
       options: [
         {
-          allowedLicenses: [
-            'BAR', 'BAX',
-          ],
+          allowedLicenses: ["BAR", "BAX"],
         },
       ],
     },
@@ -187,7 +187,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "MIT-7"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "MIT-7"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
     },
@@ -203,7 +204,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "(MIT OR GPL-2.5)"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "(MIT OR GPL-2.5)"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
     },
@@ -220,12 +222,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "MIT\nSome extra text"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "MIT\nSome extra text"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
       options: [
         {
-          licensePattern: '[\\s\\S]*',
+          licensePattern: "[\\s\\S]*",
         },
       ],
     },
@@ -241,7 +244,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @author value.',
+          message: "Missing JSDoc @author value.",
         },
       ],
     },
@@ -257,14 +260,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @author: "Brett Zamir"; expected one of Gajus Kuizinas, golopot.',
+          message:
+            'Invalid JSDoc @author: "Brett Zamir"; expected one of Gajus Kuizinas, golopot.',
         },
       ],
       options: [
         {
-          allowedAuthors: [
-            'Gajus Kuizinas', 'golopot',
-          ],
+          allowedAuthors: ["Gajus Kuizinas", "golopot"],
         },
       ],
     },
@@ -280,7 +282,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @variation value.',
+          message: "Missing JSDoc @variation value.",
         },
       ],
       options: [
@@ -322,12 +324,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "Oops"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "Oops"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
       options: [
         {
-          licensePattern: '(?<=license-prefix ).*',
+          licensePattern: "(?<=license-prefix ).*",
         },
       ],
     },
@@ -344,12 +347,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @license: "Oops"; expected SPDX expression: https://spdx.org/licenses/.',
+          message:
+            'Invalid JSDoc @license: "Oops"; expected SPDX expression: https://spdx.org/licenses/.',
         },
       ],
       options: [
         {
-          licensePattern: '^([^\n]+)\nCopyright',
+          licensePattern: "^([^\n]+)\nCopyright",
         },
       ],
     },
@@ -365,11 +369,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Bad @import tag',
+          message: "Bad @import tag",
         },
         {
           line: 6,
-          message: 'Bad @import tag',
+          message: "Bad @import tag",
         },
       ],
     },
@@ -457,9 +461,7 @@ export default {
       `,
       options: [
         {
-          allowedLicenses: [
-            'FOO', 'BAR', 'BAX',
-          ],
+          allowedLicenses: ["FOO", "BAR", "BAX"],
         },
       ],
     },
@@ -490,7 +492,7 @@ export default {
       `,
       options: [
         {
-          licensePattern: '[^\n]*',
+          licensePattern: "[^\n]*",
         },
       ],
     },
@@ -515,9 +517,7 @@ export default {
       `,
       options: [
         {
-          allowedAuthors: [
-            'Gajus Kuizinas', 'golopot', 'Brett Zamir',
-          ],
+          allowedAuthors: ["Gajus Kuizinas", "golopot", "Brett Zamir"],
         },
       ],
     },
@@ -576,7 +576,7 @@ export default {
       `,
       options: [
         {
-          licensePattern: '(?<=license-prefix )MIT|GPL3.0',
+          licensePattern: "(?<=license-prefix )MIT|GPL3.0",
         },
       ],
     },
@@ -592,7 +592,7 @@ export default {
       `,
       options: [
         {
-          licensePattern: '^([^\n]+)(?!\nCopyright)',
+          licensePattern: "^([^\n]+)(?!\nCopyright)",
         },
       ],
     },
@@ -608,7 +608,7 @@ export default {
       `,
       options: [
         {
-          licensePattern: '^([^\n]+)\nCopyright',
+          licensePattern: "^([^\n]+)\nCopyright",
         },
       ],
     },

@@ -6,7 +6,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
     },
@@ -16,7 +16,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
       options: [
@@ -37,7 +37,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
       options: [
@@ -56,7 +56,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @author',
+          message: "Missing @author",
         },
       ],
       options: [
@@ -80,7 +80,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
     },
@@ -94,7 +94,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
     },
@@ -108,13 +108,13 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @fileoverview',
+          message: "Missing @fileoverview",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            file: 'fileoverview',
+            file: "fileoverview",
           },
         },
       },
@@ -129,13 +129,13 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @overview',
+          message: "Missing @overview",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            file: 'overview',
+            file: "overview",
           },
         },
       },
@@ -150,8 +150,9 @@ export default {
       errors: [
         {
           line: 1,
-          message: '`settings.jsdoc.tagNamePreference` cannot block @file ' +
-            'for the `require-file-overview` rule',
+          message:
+            "`settings.jsdoc.tagNamePreference` cannot block @file " +
+            "for the `require-file-overview` rule",
         },
       ],
       settings: {
@@ -172,8 +173,9 @@ export default {
       errors: [
         {
           line: 1,
-          message: '`settings.jsdoc.tagNamePreference` cannot block @file ' +
-            'for the `require-file-overview` rule',
+          message:
+            "`settings.jsdoc.tagNamePreference` cannot block @file " +
+            "for the `require-file-overview` rule",
         },
       ],
       options: [
@@ -205,15 +207,16 @@ export default {
       errors: [
         {
           line: 1,
-          message: '`settings.jsdoc.tagNamePreference` cannot block @file ' +
-            'for the `require-file-overview` rule',
+          message:
+            "`settings.jsdoc.tagNamePreference` cannot block @file " +
+            "for the `require-file-overview` rule",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
             file: {
-              message: 'Don\'t use file',
+              message: "Don't use file",
             },
           },
         },
@@ -229,7 +232,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
     },
@@ -248,7 +251,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @file',
+          message: "Missing @file",
         },
       ],
     },
@@ -265,7 +268,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Duplicate @file',
+          message: "Duplicate @file",
         },
       ],
     },
@@ -282,7 +285,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Duplicate @copyright',
+          message: "Duplicate @copyright",
         },
       ],
       options: [
@@ -308,7 +311,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '@file should be at the beginning of the file',
+          message: "@file should be at the beginning of the file",
         },
       ],
     },
@@ -323,7 +326,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '@license should be at the beginning of the file',
+          message: "@license should be at the beginning of the file",
         },
       ],
       options: [
@@ -349,7 +352,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '@license should be at the beginning of the file',
+          message: "@license should be at the beginning of the file",
         },
       ],
       options: [
@@ -375,7 +378,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Duplicate @file',
+          message: "Duplicate @file",
         },
       ],
       options: [
@@ -399,14 +402,14 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Missing @fileoverview',
+          message: "Missing @fileoverview",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
             file: {
-              replacement: 'fileoverview',
+              replacement: "fileoverview",
             },
           },
         },
@@ -459,7 +462,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            file: 'fileoverview',
+            file: "fileoverview",
           },
         },
       },
@@ -473,7 +476,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            file: 'overview',
+            file: "overview",
           },
         },
       },

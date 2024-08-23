@@ -1,13 +1,13 @@
 <a name="user-content-no-restricted-syntax"></a>
 <a name="no-restricted-syntax"></a>
+
 # <code>no-restricted-syntax</code>
 
-* [Options](#user-content-no-restricted-syntax-options)
-    * [`contexts`](#user-content-no-restricted-syntax-options-contexts)
-* [Context and settings](#user-content-no-restricted-syntax-context-and-settings)
-* [Failing examples](#user-content-no-restricted-syntax-failing-examples)
-* [Passing examples](#user-content-no-restricted-syntax-passing-examples)
-
+- [Options](#user-content-no-restricted-syntax-options)
+  - [`contexts`](#user-content-no-restricted-syntax-options-contexts)
+- [Context and settings](#user-content-no-restricted-syntax-context-and-settings)
+- [Failing examples](#user-content-no-restricted-syntax-failing-examples)
+- [Passing examples](#user-content-no-restricted-syntax-passing-examples)
 
 Reports when certain comment structures are present.
 
@@ -25,10 +25,12 @@ is designed to do), you can just use ESLint's rule.
 
 <a name="user-content-no-restricted-syntax-options"></a>
 <a name="no-restricted-syntax-options"></a>
+
 ## Options
 
 <a name="user-content-no-restricted-syntax-options-contexts"></a>
 <a name="no-restricted-syntax-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -47,81 +49,69 @@ section of our README for more on the expected format.
 
 <a name="user-content-no-restricted-syntax-context-and-settings"></a>
 <a name="no-restricted-syntax-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|None except those indicated by `contexts`|
-|Tags|Any if indicated by AST|
-|Recommended|false|
-|Options|`contexts`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | None except those indicated by `contexts` |
+| Tags        | Any if indicated by AST                   |
+| Recommended | false                                     |
+| Options     | `contexts`                                |
 
 <a name="user-content-no-restricted-syntax-failing-examples"></a>
 <a name="no-restricted-syntax-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":["FunctionDeclaration"]}]
 // Message: Syntax is restricted: FunctionDeclaration
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"context":"FunctionDeclaration","message":"Oops: `{{context}}`."}]}]
 // Message: Oops: `FunctionDeclaration`.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration"}]}]
 // Message: Syntax is restricted: FunctionDeclaration with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Bar"]:nth-child(1))
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration","message":"The foo one: {{context}}."},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration","message":"The bar one: {{context}}."}]}]
 // Message: The bar one: FunctionDeclaration.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration","message":"The bar one: {{context}}."},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration","message":"The foo one: {{context}}."}]}]
 // Message: The bar one: FunctionDeclaration.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Rule `no-restricted-syntax` is missing a `contexts` option.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"contexts":["FunctionDeclaration"]}}
 // Message: Rule `no-restricted-syntax` is missing a `contexts` option.
 
@@ -129,7 +119,7 @@ function quux () {
  * @param opt_a
  * @param opt_b
  */
-function a () {}
+function a() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"FunctionDeclaration","message":"Only allowing names not matching `/^opt_/i`."}]}]
 // Message: Only allowing names not matching `/^opt_/i`.
 
@@ -137,7 +127,7 @@ function a () {}
  * @param opt_a
  * @param opt_b
  */
-function a () {}
+function a() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"any","message":"Only allowing names not matching `/^opt_/i`."}]}]
 // Message: Only allowing names not matching `/^opt_/i`.
 
@@ -145,7 +135,7 @@ function a () {}
  * @param opt_a
  * @param opt_b
  */
-function a () {}
+function a() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","message":"Only allowing names not matching `/^opt_/i`."}]}]
 // Message: Only allowing names not matching `/^opt_/i`.
 
@@ -153,7 +143,7 @@ function a () {}
  * @param opt_a
  * @param opt_b
  */
-function a () {}
+function a() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/not-this/])","context":"any","message":"Only allowing names not matching `/^not-this/i`."},{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"any","message":"Only allowing names not matching `/^opt_/i`."}]}]
 // Message: Only allowing names not matching `/^opt_/i`.
 
@@ -169,15 +159,15 @@ function a () {}
  * Object holding values of some custom enum
  */
 const MY_ENUM = Object.freeze({
-  VAL_A: "myvala"
+  VAL_A: "myvala",
 } as const);
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag ~ JsdocTag[tag=/private|protected/])","context":"any","message":"Access modifier tags must come first"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag[tag=\"enum\"])","context":":declaration","message":"@enum not allowed on declarations"}]}]
 // Message: @enum not allowed on declarations
 
 /** @type {React.FunctionComponent<{ children: React.ReactNode }>}*/
 const MyComponent = ({ children }) => {
-   return children;
-}
+  return children;
+};
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[tag=\"type\"]:has([value=/FunctionComponent/]))","context":"any","message":"The `FunctionComponent` type is not allowed. Please use `FC` instead."}]}]
 // Message: The `FunctionComponent` type is not allowed. Please use `FC` instead.
 
@@ -186,13 +176,13 @@ const MyComponent = ({ children }) => {
 // Message: Requiring descriptive text on 0th line only
 
 /** Some text and
-* more
-*/
+ * more
+ */
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[descriptionStartLine=0][hasPreterminalDescription=0]","context":"any","message":"Requiring descriptive text on 0th line and no preterminal description"}]}]
 // Message: Requiring descriptive text on 0th line and no preterminal description
 
 /** Some text
-* @param sth Param text followed by no newline */
+ * @param sth Param text followed by no newline */
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[descriptionStartLine=0][hasPreterminalTagDescription=1]","context":"any","message":"Requiring descriptive text on 0th line but no preterminal description"}]}]
 // Message: Requiring descriptive text on 0th line but no preterminal description
 
@@ -217,14 +207,14 @@ const MyComponent = ({ children }) => {
 /**
  *
  */
-function test(): string { }
+function test(): string {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:not(*:has(JsdocTag[tag=/returns/]))","context":"FunctionDeclaration[returnType.typeAnnotation.type!=/TSVoidKeyword|TSUndefinedKeyword/]","message":"Functions with non-void return types must have a @returns tag"}]}]
 // Message: Functions with non-void return types must have a @returns tag
 
 /**
  *
  */
-let test = (): string => { };
+let test = (): string => {};
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:not(*:has(JsdocTag[tag=/returns/]))","context":"ArrowFunctionExpression[returnType.typeAnnotation.type!=/TSVoidKeyword|TSUndefinedKeyword/]","message":"Functions with non-void return types must have a @returns tag"}]}]
 // Message: Functions with non-void return types must have a @returns tag
 
@@ -247,52 +237,43 @@ class Test {
 /**
  * This has an inline {@link http://example.com}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocInlineTag)","context":"FunctionDeclaration"}]}]
 // Message: Syntax is restricted: FunctionDeclaration with JsdocBlock:has(JsdocInlineTag)
 
 /**
  * @see This has an inline {@link http://example.com}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag:has(JsdocInlineTag[format=\"plain\"]))","context":"FunctionDeclaration"}]}]
 // Message: Syntax is restricted: FunctionDeclaration with JsdocBlock:has(JsdocTag:has(JsdocInlineTag[format="plain"]))
-````
-
-
+```
 
 <a name="user-content-no-restricted-syntax-passing-examples"></a>
 <a name="no-restricted-syntax-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":["FunctionExpression"]}]
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration"}]}]
 
 /**
  * @param ab
  * @param cd
  */
-function a () {}
+function a() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"any","message":"Only allowing names not matching `/^opt_/i`."}]}]
 
 /**
@@ -312,7 +293,7 @@ function a () {}
  * Object holding values of some custom enum
  */
 const MY_ENUM = Object.freeze({
-  VAL_A: "myvala"
+  VAL_A: "myvala",
 } as const);
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag ~ JsdocTag[tag=/private|protected/])","context":"any","message":"Access modifier tags must come first"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag[tag=\"enum\"])","context":":declaration:not(TSEnumDeclaration):not(:has(ObjectExpression)), :function","message":"@enum is only allowed on potential enum types"}]}]
 
@@ -330,12 +311,12 @@ function foo(): string;
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[descriptionStartLine=0][descriptionEndLine=1]","context":"any","message":"Requiring descriptive text on 0th line and no final newline"}]}]
 
 /** Some text and
-* more */
+ * more */
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[descriptionStartLine=0][hasPreterminalDescription=0]","context":"any","message":"Requiring descriptive text on 0th line and no preterminal description"}]}]
 
 /** Some text
-* @param sth Param text followed by newline
-*/
+ * @param sth Param text followed by newline
+ */
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[descriptionStartLine=0][hasPreterminalTagDescription=1]","context":"any","message":"Requiring descriptive text on 0th line but no preterminal description"}]}]
 
 /**
@@ -351,13 +332,13 @@ function foo(): string;
 /**
  *
  */
-function test(): void { }
+function test(): void {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:not(*:has(JsdocTag[tag=/returns/]))","context":"FunctionDeclaration[returnType.typeAnnotation.type!=/TSVoidKeyword|TSUndefinedKeyword/]","message":"Functions with return types must have a @returns tag"}]}]
 
 /**
  *
  */
-let test = (): undefined => { };
+let test = (): undefined => {};
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:not(*:has(JsdocTag[tag=/returns/]))","context":"ArrowFunctionExpression[returnType.typeAnnotation.type!=/TSVoidKeyword|TSUndefinedKeyword/]","message":"Functions with non-void return types must have a @returns tag"}]}]
 
 /**
@@ -377,7 +358,6 @@ class Test {
 /**
  * @private
  */
-function quux () {}
+function quux() {}
 // "jsdoc/no-restricted-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:not(JsdocBlock:has(JsdocTag[tag=/private|protected|public/]))","context":"any","message":"Access modifier tags must be present"}]}]
-````
-
+```

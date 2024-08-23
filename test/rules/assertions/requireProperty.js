@@ -9,7 +9,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @property.',
+          message: "Missing JSDoc @property.",
         },
       ],
       output: `
@@ -31,7 +31,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @property.',
+          message: "Missing JSDoc @property.",
         },
       ],
       output: `
@@ -53,7 +53,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @prop.',
+          message: "Missing JSDoc @prop.",
         },
       ],
       output: `
@@ -65,7 +65,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            property: 'prop',
+            property: "prop",
           },
         },
       },
@@ -79,7 +79,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @property.',
+          message: "Missing JSDoc @property.",
         },
       ],
       output: `
@@ -123,7 +123,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            property: 'prop',
+            property: "prop",
           },
         },
       },

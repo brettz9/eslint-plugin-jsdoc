@@ -10,7 +10,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@property path declaration ("Foo.Bar") appears before any real property.',
+          message:
+            '@property path declaration ("Foo.Bar") appears before any real property.',
         },
       ],
     },
@@ -25,7 +26,8 @@ export default {
       errors: [
         {
           line: 5,
-          message: '@property path declaration ("Foo.Bar") root node name ("Foo") does not match previous real property name ("foo").',
+          message:
+            '@property path declaration ("Foo.Bar") root node name ("Foo") does not match previous real property name ("foo").',
         },
       ],
     },
@@ -41,7 +43,8 @@ export default {
       errors: [
         {
           line: 5,
-          message: '@property path declaration ("employees[].name") appears before any real property.',
+          message:
+            '@property path declaration ("employees[].name") appears before any real property.',
         },
       ],
     },
@@ -287,7 +290,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            property: 'prop',
+            property: "prop",
           },
         },
       },
@@ -302,7 +305,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Unexpected tag `@property`',
+          message: "Unexpected tag `@property`",
         },
       ],
       settings: {

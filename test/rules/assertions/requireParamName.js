@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be an identifier after @param type.',
+          message: "There must be an identifier after @param type.",
         },
       ],
     },
@@ -28,7 +28,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be an identifier after @param tag.',
+          message: "There must be an identifier after @param tag.",
         },
       ],
     },
@@ -44,14 +44,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There must be an identifier after @param tag.',
+          message: "There must be an identifier after @param tag.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -65,14 +63,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be an identifier after @param tag.',
+          message: "There must be an identifier after @param tag.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -86,14 +82,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be an identifier after @param tag.',
+          message: "There must be an identifier after @param tag.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -109,7 +103,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -143,9 +137,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

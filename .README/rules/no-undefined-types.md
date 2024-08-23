@@ -62,16 +62,15 @@ An option object may have the following keys:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields`|
-|Aliases|`constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
-|Closure-only|`package`, `private`, `protected`, `public`, `static`|
-|Recommended|true|
-|Options|`definedTypes`, `disableReporting`, `markVariablesAsUsed`|
-|Settings|`preferredTypes`, `mode`, `structuredTags`|
-
+|              |                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context      | everywhere                                                                                                                                                    |
+| Tags         | `augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields` |
+| Aliases      | `constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`                                                           |
+| Closure-only | `package`, `private`, `protected`, `public`, `static`                                                                                                         |
+| Recommended  | true                                                                                                                                                          |
+| Options      | `definedTypes`, `disableReporting`, `markVariablesAsUsed`                                                                                                     |
+| Settings     | `preferredTypes`, `mode`, `structuredTags`                                                                                                                    |
 
 ## Failing examples
 

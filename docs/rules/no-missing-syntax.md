@@ -1,13 +1,13 @@
 <a name="user-content-no-missing-syntax"></a>
 <a name="no-missing-syntax"></a>
+
 # <code>no-missing-syntax</code>
 
-* [Options](#user-content-no-missing-syntax-options)
-    * [`contexts`](#user-content-no-missing-syntax-options-contexts)
-* [Context and settings](#user-content-no-missing-syntax-context-and-settings)
-* [Failing examples](#user-content-no-missing-syntax-failing-examples)
-* [Passing examples](#user-content-no-missing-syntax-passing-examples)
-
+- [Options](#user-content-no-missing-syntax-options)
+  - [`contexts`](#user-content-no-missing-syntax-options-contexts)
+- [Context and settings](#user-content-no-missing-syntax-context-and-settings)
+- [Failing examples](#user-content-no-missing-syntax-failing-examples)
+- [Passing examples](#user-content-no-missing-syntax-passing-examples)
 
 This rule lets you report if certain always expected comment structures are
 missing.
@@ -45,10 +45,12 @@ not report if there were only a function declaration of the name "ignoreMe"
 
 <a name="user-content-no-missing-syntax-options"></a>
 <a name="no-missing-syntax-options"></a>
+
 ## Options
 
 <a name="user-content-no-missing-syntax-options-contexts"></a>
 <a name="no-missing-syntax-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -71,55 +73,49 @@ section of our README for more on the expected format.
 
 <a name="user-content-no-missing-syntax-context-and-settings"></a>
 <a name="no-missing-syntax-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|None except those indicated by `contexts`|
-|Tags|Any if indicated by AST|
-|Recommended|false|
-|Options|`contexts`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | None except those indicated by `contexts` |
+| Tags        | Any if indicated by AST                   |
+| Recommended | false                                     |
+| Options     | `contexts`                                |
 
 <a name="user-content-no-missing-syntax-failing-examples"></a>
 <a name="no-missing-syntax-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration"}]}]
 // Message: Syntax is required: FunctionDeclaration with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Foo"]:nth-child(1))
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration"}]}}
 // Message: Syntax is required: FunctionDeclaration with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Foo"]:nth-child(1))
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration"}]}]
 // Message: Syntax is required: FunctionDeclaration with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Foo"]:nth-child(1))
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"any"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":":function"}]}]
 // Message: Syntax is required: :function with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Foo"]:nth-child(1))
 
@@ -128,7 +124,7 @@ function quux () {
  * Object holding values of some custom enum
  */
 const MY_ENUM = Object.freeze({
-  VAL_A: "myvala"
+  VAL_A: "myvala",
 } as const);
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag[tag=/private|protected/])","context":":declaration","message":"Requiring private/protected tags here"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTag[tag=\"enum\"])","context":"any","message":"@enum required on declarations"}]}]
 // Message: @enum required on declarations
@@ -136,35 +132,27 @@ const MY_ENUM = Object.freeze({
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(1))","context":"FunctionDeclaration","message":"Problematically missing function syntax: `{{context}}` with `{{comment}}`."}]}]
 // Message: Problematically missing function syntax: `FunctionDeclaration` with `JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Foo"]:nth-child(1))`.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":["FunctionDeclaration"]}]
 // Message: Syntax is required: FunctionDeclaration
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Rule `no-missing-syntax` is missing a `contexts` option.
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration","minimum":2}]}]
 // Message: Syntax is required: FunctionDeclaration with JsdocBlock[postDelimiter=""]:has(JsdocTypeUnion > JsdocTypeName[value="Bar"]:nth-child(1))
 
@@ -186,7 +174,7 @@ function quux () {
  * @param ab
  * @param cd
  */
-function quux () {}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"any","message":"Require names matching `/^opt_/i`."}]}]
 // Message: Require names matching `/^opt_/i`.
 
@@ -195,45 +183,36 @@ function quux () {}
  */
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"context":"FunctionDeclaration"}]}]
 // Message: Syntax is required: FunctionDeclaration
-````
-
-
+```
 
 <a name="user-content-no-missing-syntax-passing-examples"></a>
 <a name="no-missing-syntax-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration"}]}]
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @implements {Bar|Foo}
  */
-function bar () {
-
-}
+function bar() {}
 
 /**
  * @implements {Bar|Foo}
  */
-function baz () {
-
-}
+function baz() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration","minimum":2}]}]
 
 /**
@@ -246,30 +225,25 @@ function baz () {
  * @param opt_a
  * @param opt_b
  */
-function quux () {}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","context":"any","message":"Require names matching `/^opt_/i`."}]}]
 
 /**
  * @param opt_a
  * @param opt_b
  */
-function quux () {}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock:has(JsdocTag[name=/opt_/])","message":"Require names matching `/^opt_/i`."}]}]
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"FunctionDeclaration"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(2))","context":"FunctionDeclaration"}]}]
 
 /**
  * @implements {Bar|Foo}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/no-missing-syntax": ["error"|"warn", {"contexts":[{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Bar\"]:nth-child(1))","context":"any"},{"comment":"JsdocBlock[postDelimiter=\"\"]:has(JsdocTypeUnion > JsdocTypeName[value=\"Foo\"]:nth-child(2))","context":"FunctionDeclaration"}]}]
-````
-
+```

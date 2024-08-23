@@ -33,9 +33,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -54,9 +52,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -75,9 +71,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -99,7 +93,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -116,7 +110,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -146,8 +140,8 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock:has(JsdocTag:not([name=props]))',
-              context: 'FunctionDeclaration',
+              comment: "JsdocBlock:has(JsdocTag:not([name=props]))",
+              context: "FunctionDeclaration",
             },
           ],
         },
@@ -167,7 +161,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing root description for @param.',
+          message: "Missing root description for @param.",
         },
       ],
       options: [
@@ -200,12 +194,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing root description for @param.',
+          message: "Missing root description for @param.",
         },
       ],
       options: [
         {
-          defaultDestructuredRootDescription: 'Root description',
+          defaultDestructuredRootDescription: "Root description",
           setDefaultDestructuredRootDescription: true,
         },
       ],
@@ -276,9 +270,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -325,8 +317,8 @@ export default {
         {
           contexts: [
             {
-              comment: 'JsdocBlock:has(JsdocTag:not([name=props]))',
-              context: 'FunctionDeclaration',
+              comment: "JsdocBlock:has(JsdocTag:not([name=props]))",
+              context: "FunctionDeclaration",
             },
           ],
         },

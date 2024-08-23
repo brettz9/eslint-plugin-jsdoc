@@ -15,13 +15,13 @@ Also reports:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`@access`|
-|Recommended|true|
-|Settings||
-|Options||
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | `@access`  |
+| Recommended | true       |
+| Settings    |            |
+| Options     |            |
 
 ## Failing examples
 

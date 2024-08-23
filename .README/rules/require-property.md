@@ -14,11 +14,11 @@ The fixer for `require-property` will add an empty `@property`.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|Everywhere|
-|Tags|`typedef`, `namespace`|
-|Recommended|true|
+|             |                        |
+| ----------- | ---------------------- |
+| Context     | Everywhere             |
+| Tags        | `typedef`, `namespace` |
+| Recommended | true                   |
 
 ## Failing examples
 

@@ -1,15 +1,15 @@
 <a name="user-content-require-param-type"></a>
 <a name="require-param-type"></a>
+
 # <code>require-param-type</code>
 
-* [Options](#user-content-require-param-type-options)
-    * [`setDefaultDestructuredRootType`](#user-content-require-param-type-options-setdefaultdestructuredroottype)
-    * [`defaultDestructuredRootType`](#user-content-require-param-type-options-defaultdestructuredroottype)
-    * [`contexts`](#user-content-require-param-type-options-contexts)
-* [Context and settings](#user-content-require-param-type-context-and-settings)
-* [Failing examples](#user-content-require-param-type-failing-examples)
-* [Passing examples](#user-content-require-param-type-passing-examples)
-
+- [Options](#user-content-require-param-type-options)
+  - [`setDefaultDestructuredRootType`](#user-content-require-param-type-options-setdefaultdestructuredroottype)
+  - [`defaultDestructuredRootType`](#user-content-require-param-type-options-defaultdestructuredroottype)
+  - [`contexts`](#user-content-require-param-type-options-contexts)
+- [Context and settings](#user-content-require-param-type-context-and-settings)
+- [Failing examples](#user-content-require-param-type-failing-examples)
+- [Passing examples](#user-content-require-param-type-passing-examples)
 
 Requires that each `@param` tag has a `type` value (within curly brackets).
 
@@ -20,10 +20,12 @@ Will exempt destructured roots and their children if
 
 <a name="user-content-require-param-type-options"></a>
 <a name="require-param-type-options"></a>
+
 ## Options
 
 <a name="user-content-require-param-type-options-setdefaultdestructuredroottype"></a>
 <a name="require-param-type-options-setdefaultdestructuredroottype"></a>
+
 ### <code>setDefaultDestructuredRootType</code>
 
 Whether to set a default destructured root type. For example, you may wish
@@ -34,12 +36,14 @@ object. Uses `defaultDestructuredRootType` for the type string. Defaults to
 
 <a name="user-content-require-param-type-options-defaultdestructuredroottype"></a>
 <a name="require-param-type-options-defaultdestructuredroottype"></a>
+
 ### <code>defaultDestructuredRootType</code>
 
 The type string to set by default for destructured roots. Defaults to "object".
 
 <a name="user-content-require-param-type-options-contexts"></a>
 <a name="require-param-type-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -55,45 +59,42 @@ section of our README for more on the expected format.
 
 <a name="user-content-require-param-type-context-and-settings"></a>
 <a name="require-param-type-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`param`|
-|Aliases|`arg`, `argument`|
-|Recommended|true|
-|Options|`contexts`, `defaultDestructuredRootType`, `setDefaultDestructuredRootType`|
-|Settings|`exemptDestructuredRootsFromChecks`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `param`                                                                                                       |
+| Aliases     | `arg`, `argument`                                                                                             |
+| Recommended | true                                                                                                          |
+| Options     | `contexts`, `defaultDestructuredRootType`, `setDefaultDestructuredRootType`                                   |
+| Settings    | `exemptDestructuredRootsFromChecks`                                                                           |
 
 <a name="user-content-require-param-type-failing-examples"></a>
 <a name="require-param-type-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @param "foo" type.
 
 /**
  * @param {a xxx
  */
-function quux () {
-}
+function quux() {}
 // Message: Missing JSDoc @param "" type.
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param-type": ["error"|"warn", {"contexts":["any"]}]
 // Message: Missing JSDoc @param "foo" type.
 
@@ -114,18 +115,14 @@ function quux (foo) {
 /**
  * @arg foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 // Message: Missing JSDoc @arg "foo" type.
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":false}}}
 // Message: Unexpected tag `@param`
 
@@ -134,9 +131,7 @@ function quux (foo) {
  * @param root
  * @param {boolean} baz
  */
-function quux (foo, {bar}, baz) {
-
-}
+function quux(foo, { bar }, baz) {}
 // "jsdoc/require-param-type": ["error"|"warn", {"setDefaultDestructuredRootType":true}]
 // Message: Missing root type for @param.
 
@@ -145,9 +140,7 @@ function quux (foo, {bar}, baz) {
  * @param root
  * @param {boolean} baz
  */
-function quux (foo, {bar}, baz) {
-
-}
+function quux(foo, { bar }, baz) {}
 // "jsdoc/require-param-type": ["error"|"warn", {"defaultDestructuredRootType":"Object","setDefaultDestructuredRootType":true}]
 // Message: Missing root type for @param.
 
@@ -156,42 +149,33 @@ function quux (foo, {bar}, baz) {
  * @param root
  * @param {boolean} baz
  */
-function quux (foo, {bar}, baz) {
-
-}
+function quux(foo, { bar }, baz) {}
 // "jsdoc/require-param-type": ["error"|"warn", {"setDefaultDestructuredRootType":false}]
 // Message: Missing JSDoc @param "root" type.
-````
-
-
+```
 
 <a name="user-content-require-param-type-passing-examples"></a>
 <a name="require-param-type-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param-type": ["error"|"warn", {"contexts":["any"]}]
 
 /**
@@ -209,9 +193,7 @@ function quux (foo) {
  * @param root
  * @param {boolean} baz
  */
-function quux (foo, {bar}, baz) {
-
-}
+function quux(foo, { bar }, baz) {}
 // Settings: {"jsdoc":{"exemptDestructuredRootsFromChecks":true}}
 
 /**
@@ -219,9 +201,6 @@ function quux (foo, {bar}, baz) {
  * @param root
  * @param root.bar
  */
-function quux (foo, {bar: {baz}}) {
-
-}
+function quux(foo, { bar: { baz } }) {}
 // Settings: {"jsdoc":{"exemptDestructuredRootsFromChecks":true}}
-````
-
+```

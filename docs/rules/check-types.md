@@ -1,15 +1,15 @@
 <a name="user-content-check-types"></a>
 <a name="check-types"></a>
+
 # <code>check-types</code>
 
-* [Options](#user-content-check-types-options)
-* [Why not capital case everything?](#user-content-check-types-why-not-capital-case-everything)
-* [Comparisons](#user-content-check-types-comparisons)
-* [Fixer](#user-content-check-types-fixer)
-* [Context and settings](#user-content-check-types-context-and-settings)
-* [Failing examples](#user-content-check-types-failing-examples)
-* [Passing examples](#user-content-check-types-passing-examples)
-
+- [Options](#user-content-check-types-options)
+- [Why not capital case everything?](#user-content-check-types-why-not-capital-case-everything)
+- [Comparisons](#user-content-check-types-comparisons)
+- [Fixer](#user-content-check-types-fixer)
+- [Context and settings](#user-content-check-types-context-and-settings)
+- [Failing examples](#user-content-check-types-failing-examples)
+- [Passing examples](#user-content-check-types-passing-examples)
 
 Reports invalid types.
 
@@ -33,6 +33,7 @@ RegExp
 
 <a name="user-content-check-types-options"></a>
 <a name="check-types-options"></a>
+
 ## Options
 
 `check-types` allows one option:
@@ -84,6 +85,7 @@ the `valid-types` rule to report parsing errors.
 
 <a name="user-content-check-types-why-not-capital-case-everything"></a>
 <a name="check-types-why-not-capital-case-everything"></a>
+
 ## Why not capital case everything?
 
 Why are `boolean`, `number` and `string` exempt from starting with a capital
@@ -95,10 +97,11 @@ Fortunately we don't have to write `new String()` everywhere in our code.
 Javascript will automatically wrap string primitives into string Objects when
 we're applying a string function to a string primitive. This way the memory
 footprint is a tiny little bit smaller, and the
-[GC](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) has
+[GC](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>) has
 less work to do.
 
 So in a sense, there are two types of strings in Javascript:
+
 1. `{string}` literals, also called primitives
 2. `{String}` Objects.
 
@@ -106,9 +109,9 @@ We use the primitives because it's easier to write and uses less memory.
 `{String}` and `{string}` are technically both valid, but they are not the same.
 
 ```js
-new String('lard') // String {0: "l", 1: "a", 2: "r", 3: "d", length: 4}
-'lard' // "lard"
-new String('lard') === 'lard' // false
+new String("lard"); // String {0: "l", 1: "a", 2: "r", 3: "d", length: 4}
+("lard"); // "lard"
+new String("lard") === "lard"; // false
 ```
 
 To make things more confusing, there are also object literals (like `{}`) and
@@ -148,18 +151,19 @@ identity.)
 
 <a name="user-content-check-types-comparisons"></a>
 <a name="check-types-comparisons"></a>
+
 ## Comparisons
 
-type name | `typeof` | check-types | testcase
---|--|--|--
-**Array** | object | **Array** | `([]) instanceof Array` -> `true`
-**Function** | function | **Function** | `(function f () {}) instanceof Function` -> `true`
-**Date** | object | **Date** | `(new Date()) instanceof Date` -> `true`
-**RegExp** | object | **RegExp** | `(new RegExp(/.+/)) instanceof RegExp` -> `true`
-Object | **object** | **object** | `({}) instanceof Object` -> `true` but `Object.create(null) instanceof Object` -> `false`
-Boolean | **boolean** | **boolean** | `(true) instanceof Boolean` -> **`false`**
-Number | **number** | **number** | `(41) instanceof Number` -> **`false`**
-String | **string** | **string** | `("test") instanceof String` -> **`false`**
+| type name    | `typeof`    | check-types  | testcase                                                                                  |
+| ------------ | ----------- | ------------ | ----------------------------------------------------------------------------------------- |
+| **Array**    | object      | **Array**    | `([]) instanceof Array` -> `true`                                                         |
+| **Function** | function    | **Function** | `(function f () {}) instanceof Function` -> `true`                                        |
+| **Date**     | object      | **Date**     | `(new Date()) instanceof Date` -> `true`                                                  |
+| **RegExp**   | object      | **RegExp**   | `(new RegExp(/.+/)) instanceof RegExp` -> `true`                                          |
+| Object       | **object**  | **object**   | `({}) instanceof Object` -> `true` but `Object.create(null) instanceof Object` -> `false` |
+| Boolean      | **boolean** | **boolean**  | `(true) instanceof Boolean` -> **`false`**                                                |
+| Number       | **number**  | **number**   | `(41) instanceof Number` -> **`false`**                                                   |
+| String       | **string**  | **string**   | `("test") instanceof String` -> **`false`**                                               |
 
 If you define your own tags and don't wish their bracketed portions checked
 for types, you can use `settings.jsdoc.structuredTags` with a tag `type` of
@@ -168,110 +172,96 @@ permitted.
 
 <a name="user-content-check-types-fixer"></a>
 <a name="check-types-fixer"></a>
+
 ## Fixer
 
 (Todo)
 
 <a name="user-content-check-types-context-and-settings"></a>
 <a name="check-types-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields`|
-|Aliases|`constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
-|Closure-only|`package`, `private`, `protected`, `public`, `static`|
-|Recommended|true|
-|Options|`exemptTagContexts`, `noDefaults`, `unifyParentAndChildTypeChecks`|
-|Settings|`preferredTypes`, `mode`, `structuredTags`|
+|              |                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context      | everywhere                                                                                                                                                    |
+| Tags         | `augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields` |
+| Aliases      | `constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`                                                           |
+| Closure-only | `package`, `private`, `protected`, `public`, `static`                                                                                                         |
+| Recommended  | true                                                                                                                                                          |
+| Options      | `exemptTagContexts`, `noDefaults`, `unifyParentAndChildTypeChecks`                                                                                            |
+| Settings     | `preferredTypes`, `mode`, `structuredTags`                                                                                                                    |
 
 <a name="user-content-check-types-failing-examples"></a>
 <a name="check-types-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param {abc} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":100}}}
 // Message: Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.
 
 /**
  * @param {Number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Invalid JSDoc @param "foo" type "Number"; prefer: "number".
 
 /**
  * @arg {Number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Invalid JSDoc @arg "foo" type "Number"; prefer: "number".
 
 /**
  * @returns {Number} foo
  * @throws {Number} foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Invalid JSDoc @returns type "Number"; prefer: "number".
 
 /**
  * @param {(Number | string | Boolean)=} foo
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Invalid JSDoc @param "foo" type "Number"; prefer: "number".
 
 /**
  * @param {Array.<Number | String>} foo
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Invalid JSDoc @param "foo" type "Number"; prefer: "number".
 
 /**
  * @param {(Number | String)[]} foo
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Invalid JSDoc @param "foo" type "Number"; prefer: "number".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":"Abc","string":"Str"}}}
 // Message: Invalid JSDoc @param "foo" type "abc"; prefer: "Abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":{"replacement":"Abc"},"string":"Str"}}}
 // Message: Invalid JSDoc @param "foo" type "abc"; prefer: "Abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":{"message":"Messed up JSDoc @{{tagName}}{{tagValue}} type \"abc\"; prefer: \"Abc\".","replacement":"Abc"},"string":"Str"}}}
 // Message: Messed up JSDoc @param "foo" type "abc"; prefer: "Abc".
 
@@ -280,24 +270,21 @@ function qux(foo) {
  * @param {cde} bar
  * @param {object} baz
  */
-function qux(foo, bar, baz) {
-}
+function qux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":{"message":"Messed up JSDoc @{{tagName}}{{tagValue}} type \"abc\"; prefer: \"Abc\".","replacement":"Abc"},"cde":{"message":"More messed up JSDoc @{{tagName}}{{tagValue}} type \"cde\"; prefer: \"Cde\".","replacement":"Cde"},"object":"Object"}}}
 // Message: Messed up JSDoc @param "foo" type "abc"; prefer: "Abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":{"message":"Messed up JSDoc @{{tagName}}{{tagValue}} type \"abc\".","replacement":false},"string":"Str"}}}
 // Message: Messed up JSDoc @param "foo" type "abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":{"message":"Messed up JSDoc @{{tagName}}{{tagValue}} type \"abc\"."},"string":"Str"}}}
 // Message: Messed up JSDoc @param "foo" type "abc".
 
@@ -305,8 +292,7 @@ function qux(foo) {
  * @param {abc} foo
  * @param {Number} bar
  */
-function qux(foo, bar) {
-}
+function qux(foo, bar) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":"Abc","string":"Str"}}}
 // "jsdoc/check-types": ["error"|"warn", {"noDefaults":true}]
 // Message: Invalid JSDoc @param "foo" type "abc"; prefer: "Abc".
@@ -315,94 +301,77 @@ function qux(foo, bar) {
  * @param {abc} foo
  * @param {Number} bar
  */
-function qux(foo, bar) {
-}
+function qux(foo, bar) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":"Abc","string":"Str"}}}
 // Message: Invalid JSDoc @param "foo" type "abc"; prefer: "Abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":false,"string":"Str"}}}
 // Message: Invalid JSDoc @param "foo" type "abc".
 
 /**
  * @param {abc} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"abc":false}}}
 // Message: Invalid JSDoc @param "foo" type "abc".
 
 /**
  * @param {*} baz
  */
-function qux(baz) {
-}
+function qux(baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"*":false,"abc":"Abc","string":"Str"}}}
 // Message: Invalid JSDoc @param "baz" type "*".
 
 /**
  * @param {*} baz
  */
-function qux(baz) {
-}
+function qux(baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"*":"aaa","abc":"Abc","string":"Str"}}}
 // Message: Invalid JSDoc @param "baz" type "*"; prefer: "aaa".
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"GenericArray"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"GenericArray","Array.<>":"GenericArray"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".
 
 /**
  * @param {Array.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.<>":"GenericArray"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".
 
 /**
  * @param {Array<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array<>":"GenericArray"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".
 
 /**
  * @param {string[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"SpecialTypeArray"}}}
 // Message: Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".
 
 /**
  * @param {string[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"SpecialTypeArray"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".
@@ -410,9 +379,7 @@ function quux (foo) {
 /**
  * @param {string[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"SpecialTypeArray"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "SpecialTypeArray".
@@ -420,72 +387,56 @@ function quux (foo) {
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject","object.<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject","object<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object.<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object.<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object.<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object<>":"GenericObject"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
@@ -493,9 +444,7 @@ function quux (foo) {
 /**
  * @param {object<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
@@ -503,9 +452,7 @@ function quux (foo) {
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
@@ -513,9 +460,7 @@ function quux (foo) {
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":false}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object".
@@ -523,18 +468,14 @@ function quux (foo) {
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":false}}}
 // Message: Invalid JSDoc @param "foo" type "object".
 
 /**
  * @param {object.<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
@@ -542,9 +483,7 @@ function quux (foo) {
 /**
  * @param {object<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".
@@ -553,9 +492,7 @@ function quux (foo) {
  *
  * @param {string[][]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"Array."}}}
 // Message: Invalid JSDoc @param "foo" type "[]"; prefer: "Array.".
 
@@ -563,9 +500,7 @@ function quux (foo) {
  *
  * @param {string[][]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"Array.<>"}}}
 // Message: Invalid JSDoc @param "foo" type "[]"; prefer: "Array.<>".
 
@@ -573,9 +508,7 @@ function quux (foo) {
  *
  * @param {string[][]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"Array<>"}}}
 // Message: Invalid JSDoc @param "foo" type "[]"; prefer: "Array<>".
 
@@ -583,9 +516,7 @@ function quux (foo) {
  *
  * @param {object.<string, object.<string, string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object.":"Object"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object".
 
@@ -593,9 +524,7 @@ function quux (foo) {
  *
  * @param {object.<string, object.<string, string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object.":"Object<>"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".
 
@@ -603,9 +532,7 @@ function quux (foo) {
  *
  * @param {object<string, object<string, string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object<>":"Object."}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object.".
 
@@ -613,9 +540,7 @@ function quux (foo) {
  *
  * @param {Array.<Array.<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.":"[]"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "[]".
 
@@ -623,9 +548,7 @@ function quux (foo) {
  *
  * @param {Array.<Array.<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.":"Array<>"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "Array<>".
 
@@ -633,9 +556,7 @@ function quux (foo) {
  *
  * @param {Array.<Array.<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.":"<>"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "<>".
 
@@ -643,9 +564,7 @@ function quux (foo) {
  *
  * @param {Array.<MyArray.<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.":"<>"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "<>".
 
@@ -653,9 +572,7 @@ function quux (foo) {
  *
  * @param {Array.<MyArray.<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"MyArray.":"<>"}}}
 // Message: Invalid JSDoc @param "foo" type "MyArray"; prefer: "<>".
 
@@ -663,9 +580,7 @@ function quux (foo) {
  *
  * @param {Array<Array<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"<>":"Array."}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "Array.".
 
@@ -673,9 +588,7 @@ function quux (foo) {
  *
  * @param {Array<Array<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"Array."}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "Array.".
@@ -684,9 +597,7 @@ function quux (foo) {
  *
  * @param {Array<Array<string>>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"<>":"[]"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "[]".
 
@@ -696,14 +607,14 @@ function quux (foo) {
 /**
  * @this {array}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Invalid JSDoc @this type "array"; prefer: "Array".
 
 /**
  * @export {array}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Invalid JSDoc @export type "array"; prefer: "Array".
 
@@ -736,21 +647,19 @@ function quux () {}
 /**
  * @param {Array<number | undefined>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.<>":"[]","Array<>":"[]"}}}
 // Message: Invalid JSDoc @param "foo" type "Array"; prefer: "[]".
 
 /**
  * @typedef {object} foo
  */
-function a () {}
+function a() {}
 
 /**
  * @typedef {Object<string>} foo
  */
-function b () {}
+function b() {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"object":"Object"}}}
 // Message: Invalid JSDoc @typedef "foo" type "object"; prefer: "Object".
 
@@ -769,60 +678,49 @@ function b () {}
 /**
  * @param {Object[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object"}}}
 // Message: Invalid JSDoc @param "foo" type "Object"; prefer: "object".
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"object.<>":"Object"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object".
 
 /**
  * @param {object.<string, number>} foo
  */
-function quux (foo) {
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","Object.<>":"Object<>","object<>":"Object<>"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".
 
 /**
  * @param {Object.<string, number>} foo
  */
-function quux (foo) {
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","Object.<>":"Object<>","object<>":"Object<>"}}}
 // Message: Invalid JSDoc @param "foo" type "Object"; prefer: "Object<>".
 
 /**
  * @param {object<string, number>} foo
  */
-function quux (foo) {
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","Object.<>":"Object<>","object<>":"Object<>"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","Object.<>":"Object<>","object<>":"Object<>"}}}
 // Message: Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 // Message: Use object shorthand or index signatures instead of `object`, e.g., `{[key: string]: string}`
 
@@ -832,9 +730,8 @@ function quux (foo) {
  * @return {Object | String}
  */
 function abc(param) {
-  if (param.a)
-    return {};
-  return 'abc';
+  if (param.a) return {};
+  return "abc";
 }
 // Message: Invalid JSDoc @param "param" type "Object"; prefer: "object".
 
@@ -843,234 +740,185 @@ function abc(param) {
  * @param {number} root.a
  * @param {object} b
  */
-function a () {}
+function a() {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":{"skipRootChecking":true}}}}
 // Message: Invalid JSDoc @param "b" type "object".
-````
-
-
+```
 
 <a name="user-content-check-types-passing-examples"></a>
 <a name="check-types-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param {number} foo
  * @param {Bar} bar
  * @param {*} baz
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 
 /**
  * @arg {number} foo
  * @arg {Bar} bar
  * @arg {*} baz
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 
 /**
  * @param {(number | string | boolean)=} foo
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 
 /**
  * @param {typeof bar} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 
 /**
  * @param {import('./foo').bar.baz} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 
 /**
  * @param {(x: number, y: string) => string} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 
 /**
  * @param {() => string} foo
  */
-function qux(foo) {
-}
+function qux(foo) {}
 
 /**
  * @returns {Number} foo
  * @throws {Number} foo
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/check-types": ["error"|"warn", {"noDefaults":true}]
 
 /**
  * @param {Object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"Object"}}}
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {Array.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"GenericArray"}}}
 
 /**
  * @param {Array<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"GenericArray"}}}
 
 /**
  * @param {string[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array":"SpecialTypeArray","Array.<>":"SpecialTypeArray","Array<>":"SpecialTypeArray"}}}
 
 /**
  * @param {string[]} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.<>":"SpecialTypeArray","Array<>":"SpecialTypeArray"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"SpecialTypeArray"}}}
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":"SpecialTypeArray"}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array.<>":"GenericArray"}}}
 
 /**
  * @param {Array} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"Array<>":"GenericArray"}}}
 
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {object.<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 
 /**
  * @param {object<string>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 
 /**
  * @param {object.<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 
 /**
  * @param {object<string, number>} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"GenericObject"}}}
 
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object.<>":"GenericObject"}}}
 
 /**
  * @param {object} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"preferredTypes":{"object<>":"GenericObject"}}}
 
 /**
  * @param {Number<} Ignore the error as not a validating rule
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /** @param {function(...)} callback The function to invoke. */
-var subscribe = function(callback) {};
+var subscribe = function (callback) {};
 
 /**
  * @this {Array}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @export {Array}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /** @type {new() => EntityBase} */
@@ -1090,31 +938,31 @@ function quux () {}
  * @typedef {object} foo
  */
 
- /**
-  * @typedef {Object} foo
-  */
+/**
+ * @typedef {Object} foo
+ */
 // Settings: {"jsdoc":{"preferredTypes":{"object":"Object","Object":"object"}}}
 
 /**
  * @typedef {object} foo
  */
-function a () {}
+function a() {}
 
 /**
  * @typedef {Object} foo
  */
-function b () {}
+function b() {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":"Object","Object":"object"}}}
 
 /**
  * @typedef {object} foo
  */
-function a () {}
+function a() {}
 
 /**
  * @typedef {{[key: string]: number}} foo
  */
-function b () {}
+function b() {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
 /**
@@ -1136,28 +984,24 @@ function b () {}
  * Bad types handled by `valid-types` instead.
  * @param {str(} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {{[key: string]: number}} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
 /**
  * @typedef {object} foo
  */
-function a () {}
+function a() {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","object<>":"Object<>"}}}
 
 /**
  * @typedef {Object<string, number>} foo
  */
-function a () {}
+function a() {}
 // Settings: {"jsdoc":{"mode":"typescript","preferredTypes":{"Object":"object","object.<>":"Object<>","object<>":"Object<>"}}}
 
 /**
@@ -1166,24 +1010,23 @@ function a () {}
  * @param {Object<string,string>} spec - Foo.
  */
 function foo(spec) {
-    return spec;
+  return spec;
 }
 
-foo()
+foo();
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 
 /**
  * @param {object} root
  * @param {number} root.a
  */
-function a () {}
+function a() {}
 // Settings: {"jsdoc":{"preferredTypes":{"object":{"message":"Won't see this message","skipRootChecking":true}}}}
 
 /**
  * @returns {string | undefined} a string or undefined
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"preferredTypes":{"[]":{"message":"Do not use *[], use Array<*> instead","replacement":"Array"}}}}
 // "jsdoc/check-types": ["error"|"warn", {"unifyParentAndChildTypeChecks":true}]
-````
-
+```

@@ -1,17 +1,7 @@
-import getDefaultTagStructureForMode from './getDefaultTagStructureForMode.js';
-import {
-  closureTags,
-  jsdocTags,
-  typeScriptTags,
-} from './tagNames.js';
-import {
-  hasReturnValue,
-  hasValueOrExecutorHasNonEmptyResolveValue,
-} from './utils/hasReturnValue.js';
-import WarnSettings from './WarnSettings.js';
-import {
-  tryParse,
-} from '@es-joy/jsdoccomment';
+import getDefaultTagStructureForMode from "./getDefaultTagStructureForMode.js";
+import { closureTags, jsdocTags, typeScriptTags } from "./tagNames.js";
+import WarnSettings from "./WarnSettings.js";
+import { tryParse } from "@es-joy/jsdoccomment";
 
 /**
  * @typedef {number} Integer
@@ -85,7 +75,7 @@ const setTagStructure = (mode) => {
  */
 
 /** @type {FlattenRoots} */
-const flattenRoots = (params, root = '') => {
+const flattenRoots = (params, root = "") => {
   let hasRestElement = false;
   let hasPropertyRest = false;
 
@@ -117,7 +107,10 @@ const flattenRoots = (params, root = '') => {
           nms = cur[1].names;
         }
 
-        const flattened = flattenRoots(nms, root ? `${root}.${cur[0]}` : cur[0]);
+        const flattened = flattenRoots(
+          nms,
+          root ? `${root}.${cur[0]}` : cur[0],
+        );
         if (flattened.hasRestElement) {
           hasRestElement = true;
         }
@@ -126,35 +119,37 @@ const flattenRoots = (params, root = '') => {
           hasPropertyRest = true;
         }
 
-        const inner = /** @type {string[]} */ ([
-          root ? `${root}.${cur[0]}` : cur[0],
-          ...flattened.names,
-        ].filter(Boolean));
+        const inner = /** @type {string[]} */ (
+          [root ? `${root}.${cur[0]}` : cur[0], ...flattened.names].filter(
+            Boolean,
+          )
+        );
         rests.push(false, ...flattened.rests);
 
         return acc.concat(inner);
       }
 
-      if (typeof cur === 'object') {
-        if ('isRestProperty' in cur && cur.isRestProperty) {
+      if (typeof cur === "object") {
+        if ("isRestProperty" in cur && cur.isRestProperty) {
           hasPropertyRest = true;
           rests.push(true);
         } else {
           rests.push(false);
         }
 
-        if ('restElement' in cur && cur.restElement) {
+        if ("restElement" in cur && cur.restElement) {
           hasRestElement = true;
         }
 
         acc.push(root ? `${root}.${String(cur.name)}` : String(cur.name));
-      } else if (typeof cur !== 'undefined') {
+      } else if (typeof cur !== "undefined") {
         rests.push(false);
         acc.push(root ? `${root}.${cur}` : cur);
       }
 
       return acc;
-    }, [],
+    },
+    [],
   );
 
   return {
@@ -174,14 +169,17 @@ const flattenRoots = (params, root = '') => {
  */
 const getPropertiesFromPropertySignature = (propSignature) => {
   if (
-    propSignature.type === 'TSIndexSignature' ||
-    propSignature.type === 'TSConstructSignatureDeclaration' ||
-    propSignature.type === 'TSCallSignatureDeclaration'
+    propSignature.type === "TSIndexSignature" ||
+    propSignature.type === "TSConstructSignatureDeclaration" ||
+    propSignature.type === "TSCallSignatureDeclaration"
   ) {
     return undefined;
   }
 
-  if (propSignature.typeAnnotation && propSignature.typeAnnotation.typeAnnotation.type === 'TSTypeLiteral') {
+  if (
+    propSignature.typeAnnotation &&
+    propSignature.typeAnnotation.typeAnnotation.type === "TSTypeLiteral"
+  ) {
     return [
       /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
         propSignature.key
@@ -209,9 +207,7 @@ const getPropertiesFromPropertySignature = (propSignature) => {
  * @throws {Error}
  * @returns {ParamNameInfo[]}
  */
-const getFunctionParameterNames = (
-  functionNode, checkDefaultObjects,
-) => {
+const getFunctionParameterNames = (functionNode, checkDefaultObjects) => {
   /* eslint-disable complexity -- Temporary */
   /**
    * @param {import('estree').Identifier|import('estree').AssignmentPattern|
@@ -230,67 +226,66 @@ const getFunctionParameterNames = (
    */
   const getParamName = (param, isProperty) => {
     /* eslint-enable complexity -- Temporary */
-    const hasLeftTypeAnnotation = 'left' in param && 'typeAnnotation' in param.left;
+    const hasLeftTypeAnnotation =
+      "left" in param && "typeAnnotation" in param.left;
 
-    if ('typeAnnotation' in param || hasLeftTypeAnnotation) {
-      const typeAnnotation = hasLeftTypeAnnotation ?
-        /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-          param.left
-        ).typeAnnotation :
-        /** @type {import('@typescript-eslint/types').TSESTree.Identifier|import('@typescript-eslint/types').TSESTree.ObjectPattern} */
-        (param).typeAnnotation;
+    if ("typeAnnotation" in param || hasLeftTypeAnnotation) {
+      const typeAnnotation = hasLeftTypeAnnotation
+        ? /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
+            param.left
+          ).typeAnnotation
+        : /** @type {import('@typescript-eslint/types').TSESTree.Identifier|import('@typescript-eslint/types').TSESTree.ObjectPattern} */
+          (param).typeAnnotation;
 
-      if (typeAnnotation?.typeAnnotation?.type === 'TSTypeLiteral') {
-        const propertyNames = typeAnnotation.typeAnnotation.members.map((member) => {
-          return getPropertiesFromPropertySignature(
-            /** @type {import('@typescript-eslint/types').TSESTree.TSPropertySignature} */
-            (member),
-          );
-        });
+      if (typeAnnotation?.typeAnnotation?.type === "TSTypeLiteral") {
+        const propertyNames = typeAnnotation.typeAnnotation.members.map(
+          (member) => {
+            return getPropertiesFromPropertySignature(
+              /** @type {import('@typescript-eslint/types').TSESTree.TSPropertySignature} */
+              (member),
+            );
+          },
+        );
 
         const flattened = {
           ...flattenRoots(propertyNames),
-          annotationParamName: 'name' in param ? param.name : undefined,
+          annotationParamName: "name" in param ? param.name : undefined,
         };
-        const hasLeftName = 'left' in param && 'name' in param.left;
+        const hasLeftName = "left" in param && "name" in param.left;
 
-        if ('name' in param || hasLeftName) {
+        if ("name" in param || hasLeftName) {
           return [
-            hasLeftName ?
-              /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-                param.left
-              ).name :
-              /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-                param
-              ).name,
+            hasLeftName
+              ? /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
+                  param.left
+                ).name
+              : /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
+                  param
+                ).name,
             flattened,
           ];
         }
 
-        return [
-          undefined, flattened,
-        ];
+        return [undefined, flattened];
       }
     }
 
-    if ('name' in param) {
+    if ("name" in param) {
       return param.name;
     }
 
-    if ('left' in param && 'name' in param.left) {
+    if ("left" in param && "name" in param.left) {
       return param.left.name;
     }
 
     if (
-      param.type === 'ObjectPattern' ||
-      ('left' in param &&
-      (
-        param
-      ).left.type === 'ObjectPattern')
+      param.type === "ObjectPattern" ||
+      ("left" in param && param.left.type === "ObjectPattern")
     ) {
-      const properties = /** @type {import('@typescript-eslint/types').TSESTree.ObjectPattern} */ (
-        param
-      ).properties ||
+      const properties =
+        /** @type {import('@typescript-eslint/types').TSESTree.ObjectPattern} */ (
+          param
+        ).properties ||
         /** @type {import('estree').ObjectPattern} */
         (
           /** @type {import('@typescript-eslint/types').TSESTree.AssignmentPattern} */ (
@@ -301,150 +296,153 @@ const getFunctionParameterNames = (
         return getParamName(prop, true);
       });
 
-      return [
-        undefined, flattenRoots(roots),
-      ];
+      return [undefined, flattenRoots(roots)];
     }
 
-    if (param.type === 'Property') {
+    if (param.type === "Property") {
       switch (param.value.type) {
-      case 'ArrayPattern': {
-        return [
-          /** @type {import('estree').Identifier} */
-          (param.key).name,
-          /** @type {import('estree').ArrayPattern} */ (
-            param.value
-          ).elements.map((prop, idx) => {
-            return {
-              name: idx,
-              restElement: prop?.type === 'RestElement',
-            };
-          }),
-        ];
-      }
-
-      case 'ObjectPattern': {
-        return [
-          /** @type {import('estree').Identifier} */ (param.key).name,
-          /** @type {import('estree').ObjectPattern} */ (
-            param.value
-          ).properties.map((prop) => {
-            return /** @type {string|[string, string[]]} */ (getParamName(prop, isProperty));
-          }),
-        ];
-      }
-
-      case 'AssignmentPattern': {
-        switch (param.value.left.type) {
-        case 'Identifier':
-          // Default parameter
-          if (checkDefaultObjects && param.value.right.type === 'ObjectExpression') {
-            return [
-              /** @type {import('estree').Identifier} */ (
-                param.key
-              ).name,
-              /** @type {import('estree').AssignmentPattern} */ (
-                param.value
-              ).right.properties.map((prop) => {
-                return /** @type {string} */ (getParamName(
-                  /** @type {import('estree').Property} */
-                  (prop),
-                  isProperty,
-                ));
-              }),
-            ];
-          }
-
-          break;
-        case 'ObjectPattern':
-          return [
-            /** @type {import('estree').Identifier} */
-            (param.key).name,
-            /** @type {import('estree').ObjectPattern} */ (
-              param.value.left
-            ).properties.map((prop) => {
-              return getParamName(prop, isProperty);
-            }),
-          ];
-        case 'ArrayPattern':
+        case "ArrayPattern": {
           return [
             /** @type {import('estree').Identifier} */
             (param.key).name,
             /** @type {import('estree').ArrayPattern} */ (
-              param.value.left
+              param.value
             ).elements.map((prop, idx) => {
               return {
                 name: idx,
-                restElement: prop?.type === 'RestElement',
+                restElement: prop?.type === "RestElement",
               };
             }),
           ];
         }
-      }
+
+        case "ObjectPattern": {
+          return [
+            /** @type {import('estree').Identifier} */ (param.key).name,
+            /** @type {import('estree').ObjectPattern} */ (
+              param.value
+            ).properties.map((prop) => {
+              return /** @type {string|[string, string[]]} */ (
+                getParamName(prop, isProperty)
+              );
+            }),
+          ];
+        }
+
+        case "AssignmentPattern": {
+          switch (param.value.left.type) {
+            case "Identifier":
+              // Default parameter
+              if (
+                checkDefaultObjects &&
+                param.value.right.type === "ObjectExpression"
+              ) {
+                return [
+                  /** @type {import('estree').Identifier} */ (param.key).name,
+                  /** @type {import('estree').AssignmentPattern} */ (
+                    param.value
+                  ).right.properties.map((prop) => {
+                    return /** @type {string} */ (
+                      getParamName(
+                        /** @type {import('estree').Property} */
+                        (prop),
+                        isProperty,
+                      )
+                    );
+                  }),
+                ];
+              }
+
+              break;
+            case "ObjectPattern":
+              return [
+                /** @type {import('estree').Identifier} */
+                (param.key).name,
+                /** @type {import('estree').ObjectPattern} */ (
+                  param.value.left
+                ).properties.map((prop) => {
+                  return getParamName(prop, isProperty);
+                }),
+              ];
+            case "ArrayPattern":
+              return [
+                /** @type {import('estree').Identifier} */
+                (param.key).name,
+                /** @type {import('estree').ArrayPattern} */ (
+                  param.value.left
+                ).elements.map((prop, idx) => {
+                  return {
+                    name: idx,
+                    restElement: prop?.type === "RestElement",
+                  };
+                }),
+              ];
+          }
+        }
       }
 
       switch (param.key.type) {
-      case 'Identifier':
-        return param.key.name;
+        case "Identifier":
+          return param.key.name;
 
-      // The key of an object could also be a string or number
-      case 'Literal':
-        /* c8 ignore next 2 -- `raw` may not be present in all parsers */
-        return /** @type {string} */ (param.key.raw ||
-          param.key.value);
+        // The key of an object could also be a string or number
+        case "Literal":
+          /* c8 ignore next 2 -- `raw` may not be present in all parsers */
+          return /** @type {string} */ (param.key.raw || param.key.value);
 
-      // case 'MemberExpression':
-      default:
-        // Todo: We should really create a structure (and a corresponding
-        //   option analogous to `checkRestProperty`) which allows for
-        //   (and optionally requires) dynamic properties to have a single
-        //   line of documentation
-        return undefined;
+        // case 'MemberExpression':
+        default:
+          // Todo: We should really create a structure (and a corresponding
+          //   option analogous to `checkRestProperty`) which allows for
+          //   (and optionally requires) dynamic properties to have a single
+          //   line of documentation
+          return undefined;
       }
     }
 
     if (
-      param.type === 'ArrayPattern' ||
-      /** @type {import('estree').AssignmentPattern} */ (
-        param
-      ).left?.type === 'ArrayPattern'
+      param.type === "ArrayPattern" ||
+      /** @type {import('estree').AssignmentPattern} */ (param).left?.type ===
+        "ArrayPattern"
     ) {
-      const elements = /** @type {import('estree').ArrayPattern} */ (
-        param
-      ).elements || /** @type {import('estree').ArrayPattern} */ (
-        /** @type {import('estree').AssignmentPattern} */ (
-          param
-        ).left
-      )?.elements;
+      const elements =
+        /** @type {import('estree').ArrayPattern} */ (param).elements ||
+        /** @type {import('estree').ArrayPattern} */ (
+          /** @type {import('estree').AssignmentPattern} */ (param).left
+        )?.elements;
       const roots = elements.map((prop, idx) => {
         return {
           name: `"${idx}"`,
-          restElement: prop?.type === 'RestElement',
+          restElement: prop?.type === "RestElement",
         };
       });
 
-      return [
-        undefined, flattenRoots(roots),
-      ];
+      return [undefined, flattenRoots(roots)];
     }
 
-    if ([
-      'RestElement', 'ExperimentalRestProperty',
-    ].includes(param.type)) {
+    if (["ExperimentalRestProperty", "RestElement"].includes(param.type)) {
       return {
         isRestProperty: isProperty,
-        name: /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-          /** @type {import('@typescript-eslint/types').TSESTree.RestElement} */ (
-            param
-          // @ts-expect-error Ok
-          ).argument).name ?? param?.argument?.elements?.map(({name}) => {
-            return name;
-          }),
+        name:
+          /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
+            /** @type {import('@typescript-eslint/types').TSESTree.RestElement} */ (
+              param
+              // @ts-expect-error Ok
+            ).argument
+          ).name ??
+          param?.argument?.elements?.map(
+            ({
+              // @ts-expect-error Ok
+              name,
+            }) => {
+              return name;
+            },
+          ),
         restElement: true,
       };
     }
 
-    if (param.type === 'TSParameterProperty') {
+    if (param.type === "TSParameterProperty") {
       return getParamName(
         /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
           /** @type {import('@typescript-eslint/types').TSESTree.TSParameterProperty} */ (
@@ -455,18 +453,22 @@ const getFunctionParameterNames = (
       );
     }
 
-    throw new Error(`Unsupported function signature format: \`${param.type}\`.`);
+    throw new Error(
+      `Unsupported function signature format: \`${param.type}\`.`,
+    );
   };
 
   if (!functionNode) {
     return [];
   }
 
-  return (/** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */ (
-    functionNode
-  ).params || /** @type {import('@typescript-eslint/types').TSESTree.MethodDefinition} */ (
-    functionNode
-  ).value?.params || []).map((param) => {
+  return /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */ (
+    functionNode.params ||
+      /** @type {import('@typescript-eslint/types').TSESTree.MethodDefinition} */ (
+        functionNode
+      ).value?.params ||
+      []
+  ).map((param) => {
     return getParamName(param);
   });
 };
@@ -495,14 +497,7 @@ const hasParams = (functionNode) => {
  */
 const getJsdocTagsDeep = (jsdoc, targetTagName) => {
   const ret = [];
-  for (const [
-    idx,
-    {
-      name,
-      tag,
-      type,
-    },
-  ] of jsdoc.tags.entries()) {
+  for (const [idx, { name, tag, type }] of jsdoc.tags.entries()) {
     if (tag !== targetTagName) {
       continue;
     }
@@ -526,32 +521,33 @@ const modeWarnSettings = WarnSettings();
  */
 const getTagNamesForMode = (mode, context) => {
   switch (mode) {
-  case 'jsdoc':
-    return jsdocTags;
-  case 'typescript':
-    return typeScriptTags;
-  case 'closure': case 'permissive':
-    return closureTags;
-  default:
-    if (!modeWarnSettings.hasBeenWarned(context, 'mode')) {
-      context.report({
-        loc: {
-          end: {
-            column: 1,
-            line: 1,
+    case "closure":
+    case "permissive":
+      return closureTags;
+    case "jsdoc":
+      return jsdocTags;
+    case "typescript":
+      return typeScriptTags;
+    default:
+      if (!modeWarnSettings.hasBeenWarned(context, "mode")) {
+        context.report({
+          loc: {
+            end: {
+              column: 1,
+              line: 1,
+            },
+            start: {
+              column: 1,
+              line: 1,
+            },
           },
-          start: {
-            column: 1,
-            line: 1,
-          },
-        },
-        message: `Unrecognized value \`${mode}\` for \`settings.jsdoc.mode\`.`,
-      });
-      modeWarnSettings.markSettingAsWarned(context, 'mode');
-    }
+          message: `Unrecognized value \`${mode}\` for \`settings.jsdoc.mode\`.`,
+        });
+        modeWarnSettings.markSettingAsWarned(context, "mode");
+      }
 
-    // We'll avoid breaking too many other rules
-    return jsdocTags;
+      // We'll avoid breaking too many other rules
+      return jsdocTags;
   }
 };
 
@@ -561,29 +557,29 @@ const getTagNamesForMode = (mode, context) => {
  * @returns {string[]|string}
  */
 const getTagDescription = (tg, returnArray) => {
-    /**
-     * @type {string[]}
-     */
-    const descriptions = [];
-    tg.source.some(({
+  /**
+   * @type {string[]}
+   */
+  const descriptions = [];
+  tg.source.some(
+    ({
       tokens: {
+        description,
         end,
         lineEnd,
-        postDelimiter,
-        tag,
-        postTag,
         name,
+        postDelimiter,
+        postTag,
+        tag,
         type,
-        description,
       },
     }) => {
-      const desc = (
-        tag && postTag ||
-        !tag && !name && !type && postDelimiter || ''
-
-      // Remove space
-      ).slice(1) +
-        (description || '') + (lineEnd || '');
+      const desc =
+        ((tag && postTag) || (!tag && !name && !type && postDelimiter) || "")
+          // Remove space
+          .slice(1) +
+        (description || "") +
+        (lineEnd || "");
 
       if (end) {
         if (desc) {
@@ -596,9 +592,10 @@ const getTagDescription = (tg, returnArray) => {
       descriptions.push(desc);
 
       return false;
-    });
+    },
+  );
 
-    return returnArray ? descriptions : descriptions.join('\n');
+  return returnArray ? descriptions : descriptions.join("\n");
 };
 
 /**
@@ -621,16 +618,22 @@ const getPreferredTagNameSimple = (
   name,
   mode,
   tagPreference = {},
+  // eslint-disable-next-line unicorn/no-object-as-default-parameter
   context = {
-    report () {
+    report() {
       // No-op
-    }
+    },
   },
 ) => {
   const prefValues = Object.values(tagPreference);
-  if (prefValues.includes(name) || prefValues.some((prefVal) => {
-    return prefVal && typeof prefVal === 'object' && prefVal.replacement === name;
-  })) {
+  if (
+    prefValues.includes(name) ||
+    prefValues.some((prefVal) => {
+      return (
+        prefVal && typeof prefVal === "object" && prefVal.replacement === name
+      );
+    })
+  ) {
     return name;
   }
 
@@ -640,16 +643,9 @@ const getPreferredTagNameSimple = (
   // https://github.com/eslint/eslint/issues/13289
   // https://github.com/gajus/eslint-plugin-jsdoc/issues/537
   const tagPreferenceFixed = Object.fromEntries(
-    Object
-      .entries(tagPreference)
-      .map(([
-        key,
-        value,
-      ]) => {
-        return [
-          key.replace(/^tag /u, ''), value,
-        ];
-      }),
+    Object.entries(tagPreference).map(([key, value]) => {
+      return [key.replace(/^tag /u, ""), value];
+    }),
   );
 
   if (Object.prototype.hasOwnProperty.call(tagPreferenceFixed, name)) {
@@ -658,9 +654,7 @@ const getPreferredTagNameSimple = (
 
   const tagNames = getTagNamesForMode(mode, context);
 
-  const preferredTagName = Object.entries(tagNames).find(([
-    , aliases,
-  ]) => {
+  const preferredTagName = Object.entries(tagNames).find(([, aliases]) => {
     return aliases.includes(name);
   })?.[0];
   if (preferredTagName) {
@@ -677,15 +671,12 @@ const getPreferredTagNameSimple = (
  * @param {string[]} definedTags
  * @returns {boolean}
  */
-const isValidTag = (
-  context,
-  mode,
-  name,
-  definedTags,
-) => {
+const isValidTag = (context, mode, name, definedTags) => {
   const tagNames = getTagNamesForMode(mode, context);
 
-  const validTagNames = Object.keys(tagNames).concat(Object.values(tagNames).flat());
+  const validTagNames = Object.keys(tagNames).concat(
+    Object.values(tagNames).flat(),
+  );
   const additionalTags = definedTags;
   const allTags = validTagNames.concat(additionalTags);
 
@@ -747,18 +738,31 @@ const getTags = (jsdoc, tagName) => {
  *   tagName: string
  * }}
  */
-const getPreferredTagName = (jsdoc, {
-  tagName,
-  context, mode,
-  tagNamePreference,
-  report = () => {},
-  skipReportingBlockedTag = false,
-  allowObjectReturn = false,
-  defaultMessage = `Unexpected tag \`@${tagName}\``,
-}) => {
-  const ret = getPreferredTagNameSimple(tagName, mode, tagNamePreference, context);
-  const isObject = ret && typeof ret === 'object';
-  if (hasTag(jsdoc, tagName) && (ret === false || isObject && !ret.replacement)) {
+const getPreferredTagName = (
+  jsdoc,
+  {
+    allowObjectReturn = false,
+    context,
+    mode,
+    report = () => {},
+    skipReportingBlockedTag = false,
+    tagName,
+    tagNamePreference,
+    // eslint-disable-next-line perfectionist/sort-objects
+    defaultMessage = `Unexpected tag \`@${tagName}\``,
+  },
+) => {
+  const ret = getPreferredTagNameSimple(
+    tagName,
+    mode,
+    tagNamePreference,
+    context,
+  );
+  const isObject = ret && typeof ret === "object";
+  if (
+    hasTag(jsdoc, tagName) &&
+    (ret === false || (isObject && !ret.replacement))
+  ) {
     if (skipReportingBlockedTag) {
       return {
         blocked: true,
@@ -766,7 +770,7 @@ const getPreferredTagName = (jsdoc, {
       };
     }
 
-    const message = isObject && ret.message || defaultMessage;
+    const message = (isObject && ret.message) || defaultMessage;
     report(message, null, getTags(jsdoc, tagName)[0]);
 
     return false;
@@ -791,29 +795,37 @@ const getPreferredTagName = (jsdoc, {
  * @returns {void}
  */
 const forEachPreferredTag = (
-  jsdoc, tagName, arrayHandler,
+  jsdoc,
+  tagName,
+  arrayHandler,
   {
-    context, mode, report,
-    tagNamePreference,
+    context,
+    mode,
+    report,
     skipReportingBlockedTag = false,
-  } = {}
+    tagNamePreference,
+  } = {},
 ) => {
   const targetTagName = /** @type {string|false} */ (
     getPreferredTagName(jsdoc, {
+      context,
+      mode,
+      report,
       skipReportingBlockedTag,
       tagName,
-      context, mode, report, tagNamePreference
+      tagNamePreference,
     })
   );
-  if (!targetTagName ||
-    skipReportingBlockedTag && targetTagName && typeof targetTagName === 'object'
+  if (
+    !targetTagName ||
+    (skipReportingBlockedTag &&
+      targetTagName &&
+      typeof targetTagName === "object")
   ) {
     return;
   }
 
-  const matchingJsdocTags = jsdoc.tags.filter(({
-    tag,
-  }) => {
+  const matchingJsdocTags = jsdoc.tags.filter(({ tag }) => {
     return tag === targetTagName;
   });
 
@@ -821,9 +833,8 @@ const forEachPreferredTag = (
     arrayHandler(
       /**
        * @type {import('@es-joy/jsdoccomment').JsdocTagWithInline}
-       */ (
-        matchingJsdocTag
-      ), targetTagName,
+       */ (matchingJsdocTag),
+      targetTagName,
     );
   }
 };
@@ -841,9 +852,7 @@ const getAllTags = (jsdoc) => {
       // Tags don't have source or line numbers, so add before returning
       let line = -1;
       for (const {
-        tokens: {
-          description,
-        },
+        tokens: { description },
       } of jsdoc.source) {
         line++;
         if (description && description.includes(`{@${inlineTag.tag}`)) {
@@ -858,9 +867,7 @@ const getAllTags = (jsdoc) => {
     ...jsdoc.tags.flatMap((tag) => {
       let tagBegins = -1;
       for (const {
-        tokens: {
-          tag: tg,
-        },
+        tokens: { tag: tg },
       } of jsdoc.source) {
         tagBegins++;
         if (tg) {
@@ -873,9 +880,7 @@ const getAllTags = (jsdoc) => {
         let line = 0;
         for (const {
           number,
-          tokens: {
-            description,
-          },
+          tokens: { description },
         } of tag.source) {
           if (description && description.includes(`{@${inlineTag.tag}`)) {
             line = number;
@@ -891,9 +896,7 @@ const getAllTags = (jsdoc) => {
          * @type {import('comment-parser').Spec & {
          *   inlineTags: import('@es-joy/jsdoccomment').JsdocInlineTagNoType[]
          * }}
-         */ (
-          tag
-        ).inlineTags
+         */ (tag).inlineTags
       );
     }),
   ];
@@ -920,7 +923,7 @@ const hasATag = (jsdoc, targetTagNames) => {
  */
 const mayBeUndefinedTypeTag = (tag, mode) => {
   // The function should not continue in the event the type is not defined...
-  if (typeof tag === 'undefined' || tag === null) {
+  if (typeof tag === "undefined" || tag === null) {
     return true;
   }
 
@@ -929,20 +932,17 @@ const mayBeUndefinedTypeTag = (tag, mode) => {
 
   // Exit early if matching
   if (
-    tagType === 'undefined' || tagType === 'void' ||
-    tagType === '*' || tagType === 'any'
+    tagType === "undefined" ||
+    tagType === "void" ||
+    tagType === "*" ||
+    tagType === "any"
   ) {
     return true;
   }
 
   let parsedTypes;
   try {
-    parsedTypes = tryParse(
-      tagType,
-      mode === 'permissive' ? undefined : [
-        mode,
-      ],
-    );
+    parsedTypes = tryParse(tagType, mode === "permissive" ? undefined : [mode]);
   } catch {
     // Ignore
   }
@@ -950,11 +950,14 @@ const mayBeUndefinedTypeTag = (tag, mode) => {
   if (
     // We do not traverse deeply as it could be, e.g., `Promise<void>`
     parsedTypes &&
-    parsedTypes.type === 'JsdocTypeUnion' &&
+    parsedTypes.type === "JsdocTypeUnion" &&
     parsedTypes.elements.find((elem) => {
-      return elem.type === 'JsdocTypeUndefined' ||
-        elem.type === 'JsdocTypeName' && elem.value === 'void';
-    })) {
+      return (
+        elem.type === "JsdocTypeUndefined" ||
+        (elem.type === "JsdocTypeName" && elem.value === "void")
+      );
+    })
+  ) {
     return true;
   }
 
@@ -981,43 +984,46 @@ const ensureMap = (map, tag) => {
  * @returns {void}
  */
 const overrideTagStructure = (structuredTags, tagMap = tagStructure) => {
-  for (const [
-    tag,
-    {
-      name,
-      type,
-      required = [],
-    },
-  ] of Object.entries(structuredTags)) {
+  for (const [tag, { name, required = [], type }] of Object.entries(
+    structuredTags,
+  )) {
     const tagStruct = ensureMap(tagMap, tag);
 
-    tagStruct.set('namepathRole', name);
-    tagStruct.set('typeAllowed', type);
+    tagStruct.set("namepathRole", name);
+    tagStruct.set("typeAllowed", type);
 
-    const requiredName = required.includes('name');
+    const requiredName = required.includes("name");
     if (requiredName && name === false) {
-      throw new Error('Cannot add "name" to `require` with the tag\'s `name` set to `false`');
+      throw new Error(
+        'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+      );
     }
 
-    tagStruct.set('nameRequired', requiredName);
+    tagStruct.set("nameRequired", requiredName);
 
-    const requiredType = required.includes('type');
+    const requiredType = required.includes("type");
     if (requiredType && type === false) {
-      throw new Error('Cannot add "type" to `require` with the tag\'s `type` set to `false`');
+      throw new Error(
+        'Cannot add "type" to `require` with the tag\'s `type` set to `false`',
+      );
     }
 
-    tagStruct.set('typeRequired', requiredType);
+    tagStruct.set("typeRequired", requiredType);
 
-    const typeOrNameRequired = required.includes('typeOrNameRequired');
+    const typeOrNameRequired = required.includes("typeOrNameRequired");
     if (typeOrNameRequired && name === false) {
-      throw new Error('Cannot add "typeOrNameRequired" to `require` with the tag\'s `name` set to `false`');
+      throw new Error(
+        'Cannot add "typeOrNameRequired" to `require` with the tag\'s `name` set to `false`',
+      );
     }
 
     if (typeOrNameRequired && type === false) {
-      throw new Error('Cannot add "typeOrNameRequired" to `require` with the tag\'s `type` set to `false`');
+      throw new Error(
+        'Cannot add "typeOrNameRequired" to `require` with the tag\'s `type` set to `false`',
+      );
     }
 
-    tagStruct.set('typeOrNameRequired', typeOrNameRequired);
+    tagStruct.set("typeOrNameRequired", typeOrNameRequired);
   }
 };
 
@@ -1031,7 +1037,7 @@ const getTagStructureForMode = (mode, structuredTags) => {
 
   try {
     overrideTagStructure(structuredTags, tagStruct);
-  /* c8 ignore next 3 */
+    /* c8 ignore next 3 */
   } catch {
     //
   }
@@ -1047,7 +1053,7 @@ const getTagStructureForMode = (mode, structuredTags) => {
 const isNamepathDefiningTag = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  return tagStruct.get('namepathRole') === 'namepath-defining';
+  return tagStruct.get("namepathRole") === "namepath-defining";
 };
 
 /**
@@ -1057,7 +1063,7 @@ const isNamepathDefiningTag = (tag, tagMap = tagStructure) => {
  */
 const isNamepathReferencingTag = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
-  return tagStruct.get('namepathRole') === 'namepath-referencing';
+  return tagStruct.get("namepathRole") === "namepath-referencing";
 };
 
 /**
@@ -1067,7 +1073,7 @@ const isNamepathReferencingTag = (tag, tagMap = tagStructure) => {
  */
 const isNamepathOrUrlReferencingTag = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
-  return tagStruct.get('namepathRole') === 'namepath-or-url-referencing';
+  return tagStruct.get("namepathRole") === "namepath-or-url-referencing";
 };
 
 /**
@@ -1078,7 +1084,7 @@ const isNamepathOrUrlReferencingTag = (tag, tagMap = tagStructure) => {
 const tagMustHaveTypePosition = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  return /** @type {boolean|undefined} */ (tagStruct.get('typeRequired'));
+  return /** @type {boolean|undefined} */ (tagStruct.get("typeRequired"));
 };
 
 /**
@@ -1093,14 +1099,12 @@ const tagMightHaveTypePosition = (tag, tagMap = tagStructure) => {
 
   const tagStruct = ensureMap(tagMap, tag);
 
-  const ret = /** @type {boolean|undefined} */ (tagStruct.get('typeAllowed'));
+  const ret = /** @type {boolean|undefined} */ (tagStruct.get("typeAllowed"));
 
   return ret === undefined ? true : ret;
 };
 
-const namepathTypes = new Set([
-  'namepath-defining', 'namepath-referencing',
-]);
+const namepathTypes = new Set(["namepath-defining", "namepath-referencing"]);
 
 /**
  * @param {string} tag
@@ -1110,7 +1114,7 @@ const namepathTypes = new Set([
 const tagMightHaveNamePosition = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  const ret = tagStruct.get('namepathRole');
+  const ret = tagStruct.get("namepathRole");
 
   return ret === undefined ? true : Boolean(ret);
 };
@@ -1123,10 +1127,12 @@ const tagMightHaveNamePosition = (tag, tagMap = tagStructure) => {
 const tagMightHaveNamepath = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  const nampathRole = tagStruct.get('namepathRole');
+  const nampathRole = tagStruct.get("namepathRole");
 
-  return nampathRole !== false &&
-    namepathTypes.has(/** @type {string} */ (nampathRole));
+  return (
+    nampathRole !== false &&
+    namepathTypes.has(/** @type {string} */ (nampathRole))
+  );
 };
 
 /**
@@ -1137,7 +1143,7 @@ const tagMightHaveNamepath = (tag, tagMap = tagStructure) => {
 const tagMustHaveNamePosition = (tag, tagMap = tagStructure) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  return /** @type {boolean|undefined} */ (tagStruct.get('nameRequired'));
+  return /** @type {boolean|undefined} */ (tagStruct.get("nameRequired"));
 };
 
 /**
@@ -1146,7 +1152,10 @@ const tagMustHaveNamePosition = (tag, tagMap = tagStructure) => {
  * @returns {boolean}
  */
 const tagMightHaveEitherTypeOrNamePosition = (tag, tagMap) => {
-  return Boolean(tagMightHaveTypePosition(tag, tagMap)) || tagMightHaveNamepath(tag, tagMap);
+  return (
+    Boolean(tagMightHaveTypePosition(tag, tagMap)) ||
+    tagMightHaveNamepath(tag, tagMap)
+  );
 };
 
 /**
@@ -1157,7 +1166,7 @@ const tagMightHaveEitherTypeOrNamePosition = (tag, tagMap) => {
 const tagMustHaveEitherTypeOrNamePosition = (tag, tagMap) => {
   const tagStruct = ensureMap(tagMap, tag);
 
-  return /** @type {boolean} */ (tagStruct.get('typeOrNameRequired'));
+  return /** @type {boolean} */ (tagStruct.get("typeOrNameRequired"));
 };
 
 /**
@@ -1169,12 +1178,13 @@ const tagMissingRequiredTypeOrNamepath = (tag, tagMap = tagStructure) => {
   const mustHaveTypePosition = tagMustHaveTypePosition(tag.tag, tagMap);
   const mightHaveTypePosition = tagMightHaveTypePosition(tag.tag, tagMap);
   const hasTypePosition = mightHaveTypePosition && Boolean(tag.type);
-  const hasNameOrNamepathPosition = (
-    tagMustHaveNamePosition(tag.tag, tagMap) ||
-    tagMightHaveNamepath(tag.tag, tagMap)
-  ) && Boolean(tag.name);
+  const hasNameOrNamepathPosition =
+    (tagMustHaveNamePosition(tag.tag, tagMap) ||
+      tagMightHaveNamepath(tag.tag, tagMap)) &&
+    Boolean(tag.name);
   const mustHaveEither = tagMustHaveEitherTypeOrNamePosition(tag.tag, tagMap);
-  const hasEither = tagMightHaveEitherTypeOrNamePosition(tag.tag, tagMap) &&
+  const hasEither =
+    tagMightHaveEitherTypeOrNamePosition(tag.tag, tagMap) &&
     (hasTypePosition || hasNameOrNamepathPosition);
 
   return mustHaveEither && !hasEither && !mustHaveTypePosition;
@@ -1193,185 +1203,200 @@ const hasNonFunctionYield = (node, checkYieldReturnValue) => {
   }
 
   switch (node.type) {
-  case 'BlockStatement': {
-    return node.body.some((bodyNode) => {
-      return ![
-        'ArrowFunctionExpression',
-        'FunctionDeclaration',
-        'FunctionExpression',
-      ].includes(bodyNode.type) && hasNonFunctionYield(
-        bodyNode, checkYieldReturnValue,
+    case "BlockStatement": {
+      return node.body.some((bodyNode) => {
+        return (
+          ![
+            "ArrowFunctionExpression",
+            "FunctionDeclaration",
+            "FunctionExpression",
+          ].includes(bodyNode.type) &&
+          hasNonFunctionYield(bodyNode, checkYieldReturnValue)
+        );
+      });
+    }
+
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "OptionalCallExpression":
+    case "CallExpression":
+      return node.arguments.some((element) => {
+        return hasNonFunctionYield(element, checkYieldReturnValue);
+      });
+    case "ChainExpression":
+    case "ExpressionStatement": {
+      return hasNonFunctionYield(node.expression, checkYieldReturnValue);
+    }
+
+    case "LabeledStatement":
+    case "WhileStatement":
+    case "DoWhileStatement":
+    case "ForStatement":
+    case "ForInStatement":
+    case "ForOfStatement":
+    case "WithStatement": {
+      return hasNonFunctionYield(node.body, checkYieldReturnValue);
+    }
+
+    case "ConditionalExpression":
+    case "IfStatement": {
+      return (
+        hasNonFunctionYield(node.test, checkYieldReturnValue) ||
+        hasNonFunctionYield(node.consequent, checkYieldReturnValue) ||
+        hasNonFunctionYield(node.alternate, checkYieldReturnValue)
       );
-    });
-  }
+    }
 
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'OptionalCallExpression':
-  case 'CallExpression':
-    return node.arguments.some((element) => {
-      return hasNonFunctionYield(element, checkYieldReturnValue);
-    });
-  case 'ChainExpression':
-  case 'ExpressionStatement': {
-    return hasNonFunctionYield(node.expression, checkYieldReturnValue);
-  }
-
-  case 'LabeledStatement':
-  case 'WhileStatement':
-  case 'DoWhileStatement':
-  case 'ForStatement':
-  case 'ForInStatement':
-  case 'ForOfStatement':
-  case 'WithStatement': {
-    return hasNonFunctionYield(node.body, checkYieldReturnValue);
-  }
-
-  case 'ConditionalExpression':
-  case 'IfStatement': {
-    return hasNonFunctionYield(node.test, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.consequent, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.alternate, checkYieldReturnValue);
-  }
-
-  case 'TryStatement': {
-    return hasNonFunctionYield(node.block, checkYieldReturnValue) ||
-      hasNonFunctionYield(
-        node.handler && node.handler.body, checkYieldReturnValue,
-      ) ||
-      hasNonFunctionYield(
-        /** @type {import('@typescript-eslint/types').TSESTree.BlockStatement} */
-        (node.finalizer),
-        checkYieldReturnValue,
+    case "TryStatement": {
+      return (
+        hasNonFunctionYield(node.block, checkYieldReturnValue) ||
+        hasNonFunctionYield(
+          node.handler && node.handler.body,
+          checkYieldReturnValue,
+        ) ||
+        hasNonFunctionYield(
+          /** @type {import('@typescript-eslint/types').TSESTree.BlockStatement} */
+          (node.finalizer),
+          checkYieldReturnValue,
+        )
       );
-  }
+    }
 
-  case 'SwitchStatement': {
-    return node.cases.some(
-      (someCase) => {
+    case "SwitchStatement": {
+      return node.cases.some((someCase) => {
         return someCase.consequent.some((nde) => {
           return hasNonFunctionYield(nde, checkYieldReturnValue);
         });
-      },
-    );
-  }
+      });
+    }
 
-  case 'ArrayPattern':
-  case 'ArrayExpression':
-    return node.elements.some((element) => {
-      return hasNonFunctionYield(element, checkYieldReturnValue);
-    });
-  case 'AssignmentPattern':
-    return hasNonFunctionYield(node.right, checkYieldReturnValue);
+    case "ArrayPattern":
+    case "ArrayExpression":
+      return node.elements.some((element) => {
+        return hasNonFunctionYield(element, checkYieldReturnValue);
+      });
+    case "AssignmentPattern":
+      return hasNonFunctionYield(node.right, checkYieldReturnValue);
 
-  case 'VariableDeclaration': {
-    return node.declarations.some((nde) => {
-      return hasNonFunctionYield(nde, checkYieldReturnValue);
-    });
-  }
-
-  case 'VariableDeclarator': {
-    return hasNonFunctionYield(node.id, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.init, checkYieldReturnValue);
-  }
-
-  case 'AssignmentExpression':
-  case 'BinaryExpression':
-  case 'LogicalExpression': {
-    return hasNonFunctionYield(node.left, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.right, checkYieldReturnValue);
-  }
-
-  // Comma
-  case 'SequenceExpression':
-  case 'TemplateLiteral':
-    return node.expressions.some((subExpression) => {
-      return hasNonFunctionYield(subExpression, checkYieldReturnValue);
-    });
-
-  case 'ObjectPattern':
-  case 'ObjectExpression':
-    return node.properties.some((property) => {
-      return hasNonFunctionYield(property, checkYieldReturnValue);
-    });
-
-  /* c8 ignore next -- In Babel? */
-  case 'PropertyDefinition':
-  /* eslint-disable no-fallthrough */
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'ObjectProperty':
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'ClassProperty':
-  case 'Property':
-  /* eslint-enable no-fallthrough */
-    return node.computed && hasNonFunctionYield(node.key, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.value, checkYieldReturnValue);
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'ObjectMethod':
-    /* c8 ignore next 6 -- In Babel? */
-    // @ts-expect-error In Babel?
-    return node.computed && hasNonFunctionYield(node.key, checkYieldReturnValue) ||
-      // @ts-expect-error In Babel?
-      node.arguments.some((nde) => {
+    case "VariableDeclaration": {
+      return node.declarations.some((nde) => {
         return hasNonFunctionYield(nde, checkYieldReturnValue);
       });
-
-  case 'SpreadElement':
-  case 'UnaryExpression':
-    return hasNonFunctionYield(node.argument, checkYieldReturnValue);
-
-  case 'TaggedTemplateExpression':
-    return hasNonFunctionYield(node.quasi, checkYieldReturnValue);
-
-  // ?.
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'OptionalMemberExpression':
-  case 'MemberExpression':
-    return hasNonFunctionYield(node.object, checkYieldReturnValue) ||
-      hasNonFunctionYield(node.property, checkYieldReturnValue);
-
-  /* c8 ignore next 2 -- In Babel? */
-  // @ts-expect-error In Babel?
-  case 'Import':
-  case 'ImportExpression':
-    return hasNonFunctionYield(node.source, checkYieldReturnValue);
-
-  case 'ReturnStatement': {
-    if (node.argument === null) {
-      return false;
     }
 
-    return hasNonFunctionYield(node.argument, checkYieldReturnValue);
-  }
+    case "VariableDeclarator": {
+      return (
+        hasNonFunctionYield(node.id, checkYieldReturnValue) ||
+        hasNonFunctionYield(node.init, checkYieldReturnValue)
+      );
+    }
 
-  case 'YieldExpression': {
-    if (checkYieldReturnValue) {
-      if (
-        /** @type {import('eslint').Rule.Node} */ (
-          node
-        ).parent.type === 'VariableDeclarator'
-      ) {
-        return true;
+    case "AssignmentExpression":
+    case "BinaryExpression":
+    case "LogicalExpression": {
+      return (
+        hasNonFunctionYield(node.left, checkYieldReturnValue) ||
+        hasNonFunctionYield(node.right, checkYieldReturnValue)
+      );
+    }
+
+    // Comma
+    case "SequenceExpression":
+    case "TemplateLiteral":
+      return node.expressions.some((subExpression) => {
+        return hasNonFunctionYield(subExpression, checkYieldReturnValue);
+      });
+
+    case "ObjectPattern":
+    case "ObjectExpression":
+      return node.properties.some((property) => {
+        return hasNonFunctionYield(property, checkYieldReturnValue);
+      });
+
+    /* c8 ignore next -- In Babel? */
+    case "PropertyDefinition":
+    /* eslint-disable no-fallthrough */
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "ObjectProperty":
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "ClassProperty":
+    case "Property":
+      /* eslint-enable no-fallthrough */
+      return (
+        (node.computed &&
+          hasNonFunctionYield(node.key, checkYieldReturnValue)) ||
+        hasNonFunctionYield(node.value, checkYieldReturnValue)
+      );
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "ObjectMethod":
+      /* c8 ignore next 6 -- In Babel? */
+      // @ts-expect-error In Babel?
+      return (
+        (node.computed &&
+          hasNonFunctionYield(node.key, checkYieldReturnValue)) ||
+        // @ts-expect-error In Babel?
+        node.arguments.some((nde) => {
+          return hasNonFunctionYield(nde, checkYieldReturnValue);
+        })
+      );
+
+    case "SpreadElement":
+    case "UnaryExpression":
+      return hasNonFunctionYield(node.argument, checkYieldReturnValue);
+
+    case "TaggedTemplateExpression":
+      return hasNonFunctionYield(node.quasi, checkYieldReturnValue);
+
+    // ?.
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "OptionalMemberExpression":
+    case "MemberExpression":
+      return (
+        hasNonFunctionYield(node.object, checkYieldReturnValue) ||
+        hasNonFunctionYield(node.property, checkYieldReturnValue)
+      );
+
+    /* c8 ignore next 2 -- In Babel? */
+    // @ts-expect-error In Babel?
+    case "Import":
+    case "ImportExpression":
+      return hasNonFunctionYield(node.source, checkYieldReturnValue);
+
+    case "ReturnStatement": {
+      if (node.argument === null) {
+        return false;
       }
 
-      return false;
+      return hasNonFunctionYield(node.argument, checkYieldReturnValue);
     }
 
-    // void return does not count.
-    if (node.argument === null) {
-      return false;
+    case "YieldExpression": {
+      if (checkYieldReturnValue) {
+        if (
+          /** @type {import('eslint').Rule.Node} */ (node).parent.type ===
+          "VariableDeclarator"
+        ) {
+          return true;
+        }
+
+        return false;
+      }
+
+      // void return does not count.
+      if (node.argument === null) {
+        return false;
+      }
+
+      return true;
     }
 
-    return true;
-  }
-
-  default: {
-    return false;
-  }
+    default: {
+      return false;
+    }
   }
 };
 
@@ -1382,15 +1407,17 @@ const hasNonFunctionYield = (node, checkYieldReturnValue) => {
  * @returns {boolean}
  */
 const hasYieldValue = (node, checkYieldReturnValue) => {
-  return /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */ (
-    node
-  ).generator && (
+  return (
     /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */ (
       node
-    ).expression || hasNonFunctionYield(
-      /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */
-      (node).body,
-      checkYieldReturnValue,
+    ).generator &&
+    /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */ (
+      node.expression ||
+        hasNonFunctionYield(
+          /** @type {import('@typescript-eslint/types').TSESTree.FunctionDeclaration} */
+          (node).body,
+          checkYieldReturnValue,
+        )
     )
   );
 };
@@ -1401,7 +1428,7 @@ const hasYieldValue = (node, checkYieldReturnValue) => {
  * @param {boolean} [innerFunction]
  * @returns {boolean}
  */
-// eslint-disable-next-line complexity
+
 const hasThrowValue = (node, innerFunction) => {
   if (!node) {
     return false;
@@ -1411,55 +1438,57 @@ const hasThrowValue = (node, innerFunction) => {
   //   throws, but we're treating functions atomically rather than trying to
   //   follow them
   switch (node.type) {
-  case 'FunctionExpression':
-  case 'FunctionDeclaration':
-  case 'ArrowFunctionExpression': {
-    return !innerFunction && !node.async && hasThrowValue(node.body, true);
-  }
+    case "FunctionExpression":
+    case "FunctionDeclaration":
+    case "ArrowFunctionExpression": {
+      return !innerFunction && !node.async && hasThrowValue(node.body, true);
+    }
 
-  case 'BlockStatement': {
-    return node.body.some((bodyNode) => {
-      return bodyNode.type !== 'FunctionDeclaration' && hasThrowValue(bodyNode);
-    });
-  }
+    case "BlockStatement": {
+      return node.body.some((bodyNode) => {
+        return (
+          bodyNode.type !== "FunctionDeclaration" && hasThrowValue(bodyNode)
+        );
+      });
+    }
 
-  case 'LabeledStatement':
-  case 'WhileStatement':
-  case 'DoWhileStatement':
-  case 'ForStatement':
-  case 'ForInStatement':
-  case 'ForOfStatement':
-  case 'WithStatement': {
-    return hasThrowValue(node.body);
-  }
+    case "LabeledStatement":
+    case "WhileStatement":
+    case "DoWhileStatement":
+    case "ForStatement":
+    case "ForInStatement":
+    case "ForOfStatement":
+    case "WithStatement": {
+      return hasThrowValue(node.body);
+    }
 
-  case 'IfStatement': {
-    return hasThrowValue(node.consequent) || hasThrowValue(node.alternate);
-  }
+    case "IfStatement": {
+      return hasThrowValue(node.consequent) || hasThrowValue(node.alternate);
+    }
 
-  // We only consider it to throw an error if the catch or finally blocks throw an error.
-  case 'TryStatement': {
-    return hasThrowValue(node.handler && node.handler.body) ||
-        hasThrowValue(node.finalizer);
-  }
+    // We only consider it to throw an error if the catch or finally blocks throw an error.
+    case "TryStatement": {
+      return (
+        hasThrowValue(node.handler && node.handler.body) ||
+        hasThrowValue(node.finalizer)
+      );
+    }
 
-  case 'SwitchStatement': {
-    return node.cases.some(
-      (someCase) => {
+    case "SwitchStatement": {
+      return node.cases.some((someCase) => {
         return someCase.consequent.some((nde) => {
           return hasThrowValue(nde);
         });
-      },
-    );
-  }
+      });
+    }
 
-  case 'ThrowStatement': {
-    return true;
-  }
+    case "ThrowStatement": {
+      return true;
+    }
 
-  default: {
-    return false;
-  }
+    default: {
+      return false;
+    }
   }
 };
 
@@ -1480,11 +1509,10 @@ const isInlineTag = (tag) => {
  * @returns {string[]}
  */
 const parseClosureTemplateTag = (tag) => {
-  return tag.name
-    .split(',')
-    .map((type) => {
-      return type.trim().replace(/^\[(?<name>.*?)=.*\]$/u, '$<name>');
-    });
+  return tag.name.split(",").map((type) => {
+    // eslint-disable-next-line regexp/no-super-linear-backtracking
+    return type.trim().replace(/^\[(?<name>.*?)=.*\]$/u, "$<name>");
+  });
 };
 
 /**
@@ -1503,12 +1531,17 @@ const parseClosureTemplateTag = (tag) => {
  * @returns {(string|import('./iterateJsdoc.js').ContextObject)[]}
  */
 const enforcedContexts = (context, defaultContexts, settings) => {
-  const contexts = context.options[0]?.contexts || settings.contexts || (defaultContexts === true ? [
-    'ArrowFunctionExpression',
-    'FunctionDeclaration',
-    'FunctionExpression',
-    'TSDeclareFunction',
-  ] : defaultContexts);
+  const contexts =
+    context.options[0]?.contexts ||
+    settings.contexts ||
+    (defaultContexts === true
+      ? [
+          "ArrowFunctionExpression",
+          "FunctionDeclaration",
+          "FunctionExpression",
+          "TSDeclareFunction",
+        ]
+      : defaultContexts);
 
   return contexts;
 };
@@ -1523,17 +1556,14 @@ const getContextObject = (contexts, checkJsdoc, handler) => {
   /** @type {import('eslint').Rule.RuleListener} */
   const properties = {};
 
-  for (const [
-    idx,
-    prop,
-  ] of contexts.entries()) {
+  for (const [idx, prop] of contexts.entries()) {
     /** @type {string} */
     let property;
 
     /** @type {(node: import('eslint').Rule.Node) => void} */
     let value;
 
-    if (typeof prop === 'object') {
+    if (typeof prop === "object") {
       const selInfo = {
         lastIndex: idx,
         selector: prop.context,
@@ -1549,9 +1579,11 @@ const getContextObject = (contexts, checkJsdoc, handler) => {
           /**
            * @type {(jsdoc: import('@es-joy/jsdoccomment').JsdocBlockWithInline) => boolean}
            */
-          (/** @type {import('@es-joy/jsdoccomment').CommentHandler} */ (
-            handler
-          ).bind(null, prop.comment)),
+          (
+            /** @type {import('@es-joy/jsdoccomment').CommentHandler} */ (
+              handler
+            ).bind(null, prop.comment)
+          ),
         );
       } else {
         property = /** @type {string} */ (prop.context);
@@ -1567,28 +1599,34 @@ const getContextObject = (contexts, checkJsdoc, handler) => {
     }
 
     const old = /**
-                 * @type {((node: import('eslint').Rule.Node) => void)}
-                 */ (properties[property]);
-    properties[property] = old ?
-      /**
-       * @type {((node: import('eslint').Rule.Node) => void)}
-       */
-      function (node) {
-        old(node);
-        value(node);
-      } :
-      value;
+     * @type {((node: import('eslint').Rule.Node) => void)}
+     */ (properties[property]);
+    properties[property] = old
+      ? /**
+         * @type {((node: import('eslint').Rule.Node) => void)}
+         */
+        function (node) {
+          old(node);
+          value(node);
+        }
+      : value;
   }
 
   return properties;
 };
 
 const tagsWithNamesAndDescriptions = new Set([
-  'param', 'arg', 'argument', 'property', 'prop',
-  'template',
+  "arg",
+  "argument",
+  "param",
+  "prop",
+  "property",
+  "template",
 
   // These two are parsed by our custom parser as though having a `name`
-  'returns', 'return',
+  // eslint-disable-next-line perfectionist/sort-sets -- Grouping
+  "return",
+  "returns",
 ]);
 
 /**
@@ -1613,9 +1651,7 @@ const getTagsByType = (context, mode, tags) => {
    */
   const tagsWithoutNames = [];
   const tagsWithNames = tags.filter((tag) => {
-    const {
-      tag: tagName,
-    } = tag;
+    const { tag: tagName } = tag;
     const tagWithName = tagsWithNamesAndDescriptions.has(tagName);
     if (!tagWithName) {
       tagsWithoutNames.push(tag);
@@ -1637,7 +1673,7 @@ const getTagsByType = (context, mode, tags) => {
  * @returns {string}
  */
 const getIndent = (sourceCode) => {
-  return (sourceCode.text.match(/^\n*([ \t]+)/u)?.[1] ?? '') + ' ';
+  return (sourceCode.text.match(/^\n*([ \t]+)/u)?.[1] ?? "") + " ";
 };
 
 /**
@@ -1645,10 +1681,12 @@ const getIndent = (sourceCode) => {
  * @returns {boolean}
  */
 const isConstructor = (node) => {
-  return node?.type === 'MethodDefinition' && node.kind === 'constructor' ||
-  /** @type {import('@typescript-eslint/types').TSESTree.MethodDefinition} */ (
-    node?.parent
-  )?.kind === 'constructor';
+  return (
+    (node?.type === "MethodDefinition" && node.kind === "constructor") ||
+    /** @type {import('@typescript-eslint/types').TSESTree.MethodDefinition} */ (
+      node?.parent
+    )?.kind === "constructor"
+  );
 };
 
 /**
@@ -1656,13 +1694,13 @@ const isConstructor = (node) => {
  * @returns {boolean}
  */
 const isGetter = (node) => {
-  return node !== null &&
-  /**
-   * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
-   *   import('@typescript-eslint/types').TSESTree.Property}
-   */ (
-    node.parent
-  )?.kind === 'get';
+  return (
+    node !== null &&
+    /**
+     * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
+     *   import('@typescript-eslint/types').TSESTree.Property}
+     */ (node.parent)?.kind === "get"
+  );
 };
 
 /**
@@ -1670,13 +1708,13 @@ const isGetter = (node) => {
  * @returns {boolean}
  */
 const isSetter = (node) => {
-  return node !== null &&
-  /**
-   * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
-   *   import('@typescript-eslint/types').TSESTree.Property}
-   */(
-    node.parent
-  )?.kind === 'set';
+  return (
+    node !== null &&
+    /**
+     * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
+     *   import('@typescript-eslint/types').TSESTree.Property}
+     */ (node.parent)?.kind === "set"
+  );
 };
 
 /**
@@ -1685,48 +1723,41 @@ const isSetter = (node) => {
  */
 const hasAccessorPair = (node) => {
   const {
-    type,
-    kind: sourceKind,
     key,
-  } =
-    /**
-     * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
-     *   import('@typescript-eslint/types').TSESTree.Property}
-     */ (node);
+    kind: sourceKind,
+    type,
+  } = /**
+   * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
+   *   import('@typescript-eslint/types').TSESTree.Property}
+   */ (node);
 
   const sourceName =
-    /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-      key
-    ).name;
+    /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (key)
+      .name;
 
-  const oppositeKind = sourceKind === 'get' ? 'set' : 'get';
+  const oppositeKind = sourceKind === "get" ? "set" : "get";
 
-  const sibling = type === 'MethodDefinition' ?
-    /** @type {import('@typescript-eslint/types').TSESTree.ClassBody} */ (
-      node.parent
-    ).body :
-    /** @type {import('@typescript-eslint/types').TSESTree.ObjectExpression} */ (
-      node.parent
-    ).properties;
+  const sibling =
+    type === "MethodDefinition"
+      ? /** @type {import('@typescript-eslint/types').TSESTree.ClassBody} */ (
+          node.parent
+        ).body
+      : /** @type {import('@typescript-eslint/types').TSESTree.ObjectExpression} */ (
+          node.parent
+        ).properties;
 
-  return (
-    sibling.some((child) => {
-      const {
-        kind,
-        key: ky,
-      } = /**
-           * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
-           *   import('@typescript-eslint/types').TSESTree.Property}
-           */ (child);
+  return sibling.some((child) => {
+    const { key: ky, kind } = /**
+     * @type {import('@typescript-eslint/types').TSESTree.MethodDefinition|
+     *   import('@typescript-eslint/types').TSESTree.Property}
+     */ (child);
 
-      const name =
-        /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (
-          ky
-        ).name;
+    const name =
+      /** @type {import('@typescript-eslint/types').TSESTree.Identifier} */ (ky)
+        .name;
 
-      return kind === oppositeKind && name === sourceName;
-    })
-  );
+    return kind === oppositeKind && name === sourceName;
+  });
 };
 
 /**
@@ -1744,27 +1775,30 @@ const exemptSpeciaMethods = (jsdoc, node, context, schema) => {
   const hasSchemaOption = (prop) => {
     const schemaProperties = schema[0].properties;
 
-    return context.options[0]?.[prop] ??
-      (schemaProperties[prop] && schemaProperties[prop].default);
+    return (
+      context.options[0]?.[prop] ??
+      (schemaProperties[prop] && schemaProperties[prop].default)
+    );
   };
 
-  const checkGetters = hasSchemaOption('checkGetters');
-  const checkSetters = hasSchemaOption('checkSetters');
+  const checkGetters = hasSchemaOption("checkGetters");
+  const checkSetters = hasSchemaOption("checkSetters");
 
-  return !hasSchemaOption('checkConstructors') &&
-    (
-      isConstructor(node) ||
-      hasATag(jsdoc, [
-        'class',
-        'constructor',
-      ])) ||
-  isGetter(node) && (
-    !checkGetters ||
-    checkGetters === 'no-setter' && hasAccessorPair(/** @type {import('./iterateJsdoc.js').Node} */ (node).parent)
-  ) ||
-  isSetter(node) && (
-    !checkSetters ||
-    checkSetters === 'no-getter' && hasAccessorPair(/** @type {import('./iterateJsdoc.js').Node} */ (node).parent)
+  return (
+    (!hasSchemaOption("checkConstructors") &&
+      (isConstructor(node) || hasATag(jsdoc, ["class", "constructor"]))) ||
+    (isGetter(node) &&
+      (!checkGetters ||
+        (checkGetters === "no-setter" &&
+          hasAccessorPair(
+            /** @type {import('./iterateJsdoc.js').Node} */ (node).parent,
+          )))) ||
+    (isSetter(node) &&
+      (!checkSetters ||
+        (checkSetters === "no-getter" &&
+          hasAccessorPair(
+            /** @type {import('./iterateJsdoc.js').Node} */ (node).parent,
+          ))))
   );
 };
 
@@ -1777,7 +1811,7 @@ const exemptSpeciaMethods = (jsdoc, node, context, schema) => {
  * @returns {string}
  */
 const dropPathSegmentQuotes = (str) => {
-  return str.replaceAll(/\.(['"])(.*)\1/gu, '.$2');
+  return str.replaceAll(/\.(['"])(.*)\1/gu, ".$2");
 };
 
 /**
@@ -1786,8 +1820,10 @@ const dropPathSegmentQuotes = (str) => {
  */
 const comparePaths = (name) => {
   return (otherPathName) => {
-    return otherPathName === name ||
-      dropPathSegmentQuotes(otherPathName) === dropPathSegmentQuotes(name);
+    return (
+      otherPathName === name ||
+      dropPathSegmentQuotes(otherPathName) === dropPathSegmentQuotes(name)
+    );
   };
 };
 
@@ -1800,8 +1836,12 @@ const comparePaths = (name) => {
 
 /** @type {PathDoesNotBeginWith} */
 const pathDoesNotBeginWith = (name, otherPathName) => {
-  return !name.startsWith(otherPathName) &&
-    !dropPathSegmentQuotes(name).startsWith(dropPathSegmentQuotes(otherPathName));
+  return (
+    !name.startsWith(otherPathName) &&
+    !dropPathSegmentQuotes(name).startsWith(
+      dropPathSegmentQuotes(otherPathName),
+    )
+  );
 };
 
 /**
@@ -1810,23 +1850,18 @@ const pathDoesNotBeginWith = (name, otherPathName) => {
  * @returns {RegExp}
  */
 const getRegexFromString = (regexString, requiredFlags) => {
-  const match = regexString.match(/^\/(.*)\/([gimyus]*)$/us);
-  let flags = 'u';
+  const match = regexString.match(/^\/(.*)\/([gimyus]*)$/su);
+  let flags = "u";
   let regex = regexString;
   if (match) {
-    [
-      , regex,
-      flags,
-    ] = match;
+    [, regex, flags] = match;
     if (!flags) {
-      flags = 'u';
+      flags = "u";
     }
   }
 
-  const uniqueFlags = [
-    ...new Set(flags + (requiredFlags || '')),
-  ];
-  flags = uniqueFlags.join('');
+  const uniqueFlags = [...new Set(flags + (requiredFlags || ""))];
+  flags = uniqueFlags.join("");
 
   return new RegExp(regex, flags);
 };
@@ -1853,10 +1888,8 @@ export {
   getTagStructureForMode,
   hasATag,
   hasParams,
-  hasReturnValue,
   hasTag,
   hasThrowValue,
-  hasValueOrExecutorHasNonEmptyResolveValue,
   hasYieldValue,
   isConstructor,
   isGetter,
@@ -1878,3 +1911,7 @@ export {
   tagMustHaveNamePosition,
   tagMustHaveTypePosition,
 };
+export {
+  hasReturnValue,
+  hasValueOrExecutorHasNonEmptyResolveValue,
+} from "./utils/hasReturnValue.js";

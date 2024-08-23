@@ -13,7 +13,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -31,7 +31,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -49,7 +49,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @next declaration.',
+          message: "Missing JSDoc @next declaration.",
         },
       ],
       options: [
@@ -71,7 +71,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @next declaration.',
+          message: "Missing JSDoc @next declaration.",
         },
       ],
       options: [
@@ -91,7 +91,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @next declaration.',
+          message: "Missing JSDoc @next declaration.",
         },
       ],
       options: [
@@ -112,7 +112,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @next declaration.',
+          message: "Missing JSDoc @next declaration.",
         },
       ],
       options: [
@@ -134,7 +134,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -150,13 +150,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yield declaration.',
+          message: "Missing JSDoc @yield declaration.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            yields: 'yield',
+            yields: "yield",
           },
         },
       },
@@ -173,7 +173,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yield-returns declaration.',
+          message: "Missing JSDoc @yield-returns declaration.",
         },
       ],
       options: [
@@ -184,7 +184,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            next: 'yield-returns',
+            next: "yield-returns",
           },
         },
       },
@@ -202,7 +202,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Unexpected tag `@next`',
+          message: "Unexpected tag `@next`",
         },
       ],
       options: [
@@ -230,17 +230,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -254,17 +254,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 8,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -278,17 +278,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -302,17 +302,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -326,14 +326,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireYields: true,
         },
       ],
@@ -348,14 +346,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireYields: true,
         },
       ],
@@ -370,14 +366,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireYields: true,
         },
       ],
@@ -396,7 +390,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Found more than one @yields declaration.',
+          message: "Found more than one @yields declaration.",
         },
       ],
     },
@@ -412,7 +406,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@yields`',
+          message: "Unexpected tag `@yields`",
         },
       ],
       settings: {
@@ -435,14 +429,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       options: [
         {
-          exemptedBy: [
-            'notPresent',
-          ],
+          exemptedBy: ["notPresent"],
         },
       ],
     },
@@ -458,17 +450,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -482,17 +474,17 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          forceRequireYields: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          forceRequireYields: true,
+        },
+      ],
     },
     {
       code: `
@@ -508,14 +500,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           forceRequireYields: true,
         },
       ],
@@ -532,7 +522,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
@@ -548,20 +538,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            'any',
-          ],
-          withGeneratorTag: true,
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          contexts: ["any"],
+          withGeneratorTag: true,
+        },
+      ],
     },
     {
       code: `
@@ -573,20 +561,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @next declaration.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            'any',
-          ],
-          nextWithGeneratorTag: true,
+          message: "Missing JSDoc @next declaration.",
         },
       ],
       languageOptions: {
         ecmaVersion: 2_018,
       },
+      options: [
+        {
+          contexts: ["any"],
+          nextWithGeneratorTag: true,
+        },
+      ],
     },
     {
       code: `
@@ -603,7 +589,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -621,7 +607,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -638,7 +624,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -659,7 +645,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -679,7 +665,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -699,7 +685,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -720,7 +706,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -740,7 +726,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -760,7 +746,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -779,7 +765,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -797,7 +783,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -815,7 +801,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -833,7 +819,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -852,7 +838,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -870,7 +856,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -889,12 +875,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       languageOptions: {
-        sourceType: 'script'
-      }
+        sourceType: "script",
+      },
     },
     {
       code: `
@@ -913,7 +899,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
     },
@@ -932,7 +918,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -949,7 +935,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -966,7 +952,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -983,7 +969,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1000,7 +986,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1017,7 +1003,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1034,7 +1020,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1053,7 +1039,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1072,7 +1058,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1092,7 +1078,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1111,7 +1097,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1128,7 +1114,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1145,7 +1131,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1162,7 +1148,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1179,7 +1165,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1199,7 +1185,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1216,7 +1202,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1233,7 +1219,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
@@ -1253,20 +1239,18 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'ExportNamedDeclaration',
-          ],
+          contexts: ["ExportNamedDeclaration"],
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1282,20 +1266,18 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @yields declaration.',
+          message: "Missing JSDoc @yields declaration.",
         },
       ],
       ignoreReadme: true,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
-          contexts: [
-            'MethodDefinition > FunctionExpression',
-          ],
+          contexts: ["MethodDefinition > FunctionExpression"],
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
   ],
   valid: [
@@ -1322,9 +1304,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -1567,14 +1547,14 @@ export default {
           async function * quux () {
           }
       `,
+      languageOptions: {
+        ecmaVersion: 2_018,
+      },
       options: [
         {
           forceRequireYields: true,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_018,
-      },
     },
     {
       code: `
@@ -1609,9 +1589,7 @@ export default {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },
@@ -1636,9 +1614,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -1650,9 +1626,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -1713,9 +1687,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           withGeneratorTag: true,
         },
       ],
@@ -1730,9 +1702,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           nextWithGeneratorTag: true,
         },
       ],
@@ -1745,9 +1715,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           withGeneratorTag: false,
         },
       ],
@@ -1761,9 +1729,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           nextWithGeneratorTag: false,
         },
       ],
@@ -1819,9 +1785,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           nextWithGeneratorTag: true,
         },
       ],
@@ -1834,9 +1798,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           next: true,
         },
       ],
@@ -1850,9 +1812,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
           next: true,
         },
       ],
@@ -1893,9 +1853,9 @@ export default {
       `,
       options: [
         {
-          contexts: ['ExportNamedDeclaration']
-        }
-      ]
-    }
+          contexts: ["ExportNamedDeclaration"],
+        },
+      ],
+    },
   ],
 };

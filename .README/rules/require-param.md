@@ -21,18 +21,17 @@ So for:
 /**
  * @param cfg
  */
-function quux ({foo: bar, baz: bax = 5}) {
-}
+function quux({ foo: bar, baz: bax = 5 }) {}
 ```
 
 ...the fixed jsdoc will be:
 
 ```js
 /**
-* @param cfg
-* @param cfg.foo
-* @param cfg.baz
-*/
+ * @param cfg
+ * @param cfg.foo
+ * @param cfg.baz
+ */
 ```
 
 This is because the input to the function is the relevant item for
@@ -47,18 +46,17 @@ So for:
 /**
  * @param cfg
  */
-function quux ([foo, bar]) {
-}
+function quux([foo, bar]) {}
 ```
 
 ..the fixed jsdoc will be:
 
 ```js
 /**
-* @param cfg
-* @param cfg."0"
-* @param cfg."1"
-*/
+ * @param cfg
+ * @param cfg."0"
+ * @param cfg."1"
+ */
 ```
 
 ### Missing root fixing
@@ -71,21 +69,20 @@ is for "root" to be auto-inserted for missing roots, followed by a
 So for:
 
 ```js
-function quux ({foo}, {bar}, {baz}) {
-}
+function quux({ foo }, { bar }, { baz }) {}
 ```
 
 ...the default jsdoc that would be added if the fixer is enabled would be:
 
 ```js
 /**
-* @param root0
-* @param root0.foo
-* @param root1
-* @param root1.bar
-* @param root2
-* @param root2.baz
-*/
+ * @param root0
+ * @param root0.foo
+ * @param root1
+ * @param root1.bar
+ * @param root2
+ * @param root2.baz
+ */
 ```
 
 The name of "root" can be configured with `unnamedRootBase` (which also allows
@@ -103,10 +100,10 @@ if missing.
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -115,11 +112,11 @@ function baar ([a, ...extra]) {
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
-  * @param {...any} cfg."1"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
+ * @param {...any} cfg."1"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -135,11 +132,11 @@ corresponding to `extra`:
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
-  * @param {any} cfg."1"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
+ * @param {any} cfg."1"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -156,8 +153,7 @@ missing rest properties will be reported with documentation auto-inserted:
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 ...becomes:
@@ -168,8 +164,7 @@ function quux ({num, ...extra}) {
  * @param cfg.num
  * @param cfg.extra
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 You may wish to manually note in your jsdoc for `extra` that this is a
@@ -219,8 +214,7 @@ rest property using other jsdoc features, e.g., `@typedef`:
  * @param cfg.num
  * @param {ExtraOptions} extra
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 Setting this option to `false` (the default) may be useful in cases where
@@ -235,8 +229,7 @@ For example, with the option disabled, this will not give an error despite
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 Nor will this:
@@ -248,8 +241,7 @@ Nor will this:
  * @param cfg.innerProp1
  * @param cfg.innerProp2
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 ### `autoIncrementBase`
@@ -265,21 +257,20 @@ are exhausted will auto-incrementing occur. So, with
 `unnamedRootBase: ['arg', 'config']`, the following:
 
 ```js
-function quux ({foo}, [bar], {baz}) {
-}
+function quux({ foo }, [bar], { baz }) {}
 ```
 
 ...will get the following jsdoc block added:
 
 ```js
 /**
-* @param arg
-* @param arg.foo
-* @param config0
-* @param config0."0" (`bar`)
-* @param config1
-* @param config1.baz
-*/
+ * @param arg
+ * @param arg.foo
+ * @param config0
+ * @param config0."0" (`bar`)
+ * @param config1
+ * @param config1.baz
+ */
 ```
 
 ### `exemptedBy`
@@ -301,8 +292,8 @@ link back to the specified type. For example:
 /**
  * @param {SVGRect} bbox - a SVGRect
  */
-export const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+export const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 ```
 
@@ -376,14 +367,14 @@ Set to `true` to ignore reporting when all params are missing. Defaults to
 
 ## Context and settings
 
-|          |                      |
-| -------- | ----------------------------------------------------------------------------- |
-| Context  | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
-| Tags     | `param` |
-| Aliases  | `arg`, `argument` |
-|Recommended | true|
-| Options  |`autoIncrementBase`, `checkConstructors`, `checkDestructured`, `checkDestructuredRoots`, `checkGetters`, `checkRestProperty`, `checkSetters`, `checkTypesPattern`, `contexts`, `enableFixer`, `enableRestElementFixer`, `enableRootFixer`, `exemptedBy`, `ignoreWhenAllParamsMissing`, `unnamedRootBase`, `useDefaultObjectProperties`|
-| Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
+|             |                                                                                                                                                                                                                                                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled                                                                                                                                                                                                                          |
+| Tags        | `param`                                                                                                                                                                                                                                                                                                                                |
+| Aliases     | `arg`, `argument`                                                                                                                                                                                                                                                                                                                      |
+| Recommended | true                                                                                                                                                                                                                                                                                                                                   |
+| Options     | `autoIncrementBase`, `checkConstructors`, `checkDestructured`, `checkDestructuredRoots`, `checkGetters`, `checkRestProperty`, `checkSetters`, `checkTypesPattern`, `contexts`, `enableFixer`, `enableRestElementFixer`, `enableRootFixer`, `exemptedBy`, `ignoreWhenAllParamsMissing`, `unnamedRootBase`, `useDefaultObjectProperties` |
+| Settings    | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`                                                                                                                                                                                                                                  |
 
 ## Failing examples
 

@@ -26,7 +26,7 @@ literal, e.g., `/[A-Z].*\\./ui`.
 Note that `/` delimiters are optional, but necessary to add flags (besides
 `u`).
 
-Also note that the default or optional regular expressions is *not*
+Also note that the default or optional regular expressions is _not_
 case-insensitive unless one opts in to add the `i` flag.
 
 You can add the `s` flag if you want `.` to match newlines. Note, however,
@@ -173,14 +173,14 @@ section of our README for more on the expected format.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|docblock and `@description` by default but more with `tags`|
-|Aliases|`@desc`|
-|Recommended|false|
-|Settings||
-|Options|`contexts`, `mainDescription`, `matchDescription`, `message`, `nonemptyTags`, `tags`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | docblock and `@description` by default but more with `tags`                                                   |
+| Aliases     | `@desc`                                                                                                       |
+| Recommended | false                                                                                                         |
+| Settings    |                                                                                                               |
+| Options     | `contexts`, `mainDescription`, `matchDescription`, `message`, `nonemptyTags`, `tags`                          |
 
 ## Failing examples
 

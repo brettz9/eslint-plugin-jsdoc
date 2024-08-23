@@ -1,14 +1,14 @@
 <a name="user-content-no-types"></a>
 <a name="no-types"></a>
+
 # <code>no-types</code>
 
-* [Fixer](#user-content-no-types-fixer)
-* [Options](#user-content-no-types-options)
-    * [`contexts`](#user-content-no-types-options-contexts)
-* [Context and settings](#user-content-no-types-context-and-settings)
-* [Failing examples](#user-content-no-types-failing-examples)
-* [Passing examples](#user-content-no-types-passing-examples)
-
+- [Fixer](#user-content-no-types-fixer)
+- [Options](#user-content-no-types-options)
+  - [`contexts`](#user-content-no-types-options-contexts)
+- [Context and settings](#user-content-no-types-context-and-settings)
+- [Failing examples](#user-content-no-types-failing-examples)
+- [Passing examples](#user-content-no-types-passing-examples)
 
 This rule reports types being used on `@param` or `@returns`.
 
@@ -17,16 +17,19 @@ the type information would be redundant with TypeScript.
 
 <a name="user-content-no-types-fixer"></a>
 <a name="no-types-fixer"></a>
+
 ## Fixer
 
 (TODO)
 
 <a name="user-content-no-types-options"></a>
 <a name="no-types-options"></a>
+
 ## Options
 
 <a name="user-content-no-types-options-contexts"></a>
 <a name="no-types-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -42,47 +45,43 @@ section of our README for more on the expected format.
 
 <a name="user-content-no-types-context-and-settings"></a>
 <a name="no-types-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`param`, `returns`|
-|Aliases|`arg`, `argument`, `return`|
-|Recommended|false|
-|Options|`contexts`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `param`, `returns`                                                                                            |
+| Aliases     | `arg`, `argument`, `return`                                                                                   |
+| Recommended | false                                                                                                         |
+| Options     | `contexts`                                                                                                    |
 
 <a name="user-content-no-types-failing-examples"></a>
 <a name="no-types-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Types are not permitted on @param.
 
 class quux {
   /**
    * @param {number} foo
    */
-  bar (foo) {
-
-  }
+  bar(foo) {}
 }
 // Message: Types are not permitted on @param.
 
 /**
  * @param {number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/no-types": ["error"|"warn", {"contexts":["any"]}]
 // Message: Types are not permitted on @param.
 
@@ -90,9 +89,7 @@ class quux {
   /**
    * @param {number} foo
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // "jsdoc/no-types": ["error"|"warn", {"contexts":["any"]}]
 // Message: Types are not permitted on @param.
@@ -114,9 +111,7 @@ class quux {
 /**
  * @returns {number}
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Types are not permitted on @returns.
 
 /**
@@ -125,35 +120,30 @@ function quux () {
  *
  * @returns {number}
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Types are not permitted on @returns.
 
 export interface B {
   /**
    * @param {string} paramA
    */
-  methodB(paramB: string): void
+  methodB(paramB: string): void;
 }
 // Message: Types are not permitted on @param.
-````
-
-
+```
 
 <a name="user-content-no-types-passing-examples"></a>
 <a name="no-types-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param foo
@@ -171,6 +161,5 @@ function quux (foo) {
  */
 
 /*** Oops that's too many asterisks by accident **/
-function a () {}
-````
-
+function a() {}
+```

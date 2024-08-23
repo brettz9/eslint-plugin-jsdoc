@@ -1,8 +1,7 @@
 <a name="user-content-match-name"></a>
 <a name="match-name"></a>
+
 ### <code>match-name</code>
-
-
 
 Reports the name portion of a JSDoc tag if matching or not matching
 a given regular expression.
@@ -15,18 +14,21 @@ that tag).
 
 <a name="user-content-fixer"></a>
 <a name="fixer"></a>
+
 ## Fixer
 
 Will replace `disallowName` with `replacement` if these are provided.
 
 <a name="user-content-options"></a>
 <a name="options"></a>
+
 ## Options
 
 A single options object with the following properties:
 
 <a name="user-content-options-match"></a>
 <a name="options-match"></a>
+
 ### <code>match</code>
 
 `match` is a required option containing an array of objects which determine
@@ -41,17 +43,17 @@ properties, all of which act to confine one another:
   the specified tags. If `tags` is omitted, then `*` is assumed.
 
 - `allowName` - Indicates which names are allowed for the given tag (or `*`).
-    Accepts a string regular expression (optionally wrapped between two
-    `/` delimiters followed by optional flags) used to match the name.
+  Accepts a string regular expression (optionally wrapped between two
+  `/` delimiters followed by optional flags) used to match the name.
 - `disallowName` - As with `allowName` but indicates names that are not
-    allowed.
+  allowed.
 - `replacement` - If `disallowName` is supplied and this value is present, it
-    will replace the matched `disallowName` text.
+  will replace the matched `disallowName` text.
 
 - `context` - AST to confine the allowing or disallowing to jsdoc blocks
-    associated with a particular context. See the
-    ["AST and Selectors"](#user-content-eslint-plugin-jsdoc-advanced-ast-and-selectors)
-    section of our README for more on the expected format.
+  associated with a particular context. See the
+  ["AST and Selectors"](#user-content-eslint-plugin-jsdoc-advanced-ast-and-selectors)
+  section of our README for more on the expected format.
 - `comment` - As with `context` but AST for the JSDoc block comment and types
 
 - `message` - An optional custom message to use when there is a match.
@@ -66,23 +68,25 @@ be applied, however.
 
 <a name="user-content-context-and-settings"></a>
 <a name="context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|(The tags specified by `tags`, including any tag if `*` is set)|
-|Recommended|false|
-|Settings|`structuredTags`|
-|Options|`match`|
+|             |                                                                 |
+| ----------- | --------------------------------------------------------------- |
+| Context     | everywhere                                                      |
+| Tags        | (The tags specified by `tags`, including any tag if `*` is set) |
+| Recommended | false                                                           |
+| Settings    | `structuredTags`                                                |
+| Options     | `match`                                                         |
 
 <a name="user-content-failing-examples"></a>
 <a name="failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param opt_a
  * @param opt_b
@@ -144,8 +148,7 @@ The following patterns are considered problems:
  * @param opt_a
  * @param opt_b
  */
-function quux () {
-}
+function quux() {}
 // "jsdoc/match-name": ["error"|"warn", {"match":[{"context":"FunctionDeclaration","disallowName":"/^opt_/i"}]}]
 // Message: Only allowing names not matching `/^opt_/i` but found "opt_a".
 
@@ -167,7 +170,7 @@ function quux () {
  * @param opt_a
  * @param opt_b
  */
-function quux () {}
+function quux() {}
 // "jsdoc/match-name": ["error"|"warn", ]
 // Message: Rule `no-restricted-syntax` is missing a `match` option.
 
@@ -184,17 +187,16 @@ function quux () {}
  */
 // "jsdoc/match-name": ["error"|"warn", {"match":[{"disallowName":"/^$/","tags":["template"]}]}]
 // Message: Only allowing names not matching `/^$/u` but found "".
-````
-
-
+```
 
 <a name="user-content-passing-examples"></a>
 <a name="passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param opt_a
  * @param opt_b
@@ -236,8 +238,7 @@ The following patterns are not considered problems:
  * @param opt_a
  * @param opt_b
  */
-class A {
-}
+class A {}
 // "jsdoc/match-name": ["error"|"warn", {"match":[{"context":"FunctionDeclaration","disallowName":"/^opt_/i"}]}]
 
 /**
@@ -252,5 +253,4 @@ class A {
  * @property {T} test
  */
 // "jsdoc/match-name": ["error"|"warn", {"match":[{"allowName":"/^[A-Z]{1}$/","message":"The name should be a single capital letter.","tags":["template"]}]}]
-````
-
+```

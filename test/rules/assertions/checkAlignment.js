@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -36,7 +36,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -60,7 +60,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -84,7 +84,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -108,7 +108,7 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -132,7 +132,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -156,7 +156,7 @@ function quux (foo) {
       errors: [
         {
           line: 4,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -180,7 +180,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -201,7 +201,7 @@ function quux (foo) {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -223,7 +223,7 @@ function quux (foo) {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `
@@ -247,7 +247,7 @@ export const myVar = {/**
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block to be aligned.',
+          message: "Expected JSDoc block to be aligned.",
         },
       ],
       output: `

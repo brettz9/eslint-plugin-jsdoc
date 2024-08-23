@@ -1,9 +1,9 @@
 ---
 name: Documentation bugs
 about: Report a documentation bug
-title: ''
+title: ""
 labels: documentation
-assignees: ''
+assignees: ""
 ---
 
 <!--

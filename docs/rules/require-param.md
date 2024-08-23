@@ -1,38 +1,39 @@
 <a name="user-content-require-param"></a>
 <a name="require-param"></a>
+
 # <code>require-param</code>
 
-* [Fixer](#user-content-require-param-fixer)
-    * [Destructured object and array naming](#user-content-require-param-fixer-destructured-object-and-array-naming)
-    * [Missing root fixing](#user-content-require-param-fixer-missing-root-fixing)
-    * [Rest Element (`RestElement`) insertions](#user-content-require-param-fixer-rest-element-restelement-insertions)
-    * [Object Rest Property insertions](#user-content-require-param-fixer-object-rest-property-insertions)
-* [Options](#user-content-require-param-options)
-    * [`enableFixer`](#user-content-require-param-options-enablefixer)
-    * [`enableRootFixer`](#user-content-require-param-options-enablerootfixer)
-    * [`enableRestElementFixer`](#user-content-require-param-options-enablerestelementfixer)
-    * [`checkRestProperty`](#user-content-require-param-options-checkrestproperty)
-    * [`autoIncrementBase`](#user-content-require-param-options-autoincrementbase)
-    * [`unnamedRootBase`](#user-content-require-param-options-unnamedrootbase)
-    * [`exemptedBy`](#user-content-require-param-options-exemptedby)
-    * [`checkTypesPattern`](#user-content-require-param-options-checktypespattern)
-    * [`contexts`](#user-content-require-param-options-contexts)
-    * [`checkConstructors`](#user-content-require-param-options-checkconstructors)
-    * [`checkGetters`](#user-content-require-param-options-checkgetters)
-    * [`checkSetters`](#user-content-require-param-options-checksetters)
-    * [`checkDestructured`](#user-content-require-param-options-checkdestructured)
-    * [`checkDestructuredRoots`](#user-content-require-param-options-checkdestructuredroots)
-    * [`useDefaultObjectProperties`](#user-content-require-param-options-usedefaultobjectproperties)
-    * [`ignoreWhenAllParamsMissing`](#user-content-require-param-options-ignorewhenallparamsmissing)
-* [Context and settings](#user-content-require-param-context-and-settings)
-* [Failing examples](#user-content-require-param-failing-examples)
-* [Passing examples](#user-content-require-param-passing-examples)
-
+- [Fixer](#user-content-require-param-fixer)
+  - [Destructured object and array naming](#user-content-require-param-fixer-destructured-object-and-array-naming)
+  - [Missing root fixing](#user-content-require-param-fixer-missing-root-fixing)
+  - [Rest Element (`RestElement`) insertions](#user-content-require-param-fixer-rest-element-restelement-insertions)
+  - [Object Rest Property insertions](#user-content-require-param-fixer-object-rest-property-insertions)
+- [Options](#user-content-require-param-options)
+  - [`enableFixer`](#user-content-require-param-options-enablefixer)
+  - [`enableRootFixer`](#user-content-require-param-options-enablerootfixer)
+  - [`enableRestElementFixer`](#user-content-require-param-options-enablerestelementfixer)
+  - [`checkRestProperty`](#user-content-require-param-options-checkrestproperty)
+  - [`autoIncrementBase`](#user-content-require-param-options-autoincrementbase)
+  - [`unnamedRootBase`](#user-content-require-param-options-unnamedrootbase)
+  - [`exemptedBy`](#user-content-require-param-options-exemptedby)
+  - [`checkTypesPattern`](#user-content-require-param-options-checktypespattern)
+  - [`contexts`](#user-content-require-param-options-contexts)
+  - [`checkConstructors`](#user-content-require-param-options-checkconstructors)
+  - [`checkGetters`](#user-content-require-param-options-checkgetters)
+  - [`checkSetters`](#user-content-require-param-options-checksetters)
+  - [`checkDestructured`](#user-content-require-param-options-checkdestructured)
+  - [`checkDestructuredRoots`](#user-content-require-param-options-checkdestructuredroots)
+  - [`useDefaultObjectProperties`](#user-content-require-param-options-usedefaultobjectproperties)
+  - [`ignoreWhenAllParamsMissing`](#user-content-require-param-options-ignorewhenallparamsmissing)
+- [Context and settings](#user-content-require-param-context-and-settings)
+- [Failing examples](#user-content-require-param-failing-examples)
+- [Passing examples](#user-content-require-param-passing-examples)
 
 Requires that all function parameters are documented.
 
 <a name="user-content-require-param-fixer"></a>
 <a name="require-param-fixer"></a>
+
 ## Fixer
 
 Adds `@param <name>` for each tag present in the function signature but
@@ -41,6 +42,7 @@ option to `false`.
 
 <a name="user-content-require-param-fixer-destructured-object-and-array-naming"></a>
 <a name="require-param-fixer-destructured-object-and-array-naming"></a>
+
 ### Destructured object and array naming
 
 When the fixer is applied to destructured objects, only the input name is
@@ -52,18 +54,17 @@ So for:
 /**
  * @param cfg
  */
-function quux ({foo: bar, baz: bax = 5}) {
-}
+function quux({ foo: bar, baz: bax = 5 }) {}
 ```
 
 ...the fixed jsdoc will be:
 
 ```js
 /**
-* @param cfg
-* @param cfg.foo
-* @param cfg.baz
-*/
+ * @param cfg
+ * @param cfg.foo
+ * @param cfg.baz
+ */
 ```
 
 This is because the input to the function is the relevant item for
@@ -78,22 +79,22 @@ So for:
 /**
  * @param cfg
  */
-function quux ([foo, bar]) {
-}
+function quux([foo, bar]) {}
 ```
 
 ..the fixed jsdoc will be:
 
 ```js
 /**
-* @param cfg
-* @param cfg."0"
-* @param cfg."1"
-*/
+ * @param cfg
+ * @param cfg."0"
+ * @param cfg."1"
+ */
 ```
 
 <a name="user-content-require-param-fixer-missing-root-fixing"></a>
 <a name="require-param-fixer-missing-root-fixing"></a>
+
 ### Missing root fixing
 
 Note that unless `enableRootFixer` (or `enableFixer`) is set to `false`,
@@ -104,21 +105,20 @@ is for "root" to be auto-inserted for missing roots, followed by a
 So for:
 
 ```js
-function quux ({foo}, {bar}, {baz}) {
-}
+function quux({ foo }, { bar }, { baz }) {}
 ```
 
 ...the default jsdoc that would be added if the fixer is enabled would be:
 
 ```js
 /**
-* @param root0
-* @param root0.foo
-* @param root1
-* @param root1.bar
-* @param root2
-* @param root2.baz
-*/
+ * @param root0
+ * @param root0.foo
+ * @param root1
+ * @param root1.bar
+ * @param root2
+ * @param root2.baz
+ */
 ```
 
 The name of "root" can be configured with `unnamedRootBase` (which also allows
@@ -130,6 +130,7 @@ And one can have the count begin at another number (e.g., `1`) by changing
 
 <a name="user-content-require-param-fixer-rest-element-restelement-insertions"></a>
 <a name="require-param-fixer-rest-element-restelement-insertions"></a>
+
 ### Rest Element (<code>RestElement</code>) insertions
 
 The fixer will automatically report/insert
@@ -138,10 +139,10 @@ if missing.
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -150,11 +151,11 @@ function baar ([a, ...extra]) {
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
-  * @param {...any} cfg."1"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
+ * @param {...any} cfg."1"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -170,11 +171,11 @@ corresponding to `extra`:
 
 ```js
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
-  * @param {any} cfg."1"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
+ * @param {any} cfg."1"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 ```
@@ -183,6 +184,7 @@ function baar ([a, ...extra]) {
 
 <a name="user-content-require-param-fixer-object-rest-property-insertions"></a>
 <a name="require-param-fixer-object-rest-property-insertions"></a>
+
 ### Object Rest Property insertions
 
 If the `checkRestProperty` option is set to `true` (`false` by default),
@@ -193,8 +195,7 @@ missing rest properties will be reported with documentation auto-inserted:
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 ...becomes:
@@ -205,8 +206,7 @@ function quux ({num, ...extra}) {
  * @param cfg.num
  * @param cfg.extra
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 You may wish to manually note in your jsdoc for `extra` that this is a
@@ -219,18 +219,21 @@ function signature, it may appear that there is an actual property named
 
 <a name="user-content-require-param-options"></a>
 <a name="require-param-options"></a>
+
 ## Options
 
 An options object accepts the following optional properties:
 
 <a name="user-content-require-param-options-enablefixer"></a>
 <a name="require-param-options-enablefixer"></a>
+
 ### <code>enableFixer</code>
 
 Whether to enable the fixer. Defaults to `true`.
 
 <a name="user-content-require-param-options-enablerootfixer"></a>
 <a name="require-param-options-enablerootfixer"></a>
+
 ### <code>enableRootFixer</code>
 
 Whether to enable the auto-adding of incrementing roots (see the "Fixer"
@@ -239,6 +242,7 @@ section). Defaults to `true`. Has no effect if `enableFixer` is set to
 
 <a name="user-content-require-param-options-enablerestelementfixer"></a>
 <a name="require-param-options-enablerestelementfixer"></a>
+
 ### <code>enableRestElementFixer</code>
 
 Whether to enable the rest element fixer (see
@@ -246,6 +250,7 @@ Whether to enable the rest element fixer (see
 
 <a name="user-content-require-param-options-checkrestproperty"></a>
 <a name="require-param-options-checkrestproperty"></a>
+
 ### <code>checkRestProperty</code>
 
 If set to `true`, will report (and add fixer insertions) for missing rest
@@ -266,8 +271,7 @@ rest property using other jsdoc features, e.g., `@typedef`:
  * @param cfg.num
  * @param {ExtraOptions} extra
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 Setting this option to `false` (the default) may be useful in cases where
@@ -282,8 +286,7 @@ For example, with the option disabled, this will not give an error despite
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 Nor will this:
@@ -295,12 +298,12 @@ Nor will this:
  * @param cfg.innerProp1
  * @param cfg.innerProp2
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 ```
 
 <a name="user-content-require-param-options-autoincrementbase"></a>
 <a name="require-param-options-autoincrementbase"></a>
+
 ### <code>autoIncrementBase</code>
 
 Numeric to indicate the number at which to begin auto-incrementing roots.
@@ -308,6 +311,7 @@ Defaults to `0`.
 
 <a name="user-content-require-param-options-unnamedrootbase"></a>
 <a name="require-param-options-unnamedrootbase"></a>
+
 ### <code>unnamedRootBase</code>
 
 An array of root names to use in the fixer when roots are missing. Defaults
@@ -316,25 +320,25 @@ are exhausted will auto-incrementing occur. So, with
 `unnamedRootBase: ['arg', 'config']`, the following:
 
 ```js
-function quux ({foo}, [bar], {baz}) {
-}
+function quux({ foo }, [bar], { baz }) {}
 ```
 
 ...will get the following jsdoc block added:
 
 ```js
 /**
-* @param arg
-* @param arg.foo
-* @param config0
-* @param config0."0" (`bar`)
-* @param config1
-* @param config1.baz
-*/
+ * @param arg
+ * @param arg.foo
+ * @param config0
+ * @param config0."0" (`bar`)
+ * @param config1
+ * @param config1.baz
+ */
 ```
 
 <a name="user-content-require-param-options-exemptedby"></a>
 <a name="require-param-options-exemptedby"></a>
+
 ### <code>exemptedBy</code>
 
 Array of tags (e.g., `['type']`) whose presence on the document block
@@ -345,6 +349,7 @@ exemption of the rule.
 
 <a name="user-content-require-param-options-checktypespattern"></a>
 <a name="require-param-options-checktypespattern"></a>
+
 ### <code>checkTypesPattern</code>
 
 When one specifies a type, unless it is of a generic type, like `object`
@@ -356,8 +361,8 @@ link back to the specified type. For example:
 /**
  * @param {SVGRect} bbox - a SVGRect
  */
-export const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+export const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 ```
 
@@ -381,6 +386,7 @@ need destructuring.
 
 <a name="user-content-require-param-options-contexts"></a>
 <a name="require-param-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -394,6 +400,7 @@ section of our README for more on the expected format.
 
 <a name="user-content-require-param-options-checkconstructors"></a>
 <a name="require-param-options-checkconstructors"></a>
+
 ### <code>checkConstructors</code>
 
 A value indicating whether `constructor`s should be checked. Defaults to
@@ -401,24 +408,28 @@ A value indicating whether `constructor`s should be checked. Defaults to
 
 <a name="user-content-require-param-options-checkgetters"></a>
 <a name="require-param-options-checkgetters"></a>
+
 ### <code>checkGetters</code>
 
 A value indicating whether getters should be checked. Defaults to `false`.
 
 <a name="user-content-require-param-options-checksetters"></a>
 <a name="require-param-options-checksetters"></a>
+
 ### <code>checkSetters</code>
 
 A value indicating whether setters should be checked. Defaults to `false`.
 
 <a name="user-content-require-param-options-checkdestructured"></a>
 <a name="require-param-options-checkdestructured"></a>
+
 ### <code>checkDestructured</code>
 
 Whether to require destructured properties. Defaults to `true`.
 
 <a name="user-content-require-param-options-checkdestructuredroots"></a>
 <a name="require-param-options-checkdestructuredroots"></a>
+
 ### <code>checkDestructuredRoots</code>
 
 Whether to check the existence of a corresponding `@param` for root objects
@@ -433,6 +444,7 @@ documentation). Defaults to `true`.
 
 <a name="user-content-require-param-options-usedefaultobjectproperties"></a>
 <a name="require-param-options-usedefaultobjectproperties"></a>
+
 ### <code>useDefaultObjectProperties</code>
 
 Set to `true` if you wish to expect documentation of properties on objects
@@ -440,6 +452,7 @@ supplied as default values. Defaults to `false`.
 
 <a name="user-content-require-param-options-ignorewhenallparamsmissing"></a>
 <a name="require-param-options-ignorewhenallparamsmissing"></a>
+
 ### <code>ignoreWhenAllParamsMissing</code>
 
 Set to `true` to ignore reporting when all params are missing. Defaults to
@@ -447,235 +460,187 @@ Set to `true` to ignore reporting when all params are missing. Defaults to
 
 <a name="user-content-require-param-context-and-settings"></a>
 <a name="require-param-context-and-settings"></a>
+
 ## Context and settings
 
-|          |                      |
-| -------- | ----------------------------------------------------------------------------- |
-| Context  | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
-| Tags     | `param` |
-| Aliases  | `arg`, `argument` |
-|Recommended | true|
-| Options  |`autoIncrementBase`, `checkConstructors`, `checkDestructured`, `checkDestructuredRoots`, `checkGetters`, `checkRestProperty`, `checkSetters`, `checkTypesPattern`, `contexts`, `enableFixer`, `enableRestElementFixer`, `enableRootFixer`, `exemptedBy`, `ignoreWhenAllParamsMissing`, `unnamedRootBase`, `useDefaultObjectProperties`|
-| Settings | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`|
+|             |                                                                                                                                                                                                                                                                                                                                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled                                                                                                                                                                                                                          |
+| Tags        | `param`                                                                                                                                                                                                                                                                                                                                |
+| Aliases     | `arg`, `argument`                                                                                                                                                                                                                                                                                                                      |
+| Recommended | true                                                                                                                                                                                                                                                                                                                                   |
+| Options     | `autoIncrementBase`, `checkConstructors`, `checkDestructured`, `checkDestructuredRoots`, `checkGetters`, `checkRestProperty`, `checkSetters`, `checkTypesPattern`, `contexts`, `enableFixer`, `enableRestElementFixer`, `enableRootFixer`, `exemptedBy`, `ignoreWhenAllParamsMissing`, `unnamedRootBase`, `useDefaultObjectProperties` |
+| Settings    | `ignoreReplacesDocs`, `overrideReplacesDocs`, `augmentsExtendsReplacesDocs`, `implementsReplacesDocs`                                                                                                                                                                                                                                  |
 
 <a name="user-content-require-param-failing-examples"></a>
 <a name="require-param-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["FunctionDeclaration"]}]
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  *
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  * @param foo
  */
-function quux (foo, bar, {baz}) {
-
-}
+function quux(foo, bar, { baz }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkDestructured":false}]
 // Message: Missing JSDoc @param "bar" declaration.
 
 /**
  * @param foo
  */
-function quux (foo, bar, {baz}) {
-
-}
+function quux(foo, bar, { baz }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkDestructuredRoots":false}]
 // Message: Missing JSDoc @param "bar" declaration.
 
 /**
  *
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // "jsdoc/require-param": ["error"|"warn", {"enableFixer":false}]
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  *
  */
-function quux ({foo: bar = 5} = {}) {
-
-}
+function quux({ foo: bar = 5 } = {}) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  * @param
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  * @param
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // "jsdoc/require-param": ["error"|"warn", {"autoIncrementBase":1}]
 // Message: Missing JSDoc @param "root1" declaration.
 
 /**
  * @param options
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // Message: Missing JSDoc @param "options.foo" declaration.
 
 /**
  * @param
  */
-function quux ({ foo, bar: { baz }}) {
-
-}
+function quux({ foo, bar: { baz } }) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  *
  */
-function quux ({foo}, {bar}) {
-
-}
+function quux({ foo }, { bar }) {}
 // "jsdoc/require-param": ["error"|"warn", {"unnamedRootBase":["arg"]}]
 // Message: Missing JSDoc @param "arg0" declaration.
 
 /**
  *
  */
-function quux ({foo}, {bar}) {
-
-}
+function quux({ foo }, { bar }) {}
 // "jsdoc/require-param": ["error"|"warn", {"unnamedRootBase":["arg","config"]}]
 // Message: Missing JSDoc @param "arg" declaration.
 
 /**
  *
  */
-function quux ({foo}, {bar}) {
-
-}
+function quux({ foo }, { bar }) {}
 // "jsdoc/require-param": ["error"|"warn", {"enableRootFixer":false,"unnamedRootBase":["arg","config"]}]
 // Message: Missing JSDoc @param "arg" declaration.
 
 /**
  *
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @param foo
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 // Message: Missing JSDoc @param "bar" declaration.
 
 /**
  * @param bar
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Missing JSDoc @param "baz" declaration.
 
 /**
  * @param baz
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @param
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 // Message: Missing JSDoc @arg "foo" declaration.
 
 /**
  * @override
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"overrideReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @ignore
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignoreReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @implements
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"implementsReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @augments
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @extends
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
@@ -685,9 +650,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"overrideReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
@@ -699,9 +662,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"ignoreReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
@@ -713,9 +674,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"implementsReplacesDocs":false}}
 // Message: Missing JSDoc @param "foo" declaration.
@@ -727,9 +686,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Message: Missing JSDoc @param "foo" declaration.
 
@@ -740,9 +697,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Message: Missing JSDoc @param "foo" declaration.
 
@@ -750,63 +705,56 @@ export class SomeClass {
   /**
    * @param property
    */
-  constructor(private property: string, private foo: number) {}
+  constructor(
+    private property: string,
+    private foo: number,
+  ) {}
 }
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @param
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":false}}}
 // Message: Unexpected tag `@param`
 
 /**
  *
  */
-function quux ({bar, baz}, foo) {
-}
+function quux({ bar, baz }, foo) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  *
  */
-function quux (foo, {bar, baz}) {
-}
+function quux(foo, { bar, baz }) {}
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  *
  */
-function quux ([bar, baz], foo) {
-}
+function quux([bar, baz], foo) {}
 // Message: Missing JSDoc @param "root0" declaration.
 
 /**
  *
  */
-function quux (foo) {
-}
+function quux(foo) {}
 // "jsdoc/require-param": ["error"|"warn", {"exemptedBy":["notPresent"]}]
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @inheritdoc
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param": ["error"|"warn", {"exemptedBy":[]}]
 // Message: Missing JSDoc @param "foo" declaration.
 
 /**
  * @inheritdoc
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Missing JSDoc @param "foo" declaration.
 
@@ -816,16 +764,14 @@ function quux (foo) {
  * @param {string} employees[].name - The name of an employee.
  * @param {string} employees[].department - The employee's department.
  */
-function assign (employees, name) {
-
-};
+function assign(employees, name) {}
 // Message: Missing JSDoc @param "name" declaration.
 
 interface ITest {
-/**
- * Test description.
- */
-TestMethod(id: number): void;
+  /**
+   * Test description.
+   */
+  TestMethod(id: number): void;
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSMethodSignature"]}]
 // Message: Missing JSDoc @param "id" declaration.
@@ -833,12 +779,11 @@ TestMethod(id: number): void;
 /**
  * A test class.
  */
-abstract class TestClass
-{
-/**
- * A test method.
- */
-abstract TestFunction(id);
+abstract class TestClass {
+  /**
+   * A test method.
+   */
+  abstract TestFunction(id);
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSEmptyBodyFunctionExpression"]}]
 // Message: Missing JSDoc @param "id" declaration.
@@ -846,12 +791,11 @@ abstract TestFunction(id);
 /**
  * A test class.
  */
-declare class TestClass
-{
-/**
- *
- */
-TestMethod(id);
+declare class TestClass {
+  /**
+   *
+   */
+  TestMethod(id);
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSEmptyBodyFunctionExpression"]}]
 // Message: Missing JSDoc @param "id" declaration.
@@ -873,9 +817,7 @@ let TestFunction: (id) => void;
 /**
  * A test function.
  */
-function test(
-  processor: (id: number) => string
-) {
+function test(processor: (id: number) => string) {
   return processor(10);
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
@@ -884,17 +826,16 @@ function test(
 /**
  * A test function.
  */
-let test = (processor: (id: number) => string) =>
-{
+let test = (processor: (id: number) => string) => {
   return processor(10);
-}
+};
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
 // Message: Missing JSDoc @param "id" declaration.
 
 class TestClass {
   /**
-  * A class property.
-  */
+   * A class property.
+   */
   public Test: (id: number) => string;
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
@@ -904,18 +845,16 @@ class TestClass {
   /**
    * A class method.
    */
-  public TestMethod(): (id: number) => string
-  {
-  }
+  public TestMethod(): (id: number) => string {}
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
 // Message: Missing JSDoc @param "id" declaration.
 
 interface TestInterface {
-/**
- * An interface property.
- */
-Test: (id: number) => string;
+  /**
+   * An interface property.
+   */
+  Test: (id: number) => string;
 }
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
 // Message: Missing JSDoc @param "id" declaration.
@@ -939,10 +878,9 @@ function test(): (id: number) => string;
 /**
  * A function with return type
  */
-let test = (): (id: number) => string =>
-{
+let test = (): ((id: number) => string) => {
   return (id) => `${id}`;
-}
+};
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
 // Message: Missing JSDoc @param "id" declaration.
 
@@ -950,9 +888,7 @@ let test = (): (id: number) => string =>
  * @param baz
  * @param options
  */
-function quux (baz, {foo: bar}) {
-
-}
+function quux(baz, { foo: bar }) {}
 // Message: Missing JSDoc @param "options.foo" declaration.
 
 class Client {
@@ -978,7 +914,7 @@ class Client {
       patch?: boolean;
       last_modified?: number;
       permissions?: [];
-    } = {}
+    } = {},
   ) {}
 }
 // Message: Missing JSDoc @param "options.permissions" declaration.
@@ -986,9 +922,7 @@ class Client {
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param": ["error"|"warn", {"enableFixer":false}]
 // Message: Missing JSDoc @param "foo" declaration.
 
@@ -997,9 +931,7 @@ class Client {
    * Set collection data.
    * @return {Promise<Object, Error>}
    */
-  async setData(
-    data: { last_modified?: number }
-  ) {}
+  async setData(data: { last_modified?: number }) {}
 }
 // Message: Missing JSDoc @param "data" declaration.
 
@@ -1007,8 +939,7 @@ class Client {
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkRestProperty":true}]
 // Message: Missing JSDoc @param "cfg.extra" declaration.
 
@@ -1017,8 +948,7 @@ function quux ({num, ...extra}) {
  * @param cfg.opts
  * @param cfg.opts.num
  */
-function quux ({opts: {num, ...extra}}) {
-}
+function quux({ opts: { num, ...extra } }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkRestProperty":true}]
 // Message: Missing JSDoc @param "cfg.opts.extra" declaration.
 
@@ -1026,7 +956,7 @@ function quux ({opts: {num, ...extra}}) {
  * @param {GenericArray} cfg
  * @param {number} cfg."0"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 // Message: Missing JSDoc @param "cfg."1"" declaration.
@@ -1034,7 +964,7 @@ function baar ([a, ...extra]) {
 /**
  * @param a
  */
-function baar (a, ...extra) {
+function baar(a, ...extra) {
   //
 }
 // Message: Missing JSDoc @param "extra" declaration.
@@ -1043,8 +973,8 @@ function baar (a, ...extra) {
  * Converts an SVGRect into an object.
  * @param {SVGRect} bbox - a SVGRect
  */
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // "jsdoc/require-param": ["error"|"warn", {"checkTypesPattern":"SVGRect"}]
 // Message: Missing JSDoc @param "bbox.x" declaration.
@@ -1053,8 +983,8 @@ const bboxToObj = function ({x, y, width, height}) {
  * Converts an SVGRect into an object.
  * @param {object} bbox - a SVGRect
  */
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // Message: Missing JSDoc @param "bbox.x" declaration.
 
@@ -1063,19 +993,18 @@ module.exports = class GraphQL {
    * @param fetchOptions
    * @param cacheKey
    */
-  fetch = ({ url, ...options }, cacheKey) => {
-  }
+  fetch = ({ url, ...options }, cacheKey) => {};
 };
 // "jsdoc/require-param": ["error"|"warn", {"checkRestProperty":true}]
 // Message: Missing JSDoc @param "fetchOptions.url" declaration.
 
-(function() {
-	/**
-	 * A function.
-	 */
-	function f(param) {
-		return !param;
-	}
+(function () {
+  /**
+   * A function.
+   */
+  function f(param) {
+    return !param;
+  }
 })();
 // Message: Missing JSDoc @param "param" declaration.
 
@@ -1084,7 +1013,7 @@ module.exports = class GraphQL {
  * @param {Object} options
  * @param {Object} options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // Message: Missing JSDoc @param "options.foo.bar" declaration.
 
 /**
@@ -1092,7 +1021,7 @@ function quux ({ foo: { bar } }) {}
  * @param {FooBar} options
  * @param {FooBar} options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkTypesPattern":"FooBar"}]
 // Message: Missing JSDoc @param "options.foo.bar" declaration.
 
@@ -1101,7 +1030,7 @@ function quux ({ foo: { bar } }) {}
  * @param {Object} options
  * @param {FooBar} foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // Message: Missing JSDoc @param "options.foo" declaration.
 
 /**
@@ -1109,7 +1038,7 @@ function quux ({ foo: { bar } }) {}
  * @param {Object} options
  * @param options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // Message: Missing JSDoc @param "options.foo.bar" declaration.
 
 /**
@@ -1118,17 +1047,20 @@ function quux ({ foo: { bar } }) {}
  * @param {object} options.foo A description.
  * @param {object} options.foo.bar
  */
-function foo({ foo: { bar: { baz } }}) {}
+function foo({
+  foo: {
+    bar: { baz },
+  },
+}) {}
 // Message: Missing JSDoc @param "options.foo.bar.baz" declaration.
 
 /**
-* Returns a number.
-* @param {Object} props Props.
-* @param {Object} props.prop Prop.
-* @return {number} A number.
-*/
-export function testFn1 ({ prop = { a: 1, b: 2 } }) {
-}
+ * Returns a number.
+ * @param {Object} props Props.
+ * @param {Object} props.prop Prop.
+ * @return {number} A number.
+ */
+export function testFn1({ prop = { a: 1, b: 2 } }) {}
 // "jsdoc/require-param": ["error"|"warn", {"useDefaultObjectProperties":true}]
 // Message: Missing JSDoc @param "props.prop.a" declaration.
 
@@ -1175,15 +1107,14 @@ class A {
  * Some desc.
  * @param a
  */
-function quux (a, b) {}
+function quux(a, b) {}
 // "jsdoc/require-param": ["error"|"warn", {"ignoreWhenAllParamsMissing":true}]
 // Message: Missing JSDoc @param "b" declaration.
-````
-
-
+```
 
 <a name="user-content-require-param-passing-examples"></a>
 <a name="require-param-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
@@ -1192,17 +1123,13 @@ The following patterns are not considered problems:
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param root0
  * @param root0.foo
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 
 /**
  * @param root0
@@ -1210,9 +1137,7 @@ function quux ({foo}) {
  * @param root1
  * @param root1.bar
  */
-function quux ({foo}, {bar}) {
-
-}
+function quux({ foo }, { bar }) {}
 
 /**
  * @param arg0
@@ -1220,9 +1145,7 @@ function quux ({foo}, {bar}) {
  * @param arg1
  * @param arg1.bar
  */
-function quux ({foo}, {bar}) {
-
-}
+function quux({ foo }, { bar }) {}
 // "jsdoc/require-param": ["error"|"warn", {"unnamedRootBase":["arg"]}]
 
 /**
@@ -1233,74 +1156,56 @@ function quux ({foo}, {bar}) {
  * @param config1
  * @param config1.baz
  */
-function quux ({foo}, {bar}, {baz}) {
-
-}
+function quux({ foo }, { bar }, { baz }) {}
 // "jsdoc/require-param": ["error"|"warn", {"unnamedRootBase":["arg","config"]}]
 
 /**
  * @inheritdoc
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @inheritDoc
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @arg foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 
 /**
  * @override
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @override
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @override
  */
 class A {
   /**
-    *
-    */
-  quux (foo) {
-
-  }
+   *
+   */
+  quux(foo) {}
 }
 
 /**
  * @override
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"overrideReplacesDocs":true}}
 
 /**
  * @ignore
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignoreReplacesDocs":true}}
 
 /**
@@ -1310,76 +1215,58 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 
 /**
  * @implements
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @implements
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"implementsReplacesDocs":true}}
 
 /**
  * @implements
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @augments
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"augmentsExtendsReplacesDocs":true}}
 
 /**
  * @augments
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @extends
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"augmentsExtendsReplacesDocs":true}}
 
 /**
  * @extends
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @override
  */
 class A {
   /**
-  * @param foo
-  */
-  quux (foo) {
-
-  }
+   * @param foo
+   */
+  quux(foo) {}
 }
 
 /**
@@ -1389,9 +1276,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"overrideReplacesDocs":true}}
 
@@ -1402,9 +1287,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"ignoreReplacesDocs":true}}
 
@@ -1415,9 +1298,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"implementsReplacesDocs":true}}
 
@@ -1428,9 +1309,7 @@ class A {
   /**
    * @param foo
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 
 /**
@@ -1440,9 +1319,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"augmentsExtendsReplacesDocs":true}}
 
@@ -1453,9 +1330,7 @@ class A {
   /**
    * @param foo
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 
 /**
@@ -1465,9 +1340,7 @@ class A {
   /**
    *
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 // Settings: {"jsdoc":{"augmentsExtendsReplacesDocs":true}}
 
@@ -1478,38 +1351,30 @@ class A {
   /**
    * @param foo
    */
-  quux (foo) {
-
-  }
+  quux(foo) {}
 }
 
 /**
  * @internal
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignoreInternal":true}}
 
 /**
  * @private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 
 /**
  * @access private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 
 // issue 182: optional chaining
 /** @const {boolean} test */
-const test = something?.find(_ => _)
+const test = something?.find((_) => _);
 
 /** @type {RequestHandler} */
 function foo(req, res, next) {}
@@ -1517,9 +1382,7 @@ function foo(req, res, next) {}
 /**
  * @type {MyCallback}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-param": ["error"|"warn", {"exemptedBy":["type"]}]
 
 /**
@@ -1527,12 +1390,10 @@ function quux () {
  */
 var A = class {
   /**
-    *
-    */
-  quux (foo) {
-
-  }
-}
+   *
+   */
+  quux(foo) {}
+};
 
 export class SomeClass {
   /**
@@ -1548,105 +1409,108 @@ export class SomeClass {
  * @param {string} employee.name - The name of the employee.
  * @param {string} employee.department - The employee's department.
  */
-function assign({name, department}) {
+function assign({ name, department }) {
   // ...
 }
 
 export abstract class StephanPlugin<O, D> {
-
-    /**
-     * Called right after Stephan loads the plugin file.
-     *
-     * @example
-     *```typescript
-     * type Options = {
-     *      verbose?: boolean;
-     *      token?: string;
-     * }
-     * ```
-     *
-     * Note that your Options type should only have optional properties...
-     *
-     * @param args Arguments compiled and provided by StephanClient.
-     * @param args.options The options as provided by the user, or an empty object if not provided.
-     * @param args.client The options as provided by the user, or an empty object if not provided.
-     * @param defaultOptions The default options as provided by the plugin, or an empty object.
-     */
-    public constructor({options, client}: {
-        options: O;
-        client: unknown;
-    }, defaultOptions: D) {
-
-    }
+  /**
+   * Called right after Stephan loads the plugin file.
+   *
+   * @example
+   *```typescript
+   * type Options = {
+   *      verbose?: boolean;
+   *      token?: string;
+   * }
+   * ```
+   *
+   * Note that your Options type should only have optional properties...
+   *
+   * @param args Arguments compiled and provided by StephanClient.
+   * @param args.options The options as provided by the user, or an empty object if not provided.
+   * @param args.client The options as provided by the user, or an empty object if not provided.
+   * @param defaultOptions The default options as provided by the plugin, or an empty object.
+   */
+  public constructor(
+    {
+      options,
+      client,
+    }: {
+      options: O;
+      client: unknown;
+    },
+    defaultOptions: D,
+  ) {}
 }
 
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["ArrowFunctionExpression"]}]
 
 /**
-* A function with return type
-*
-* @param id
-*/
-let test = (): (id: number) => string =>
-{
+ * A function with return type
+ *
+ * @param id
+ */
+let test = (): ((id: number) => string) => {
   return (id) => `${id}`;
-}
+};
 // "jsdoc/require-param": ["error"|"warn", {"contexts":["TSFunctionType"]}]
 
 /** @abstract */
 class base {
-/** @param {boolean} arg0 */
-constructor(arg0) {}
+  /** @param {boolean} arg0 */
+  constructor(arg0) {}
 }
 
 class foo extends base {
-/** @inheritDoc */
-constructor(arg0) {
-super(arg0);
-this.arg0 = arg0;
-}
+  /** @inheritDoc */
+  constructor(arg0) {
+    super(arg0);
+    this.arg0 = arg0;
+  }
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
-    export abstract class StephanPlugin<O, D> {
-
-    /**
-     * Called right after Stephan loads the plugin file.
-     *
-     * @example
-     *```typescript
-     * type Options = {
-     *      verbose?: boolean;
-     *      token?: string;
-     * }
-     * ```
-     *
-     * Note that your Options type should only have optional properties...
-     *
-     * @param args Arguments compiled and provided by StephanClient.
-     * @param args.options The options as provided by the user, or an empty object if not provided.
-     * @param args.client The options as provided by the user, or an empty object if not provided.
-     * @param args.client.name The name of the client.
-     * @param defaultOptions The default options as provided by the plugin, or an empty object.
-     */
-    public constructor({ options, client: { name } }: {
-        options: O;
-        client: { name: string };
-    }, defaultOptions: D) {
-
-    }
+export abstract class StephanPlugin<O, D> {
+  /**
+   * Called right after Stephan loads the plugin file.
+   *
+   * @example
+   *```typescript
+   * type Options = {
+   *      verbose?: boolean;
+   *      token?: string;
+   * }
+   * ```
+   *
+   * Note that your Options type should only have optional properties...
+   *
+   * @param args Arguments compiled and provided by StephanClient.
+   * @param args.options The options as provided by the user, or an empty object if not provided.
+   * @param args.client The options as provided by the user, or an empty object if not provided.
+   * @param args.client.name The name of the client.
+   * @param defaultOptions The default options as provided by the plugin, or an empty object.
+   */
+  public constructor(
+    {
+      options,
+      client: { name },
+    }: {
+      options: O;
+      client: { name: string };
+    },
+    defaultOptions: D,
+  ) {}
 }
 
 /**
-* @param {string} cb
-*/
-function createGetter (cb) {
+ * @param {string} cb
+ */
+function createGetter(cb) {
   return function (...args) {
     cb();
   };
@@ -1656,40 +1520,39 @@ function createGetter (cb) {
  * @param cfg
  * @param cfg.num
  */
-function quux ({num, ...extra}) {
-}
+function quux({ num, ...extra }) {}
 
 /**
-  * @param {GenericArray} cfg
-  * @param {number} cfg."0"
+ * @param {GenericArray} cfg
+ * @param {number} cfg."0"
  */
-function baar ([a, ...extra]) {
+function baar([a, ...extra]) {
   //
 }
 // "jsdoc/require-param": ["error"|"warn", {"enableRestElementFixer":false}]
 
 /**
-  * @param a
+ * @param a
  */
-function baar (a, ...extra) {
+function baar(a, ...extra) {
   //
 }
 // "jsdoc/require-param": ["error"|"warn", {"enableRestElementFixer":false}]
 
 /**
-* Converts an SVGRect into an object.
-* @param {SVGRect} bbox - a SVGRect
-*/
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+ * Converts an SVGRect into an object.
+ * @param {SVGRect} bbox - a SVGRect
+ */
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 
 /**
-* Converts an SVGRect into an object.
-* @param {object} bbox - a SVGRect
-*/
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+ * Converts an SVGRect into an object.
+ * @param {object} bbox - a SVGRect
+ */
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // "jsdoc/require-param": ["error"|"warn", {"checkTypesPattern":"SVGRect"}]
 
@@ -1699,8 +1562,7 @@ class CSS {
    *
    * @param {Object} propertyObject - An object of property-value pairs to set.
    */
-  setCssObject(propertyObject: {[key: string]: string | number}): void {
-  }
+  setCssObject(propertyObject: { [key: string]: string | number }): void {}
 }
 
 /**
@@ -1708,35 +1570,27 @@ class CSS {
  * @param bar
  * @param cfg
  */
-function quux (foo, bar, {baz}) {
-
-}
+function quux(foo, bar, { baz }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkDestructured":false}]
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo, bar, {baz}) {
-
-}
+function quux(foo, bar, { baz }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkDestructuredRoots":false}]
 
 /**
  * @param root
  * @param root.foo
  */
-function quux ({"foo": bar}) {
-
-}
+function quux({ foo: bar }) {}
 
 /**
  * @param root
  * @param root."foo"
  */
-function quux ({foo: bar}) {
-
-}
+function quux({ foo: bar }) {}
 
 /**
  * Description.
@@ -1751,14 +1605,14 @@ module.exports = function a(b) {
  * @param {Object} options Options.
  * @param {FooBar} options.foo foo description.
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 
 /**
  * Description.
  * @param {FooBar} options
  * @param {Object} options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // "jsdoc/require-param": ["error"|"warn", {"checkTypesPattern":"FooBar"}]
 
 /**
@@ -1771,20 +1625,15 @@ function quux ({ foo: { bar } }) {}
  * @param obj.defaulting."0"
  * @param obj.defaulting."1"
  */
-function Item({
-  data: [foo, bar, ...baz],
-  defaulting: [quux, xyz] = []
-}) {
-}
+function Item({ data: [foo, bar, ...baz], defaulting: [quux, xyz] = [] }) {}
 
 /**
-* Returns a number.
-* @param {Object} props Props.
-* @param {Object} props.prop Prop.
-* @return {number} A number.
-*/
-export function testFn1 ({ prop = { a: 1, b: 2 } }) {
-}
+ * Returns a number.
+ * @param {Object} props Props.
+ * @param {Object} props.prop Prop.
+ * @return {number} A number.
+ */
+export function testFn1({ prop = { a: 1, b: 2 } }) {}
 // "jsdoc/require-param": ["error"|"warn", {"useDefaultObjectProperties":false}]
 
 /**
@@ -1807,7 +1656,7 @@ function foo(this: T, bar: number): number {
 }
 
 /** {@link someOtherval} */
-function a (b) {}
+function a(b) {}
 // "jsdoc/require-param": ["error"|"warn", {"contexts":[{"comment":"*:not(JsdocBlock:has(JsdocInlineTag[tag=link]))","context":"FunctionDeclaration"}]}]
 
 /**
@@ -1817,7 +1666,7 @@ function a (b) {}
  * @param options.b Second value
  * @returns Sum of a and b
  */
-function sumDestructure(this: unknown, { a, b }: { a: number, b: number }) {
+function sumDestructure(this: unknown, { a, b }: { a: number; b: number }) {
   return a + b;
 }
 
@@ -1833,7 +1682,6 @@ const inner = (c: number, d: string): void => {
 /**
  * Some desc.
  */
-function quux (a, b) {}
+function quux(a, b) {}
 // "jsdoc/require-param": ["error"|"warn", {"ignoreWhenAllParamsMissing":true}]
 ````
-

@@ -41,7 +41,7 @@ are whitelisted in `singleLineTags`.
 ### `singleLineTags` (defaults to `['lends', 'type']`)
 
 An array of tags which can nevertheless be allowed as single line blocks when
-`noSingleLineBlocks` is set.  You may set this to a empty array to
+`noSingleLineBlocks` is set. You may set this to a empty array to
 cause all single line blocks to be reported. If `'*'` is present, then
 the presence of a tag will allow single line blocks (but not if a tag is
 missing).
@@ -90,13 +90,13 @@ cannot be reliably added after the tag either).
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|Any (though `singleLineTags` and `multilineTags` control the application)|
-|Recommended|true|
-|Settings||
-|Options|`allowMultipleTags`, `minimumLengthForMultiline`, `multilineTags`, `noFinalLineText`, `noMultilineBlocks`, `noSingleLineBlocks`, `noZeroLineText`, `singleLineTags`|
+|             |                                                                                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | everywhere                                                                                                                                                          |
+| Tags        | Any (though `singleLineTags` and `multilineTags` control the application)                                                                                           |
+| Recommended | true                                                                                                                                                                |
+| Settings    |                                                                                                                                                                     |
+| Options     | `allowMultipleTags`, `minimumLengthForMultiline`, `multilineTags`, `noFinalLineText`, `noMultilineBlocks`, `noSingleLineBlocks`, `noZeroLineText`, `singleLineTags` |
 
 ## Failing examples
 

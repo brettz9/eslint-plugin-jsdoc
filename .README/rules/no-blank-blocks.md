@@ -14,13 +14,13 @@ Reports and optionally removes blocks with whitespace only.
 
 Whether or not to auto-remove the blank block. Defaults to `false`.
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|false|
-|Settings||
-|Options|`enableFixer`|
+|             |               |
+| ----------- | ------------- |
+| Context     | everywhere    |
+| Tags        | N/A           |
+| Recommended | false         |
+| Settings    |               |
+| Options     | `enableFixer` |
 
 ## Failing examples
 

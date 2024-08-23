@@ -9,10 +9,11 @@ const WarnSettings = function () {
      * @param {string} setting
      * @returns {boolean}
      */
-    hasBeenWarned (context, setting) {
-      return warnedSettings.has(context) && /** @type {Set<string>} */ (
-        warnedSettings.get(context)
-      ).has(setting);
+    hasBeenWarned(context, setting) {
+      return (
+        warnedSettings.has(context) &&
+        /** @type {Set<string>} */ (warnedSettings.get(context)).has(setting)
+      );
     },
 
     /**
@@ -20,7 +21,7 @@ const WarnSettings = function () {
      * @param {string} setting
      * @returns {void}
      */
-    markSettingAsWarned (context, setting) {
+    markSettingAsWarned(context, setting) {
       // c8 ignore else
       if (!warnedSettings.has(context)) {
         warnedSettings.set(context, new Set());

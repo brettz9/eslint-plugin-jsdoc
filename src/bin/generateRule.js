@@ -1,13 +1,11 @@
 /* eslint-disable no-console -- CLI */
 
-import {fileURLToPath} from 'url';
-import {
-  existsSync,
-} from 'fs';
-import fs from 'fs/promises';
-import {
-  resolve, dirname,
-} from 'path';
+import camelCase from "camelcase";
+import { existsSync } from "fs";
+import fs from "fs/promises";
+import open from "open-editor";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
 /**
  * @example
@@ -17,46 +15,38 @@ import {
  * ```
  */
 
-import camelCase from 'camelcase';
-import open from 'open-editor';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const dirName = dirname(fileURLToPath(import.meta.url));
 
 // Todo: Would ideally have prompts, e.g., to ask for whether
 //   type was problem/layout, etc.
 
-const [
-  , , ruleName,
-  ...options
-] = process.argv;
+const [, , ruleName, ...options] = process.argv;
 
-const recommended = options.includes('--recommended');
+const recommended = options.includes("--recommended");
 
 (async () => {
   if (!ruleName) {
-    console.error('Please supply a rule name');
+    console.error("Please supply a rule name");
 
     return;
   }
 
-  if ((/[A-Z]/u).test(ruleName)) {
-    console.error('Please ensure the rule has no capital letters');
+  if (/[A-Z]/u.test(ruleName)) {
+    console.error("Please ensure the rule has no capital letters");
 
     return;
   }
 
-  const ruleNamesPath = './test/rules/ruleNames.json';
+  const ruleNamesPath = "./test/rules/ruleNames.json";
   // @ts-expect-error Older types?
-  const ruleNames = JSON.parse(await fs.readFile(
-    ruleNamesPath,
-  ));
+  const ruleNames = JSON.parse(await fs.readFile(ruleNamesPath));
   if (!ruleNames.includes(ruleName)) {
     ruleNames.push(ruleName);
     ruleNames.sort();
   }
 
-  await fs.writeFile(ruleNamesPath, JSON.stringify(ruleNames, null, 2) + '\n');
-  console.log('ruleNames', ruleNames);
+  await fs.writeFile(ruleNamesPath, JSON.stringify(ruleNames, null, 2) + "\n");
+  console.log("ruleNames", ruleNames);
 
   const ruleTemplate = `import iterateJsdoc from '../iterateJsdoc.js';
 
@@ -127,7 +117,7 @@ export default iterateJsdoc(({
 |---|---|
 |Context|everywhere|
 |Tags|\`\`|
-|Recommended|${recommended ? 'true' : 'false'}|
+|Recommended|${recommended ? "true" : "false"}|
 |Settings||
 |Options||
 
@@ -155,11 +145,11 @@ export default iterateJsdoc(({
    * @returns {Promise<void>}
    */
   const replaceInOrder = async ({
-    path,
-    oldRegex,
     checkName,
     newLine,
     oldIsCamel,
+    oldRegex,
+    path,
   }) => {
     /**
      * @typedef {number} Integer
@@ -176,7 +166,7 @@ export default iterateJsdoc(({
      */
     const offsets = [];
 
-    let readme = await fs.readFile(path, 'utf8');
+    let readme = await fs.readFile(path, "utf8");
     readme.replace(
       oldRegex,
       /**
@@ -188,9 +178,7 @@ export default iterateJsdoc(({
        * @param {string} groups.oldRule
        * @returns {string}
        */
-      (matchedLine, n1, offset, str, {
-        oldRule,
-      }) => {
+      (matchedLine, n1, offset, str, { oldRule }) => {
         offsets.push({
           matchedLine,
           offset,
@@ -201,25 +189,22 @@ export default iterateJsdoc(({
       },
     );
 
-    offsets.sort(({
-      oldRule,
-    }, {
-      oldRule: oldRuleB,
-    }) => {
-      return oldRule < oldRuleB ? -1 : (oldRule > oldRuleB ? 1 : 0);
+    offsets.sort(({ oldRule }, { oldRule: oldRuleB }) => {
+      return oldRule < oldRuleB ? -1 : oldRule > oldRuleB ? 1 : 0;
     });
 
     let alreadyIncluded = false;
-    const itemIndex = offsets.findIndex(({
-      oldRule,
-    }) => {
-      alreadyIncluded ||= oldIsCamel ? camelCasedRuleName === oldRule : ruleName === oldRule;
+    const itemIndex = offsets.findIndex(({ oldRule }) => {
+      alreadyIncluded ||= oldIsCamel
+        ? camelCasedRuleName === oldRule
+        : ruleName === oldRule;
 
       return oldIsCamel ? camelCasedRuleName < oldRule : ruleName < oldRule;
     });
     let item = itemIndex !== undefined && offsets[itemIndex];
-    if (item && itemIndex === 0 &&
-
+    if (
+      item &&
+      itemIndex === 0 &&
       // This property would not always be sufficient but in this case it is.
       oldIsCamel
     ) {
@@ -234,11 +219,12 @@ export default iterateJsdoc(({
     if (alreadyIncluded) {
       console.log(`Rule name is already present in ${checkName}.`);
     } else {
-      readme = readme.slice(0, item.offset) +
-                (item.offset ? '\n' : '') +
-                newLine +
-                (item.offset ? '' : '\n') +
-                readme.slice(item.offset);
+      readme =
+        readme.slice(0, item.offset) +
+        (item.offset ? "\n" : "") +
+        newLine +
+        (item.offset ? "" : "\n") +
+        readme.slice(item.offset);
 
       await fs.writeFile(path, readme);
     }
@@ -252,28 +238,28 @@ export default iterateJsdoc(({
   // });
 
   await replaceInOrder({
-    checkName: 'index import',
+    checkName: "index import",
     newLine: `import ${camelCasedRuleName} from './rules/${camelCasedRuleName}.js';`,
     oldIsCamel: true,
     oldRegex: /\nimport (?<oldRule>[^ ]*) from '.\/rules\/\1\.js';/gu,
-    path: './src/index.js',
+    path: "./src/index.js",
   });
 
   await replaceInOrder({
-    checkName: 'index recommended',
-    newLine: `${' '.repeat(6)}'jsdoc/${ruleName}': ${recommended ? 'warnOrError' : '\'off\''},`,
+    checkName: "index recommended",
+    newLine: `${" ".repeat(6)}'jsdoc/${ruleName}': ${recommended ? "warnOrError" : "'off'"},`,
     oldRegex: /\n\s{6}'jsdoc\/(?<oldRule>[^']*)': .*?,/gu,
-    path: './src/index.js',
+    path: "./src/index.js",
   });
 
   await replaceInOrder({
-    checkName: 'index rules',
-    newLine: `${' '.repeat(4)}'${ruleName}': ${camelCasedRuleName},`,
+    checkName: "index rules",
+    newLine: `${" ".repeat(4)}'${ruleName}': ${camelCasedRuleName},`,
     oldRegex: /\n\s{4}'(?<oldRule>[^']*)': [^,]*,/gu,
-    path: './src/index.js',
+    path: "./src/index.js",
   });
 
-  await import('./generateDocs.js');
+  await import("./generateDocs.js");
 
   /*
   console.log('Paths to open for further editing\n');
@@ -283,7 +269,7 @@ export default iterateJsdoc(({
   */
 
   // Set chdir as somehow still in operation from other test
-  process.chdir(resolve(__dirname, '../../'));
+  process.chdir(resolve(dirName, "../../"));
   await open([
     // Could even add editor line column numbers like `${rulePath}:1:1`
     ruleReadmePath,

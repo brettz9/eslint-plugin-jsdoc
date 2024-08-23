@@ -14,13 +14,13 @@ in the block description.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|(Block description)|
-|Recommended|false|
-|Settings||
-|Options||
+|             |                     |
+| ----------- | ------------------- |
+| Context     | everywhere          |
+| Tags        | (Block description) |
+| Recommended | false               |
+| Settings    |                     |
+| Options     |                     |
 
 ## Failing examples
 

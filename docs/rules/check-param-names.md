@@ -1,34 +1,36 @@
 <a name="user-content-check-param-names"></a>
 <a name="check-param-names"></a>
+
 # <code>check-param-names</code>
 
-* [Fixer](#user-content-check-param-names-fixer)
-* [Destructuring](#user-content-check-param-names-destructuring)
-* [Options](#user-content-check-param-names-options)
-    * [`checkRestProperty`](#user-content-check-param-names-options-checkrestproperty)
-    * [`checkTypesPattern`](#user-content-check-param-names-options-checktypespattern)
-    * [`enableFixer`](#user-content-check-param-names-options-enablefixer)
-    * [`allowExtraTrailingParamDocs`](#user-content-check-param-names-options-allowextratrailingparamdocs)
-    * [`checkDestructured`](#user-content-check-param-names-options-checkdestructured)
-    * [`useDefaultObjectProperties`](#user-content-check-param-names-options-usedefaultobjectproperties)
-    * [`disableExtraPropertyReporting`](#user-content-check-param-names-options-disableextrapropertyreporting)
-    * [`disableMissingParamChecks`](#user-content-check-param-names-options-disablemissingparamchecks)
-* [Context and settings](#user-content-check-param-names-context-and-settings)
-* [Failing examples](#user-content-check-param-names-failing-examples)
-* [Passing examples](#user-content-check-param-names-passing-examples)
-
+- [Fixer](#user-content-check-param-names-fixer)
+- [Destructuring](#user-content-check-param-names-destructuring)
+- [Options](#user-content-check-param-names-options)
+  - [`checkRestProperty`](#user-content-check-param-names-options-checkrestproperty)
+  - [`checkTypesPattern`](#user-content-check-param-names-options-checktypespattern)
+  - [`enableFixer`](#user-content-check-param-names-options-enablefixer)
+  - [`allowExtraTrailingParamDocs`](#user-content-check-param-names-options-allowextratrailingparamdocs)
+  - [`checkDestructured`](#user-content-check-param-names-options-checkdestructured)
+  - [`useDefaultObjectProperties`](#user-content-check-param-names-options-usedefaultobjectproperties)
+  - [`disableExtraPropertyReporting`](#user-content-check-param-names-options-disableextrapropertyreporting)
+  - [`disableMissingParamChecks`](#user-content-check-param-names-options-disablemissingparamchecks)
+- [Context and settings](#user-content-check-param-names-context-and-settings)
+- [Failing examples](#user-content-check-param-names-failing-examples)
+- [Passing examples](#user-content-check-param-names-passing-examples)
 
 Ensures that parameter names in JSDoc are matched by corresponding items in
 the function declaration.
 
 <a name="user-content-check-param-names-fixer"></a>
 <a name="check-param-names-fixer"></a>
+
 ## Fixer
 
 (Todo)
 
 <a name="user-content-check-param-names-destructuring"></a>
 <a name="check-param-names-destructuring"></a>
+
 ## Destructuring
 
 Note that by default the rule will not report parameters present on the docs
@@ -41,7 +43,7 @@ actually be a part of the object rest property.
  * @param options
  * @param options.foo
  */
-function quux ({foo, ...extra}) {}
+function quux({ foo, ...extra }) {}
 ```
 
 To require that `extra` be documented--and that any extraneous properties
@@ -56,22 +58,26 @@ may appear that there is an actual property named `extra`.
 
 <a name="user-content-check-param-names-options"></a>
 <a name="check-param-names-options"></a>
+
 ## Options
 
 <a name="user-content-check-param-names-options-checkrestproperty"></a>
 <a name="check-param-names-options-checkrestproperty"></a>
+
 ### <code>checkRestProperty</code>
 
 See the "Destructuring" section. Defaults to `false`.
 
 <a name="user-content-check-param-names-options-checktypespattern"></a>
 <a name="check-param-names-options-checktypespattern"></a>
+
 ### <code>checkTypesPattern</code>
 
 See `require-param` under the option of the same name.
 
 <a name="user-content-check-param-names-options-enablefixer"></a>
 <a name="check-param-names-options-enablefixer"></a>
+
 ### <code>enableFixer</code>
 
 Set to `true` to auto-remove `@param` duplicates (based on identical
@@ -83,6 +89,7 @@ be removed even if it has a different type or description).
 
 <a name="user-content-check-param-names-options-allowextratrailingparamdocs"></a>
 <a name="check-param-names-options-allowextratrailingparamdocs"></a>
+
 ### <code>allowExtraTrailingParamDocs</code>
 
 If set to `true`, this option will allow extra `@param` definitions (e.g.,
@@ -92,12 +99,14 @@ their presence within the function signature. Other inconsistencies between
 
 <a name="user-content-check-param-names-options-checkdestructured"></a>
 <a name="check-param-names-options-checkdestructured"></a>
+
 ### <code>checkDestructured</code>
 
 Whether to check destructured properties. Defaults to `true`.
 
 <a name="user-content-check-param-names-options-usedefaultobjectproperties"></a>
 <a name="check-param-names-options-usedefaultobjectproperties"></a>
+
 ### <code>useDefaultObjectProperties</code>
 
 Set to `true` if you wish to avoid reporting of child property documentation
@@ -107,6 +116,7 @@ are present and can therefore be documented. Defaults to `false`.
 
 <a name="user-content-check-param-names-options-disableextrapropertyreporting"></a>
 <a name="check-param-names-options-disableextrapropertyreporting"></a>
+
 ### <code>disableExtraPropertyReporting</code>
 
 Whether to check for extra destructured properties. Defaults to `false`. Change
@@ -119,69 +129,62 @@ that are available and actually used in the function.
 
 <a name="user-content-check-param-names-options-disablemissingparamchecks"></a>
 <a name="check-param-names-options-disablemissingparamchecks"></a>
+
 ### <code>disableMissingParamChecks</code>
 
 Whether to avoid checks for missing `@param` definitions. Defaults to `false`. Change to `true` if you want to be able to omit properties.
 
 <a name="user-content-check-param-names-context-and-settings"></a>
 <a name="check-param-names-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
-|Options|`allowExtraTrailingParamDocs`, `checkDestructured`, `checkRestProperty`, `checkTypesPattern`, `disableExtraPropertyReporting`, `disableMissingParamChecks`, `enableFixer`, `useDefaultObjectProperties`|
-|Tags|`param`|
-|Aliases|`arg`, `argument`|
-|Recommended|true|
+|             |                                                                                                                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`                                                                                                                                  |
+| Options     | `allowExtraTrailingParamDocs`, `checkDestructured`, `checkRestProperty`, `checkTypesPattern`, `disableExtraPropertyReporting`, `disableMissingParamChecks`, `enableFixer`, `useDefaultObjectProperties` |
+| Tags        | `param`                                                                                                                                                                                                 |
+| Aliases     | `arg`, `argument`                                                                                                                                                                                       |
+| Recommended | true                                                                                                                                                                                                    |
 
 <a name="user-content-check-param-names-failing-examples"></a>
 <a name="check-param-names-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param Foo
  */
-function quux (foo = 'FOO') {
-
-}
+function quux(foo = "FOO") {}
 // Message: Expected @param names to be "foo". Got "Foo".
 
 /**
  * @arg Foo
  */
-function quux (foo = 'FOO') {
-
-}
+function quux(foo = "FOO") {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 // Message: Expected @arg names to be "foo". Got "Foo".
 
 /**
  * @param Foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Expected @param names to be "foo". Got "Foo".
 
 /**
  * @param Foo.Bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: @param path declaration ("Foo.Bar") appears before any real parameter.
 
 /**
  * @param foo
  * @param Foo.Bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: @param path declaration ("Foo.Bar") root node name ("Foo") does not match previous real parameter name ("foo").
 
 /**
@@ -189,9 +192,7 @@ function quux (foo) {
  * @param {string} employees[].name - The name of an employee.
  * @param {string} employees[].department - The employee's department.
  */
-function assign (employees) {
-
-};
+function assign(employees) {}
 // Message: @param path declaration ("employees[].name") appears before any real parameter.
 
 /**
@@ -199,9 +200,7 @@ function assign (employees) {
  * @param {string} employees[].name - The name of an employee.
  * @param {string} employees[].name - The employee's department.
  */
-function assign (employees) {
-
-};
+function assign(employees) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "employees[].name"
 
@@ -210,38 +209,30 @@ function assign (employees) {
  * @param foo.bar
  * @param bar
  */
-function quux (bar, foo) {
-
-}
+function quux(bar, foo) {}
 // Message: Expected @param names to be "bar, foo". Got "foo, bar".
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: @param "bar" does not match an existing function parameter.
 
 /**
  * @param foo
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "foo"
 
 class bar {
-    /**
-     * @param foo
-     * @param foo
-     */
-    quux (foo) {
-
-    }
+  /**
+   * @param foo
+   * @param foo
+   */
+  quux(foo) {}
 }
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "foo"
@@ -250,9 +241,7 @@ class bar {
  * @param foo
  * @param foo
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "foo"
 
@@ -260,9 +249,7 @@ function quux (foo, bar) {
  * @param foo
  * @param foo
  */
-function quux (foo, foo) {
-
-}
+function quux(foo, foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "foo"
 
@@ -271,9 +258,7 @@ function quux (foo, foo) {
  * @param cfg.foo
  * @param cfg.foo
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "cfg.foo"
 
@@ -282,18 +267,14 @@ function quux ({foo}) {
  * @param cfg.foo
  * @param cfg.foo
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // Message: Duplicate @param "cfg.foo"
 
 /**
  * @param cfg
  * @param cfg.foo
  */
-function quux ({foo, bar}) {
-
-}
+function quux({ foo, bar }) {}
 // Message: Missing @param "cfg.bar"
 
 /**
@@ -302,9 +283,7 @@ function quux ({foo, bar}) {
  * @param [cfg.foo]
  * @param baz
  */
-function quux ({foo}, baz) {
-
-}
+function quux({ foo }, baz) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "cfg.foo"
 
@@ -314,9 +293,7 @@ function quux ({foo}, baz) {
  * @param [cfg.foo="with a default"]
  * @param baz
  */
-function quux ({foo, bar}, baz) {
-
-}
+function quux({ foo, bar }, baz) {}
 // Message: Missing @param "cfg.bar"
 
 /**
@@ -325,9 +302,7 @@ function quux ({foo, bar}, baz) {
  * @param [cfg.foo="with a default"]
  * @param baz
  */
-function quux ({foo}, baz) {
-
-}
+function quux({ foo }, baz) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "cfg.foo"
 
@@ -336,25 +311,19 @@ function quux ({foo}, baz) {
  * @param [cfg.foo="with a default"]
  * @param baz
  */
-function quux ({foo, bar}, baz) {
-
-}
+function quux({ foo, bar }, baz) {}
 // Message: Missing @param "cfg.bar"
 
 /**
  * @param args
  */
-function quux ({a, b}) {
-
-}
+function quux({ a, b }) {}
 // Message: Missing @param "args.a"
 
 /**
  * @param args
  */
-function quux ({a, b} = {}) {
-
-}
+function quux({ a, b } = {}) {}
 // Message: Missing @param "args.a"
 
 export class SomeClass {
@@ -370,7 +339,7 @@ export class SomeClass {
    * @param prop
    * @param prop.foo
    */
-  constructor(prop: { foo: string, bar: string }) {}
+  constructor(prop: { foo: string; bar: string }) {}
 }
 // Message: Missing @param "prop.bar"
 
@@ -380,7 +349,7 @@ export class SomeClass {
    * @param prop.foo
    * @param prop.bar
    */
-  constructor(options: { foo: string, bar: string }) {}
+  constructor(options: { foo: string; bar: string }) {}
 }
 // Message: @param "prop" does not match parameter name "options"
 
@@ -397,9 +366,7 @@ export class SomeClass {
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":false}}}
 // Message: Unexpected tag `@param`
 
@@ -407,24 +374,20 @@ function quux (foo) {
  * @param {Error} error Exit code
  * @param {number} [code = 1] Exit code
  */
-function quux (error, cde = 1) {
-};
+function quux(error, cde = 1) {}
 // Message: Expected @param names to be "error, cde". Got "error, code".
 
 /**
  * @param foo
  */
-function quux ([a, b] = []) {
-
-}
+function quux([a, b] = []) {}
 // Message: Missing @param "foo."0""
 
 /**
  * @param options
  * @param options.foo
  */
-function quux ({foo, ...extra}) {
-}
+function quux({ foo, ...extra }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"checkRestProperty":true}]
 // Message: Missing @param "options.extra"
 
@@ -434,9 +397,7 @@ function quux ({foo, ...extra}) {
  * @param cfg.bar
  * @param cfg.extra
  */
-function quux ({foo, ...extra}) {
-
-}
+function quux({ foo, ...extra }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"checkRestProperty":true}]
 // Message: @param "cfg.bar" does not exist on cfg
 
@@ -444,8 +405,8 @@ function quux ({foo, ...extra}) {
  * Converts an SVGRect into an object.
  * @param {SVGRect} bbox - a SVGRect
  */
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // "jsdoc/check-param-names": ["error"|"warn", {"checkTypesPattern":"SVGRect"}]
 // Message: Missing @param "bbox.x"
@@ -454,8 +415,8 @@ const bboxToObj = function ({x, y, width, height}) {
  * Converts an SVGRect into an object.
  * @param {object} bbox - a SVGRect
  */
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // Message: Missing @param "bbox.x"
 
@@ -464,8 +425,7 @@ module.exports = class GraphQL {
    * @param fetchOptions
    * @param cacheKey
    */
-  fetch = ({ url, ...options }, cacheKey) => {
-  }
+  fetch = ({ url, ...options }, cacheKey) => {};
 };
 // "jsdoc/check-param-names": ["error"|"warn", {"checkRestProperty":true}]
 // Message: Missing @param "fetchOptions.url"
@@ -490,9 +450,7 @@ function testingEslint(options: {
 /**
  *
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":false,"required":["name"]}}}}
 // Message: Cannot add "name" to `require` with the tag's `name` set to `false`
 
@@ -500,9 +458,7 @@ function quux() {
  * @param root
  * @param foo
  */
-function quux ({foo, bar}, baz) {
-
-}
+function quux({ foo, bar }, baz) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"checkDestructured":false}]
 // Message: Expected @param names to be "root, baz". Got "root, foo".
 
@@ -511,7 +467,7 @@ function quux ({foo, bar}, baz) {
  * @param {Object} options
  * @param {FooBar} foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // Message: Missing @param "options.foo"
 
 /**
@@ -519,7 +475,7 @@ function quux ({ foo: { bar } }) {}
  * @param {Object} options
  * @param options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // Message: Missing @param "options.foo.bar"
 
 /**
@@ -528,19 +484,22 @@ function quux ({ foo: { bar } }) {}
  * @param {object} options.foo A description.
  * @param {object} options.foo.bar
  */
-function foo({ foo: { bar: { baz } }}) {}
+function foo({
+  foo: {
+    bar: { baz },
+  },
+}) {}
 // Message: Missing @param "options.foo.bar.baz"
 
 /**
-* Returns a number.
-* @param {Object} props Props.
-* @param {Object} props.prop Prop.
-* @param {string} props.prop.a String.
-* @param {string} props.prop.b String.
-* @return {number} A number.
-*/
-export function testFn1 ({ prop = { a: 1, b: 2 } }) {
-}
+ * Returns a number.
+ * @param {Object} props Props.
+ * @param {Object} props.prop Prop.
+ * @param {string} props.prop.a String.
+ * @param {string} props.prop.b String.
+ * @return {number} A number.
+ */
+export function testFn1({ prop = { a: 1, b: 2 } }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"useDefaultObjectProperties":false}]
 // Message: @param "props.prop.a" does not exist on props
 
@@ -550,9 +509,7 @@ export function testFn1 ({ prop = { a: 1, b: 2 } }) {
  * @param {string} cfg.bar
  * @param {object} cfg.extra
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // Message: @param "cfg.bar" does not exist on cfg
 
 /**
@@ -561,9 +518,7 @@ function quux ({foo}) {
  * @param {string} cfg.bar
  * @param {object} cfg.extra
  */
-function quux ({foo}) {
-
-}
+function quux({ foo }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableExtraPropertyReporting":true}]
 // Message: @param "cfg.bar" does not exist on cfg
 
@@ -575,9 +530,11 @@ function quux ({foo}) {
  * @param {string} root.cfg.a.bar
  * @param {object} root.cfg.a.extra
  */
-function quux ({cfg: {a: {foo}}}) {
-
-}
+function quux({
+  cfg: {
+    a: { foo },
+  },
+}) {}
 // Message: @param "root.cfg.a.bar" does not exist on root
 
 /**
@@ -588,9 +545,11 @@ function quux ({cfg: {a: {foo}}}) {
  * @param {string} root.cfg.a.bar
  * @param {object} root.cfg.a.extra
  */
-function quux ({cfg: {a: {foo}}}) {
-
-}
+function quux({
+  cfg: {
+    a: { foo },
+  },
+}) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableExtraPropertyReporting":true}]
 // Message: @param "root.cfg.a.bar" does not exist on root
 
@@ -601,9 +560,7 @@ function quux ({cfg: {a: {foo}}}) {
  * @param {string} root.cfg.bar
  * @param {object} root.cfg.extra
  */
-function quux ({cfg}) {
-
-}
+function quux({ cfg }) {}
 // Message: @param "root.cfg.foo" does not exist on root
 
 /**
@@ -611,32 +568,28 @@ function quux ({cfg}) {
  * @param foo
  *   on another line
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"enableFixer":true}]
 // Message: Duplicate @param "foo"
 
 /**
  * @param barr This is the description of bar. Oops, we misspelled "bar" as "barr".
  */
-declare function foo(bar: number)
+declare function foo(bar: number);
 // Message: Expected @param names to be "bar". Got "barr".
 
 /**
  * @param foo
  * @param foo.bar
  */
-function quux (bar, foo) {
-}
+function quux(bar, foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":false}]
 // Message: Expected @param names to be "bar, foo". Got "foo".
 
 /**
  * @param foo
  */
-function quux (bar, baz) {
-}
+function quux(bar, baz) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 // Message: Expected @param names to be "bar, baz". Got "foo".
 
@@ -644,8 +597,7 @@ function quux (bar, baz) {
  * @param bar
  * @param foo
  */
-function quux (foo, bar) {
-}
+function quux(foo, bar) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 // Message: Expected @param names to be "foo, bar". Got "bar, foo".
 
@@ -653,24 +605,23 @@ function quux (foo, bar) {
  * @param foo
  * @param bar
  */
-function quux (foo) {
-}
+function quux(foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 // Message: @param "bar" does not match an existing function parameter.
 
 export interface B {
-    /**
-     * @param paramA Something something
-     */
-    methodB(paramB: string): void
-};
+  /**
+   * @param paramA Something something
+   */
+  methodB(paramB: string): void;
+}
 // Message: Expected @param names to be "paramB". Got "paramA".
 
 interface A {
   /**
    * @param params Values for the placeholders
    */
-  getText(key: string, ...params: string[]): string
+  getText(key: string, ...params: string[]): string;
 }
 // Message: Expected @param names to be "key, ...params". Got "params".
 
@@ -681,98 +632,77 @@ export function fn(...[type, arg]: FnArgs): void {
   // ...
 }
 // Message: Expected @param name to be "type". Got "arg".
-````
-
-
+```
 
 <a name="user-content-check-param-names-passing-examples"></a>
 <a name="check-param-names-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 
 /**
  * @param foo
  * @param foo.foo
  * @param bar
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 
 /**
  * @param args
  */
-function quux (...args) {
-
-}
+function quux(...args) {}
 
 /**
  * @param foo
  * @param foo.a
  * @param foo.b
  */
-function quux ({a, b}) {
-
-}
+function quux({ a, b }) {}
 
 /**
  * @param foo
  * @param foo.a
  * @param foo.b
  */
-function quux ({"a": A, b}) {
-
-}
+function quux({ a: A, b }) {}
 
 /**
  * @param foo
  * @param foo."a"
  * @param foo.b
  */
-function quux ({a: A, b}) {
-
-}
+function quux({ a: A, b }) {}
 
 /**
  * @param foo
  * @param foo."a-b"
  * @param foo.b
  */
-function quux ({"a-b": A, b}) {
-
-}
+function quux({ "a-b": A, b }) {}
 
 /**
  * @param foo
@@ -780,9 +710,7 @@ function quux ({"a-b": A, b}) {
  * @param foo.baz
  * @param bar
  */
-function quux (foo, bar) {
-
-}
+function quux(foo, bar) {}
 
 /**
  * Assign the project to a list of employees.
@@ -790,9 +718,7 @@ function quux (foo, bar) {
  * @param {string} employees[].name - The name of an employee.
  * @param {string} employees[].department - The employee's department.
  */
-function assign (employees) {
-
-};
+function assign(employees) {}
 
 export class SomeClass {
   /**
@@ -807,7 +733,7 @@ export class SomeClass {
    * @param options.foo
    * @param options.bar
    */
-  constructor(options: { foo: string, bar: string }) {}
+  constructor(options: { foo: string; bar: string }) {}
 }
 
 export class SomeClass {
@@ -816,7 +742,7 @@ export class SomeClass {
    * @param options.foo
    * @param options.bar
    */
-  constructor({ foo, bar }: { foo: string, bar: string }) {}
+  constructor({ foo, bar }: { foo: string; bar: string }) {}
 }
 
 export class SomeClass {
@@ -825,23 +751,20 @@ export class SomeClass {
    * @param options.foo
    * @param options.bar
    */
-  constructor({ foo, bar }: { foo: string, bar: string }) {}
+  constructor({ foo, bar }: { foo: string; bar: string }) {}
 }
 
 /**
  * @param {Error} error Exit code
  * @param {number} [code = 1] Exit code
  */
-function quux (error, code = 1) {
-};
+function quux(error, code = 1) {}
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"allowExtraTrailingParamDocs":true}]
 
 /**
@@ -849,18 +772,14 @@ function quux (foo) {
  * @param cfg.foo
  * @param baz
  */
-function quux ({foo}, baz) {
-
-}
+function quux({ foo }, baz) {}
 
 /**
  * @param cfg
  * @param cfg.foo
  * @param cfg2
  */
-function quux ({foo}, cfg2) {
-
-}
+function quux({ foo }, cfg2) {}
 
 /**
  * @param cfg
@@ -868,39 +787,34 @@ function quux ({foo}, cfg2) {
  * @param baz
  * @param baz.cfg
  */
-function quux ({foo}, {cfg}) {
-
-}
+function quux({ foo }, { cfg }) {}
 
 /**
  * @param options
  * @param options.foo
  */
-function quux ({foo, ...extra}) {
-}
+function quux({ foo, ...extra }) {}
 
 /**
  * @param foo
  * @param bar
  */
-function quux (foo, bar, ...extra) {
-
-}
+function quux(foo, bar, ...extra) {}
 
 /**
  * Converts an SVGRect into an object.
  * @param {SVGRect} bbox - a SVGRect
  */
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 
 /**
-* Converts an SVGRect into an object.
-* @param {object} bbox - a SVGRect
-*/
-const bboxToObj = function ({x, y, width, height}) {
-  return {x, y, width, height};
+ * Converts an SVGRect into an object.
+ * @param {object} bbox - a SVGRect
+ */
+const bboxToObj = function ({ x, y, width, height }) {
+  return { x, y, width, height };
 };
 // "jsdoc/check-param-names": ["error"|"warn", {"checkTypesPattern":"SVGRect"}]
 
@@ -910,8 +824,7 @@ class CSS {
    *
    * @param {Object} propertyObject - An object of property-value pairs to set.
    */
-  setCssObject(propertyObject: {[key: string]: string | number}): void {
-  }
+  setCssObject(propertyObject: { [key: string]: string | number }): void {}
 }
 
 /**
@@ -940,9 +853,7 @@ export class Thing {
  * @param foo
  * @param root
  */
-function quux (foo, {bar}) {
-
-}
+function quux(foo, { bar }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"checkDestructured":false}]
 
 class A {
@@ -951,9 +862,10 @@ class A {
    * @param hideButton true if button should be hidden, false otherwise
    * @param onHidden delegate to call when the prompt is hidden
    */
-  public async showPrompt(hideButton: boolean, onHidden: {(): void}): Promise<void>
-  {
-  }
+  public async showPrompt(
+    hideButton: boolean,
+    onHidden: { (): void },
+  ): Promise<void> {}
 }
 
 /**
@@ -961,14 +873,14 @@ class A {
  * @param {Object} options Options.
  * @param {FooBar} options.foo foo description.
  */
-function quux ({ foo: { bar }}) {}
+function quux({ foo: { bar } }) {}
 
 /**
  * Description.
  * @param {FooBar} options
  * @param {Object} options.foo
  */
-function quux ({ foo: { bar } }) {}
+function quux({ foo: { bar } }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"checkTypesPattern":"FooBar"}]
 
 /**
@@ -977,7 +889,7 @@ function quux ({ foo: { bar } }) {}
  * @param {FooBar} options.foo
  * @param {FooBar} options.baz
  */
-function quux ({ foo: { bar }, baz: { cfg } }) {}
+function quux({ foo: { bar }, baz: { cfg } }) {}
 
 /**
  * Item
@@ -987,13 +899,7 @@ function quux ({ foo: { bar }, baz: { cfg } }) {}
  * @param {string} props.data.className - additional css class
  * @param props.val
  */
-export default function Item({
-  data: {
-    className,
-  } = {},
-  val = 4
-}) {
-}
+export default function Item({ data: { className } = {}, val = 4 }) {}
 
 /**
  * @param obj
@@ -1005,22 +911,17 @@ export default function Item({
  * @param obj.defaulting."0"
  * @param obj.defaulting."1"
  */
-function Item({
-  data: [foo, bar, ...baz],
-  defaulting: [quux, xyz] = []
-}) {
-}
+function Item({ data: [foo, bar, ...baz], defaulting: [quux, xyz] = [] }) {}
 
 /**
-* Returns a number.
-* @param {Object} props Props.
-* @param {Object} props.prop Prop.
-* @param {string} props.prop.a String.
-* @param {string} props.prop.b String.
-* @return {number} A number.
-*/
-export function testFn1 ({ prop = { a: 1, b: 2 } }) {
-}
+ * Returns a number.
+ * @param {Object} props Props.
+ * @param {Object} props.prop Prop.
+ * @param {string} props.prop.a String.
+ * @param {string} props.prop.b String.
+ * @return {number} A number.
+ */
+export function testFn1({ prop = { a: 1, b: 2 } }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"useDefaultObjectProperties":true}]
 
 /**
@@ -1030,21 +931,15 @@ export function testFn1 ({ prop = { a: 1, b: 2 } }) {
  * @param {string} root.cfg.bar
  * @param {object} root.cfg.extra
  */
-function quux ({cfg}) {
-
-}
+function quux({ cfg }) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableExtraPropertyReporting":true}]
 
 class A {
-    /**
-     * @param cfg
-     * @param cfg.abc
-     */
-    constructor({
-        [new.target.prop]: cX,
-        abc
-    }) {
-    }
+  /**
+   * @param cfg
+   * @param cfg.abc
+   */
+  constructor({ [new.target.prop]: cX, abc }) {}
 }
 
 /**
@@ -1072,12 +967,7 @@ declare global {
    * @param g Range is 0-1.
    * @param b Range is 0-1.
    */
-  function Color(
-    this: void,
-    r: float,
-    g: float,
-    b: float,
-  ): Color;
+  function Color(this: void, r: float, g: float, b: float): Color;
 }
 
 /**
@@ -1093,23 +983,20 @@ function foo(this: T, bar: number): number {
 /**
  * Documentation
  */
-function quux (foo, bar) {
-}
+function quux(foo, bar) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 
 /**
  * @param bar
  * @param bar.baz
  */
-function quux (foo, bar) {
-}
+function quux(foo, bar) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 
 /**
  * @param foo
  */
-function quux (foo, bar) {
-}
+function quux(foo, bar) {}
 // "jsdoc/check-param-names": ["error"|"warn", {"disableMissingParamChecks":true}]
 
 /**
@@ -1129,5 +1016,4 @@ const inner = (c: number, d: string): void => {
   console.log(d);
 };
 // Settings: {"jsdoc":{"contexts":["VariableDeclaration"]}}
-````
-
+```

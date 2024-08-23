@@ -1,5 +1,5 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
-import * as babelEslintParser from '@babel/eslint-parser';
+import * as babelEslintParser from "@babel/eslint-parser";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -45,9 +45,7 @@ export default {
       ],
       options: [
         {
-          contexts: [
-            'FunctionDeclaration',
-          ],
+          contexts: ["FunctionDeclaration"],
         },
       ],
       output: `
@@ -366,9 +364,7 @@ export default {
       ],
       options: [
         {
-          unnamedRootBase: [
-            'arg',
-          ],
+          unnamedRootBase: ["arg"],
         },
       ],
       output: `
@@ -413,9 +409,7 @@ export default {
       ],
       options: [
         {
-          unnamedRootBase: [
-            'arg', 'config',
-          ],
+          unnamedRootBase: ["arg", "config"],
         },
       ],
       output: `
@@ -461,9 +455,7 @@ export default {
       options: [
         {
           enableRootFixer: false,
-          unnamedRootBase: [
-            'arg', 'config',
-          ],
+          unnamedRootBase: ["arg", "config"],
         },
       ],
       output: `
@@ -646,7 +638,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -996,6 +988,10 @@ export default {
           message: 'Missing JSDoc @param "foo" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+        sourceType: "module",
+      },
       output: `
         export class SomeClass {
           /**
@@ -1005,10 +1001,6 @@ export default {
           constructor(private property: string, private foo: number) {}
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser,
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -1022,7 +1014,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@param`',
+          message: "Unexpected tag `@param`",
         },
       ],
       settings: {
@@ -1163,9 +1155,7 @@ export default {
       ],
       options: [
         {
-          exemptedBy: [
-            'notPresent',
-          ],
+          exemptedBy: ["notPresent"],
         },
       ],
       output: `
@@ -1233,7 +1223,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1283,11 +1273,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSMethodSignature',
-          ],
+          contexts: ["TSMethodSignature"],
         },
       ],
       output: `
@@ -1299,9 +1290,6 @@ export default {
       TestMethod(id: number): void;
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1322,11 +1310,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSEmptyBodyFunctionExpression',
-          ],
+          contexts: ["TSEmptyBodyFunctionExpression"],
         },
       ],
       output: `
@@ -1342,9 +1331,6 @@ export default {
       abstract TestFunction(id);
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1365,11 +1351,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSEmptyBodyFunctionExpression',
-          ],
+          contexts: ["TSEmptyBodyFunctionExpression"],
         },
       ],
       output: `
@@ -1385,9 +1372,6 @@ export default {
       TestMethod(id);
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1402,11 +1386,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1416,9 +1401,6 @@ export default {
        */
       declare let TestFunction: (id) => void;
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1433,11 +1415,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1447,9 +1430,6 @@ export default {
          */
         let TestFunction: (id) => void;
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1468,11 +1448,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1486,9 +1467,6 @@ export default {
           return processor(10);
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1506,11 +1484,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1523,9 +1502,6 @@ export default {
           return processor(10);
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1542,11 +1518,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1558,9 +1535,6 @@ export default {
           public Test: (id: number) => string;
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1579,11 +1553,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1597,9 +1572,6 @@ export default {
           }
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1616,11 +1588,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1632,9 +1605,6 @@ export default {
         Test: (id: number) => string;
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1651,11 +1621,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1667,9 +1638,6 @@ export default {
           TestMethod(): (id: number) => string;
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1684,11 +1652,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1698,9 +1667,6 @@ export default {
          */
         function test(): (id: number) => string;
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1718,11 +1684,12 @@ export default {
           message: 'Missing JSDoc @param "id" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
       output: `
@@ -1735,9 +1702,6 @@ export default {
           return (id) => \`\${id}\`;
         }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1799,6 +1763,9 @@ export default {
           message: 'Missing JSDoc @param "options.permissions" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       output: `
       class Client {
         /**
@@ -1828,9 +1795,6 @@ export default {
         ) {}
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1876,6 +1840,9 @@ export default {
           message: 'Missing JSDoc @param "data.last_modified" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       output: `
       class Client {
         /**
@@ -1889,9 +1856,6 @@ export default {
         ) {}
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1907,6 +1871,9 @@ export default {
           message: 'Missing JSDoc @param "cfg.extra" declaration.',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_018,
+      },
       options: [
         {
           checkRestProperty: true,
@@ -1921,9 +1888,6 @@ export default {
       function quux ({num, ...extra}) {
       }
       `,
-      languageOptions: {
-        ecmaVersion: 2_018,
-      },
     },
     {
       code: `
@@ -1940,6 +1904,9 @@ export default {
           message: 'Missing JSDoc @param "cfg.opts.extra" declaration.',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_018,
+      },
       options: [
         {
           checkRestProperty: true,
@@ -1955,9 +1922,6 @@ export default {
       function quux ({opts: {num, ...extra}}) {
       }
       `,
-      languageOptions: {
-        ecmaVersion: 2_018,
-      },
     },
     {
       code: `
@@ -1974,6 +1938,9 @@ export default {
           message: 'Missing JSDoc @param "cfg."1"" declaration.',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_015,
+      },
       output: `
       /**
        * @param {GenericArray} cfg
@@ -1984,9 +1951,6 @@ export default {
         //
       }
       `,
-      languageOptions: {
-        ecmaVersion: 2_015,
-      },
     },
     {
       code: `
@@ -2003,6 +1967,9 @@ export default {
           message: 'Missing JSDoc @param "extra" declaration.',
         },
       ],
+      languageOptions: {
+        ecmaVersion: 2_015,
+      },
       output: `
       /**
        * @param a
@@ -2012,9 +1979,6 @@ export default {
         //
       }
       `,
-      languageOptions: {
-        ecmaVersion: 2_015,
-      },
     },
     {
       code: `
@@ -2042,7 +2006,7 @@ export default {
       ],
       options: [
         {
-          checkTypesPattern: 'SVGRect',
+          checkTypesPattern: "SVGRect",
         },
       ],
       output: `
@@ -2116,6 +2080,9 @@ export default {
           message: 'Missing JSDoc @param "fetchOptions.options" declaration.',
         },
       ],
+      languageOptions: {
+        parser: babelEslintParser,
+      },
       options: [
         {
           checkRestProperty: true,
@@ -2133,9 +2100,6 @@ export default {
         }
       };
       `,
-      languageOptions: {
-        parser: babelEslintParser,
-      }
     },
     /* eslint-disable no-tabs */
     {
@@ -2208,7 +2172,7 @@ export default {
       ],
       options: [
         {
-          checkTypesPattern: 'FooBar',
+          checkTypesPattern: "FooBar",
         },
       ],
       output: `
@@ -2318,6 +2282,9 @@ export default {
           message: 'Missing JSDoc @param "props.prop.b" declaration.',
         },
       ],
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           useDefaultObjectProperties: true,
@@ -2335,9 +2302,6 @@ export default {
       export function testFn1 ({ prop = { a: 1, b: 2 } }) {
       }
       `,
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -2378,12 +2342,15 @@ export default {
           message: 'Missing JSDoc @param "baz" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
               comment: 'JsdocBlock:has(JsdocTag[tag="param"])',
-              context: 'FunctionDeclaration',
+              context: "FunctionDeclaration",
             },
           ],
         },
@@ -2396,9 +2363,6 @@ export default {
          */
         export function myPublicFunction(foo: number, bar: number, baz: number) {}
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -2420,11 +2384,12 @@ export default {
         },
       ],
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -2441,9 +2406,6 @@ export default {
          verbose = false,
        ): void {}
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -2466,11 +2428,12 @@ export default {
           message: 'Missing JSDoc @param "btnState" declaration.',
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'MethodDefinition',
-          ],
+          contexts: ["MethodDefinition"],
         },
       ],
       output: `
@@ -2489,9 +2452,6 @@ export default {
         }
       }
       `,
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -2511,7 +2471,7 @@ export default {
         },
         {
           message: 'Missing JSDoc @param "root1.bar" declaration.',
-        }
+        },
       ],
       output: `
         class A {
@@ -2543,7 +2503,7 @@ export default {
       options: [
         {
           ignoreWhenAllParamsMissing: true,
-        }
+        },
       ],
       output: `
         /**
@@ -2604,9 +2564,7 @@ export default {
       `,
       options: [
         {
-          unnamedRootBase: [
-            'arg',
-          ],
+          unnamedRootBase: ["arg"],
         },
       ],
     },
@@ -2626,9 +2584,7 @@ export default {
       `,
       options: [
         {
-          unnamedRootBase: [
-            'arg', 'config',
-          ],
+          unnamedRootBase: ["arg", "config"],
         },
       ],
     },
@@ -2664,7 +2620,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -3051,7 +3007,7 @@ export default {
       `,
       languageOptions: {
         parser: babelEslintParser,
-      }
+      },
     },
     {
       code: `
@@ -3070,9 +3026,7 @@ export default {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },
@@ -3102,7 +3056,7 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -3150,7 +3104,7 @@ export default {
     }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -3164,9 +3118,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'ArrowFunctionExpression',
-          ],
+          contexts: ["ArrowFunctionExpression"],
         },
       ],
     },
@@ -3182,16 +3134,14 @@ export default {
         return (id) => \`\${id}\`;
       }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSFunctionType',
-          ],
+          contexts: ["TSFunctionType"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -3211,7 +3161,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -3247,7 +3197,7 @@ export default {
     }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -3285,14 +3235,14 @@ export default {
         //
       }
       `,
+      languageOptions: {
+        ecmaVersion: 2_015,
+      },
       options: [
         {
           enableRestElementFixer: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_015,
-      },
     },
     {
       code: `
@@ -3303,14 +3253,14 @@ export default {
         //
       }
       `,
+      languageOptions: {
+        ecmaVersion: 2_015,
+      },
       options: [
         {
           enableRestElementFixer: false,
         },
       ],
-      languageOptions: {
-        ecmaVersion: 2_015,
-      },
     },
     {
       code: `
@@ -3335,7 +3285,7 @@ export default {
       `,
       options: [
         {
-          checkTypesPattern: 'SVGRect',
+          checkTypesPattern: "SVGRect",
         },
       ],
     },
@@ -3352,7 +3302,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -3442,7 +3392,7 @@ export default {
       `,
       options: [
         {
-          checkTypesPattern: 'FooBar',
+          checkTypesPattern: "FooBar",
         },
       ],
     },
@@ -3476,14 +3426,14 @@ export default {
       export function testFn1 ({ prop = { a: 1, b: 2 } }) {
       }
       `,
+      languageOptions: {
+        sourceType: "module",
+      },
       options: [
         {
           useDefaultObjectProperties: false,
         },
       ],
-      languageOptions: {
-        sourceType: 'module',
-      },
     },
     {
       code: `
@@ -3500,16 +3450,14 @@ export default {
       }
       `,
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'MethodDefinition',
-          ],
+          contexts: ["MethodDefinition"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -3520,9 +3468,7 @@ export default {
       ignoreReadme: true,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -3534,16 +3480,14 @@ export default {
        export function setCustomStage(): void {}
        `,
       ignoreReadme: true,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -3558,7 +3502,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -3573,7 +3517,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -3585,8 +3529,8 @@ export default {
         {
           contexts: [
             {
-              comment: '*:not(JsdocBlock:has(JsdocInlineTag[tag=link]))',
-              context: 'FunctionDeclaration',
+              comment: "*:not(JsdocBlock:has(JsdocInlineTag[tag=link]))",
+              context: "FunctionDeclaration",
             },
           ],
         },
@@ -3621,14 +3565,12 @@ export default {
       `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
       settings: {
         jsdoc: {
-          contexts: [
-            'VariableDeclaration',
-          ]
-        }
+          contexts: ["VariableDeclaration"],
+        },
       },
     },
     {
@@ -3641,7 +3583,7 @@ export default {
       options: [
         {
           ignoreWhenAllParamsMissing: true,
-        }
+        },
       ],
     },
   ],

@@ -36,12 +36,12 @@ section of our README for more on the expected format.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|None except those indicated by `contexts`|
-|Tags|Any if indicated by AST|
-|Recommended|false|
-|Options|`contexts`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | None except those indicated by `contexts` |
+| Tags        | Any if indicated by AST                   |
+| Recommended | false                                     |
+| Options     | `contexts`                                |
 
 ## Failing examples
 

@@ -19,52 +19,30 @@ const jsdocTagsUndocumented = {
  */
 const jsdocTags = {
   ...jsdocTagsUndocumented,
-  abstract: [
-    'virtual',
-  ],
+  abstract: ["virtual"],
   access: [],
   alias: [],
   async: [],
-  augments: [
-    'extends',
-  ],
+  augments: ["extends"],
   author: [],
   borrows: [],
   callback: [],
-  class: [
-    'constructor',
-  ],
+  class: ["constructor"],
   classdesc: [],
-  constant: [
-    'const',
-  ],
+  constant: ["const"],
   constructs: [],
   copyright: [],
-  default: [
-    'defaultvalue',
-  ],
+  default: ["defaultvalue"],
   deprecated: [],
-  description: [
-    'desc',
-  ],
+  description: ["desc"],
   enum: [],
   event: [],
   example: [],
   exports: [],
-  external: [
-    'host',
-  ],
-  file: [
-    'fileoverview',
-    'overview',
-  ],
-  fires: [
-    'emits',
-  ],
-  function: [
-    'func',
-    'method',
-  ],
+  external: ["host"],
+  file: ["fileoverview", "overview"],
+  fires: ["emits"],
+  function: ["func", "method"],
   generator: [],
   global: [],
   hideconstructor: [],
@@ -82,11 +60,9 @@ const jsdocTags = {
   lends: [],
   license: [],
   listens: [],
-  member: [
-    'var',
-  ],
+  member: ["var"],
   memberof: [],
-  'memberof!': [],
+  "memberof!": [],
   mixes: [],
   mixin: [],
 
@@ -95,39 +71,28 @@ const jsdocTags = {
   namespace: [],
   override: [],
   package: [],
-  param: [
-    'arg',
-    'argument',
-  ],
+  param: ["arg", "argument"],
   private: [],
-  property: [
-    'prop',
-  ],
+  property: ["prop"],
   protected: [],
   public: [],
   readonly: [],
   requires: [],
-  returns: [
-    'return',
-  ],
+  returns: ["return"],
   see: [],
   since: [],
   static: [],
   summary: [],
 
   this: [],
-  throws: [
-    'exception',
-  ],
+  throws: ["exception"],
   todo: [],
   tutorial: [],
   type: [],
   typedef: [],
   variation: [],
   version: [],
-  yields: [
-    'yield',
-  ],
+  yields: ["yield"],
 };
 
 /**
@@ -179,10 +144,10 @@ const {
   inheritdoc,
   internal,
   overload,
-  satisfies,
-
   // Will be inverted to prefer `return`
   returns,
+
+  satisfies,
   /* eslint-enable no-unused-vars */
   ...typeScriptTagsInClosure
 } = typeScriptTags;
@@ -221,9 +186,7 @@ const closureTags = {
   // Defined as a synonym of `interface` in jsdoc `definitions.js`
   record: [],
 
-  return: [
-    'returns',
-  ],
+  return: ["returns"],
 
   struct: [],
   suppress: [],
@@ -231,8 +194,4 @@ const closureTags = {
   unrestricted: [],
 };
 
-export {
-  closureTags,
-  jsdocTags,
-  typeScriptTags,
-};
+export { closureTags, jsdocTags, typeScriptTags };

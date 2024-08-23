@@ -9,7 +9,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'You must include either `escapeHTML` or `escapeMarkdown`',
+          message: "You must include either `escapeHTML` or `escapeMarkdown`",
         },
       ],
     },
@@ -22,7 +22,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'You have unescaped HTML characters < or &',
+          message: "You have unescaped HTML characters < or &",
         },
       ],
       options: [
@@ -45,7 +45,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'You have unescaped Markdown backtick sequences',
+          message: "You have unescaped Markdown backtick sequences",
         },
       ],
       options: [
@@ -69,7 +69,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'You have unescaped HTML characters < or &',
+          message: "You have unescaped HTML characters < or &",
         },
       ],
       options: [
@@ -94,7 +94,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'You have unescaped Markdown backtick sequences',
+          message: "You have unescaped Markdown backtick sequences",
         },
       ],
       options: [
@@ -118,7 +118,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'You have unescaped HTML characters < or & in a tag',
+          message: "You have unescaped HTML characters < or & in a tag",
         },
       ],
       options: [
@@ -141,7 +141,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'You have unescaped Markdown backtick sequences in a tag',
+          message: "You have unescaped Markdown backtick sequences in a tag",
         },
       ],
       options: [
@@ -165,7 +165,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'You have unescaped HTML characters < or & in a tag',
+          message: "You have unescaped HTML characters < or & in a tag",
         },
       ],
       options: [
@@ -190,7 +190,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'You have unescaped Markdown backtick sequences in a tag',
+          message: "You have unescaped Markdown backtick sequences in a tag",
         },
       ],
       options: [

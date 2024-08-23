@@ -1,12 +1,12 @@
-declare module 'gitdown' {
+declare module "gitdown" {
   interface Gitdown {
     setConfig: (info: {
       gitinfo: {
-        defaultBranchName: string,
-        gitPath: string
-      }
-    }) => void
-    get: () => string
+        defaultBranchName: string;
+        gitPath: string;
+      };
+    }) => void;
+    get: () => string;
   }
-  export function readFile(path: string): Gitdown
+  export function readFile(path: string): Gitdown;
 }

@@ -1,30 +1,31 @@
 <a name="user-content-require-jsdoc"></a>
 <a name="require-jsdoc"></a>
+
 # <code>require-jsdoc</code>
 
-* [Fixer](#user-content-require-jsdoc-fixer)
-* [Options](#user-content-require-jsdoc-options)
-    * [`publicOnly`](#user-content-require-jsdoc-options-publiconly)
-    * [`require`](#user-content-require-jsdoc-options-require)
-    * [`contexts`](#user-content-require-jsdoc-options-contexts)
-    * [`exemptEmptyConstructors`](#user-content-require-jsdoc-options-exemptemptyconstructors)
-    * [`exemptEmptyFunctions`](#user-content-require-jsdoc-options-exemptemptyfunctions)
-    * [`checkConstructors`](#user-content-require-jsdoc-options-checkconstructors)
-    * [`checkGetters`](#user-content-require-jsdoc-options-checkgetters)
-    * [`checkSetters`](#user-content-require-jsdoc-options-checksetters)
-    * [`enableFixer`](#user-content-require-jsdoc-options-enablefixer)
-    * [`minLineCount`](#user-content-require-jsdoc-options-minlinecount)
-    * [`fixerMessage`](#user-content-require-jsdoc-options-fixermessage)
-* [Context and settings](#user-content-require-jsdoc-context-and-settings)
-* [Failing examples](#user-content-require-jsdoc-failing-examples)
-* [Passing examples](#user-content-require-jsdoc-passing-examples)
-
+- [Fixer](#user-content-require-jsdoc-fixer)
+- [Options](#user-content-require-jsdoc-options)
+  - [`publicOnly`](#user-content-require-jsdoc-options-publiconly)
+  - [`require`](#user-content-require-jsdoc-options-require)
+  - [`contexts`](#user-content-require-jsdoc-options-contexts)
+  - [`exemptEmptyConstructors`](#user-content-require-jsdoc-options-exemptemptyconstructors)
+  - [`exemptEmptyFunctions`](#user-content-require-jsdoc-options-exemptemptyfunctions)
+  - [`checkConstructors`](#user-content-require-jsdoc-options-checkconstructors)
+  - [`checkGetters`](#user-content-require-jsdoc-options-checkgetters)
+  - [`checkSetters`](#user-content-require-jsdoc-options-checksetters)
+  - [`enableFixer`](#user-content-require-jsdoc-options-enablefixer)
+  - [`minLineCount`](#user-content-require-jsdoc-options-minlinecount)
+  - [`fixerMessage`](#user-content-require-jsdoc-options-fixermessage)
+- [Context and settings](#user-content-require-jsdoc-context-and-settings)
+- [Failing examples](#user-content-require-jsdoc-failing-examples)
+- [Passing examples](#user-content-require-jsdoc-passing-examples)
 
 Checks for presence of jsdoc comments, on class declarations as well as
 functions.
 
 <a name="user-content-require-jsdoc-fixer"></a>
 <a name="require-jsdoc-fixer"></a>
+
 ## Fixer
 
 Adds an empty JSDoc block unless `enableFixer` is set to `false`. See
@@ -34,12 +35,14 @@ to insert.
 
 <a name="user-content-require-jsdoc-options"></a>
 <a name="require-jsdoc-options"></a>
+
 ## Options
 
 Accepts one optional options object with the following optional keys.
 
 <a name="user-content-require-jsdoc-options-publiconly"></a>
 <a name="require-jsdoc-options-publiconly"></a>
+
 ### <code>publicOnly</code>
 
 This option will insist that missing jsdoc blocks are only reported for
@@ -52,11 +55,12 @@ otherwise noted):
 
 - `ancestorsOnly` - Only check node ancestors to check if node is exported
 - `esm` - ESM exports are checked for JSDoc comments (Defaults to `true`)
-- `cjs` - CommonJS exports are checked for JSDoc comments  (Defaults to `true`)
+- `cjs` - CommonJS exports are checked for JSDoc comments (Defaults to `true`)
 - `window` - Window global exports are checked for JSDoc comments
 
 <a name="user-content-require-jsdoc-options-require"></a>
 <a name="require-jsdoc-options-require"></a>
+
 ### <code>require</code>
 
 An object with the following optional boolean keys which all default to
@@ -71,6 +75,7 @@ An object with the following optional boolean keys which all default to
 
 <a name="user-content-require-jsdoc-options-contexts"></a>
 <a name="require-jsdoc-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings or objects representing the additional AST
@@ -89,6 +94,7 @@ section of our README for more on the expected format.
 
 <a name="user-content-require-jsdoc-options-exemptemptyconstructors"></a>
 <a name="require-jsdoc-options-exemptemptyconstructors"></a>
+
 ### <code>exemptEmptyConstructors</code>
 
 Default: true
@@ -99,6 +105,7 @@ name or description should be seen as sufficient to convey intent).
 
 <a name="user-content-require-jsdoc-options-exemptemptyfunctions"></a>
 <a name="require-jsdoc-options-exemptemptyfunctions"></a>
+
 ### <code>exemptEmptyFunctions</code>
 
 Default: false.
@@ -109,6 +116,7 @@ function/method names are sufficient for themselves as documentation).
 
 <a name="user-content-require-jsdoc-options-checkconstructors"></a>
 <a name="require-jsdoc-options-checkconstructors"></a>
+
 ### <code>checkConstructors</code>
 
 A value indicating whether `constructor`s should be checked. Defaults to
@@ -117,6 +125,7 @@ no parameters or return values are found.
 
 <a name="user-content-require-jsdoc-options-checkgetters"></a>
 <a name="require-jsdoc-options-checkgetters"></a>
+
 ### <code>checkGetters</code>
 
 A value indicating whether getters should be checked. Besides setting as a
@@ -127,6 +136,7 @@ if one only wishes documentation on one of the two accessors. Defaults to
 
 <a name="user-content-require-jsdoc-options-checksetters"></a>
 <a name="require-jsdoc-options-checksetters"></a>
+
 ### <code>checkSetters</code>
 
 A value indicating whether setters should be checked. Besides setting as a
@@ -137,6 +147,7 @@ if one only wishes documentation on one of the two accessors. Defaults to
 
 <a name="user-content-require-jsdoc-options-enablefixer"></a>
 <a name="require-jsdoc-options-enablefixer"></a>
+
 ### <code>enableFixer</code>
 
 A boolean on whether to enable the fixer (which adds an empty jsdoc block).
@@ -144,6 +155,7 @@ Defaults to `true`.
 
 <a name="user-content-require-jsdoc-options-minlinecount"></a>
 <a name="require-jsdoc-options-minlinecount"></a>
+
 ### <code>minLineCount</code>
 
 An integer to indicate a minimum number of lines expected for a node in order
@@ -152,6 +164,7 @@ apply to any context; see `contexts` for line counts per context.
 
 <a name="user-content-require-jsdoc-options-fixermessage"></a>
 <a name="require-jsdoc-options-fixermessage"></a>
+
 ### <code>fixerMessage</code>
 
 An optional message to add to the inserted JSDoc block. Defaults to the
@@ -159,22 +172,24 @@ empty string.
 
 <a name="user-content-require-jsdoc-context-and-settings"></a>
 <a name="require-jsdoc-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `ClassDeclaration`, `ClassExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|N/A|
-|Recommended|true|
-|Options|`publicOnly`, `require`, `contexts`, `exemptEmptyConstructors`, `exemptEmptyFunctions`, `enableFixer`, `minLineCount`, `fixerMessage`|
+|             |                                                                                                                                                      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `ClassDeclaration`, `ClassExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | N/A                                                                                                                                                  |
+| Recommended | true                                                                                                                                                 |
+| Options     | `publicOnly`, `require`, `contexts`, `exemptEmptyConstructors`, `exemptEmptyFunctions`, `enableFixer`, `minLineCount`, `fixerMessage`                |
 
 <a name="user-content-require-jsdoc-failing-examples"></a>
 <a name="require-jsdoc-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /** This is comment */
 export interface Foo {
   /** This is comment x2 */
@@ -1018,7 +1033,7 @@ export type LoginOptions = CmdOptions<{
   username?: string;
   password?: string;
 }>;
-// "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"contexts":["TSTypeAliasDeclaration","TSInterfaceDeclaration","TSMethodSignature","TSPropertySignature"]}]
+// "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSTypeAliasDeclaration","TSInterfaceDeclaration","TSMethodSignature","TSPropertySignature"],"publicOnly":{"ancestorsOnly":true}}]
 // Message: Missing JSDoc comment.
 
 type Props = {
@@ -1028,17 +1043,16 @@ type Props = {
 export type { Props as ComponentProps };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"esm":true},"require":{"FunctionDeclaration":true,"FunctionExpression":true,"ArrowFunctionExpression":true,"ClassDeclaration":true,"ClassExpression":true,"MethodDefinition":true},"contexts":["VariableDeclaration","TSTypeAliasDeclaration","TSPropertySignature","TSInterfaceDeclaration","TSMethodSignature","TSEnumDeclaration"],"enableFixer":true}]
 // Message: Missing JSDoc comment.
-````
-
-
+```
 
 <a name="user-content-require-jsdoc-passing-examples"></a>
 <a name="require-jsdoc-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 interface FooBar {
   fooBar: string;
 }
@@ -1080,8 +1094,8 @@ export function foo() {
  *
  */
 
-var array = [1,2,3];
-array.forEach(function() {});
+var array = [1, 2, 3];
+array.forEach(function () {});
 
 /**
  * @class MyClass
@@ -1095,16 +1109,17 @@ function myFunction() {}
 /**
  Function doing something
  */
-var myFunction = function() {};
+var myFunction = function () {};
 /**
  Function doing something
  */
 Object.myFunction = function () {};
 var obj = {
-   /**
-    *  Function doing something
-    **/
-    myFunction: function () {} };
+  /**
+   *  Function doing something
+   **/
+  myFunction: function () {},
+};
 
 /**
  @func myFunction
@@ -1122,102 +1137,95 @@ function myFunction() {}
 /**
  @func myFunction
  */
-var myFunction = function () {}
+var myFunction = function () {};
 /**
  @method myFunction
  */
-var myFunction = function () {}
+var myFunction = function () {};
 /**
  @function myFunction
  */
-var myFunction = function () {}
+var myFunction = function () {};
 
 /**
  @func myFunction
  */
-Object.myFunction = function() {}
+Object.myFunction = function () {};
 /**
  @method myFunction
  */
-Object.myFunction = function() {}
+Object.myFunction = function () {};
 /**
  @function myFunction
  */
-Object.myFunction = function() {}
-(function(){})();
+Object.myFunction = (function () {})(function () {})();
 
 var object = {
   /**
    *  @func myFunction - Some function
    */
-  myFunction: function() {} }
+  myFunction: function () {},
+};
 var object = {
   /**
    *  @method myFunction - Some function
    */
-  myFunction: function() {} }
+  myFunction: function () {},
+};
 var object = {
   /**
    *  @function myFunction - Some function
    */
-  myFunction: function() {} }
+  myFunction: function () {},
+};
 
-var array = [1,2,3];
-array.filter(function() {});
-Object.keys(this.options.rules || {}).forEach(function(name) {}.bind(this));
-var object = { name: 'key'};
-Object.keys(object).forEach(function() {})
+var array = [1, 2, 3];
+array.filter(function () {});
+Object.keys(this.options.rules || {}).forEach(function (name) {}.bind(this));
+var object = { name: "key" };
+Object.keys(object).forEach(function () {});
 
 /**
  * @func myFunction
  */
 
-function myFunction() {
-
-}
+function myFunction() {}
 // Settings: {"jsdoc":{"maxLines":2,"minLines":0}}
 
 /**
  * @func myFunction
  */
 
-
-function myFunction() {
-
-}
+function myFunction() {}
 // Settings: {"jsdoc":{"maxLines":3,"minLines":0}}
 
-/** @func myFunction */  function myFunction() {
-
-}
+/** @func myFunction */ function myFunction() {}
 // Settings: {"jsdoc":{"maxLines":0,"minLines":0}}
 
 /**
  * @func myFunction
  */
 
-function myFunction() {
-
-}
+function myFunction() {}
 // Settings: {"jsdoc":{"maxLines":3,"minLines":2}}
 
 function myFunction() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"FunctionDeclaration":false,"MethodDefinition":true}}]
 
-var myFunction = function() {}
+var myFunction = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"FunctionDeclaration":false,"MethodDefinition":true}}]
 
 /**
  * Description for A.
  */
 class A {
-    /**
-     * Description for constructor.
-     * @param {object[]} xs - xs
-     */
-    constructor(xs) {
-        this.a = xs;
-    }
+  /**
+   * Description for constructor.
+   * @param {object[]} xs - xs
+   */
+  constructor(xs) {
+    this.a = xs;
+  }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"MethodDefinition":true}}]
 
@@ -1225,13 +1233,13 @@ class A {
  * Description for A.
  */
 class App extends Component {
-    /**
-     * Description for constructor.
-     * @param {object[]} xs - xs
-     */
-    constructor(xs) {
-        this.a = xs;
-    }
+  /**
+   * Description for constructor.
+   * @param {object[]} xs - xs
+   */
+  constructor(xs) {
+    this.a = xs;
+  }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"MethodDefinition":true}}]
 
@@ -1239,13 +1247,13 @@ class App extends Component {
  * Description for A.
  */
 export default class App extends Component {
-    /**
-     * Description for constructor.
-     * @param {object[]} xs - xs
-     */
-    constructor(xs) {
-        this.a = xs;
-    }
+  /**
+   * Description for constructor.
+   * @param {object[]} xs - xs
+   */
+  constructor(xs) {
+    this.a = xs;
+  }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"MethodDefinition":true}}]
 
@@ -1253,45 +1261,45 @@ export default class App extends Component {
  * Description for A.
  */
 export class App extends Component {
-    /**
-     * Description for constructor.
-     * @param {object[]} xs - xs
-     */
-    constructor(xs) {
-        this.a = xs;
-    }
+  /**
+   * Description for constructor.
+   * @param {object[]} xs - xs
+   */
+  constructor(xs) {
+    this.a = xs;
+  }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true,"MethodDefinition":true}}]
 
 class A {
-    constructor(xs) {
-        this.a = xs;
-    }
+  constructor(xs) {
+    this.a = xs;
+  }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":false,"MethodDefinition":false}}]
 
 /**
-* Function doing something
-*/
-var myFunction = () => {}
+ * Function doing something
+ */
+var myFunction = () => {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":true}}]
 
 /**
-* Function doing something
-*/
-var myFunction = function () {}
+ * Function doing something
+ */
+var myFunction = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":true}}]
 
 /**
-* Function doing something
-*/
-var myFunction = () => {}
+ * Function doing something
+ */
+var myFunction = () => {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":false}}]
 
 /**
  Function doing something
 */
-var myFunction = () => () => {}
+var myFunction = () => () => {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":true}}]
 
 setTimeout(() => {}, 10);
@@ -1300,28 +1308,32 @@ setTimeout(() => {}, 10);
 /**
 JSDoc Block
 */
-var foo = function() {}
+var foo = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"FunctionExpression":true}}]
 
-const foo = {/**
+const foo = {
+  /**
 JSDoc Block
 */
-bar() {}}
+  bar() {},
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"FunctionExpression":true}}]
 
-var foo = {/**
+var foo = {
+  /**
 JSDoc Block
 */
-bar: function() {}}
+  bar: function () {},
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"FunctionExpression":true}}]
 
-var foo = { [function() {}]: 1 };
+var foo = { [function () {}]: 1 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"FunctionExpression":true}}]
 
-function foo () {}
+function foo() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"exemptEmptyFunctions":true}]
 
-function foo () {
+function foo() {
   return;
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"exemptEmptyFunctions":true}]
@@ -1330,135 +1342,109 @@ const test = {};
 /**
  * test
  */
- test.method = function () {
-
-}
+test.method = function () {};
 module.exports = {
-  prop: { prop2: test.method }
-}
+  prop: { prop2: test.method },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-function test() {
-
-}
+function test() {}
 
 module.exports = {
-  prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-test = function() {
-
-}
+test = function () {};
 
 module.exports = {
-  prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"cjs":true,"esm":false,"window":false},"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-test = function() {
-
-}
+test = function () {};
 
 exports.someMethod = {
-  prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"cjs":false,"esm":true,"window":false},"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-const test = () => {
-
-}
+const test = () => {};
 
 module.exports = {
-prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"ArrowFunctionExpression":true}}]
 
-const test = () => {
-
-}
+const test = () => {};
 module.exports = {
-  prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"require":{"ArrowFunctionExpression":true}}]
 
 /**
  *
  */
-window.test = function() {
-
-}
+window.test = function () {};
 
 module.exports = {
-prop: window
-}
+  prop: window,
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
-test = function() {
-
-}
+test = function () {};
 
 /**
  *
  */
-test = function() {
-
-}
+test = function () {};
 
 module.exports = {
-prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
-test = function() {
-
-}
+test = function () {};
 
 test = 2;
 
 module.exports = {
-prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-function test() {
-
-}
+function test() {}
 
 /**
  *
  */
-test.prototype.method = function() {
-
-}
+test.prototype.method = function () {};
 
 module.exports = {
-prop: { prop2: test }
-}
+  prop: { prop2: test },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 class Test {
   /**
    * Test
    */
-  method() {
-
-  }
+  method() {}
 }
 module.exports = Test;
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"MethodDefinition":true}}]
@@ -1466,115 +1452,85 @@ module.exports = Test;
 /**
  *
  */
-export default function quux () {
-
-}
+export default function quux() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-export default function quux () {
-
-}
+export default function quux() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 export default quux;
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
-function quux () {
-
-}
+function quux() {}
 export default quux;
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-export function test() {
-
-}
+export function test() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-export function test() {
-
-}
+export function test() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-var test = function () {
-
-}
+var test = function () {};
 var test2 = 2;
-export { test, test2 }
+export { test, test2 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-var test = function () {
-
-}
-export { test as test2 }
+var test = function () {};
+export { test as test2 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
 /**
  *
  */
-export default class A {
-
-}
+export default class A {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"ancestorsOnly":true},"require":{"ClassDeclaration":true}}]
 
 /**
  *
  */
-var test = function () {
-
-}
+var test = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"window":true},"require":{"FunctionExpression":true}}]
 
-let test = function () {
-
-}
+let test = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"window":true},"require":{"FunctionExpression":true}}]
 
-let test = class {
-
-}
+let test = class {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"ClassExpression":false}}]
 
 /**
  *
  */
-let test = class {
-
-}
+let test = class {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"ClassExpression":true}}]
 
-export function someMethod() {
-
-}
+export function someMethod() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"cjs":true,"esm":false,"window":false},"require":{"FunctionDeclaration":true}}]
 
-exports.someMethod = function() {
-
-}
+exports.someMethod = function () {};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":{"cjs":false,"esm":true,"window":false},"require":{"FunctionExpression":true}}]
 
 const myObject = {
-  myProp: true
+  myProp: true,
 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":[]}]
 
@@ -1582,8 +1538,7 @@ function bear() {}
 /**
  *
  */
-function quux () {
-}
+function quux() {}
 export default quux;
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"FunctionExpression":true}}]
 
@@ -1594,7 +1549,7 @@ export interface Example {
   /**
    * My super test string!
    */
-  test: string
+  test: string;
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSInterfaceDeclaration"]}]
 
@@ -1605,7 +1560,7 @@ interface Example {
   /**
    * My super test string!
    */
-  test: string
+  test: string;
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSInterfaceDeclaration"]}]
 
@@ -1616,7 +1571,7 @@ export type Example = {
   /**
    * My super test string!
    */
-  test: string
+  test: string;
 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSTypeAliasDeclaration"]}]
 
@@ -1627,7 +1582,7 @@ type Example = {
   /**
    * My super test string!
    */
-  test: string
+  test: string;
 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSTypeAliasDeclaration"]}]
 
@@ -1638,7 +1593,7 @@ export enum Example {
   /**
    * My super test enum!
    */
-  test = 123
+  test = 123,
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSEnumDeclaration"]}]
 
@@ -1649,26 +1604,26 @@ enum Example {
   /**
    * My super test enum!
    */
-  test = 123
+  test = 123,
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["TSEnumDeclaration"]}]
 
-const foo = {...{}};
+const foo = { ...{} };
 function bar() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"exemptEmptyFunctions":false,"publicOnly":true,"require":{"ArrowFunctionExpression":true,"ClassDeclaration":true,"ClassExpression":true,"FunctionDeclaration":true,"FunctionExpression":false,"MethodDefinition":true}}]
 
 /**
  * Class documentation
  */
- @logged
+@logged
 export default class Foo {
- // ....
+  // ....
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"exemptEmptyFunctions":false,"require":{"ClassDeclaration":true}}]
 
 const a = {};
 const b = {
-  ...a
+  ...a,
 };
 
 export default b;
@@ -1707,9 +1662,9 @@ export class AppController {
    *
    * @returns ...
    */
-  @Get('/info')
+  @Get("/info")
   public getInfo(): string {
-    return 'OK';
+    return "OK";
   }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":false,"ClassDeclaration":true,"ClassExpression":true,"FunctionDeclaration":true,"FunctionExpression":false,"MethodDefinition":true}}]
@@ -1717,24 +1672,22 @@ export class AppController {
 /**
  * Entity to represent a user in the system.
  */
-@Entity('users')
-export class User {
-}
+@Entity("users")
+export class User {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":false,"ClassDeclaration":true,"ClassExpression":true,"FunctionDeclaration":true,"FunctionExpression":false,"MethodDefinition":true}}]
 
 /**
  * Entity to represent a user in the system.
  */
-@Entity('users', getVal())
-export class User {
-}
+@Entity("users", getVal())
+export class User {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ArrowFunctionExpression":false,"ClassDeclaration":true,"ClassExpression":true,"FunctionDeclaration":true,"FunctionExpression":false,"MethodDefinition":true}}]
 
 /**
  *
  */
 class Foo {
-    constructor() {}
+  constructor() {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"exemptEmptyConstructors":true,"require":{"MethodDefinition":true}}]
 
@@ -1742,29 +1695,29 @@ class Foo {
  *
  */
 class Foo {
-    constructor() {}
+  constructor() {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkConstructors":false,"require":{"MethodDefinition":true}}]
 
 class Foo {
-  get aName () {}
-  set aName (val) {}
+  get aName() {}
+  set aName(val) {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkGetters":"no-setter","checkSetters":false,"contexts":["MethodDefinition > FunctionExpression"]}]
 
 const obj = {
-  get aName () {},
-  set aName (val) {}
-}
+  get aName() {},
+  set aName(val) {},
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkGetters":"no-setter","checkSetters":false,"contexts":["Property > FunctionExpression"]}]
 
 class Foo {
-  set aName (val) {}
+  set aName(val) {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkSetters":false,"contexts":["MethodDefinition > FunctionExpression"]}]
 
 class Foo {
-  get aName () {}
+  get aName() {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkGetters":false,"contexts":["MethodDefinition > FunctionExpression"]}]
 
@@ -1772,7 +1725,7 @@ class Foo {
   /**
    *
    */
-  set aName (val) {}
+  set aName(val) {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkSetters":"no-getter","contexts":["MethodDefinition > FunctionExpression"]}]
 
@@ -1780,19 +1733,18 @@ class Foo {
   /**
    *
    */
-  get aName () {}
+  get aName() {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkGetters":"no-setter","contexts":["MethodDefinition > FunctionExpression"]}]
 
 class Foo {
-  get aName () {}
-  set aName (val) {}
+  get aName() {}
+  set aName(val) {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"checkGetters":false,"checkSetters":"no-getter","contexts":["MethodDefinition > FunctionExpression"]}]
 
 class Base {
-  constructor() {
-  }
+  constructor() {}
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["MethodDefinition"],"exemptEmptyConstructors":true}]
 
@@ -1807,56 +1759,54 @@ export function a(); // Reports an error
  */
 export function foo(): void {
   function bar(): void {
-    console.log('bar');
+    console.log("bar");
   }
 
-  console.log('foo');
+  console.log("foo");
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true}]
 
 const foo = {
   bar: () => {
     // ...
-  }
-}
+  },
+};
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":[":not(Property) > ArrowFunctionExpression"],"require":{"ArrowFunctionExpression":false,"ClassDeclaration":true,"ClassExpression":true}}]
 
 /** Defines the current user's settings. */
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
-@State<Partial<UserSettingsStateModel>>
-({
-  name: 'userSettings',
+@State<Partial<UserSettingsStateModel>>({
+  name: "userSettings",
   defaults: {
     isDev: !environment.production,
   },
 })
-export class UserSettingsState { }
+export class UserSettingsState {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"require":{"ClassDeclaration":true}}]
 
 /**
  * Entity to represent a user in the system.
  */
-@Entity('users')
-export class User {
-}
+@Entity("users")
+export class User {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["Decorator"],"require":{"FunctionDeclaration":false}}]
 
-  function quux () {
+function quux() {
   return 3;
 }
 
-function b () {}
+function b() {}
 // "jsdoc/require-jsdoc": ["error"|"warn", {"minLineCount":4}]
 
-function quux () {
+function quux() {
   return 3;
 }
 
 var a = {
   b: 1,
-  c: 2
+  c: 2,
 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["ClassDeclaration",{"context":"FunctionDeclaration","minLineCount":4},{"context":"VariableDeclaration","minLineCount":5}],"require":{"FunctionDeclaration":false}}]
 
@@ -1882,32 +1832,31 @@ export default {
   beforeUpdate() {},
 
   watch: {
-    someValue(val) {}
+    someValue(val) {},
   },
 
   computed: {
     loaded() {},
-    selection() {}
+    selection() {},
   },
 
   methods: {
-    getData(id) {}
-  }
+    getData(id) {},
+  },
 };
 // "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(created|beforeUpdate)$/] > FunctionExpression","ExportDefaultDeclaration > ObjectExpression > Property[key.name!=/^(watch|computed|methods)$/] > ObjectExpression > Property > FunctionExpression"]}]
 
 export class MyClass {
-  #myPrivateMethod(): void { }
+  #myPrivateMethod(): void {}
 
   #myPrivateProp = 5;
 }
-// "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"contexts":["PropertyDefinition"],"require":{"MethodDefinition":true}}]
+// "jsdoc/require-jsdoc": ["error"|"warn", {"contexts":["PropertyDefinition"],"publicOnly":true,"require":{"MethodDefinition":true}}]
 
 class Abc {
   static {
-    this.x = '2'
+    this.x = "2";
   }
 }
 // "jsdoc/require-jsdoc": ["error"|"warn", {"publicOnly":true,"require":{"ClassDeclaration":true}}]
-````
-
+```

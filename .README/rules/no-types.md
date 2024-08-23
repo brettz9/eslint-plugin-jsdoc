@@ -28,13 +28,13 @@ section of our README for more on the expected format.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`param`, `returns`|
-|Aliases|`arg`, `argument`, `return`|
-|Recommended|false|
-|Options|`contexts`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `param`, `returns`                                                                                            |
+| Aliases     | `arg`, `argument`, `return`                                                                                   |
+| Recommended | false                                                                                                         |
+| Options     | `contexts`                                                                                                    |
 
 ## Failing examples
 

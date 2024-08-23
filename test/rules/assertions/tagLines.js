@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -13,12 +13,10 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
       /**
        * Some description
@@ -39,11 +37,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 2 lines between tags but found 0',
+          message: "Expected 2 lines between tags but found 0",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           count: 2,
         },
       ],
@@ -69,11 +68,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected 2 lines between tags but found 1',
+          message: "Expected 2 lines between tags but found 1",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           count: 2,
         },
       ],
@@ -98,11 +98,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           applyToEndTag: false,
         },
@@ -129,12 +129,10 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected no lines between tags',
+          message: "Expected no lines between tags",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Some description
@@ -157,7 +155,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected no lines between tags',
+          message: "Expected no lines between tags",
         },
       ],
       output: `
@@ -182,12 +180,10 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
       /**
        * Some description
@@ -210,14 +206,15 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             param: {
-              lines: 'always',
+              lines: "always",
             },
           },
         },
@@ -243,14 +240,15 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected no lines between tags',
+          message: "Expected no lines between tags",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
             param: {
-              lines: 'never',
+              lines: "never",
             },
           },
         },
@@ -275,15 +273,16 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected 2 lines between tags but found 1',
+          message: "Expected 2 lines between tags but found 1",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           count: 2,
           tags: {
             param: {
-              lines: 'always',
+              lines: "always",
             },
           },
         },
@@ -310,16 +309,17 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected 2 lines between tags but found 1',
+          message: "Expected 2 lines between tags but found 1",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           count: 5,
           tags: {
             param: {
               count: 2,
-              lines: 'always',
+              lines: "always",
             },
           },
         },
@@ -345,14 +345,15 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           tags: {
             anotherTag: {
-              lines: 'never',
+              lines: "never",
             },
           },
         },
@@ -380,11 +381,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
       options: [
-        'always',
+        "always",
         {
           endLines: null,
         },
@@ -415,12 +416,10 @@ export default {
       errors: [
         {
           line: 8,
-          message: 'Expected 1 line between tags but found 0',
+          message: "Expected 1 line between tags but found 0",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
       /**
        * Some description
@@ -450,11 +449,11 @@ export default {
       errors: [
         {
           line: 11,
-          message: 'Expected 0 trailing lines',
+          message: "Expected 0 trailing lines",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           endLines: 0,
         },
@@ -491,11 +490,11 @@ export default {
       errors: [
         {
           line: 12,
-          message: 'Expected 1 trailing lines',
+          message: "Expected 1 trailing lines",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           endLines: 1,
         },
@@ -531,11 +530,11 @@ export default {
       errors: [
         {
           line: 11,
-          message: 'Expected 2 trailing lines',
+          message: "Expected 2 trailing lines",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           endLines: 2,
         },
@@ -567,11 +566,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected only 1 line after block description',
+          message: "Expected only 1 line after block description",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           startLines: 1,
         },
@@ -595,11 +594,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected only 0 line after block description',
+          message: "Expected only 0 line after block description",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           startLines: 0,
         },
@@ -622,11 +621,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected 2 lines after block description',
+          message: "Expected 2 lines after block description",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           startLines: 2,
         },
@@ -650,11 +649,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected 1 lines after block description',
+          message: "Expected 1 lines after block description",
         },
       ],
       options: [
-        'any',
+        "any",
         {
           startLines: 1,
         },
@@ -686,9 +685,7 @@ export default {
        * @param {number} b
        */
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -699,7 +696,8 @@ export default {
        */
       `,
       options: [
-        'always', {
+        "always",
+        {
           applyToEndTag: false,
         },
       ],
@@ -711,7 +709,8 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           applyToEndTag: false,
         },
       ],
@@ -721,7 +720,8 @@ export default {
       /** @param {number} b */
       `,
       options: [
-        'never', {
+        "never",
+        {
           applyToEndTag: false,
         },
       ],
@@ -737,7 +737,7 @@ export default {
        */
       `,
       options: [
-        'always',
+        "always",
         {
           endLines: null,
         },
@@ -756,7 +756,8 @@ export default {
        */
       `,
       options: [
-        'always', {
+        "always",
+        {
           count: 2,
           endLines: null,
         },
@@ -771,10 +772,11 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             param: {
-              lines: 'any',
+              lines: "any",
             },
           },
         },
@@ -789,10 +791,11 @@ export default {
        */
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
             param: {
-              lines: 'any',
+              lines: "any",
             },
           },
         },
@@ -807,10 +810,11 @@ export default {
        */
       `,
       options: [
-        'always', {
+        "always",
+        {
           tags: {
             param: {
-              lines: 'never',
+              lines: "never",
             },
           },
         },
@@ -825,10 +829,11 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             param: {
-              lines: 'any',
+              lines: "any",
             },
           },
         },
@@ -844,10 +849,11 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             param: {
-              lines: 'any',
+              lines: "any",
             },
           },
         },
@@ -862,10 +868,11 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             param: {
-              lines: 'never',
+              lines: "never",
             },
           },
         },
@@ -884,12 +891,13 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           count: 5,
           tags: {
             param: {
               count: 2,
-              lines: 'always',
+              lines: "always",
             },
           },
         },
@@ -904,10 +912,11 @@ export default {
        */
       `,
       options: [
-        'never', {
+        "never",
+        {
           tags: {
             anotherTag: {
-              lines: 'always',
+              lines: "always",
             },
           },
         },
@@ -924,9 +933,7 @@ export default {
        * description.
        */
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -939,9 +946,7 @@ export default {
        * This is still part of \`@returns\`.
        */
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -957,7 +962,7 @@ export default {
        */
       `,
       options: [
-        'always',
+        "always",
         {
           endLines: null,
         },
@@ -977,7 +982,7 @@ export default {
        */
       `,
       options: [
-        'always',
+        "always",
         {
           endLines: null,
         },
@@ -997,7 +1002,7 @@ export default {
        */
       `,
       options: [
-        'any',
+        "any",
         {
           endLines: 0,
         },
@@ -1012,7 +1017,7 @@ export default {
          */
       `,
       options: [
-        'any',
+        "any",
         {
           startLines: 1,
         },
@@ -1027,7 +1032,7 @@ export default {
          */
       `,
       options: [
-        'any',
+        "any",
         {
           endLines: 1,
         },
@@ -1043,7 +1048,7 @@ export default {
          */
       `,
       options: [
-        'never',
+        "never",
         {
           startLines: null,
         },
@@ -1057,7 +1062,7 @@ export default {
          */
       `,
       options: [
-        'never',
+        "never",
         {
           startLines: null,
         },
@@ -1072,7 +1077,7 @@ export default {
       }
       `,
       options: [
-        'never',
+        "never",
         {
           startLines: 1,
         },
@@ -1088,7 +1093,7 @@ export default {
       }
       `,
       options: [
-        'never',
+        "never",
         {
           startLines: 1,
         },
@@ -1103,7 +1108,7 @@ export default {
       }
       `,
       options: [
-        'never',
+        "never",
         {
           startLines: 1,
         },
@@ -1119,15 +1124,15 @@ export default {
         }
       }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
-        'any',
+        "any",
         {
           startLines: 1,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
   ],
 };

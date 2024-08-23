@@ -1,19 +1,24 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
 import {
   closureTags,
   jsdocTags,
   typeScriptTags,
-} from '../../../src/tagNames.js';
+} from "../../../src/tagNames.js";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 /**
  * @param {import('../../../src/tagNames.js').AliasedTags} tags
  * @returns {string}
  */
 const buildTagBlock = (tags) => {
-  return '/** \n * @' + Object.keys(tags).map((tagName, idx) => {
-    return (idx === 0 ? '' : '\n * @') + tagName;
-  })
-    .join('') + '\n */';
+  return (
+    "/** \n * @" +
+    Object.keys(tags)
+      .map((tagName, idx) => {
+        return (idx === 0 ? "" : "\n * @") + tagName;
+      })
+      .join("") +
+    "\n */"
+  );
 };
 
 /**
@@ -26,7 +31,7 @@ const buildTagBlock = (tags) => {
  */
 const lineCount = (code) => {
   /* eslint-disable jsdoc/no-undefined-types -- TS */
-  return /** @type {RegExpMatchArray} */ (code.match(/\n/ug)).length;
+  return /** @type {RegExpMatchArray} */ (code.match(/\n/gu)).length;
   /* eslint-enable jsdoc/no-undefined-types -- TS */
 };
 
@@ -45,7 +50,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -62,7 +67,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -78,7 +83,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -96,7 +101,7 @@ export default {
       errors: [
         {
           line: 1,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -115,7 +120,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -135,7 +140,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -159,7 +164,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '\'@type\' is redundant when using a type system.',
+          message: "'@type' is redundant when using a type system.",
         },
       ],
       options: [
@@ -182,7 +187,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@abstract\' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.',
+          message:
+            "'@abstract' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.",
         },
       ],
       options: [
@@ -202,7 +208,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@abstract\' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.',
+          message:
+            "'@abstract' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.",
         },
       ],
       options: [
@@ -222,7 +229,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: '\'@abstract\' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.',
+          message:
+            "'@abstract' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.",
         },
       ],
       options: [
@@ -244,7 +252,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@template\' without a name is redundant when using a type system.',
+          message:
+            "'@template' without a name is redundant when using a type system.",
         },
       ],
       options: [
@@ -268,7 +277,8 @@ export default {
       errors: [
         {
           line: 5,
-          message: '\'@template\' without a name is redundant when using a type system.',
+          message:
+            "'@template' without a name is redundant when using a type system.",
         },
       ],
       options: [
@@ -311,10 +321,8 @@ export default {
         jsdoc: {
           structuredTags: {
             parameter: {
-              name: 'namepath-referencing',
-              required: [
-                'type', 'name',
-              ],
+              name: "namepath-referencing",
+              required: ["type", "name"],
               type: true,
             },
           },
@@ -365,7 +373,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "param".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "param".',
         },
       ],
       output: `
@@ -389,7 +398,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "arg".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "arg".',
         },
       ],
       output: `
@@ -403,7 +413,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -420,7 +430,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "constructor" JSDoc tag with "cons".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "constructor" JSDoc tag with "cons".',
         },
       ],
       output: `
@@ -434,7 +445,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            'tag constructor': 'cons',
+            "tag constructor": "cons",
           },
         },
       },
@@ -451,7 +462,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "somethingDifferent".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "somethingDifferent".',
         },
       ],
       output: `
@@ -465,7 +477,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            arg: 'somethingDifferent',
+            arg: "somethingDifferent",
           },
         },
       },
@@ -482,7 +494,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "parameter".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "parameter".',
         },
       ],
       output: `
@@ -496,7 +509,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'parameter',
+            param: "parameter",
           },
         },
       },
@@ -534,9 +547,7 @@ export default {
       ],
       options: [
         {
-          definedTags: [
-            'bar',
-          ],
+          definedTags: ["bar"],
         },
       ],
     },
@@ -558,9 +569,7 @@ export default {
       ],
       options: [
         {
-          definedTags: [
-            'bar',
-          ],
+          definedTags: ["bar"],
         },
       ],
     },
@@ -576,7 +585,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Blacklisted tag found (`@todo`)',
+          message: "Blacklisted tag found (`@todo`)",
         },
       ],
       settings: {
@@ -599,14 +608,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Please resolve to-dos or add to the tracker',
+          message: "Please resolve to-dos or add to the tracker",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
             todo: {
-              message: 'Please resolve to-dos or add to the tracker',
+              message: "Please resolve to-dos or add to the tracker",
             },
           },
         },
@@ -624,7 +633,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Please use x-todo instead of todo',
+          message: "Please use x-todo instead of todo",
         },
       ],
       output: `
@@ -639,8 +648,8 @@ export default {
         jsdoc: {
           tagNamePreference: {
             todo: {
-              message: 'Please use x-todo instead of todo',
-              replacement: 'x-todo',
+              message: "Please use x-todo instead of todo",
+              replacement: "x-todo",
             },
           },
         },
@@ -658,11 +667,13 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Invalid `settings.jsdoc.tagNamePreference`. Values must be falsy, a string, or an object.',
+          message:
+            "Invalid `settings.jsdoc.tagNamePreference`. Values must be falsy, a string, or an object.",
         },
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "todo" JSDoc tag with "55".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "todo" JSDoc tag with "55".',
         },
       ],
       output: `
@@ -694,7 +705,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc tag (preference). Replace "prop" JSDoc tag with "property".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "prop" JSDoc tag with "property".',
         },
       ],
       output: `
@@ -720,14 +732,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".',
         },
       ],
       options: [
         {
-          definedTags: [
-            'abcd',
-          ],
+          definedTags: ["abcd"],
         },
       ],
       output: `
@@ -742,7 +753,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            abc: 'abcd',
+            abc: "abcd",
           },
         },
       },
@@ -760,7 +771,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".',
         },
       ],
       output: `
@@ -775,7 +787,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            abc: 'abcd',
+            abc: "abcd",
           },
         },
       },
@@ -790,7 +802,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "returns" JSDoc tag with "return".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "returns" JSDoc tag with "return".',
         },
       ],
       output: `
@@ -801,7 +814,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -810,12 +823,12 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Unrecognized value `badMode` for `settings.jsdoc.mode`.',
+          message: "Unrecognized value `badMode` for `settings.jsdoc.mode`.",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'badMode',
+          mode: "badMode",
         },
       },
     },
@@ -845,7 +858,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -896,7 +909,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc tag (preference). Replace "constructor" JSDoc tag with "class".',
+          message:
+            'Invalid JSDoc tag (preference). Replace "constructor" JSDoc tag with "class".',
         },
       ],
       output: `
@@ -910,7 +924,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            returns: 'return',
+            returns: "return",
           },
         },
       },
@@ -924,11 +938,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@typedef\' is redundant when using a type system.',
+          message: "'@typedef' is redundant when using a type system.",
         },
         {
           line: 3,
-          message: '\'@property\' is redundant when using a type system.',
+          message: "'@property' is redundant when using a type system.",
         },
       ],
       options: [
@@ -951,7 +965,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '\'@property\' is redundant when using a type system.',
+          message: "'@property' is redundant when using a type system.",
         },
       ],
       options: [
@@ -972,7 +986,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@typedef\' is redundant when using a type system.',
+          message: "'@typedef' is redundant when using a type system.",
         },
       ],
       options: [
@@ -991,7 +1005,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '\'@typedef\' is redundant when using a type system.',
+          message: "'@typedef' is redundant when using a type system.",
         },
       ],
       options: [
@@ -1014,14 +1028,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Please don\'t use todo',
+          message: "Please don't use todo",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
             todo: {
-              message: 'Please don\'t use todo',
+              message: "Please don't use todo",
             },
           },
         },
@@ -1034,37 +1048,37 @@ export default {
         /** @default 0 */
         let a;
       `,
-      filename: 'file.ts',
+      filename: "file.ts",
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           typed: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
         /** @default 0 */
         declare let a;
       `,
-      filename: 'file.d.ts',
+      filename: "file.d.ts",
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           typed: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
         /** @abstract */
         let a;
       `,
-      filename: 'file.d.ts',
+      filename: "file.d.ts",
       options: [
         {
           typed: true,
@@ -1076,30 +1090,30 @@ export default {
         /** @abstract */
         declare let a;
       `,
-      filename: 'file.d.ts',
+      filename: "file.d.ts",
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           typed: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
         /** @abstract */
         { declare let a; }
       `,
-      filename: 'file.d.ts',
+      filename: "file.d.ts",
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           typed: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1108,15 +1122,15 @@ export default {
           declare let a;
         }
       `,
-      filename: 'file.d.ts',
+      filename: "file.d.ts",
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           typed: true,
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1172,7 +1186,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -1190,10 +1204,8 @@ export default {
         jsdoc: {
           structuredTags: {
             parameter: {
-              name: 'namepath-referencing',
-              required: [
-                'type', 'name',
-              ],
+              name: "namepath-referencing",
+              required: ["type", "name"],
               type: true,
             },
           },
@@ -1211,9 +1223,7 @@ export default {
       `,
       options: [
         {
-          definedTags: [
-            'bar',
-          ],
+          definedTags: ["bar"],
         },
       ],
     },
@@ -1228,9 +1238,7 @@ export default {
       `,
       options: [
         {
-          definedTags: [
-            'baz', 'bar',
-          ],
+          definedTags: ["baz", "bar"],
         },
       ],
     },
@@ -1246,10 +1254,10 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'baz',
+            param: "baz",
             returns: {
-              message: 'Prefer `bar`',
-              replacement: 'bar',
+              message: "Prefer `bar`",
+              replacement: "bar",
             },
             todo: false,
           },
@@ -1273,7 +1281,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1284,7 +1292,7 @@ export default {
       code: `${ALL_TYPESCRIPT_TAGS_COMMENT}\nfunction quux (foo) {}`,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1292,7 +1300,7 @@ export default {
       code: `${ONE_CLOSURE_TAGS_COMMENT}\nfunction quux (foo) {}`,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1329,8 +1337,8 @@ export default {
         jsdoc: {
           tagNamePreference: {
             augments: {
-              message: '@extends is to be used over @augments.',
-              replacement: 'extends',
+              message: "@extends is to be used over @augments.",
+              replacement: "extends",
             },
           },
         },
@@ -1350,7 +1358,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            extends: 'extends',
+            extends: "extends",
           },
         },
       },
@@ -1374,7 +1382,7 @@ export default {
 `,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1398,7 +1406,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1422,7 +1430,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1434,7 +1442,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },

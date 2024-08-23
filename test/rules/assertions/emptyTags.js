@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@abstract should be empty.',
+          message: "@abstract should be empty.",
         },
       ],
       output: `
@@ -33,7 +33,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@interface should be empty.',
+          message: "@interface should be empty.",
         },
       ],
       output: `
@@ -43,7 +43,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -61,7 +61,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@abstract should be empty.',
+          message: "@abstract should be empty.",
         },
       ],
       output: `
@@ -89,11 +89,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@abstract should be empty.',
+          message: "@abstract should be empty.",
         },
         {
           line: 5,
-          message: '@async should be empty.',
+          message: "@async should be empty.",
         },
       ],
       output: `
@@ -119,14 +119,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@event should be empty.',
+          message: "@event should be empty.",
         },
       ],
       options: [
         {
-          tags: [
-            'event',
-          ],
+          tags: ["event"],
         },
       ],
       output: `
@@ -150,7 +148,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@private should be empty.',
+          message: "@private should be empty.",
         },
       ],
       output: `
@@ -174,7 +172,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@internal should be empty.',
+          message: "@internal should be empty.",
         },
       ],
       output: `
@@ -198,7 +196,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@private should be empty.',
+          message: "@private should be empty.",
         },
       ],
       output: `
@@ -270,7 +268,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },

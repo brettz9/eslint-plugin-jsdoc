@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       output: `
@@ -32,7 +32,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       options: [
@@ -57,7 +57,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       options: [
@@ -83,7 +83,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       output: `
@@ -104,7 +104,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       output: `
@@ -124,7 +124,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       output: `
@@ -144,7 +144,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       options: [
@@ -169,7 +169,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       options: [
@@ -194,7 +194,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       options: [
@@ -216,7 +216,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       output: `
@@ -230,7 +230,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       output: `
@@ -244,7 +244,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       output: `
@@ -262,7 +262,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       options: [
@@ -289,7 +289,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       options: [
@@ -315,7 +315,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Should be no multiple asterisks on middle lines.',
+          message: "Should be no multiple asterisks on middle lines.",
         },
       ],
       options: [
@@ -337,7 +337,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should be no multiple asterisks on end lines.',
+          message: "Should be no multiple asterisks on end lines.",
         },
       ],
       options: [
@@ -450,7 +450,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {

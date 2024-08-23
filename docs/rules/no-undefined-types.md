@@ -1,12 +1,12 @@
 <a name="user-content-no-undefined-types"></a>
 <a name="no-undefined-types"></a>
+
 # <code>no-undefined-types</code>
 
-* [Options](#user-content-no-undefined-types-options)
-* [Context and settings](#user-content-no-undefined-types-context-and-settings)
-* [Failing examples](#user-content-no-undefined-types-failing-examples)
-* [Passing examples](#user-content-no-undefined-types-passing-examples)
-
+- [Options](#user-content-no-undefined-types-options)
+- [Context and settings](#user-content-no-undefined-types-context-and-settings)
+- [Failing examples](#user-content-no-undefined-types-failing-examples)
+- [Passing examples](#user-content-no-undefined-types-passing-examples)
 
 Checks that types in jsdoc comments are defined. This can be used to check
 unimported types.
@@ -53,6 +53,7 @@ array's items will be considered as defined for the purposes of that tag.
 
 <a name="user-content-no-undefined-types-options"></a>
 <a name="no-undefined-types-options"></a>
+
 ## Options
 
 An option object may have the following keys:
@@ -70,59 +71,52 @@ An option object may have the following keys:
 
 <a name="user-content-no-undefined-types-context-and-settings"></a>
 <a name="no-undefined-types-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields`|
-|Aliases|`constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
-|Closure-only|`package`, `private`, `protected`, `public`, `static`|
-|Recommended|true|
-|Options|`definedTypes`, `disableReporting`, `markVariablesAsUsed`|
-|Settings|`preferredTypes`, `mode`, `structuredTags`|
-
+|              |                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context      | everywhere                                                                                                                                                    |
+| Tags         | `augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields` |
+| Aliases      | `constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`                                                           |
+| Closure-only | `package`, `private`, `protected`, `public`, `static`                                                                                                         |
+| Recommended  | true                                                                                                                                                          |
+| Options      | `definedTypes`, `disableReporting`, `markVariablesAsUsed`                                                                                                     |
+| Settings     | `preferredTypes`, `mode`, `structuredTags`                                                                                                                    |
 
 <a name="user-content-no-undefined-types-failing-examples"></a>
 <a name="no-undefined-types-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param {HerType} baz - Foo.
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"HerType":1000}}}
 // Message: Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.
 
 /**
  * @param {HerType} baz - Foo.
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"HerType":false}}}
 // Message: The type 'HerType' is undefined.
 
 /**
  * @param {strnig} foo - Bar.
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 // Message: The type 'strnig' is undefined.
 
 /**
  * @param {MyType} foo - Bar.
  * @param {HisType} bar - Foo.
  */
-function quux(foo, bar) {
-
-}
+function quux(foo, bar) {}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType"]}]
 // Message: The type 'HisType' is undefined.
 
@@ -131,21 +125,17 @@ function quux(foo, bar) {
  * @param {HisType} bar - Foo.
  * @param {HerType} baz - Foo.
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"hertype":{"replacement":"HerType"}}}}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType"]}]
 // Message: The type 'HisType' is undefined.
 
- /**
-  * @param {MyType} foo - Bar.
-  * @param {HisType} bar - Foo.
-  * @param {HerType} baz - Foo.
-  */
-function quux(foo, bar, baz) {
-
-}
+/**
+ * @param {MyType} foo - Bar.
+ * @param {HisType} bar - Foo.
+ * @param {HerType} baz - Foo.
+ */
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"hertype":{"replacement":false},"histype":"HisType"}}}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType"]}]
 // Message: The type 'HerType' is undefined.
@@ -154,8 +144,7 @@ function quux(foo, bar, baz) {
  * @template TEMPLATE_TYPE
  * @param {WRONG_TEMPLATE_TYPE} bar
  */
-function foo (bar) {
-};
+function foo(bar) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: The type 'WRONG_TEMPLATE_TYPE' is undefined.
 
@@ -163,8 +152,7 @@ class Foo {
   /**
    * @return {TEMPLATE_TYPE}
    */
-  bar () {
-  }
+  bar() {}
 }
 // Message: The type 'TEMPLATE_TYPE' is undefined.
 
@@ -172,8 +160,7 @@ class Foo {
   /**
    * @return {TEMPLATE_TYPE}
    */
-  invalidTemplateReference () {
-  }
+  invalidTemplateReference() {}
 }
 
 /**
@@ -183,8 +170,7 @@ class Bar {
   /**
    * @return {TEMPLATE_TYPE}
    */
-  validTemplateReference () {
-  }
+  validTemplateReference() {}
 }
 // Settings: {"jsdoc":{"mode":"typescript"}}
 // Message: The type 'TEMPLATE_TYPE' is undefined.
@@ -192,9 +178,7 @@ class Bar {
 /**
  * @type {strnig}
  */
-var quux = {
-
-};
+var quux = {};
 // Message: The type 'strnig' is undefined.
 
 /**
@@ -205,8 +189,7 @@ class Foo {
    * @param {TEMPLATE_TYPE_A} baz
    * @return {TEMPLATE_TYPE_B}
    */
-  bar (baz) {
-  }
+  bar(baz) {}
 }
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // Message: The type 'TEMPLATE_TYPE_A' is undefined.
@@ -214,35 +197,34 @@ class Foo {
 /**
  * @param {...VAR_TYPE} varargs
  */
-function quux (varargs) {
-}
+function quux(varargs) {}
 // Message: The type 'VAR_TYPE' is undefined.
 
 /**
  * @this {Navigator}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: The type 'Navigator' is undefined.
 
 /**
  * @export {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: The type 'SomeType' is undefined.
 
 /**
  * @aCustomTag {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"aCustomTag":{"type":true}}}}
 // Message: The type 'SomeType' is undefined.
 
 /**
  * @aCustomTag {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"aCustomTag":{"type":["aType","anotherType"]}}}}
 // Message: The type 'SomeType' is undefined.
 
@@ -259,24 +241,22 @@ function quux () {}
  * @template abc TEMPLATE_TYPE
  * @param {TEMPLATE_TYPE} bar
  */
-function foo (bar) {
-};
+function foo(bar) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: The type 'TEMPLATE_TYPE' is undefined.
 
 /**
  * @suppress {visibility}
  */
-function foo () {
-}
+function foo() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // Message: The type 'visibility' is undefined.
 
 /**
-* @typedef Todo
-* @property description
-* @property otherStuff
-*/
+ * @typedef Todo
+ * @property description
+ * @property otherStuff
+ */
 /**
  * @type {Omit<Todo, "description">}
  */
@@ -337,30 +317,25 @@ const a = new Todo();
  * @type {Another}
  */
 // Message: The type 'BadImportIgnoredByThisRule' is undefined.
-````
-
-
+```
 
 <a name="user-content-no-undefined-types-passing-examples"></a>
 <a name="no-undefined-types-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param {string} foo - Bar.
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {Promise} foo - Bar.
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 
 class MyClass {}
 
@@ -373,34 +348,28 @@ function quux(foo) {
 
 quux(0);
 
-const MyType = require('my-library').MyType;
+const MyType = require("my-library").MyType;
 
 /**
  * @param {MyType} foo - Bar.
  */
-  function quux(foo) {
+function quux(foo) {}
 
-}
-
-const MyType = require('my-library').MyType;
+const MyType = require("my-library").MyType;
 
 /**
  * @param {MyType} foo - Bar.
  */
-  function quux(foo) {
+function quux(foo) {}
 
-}
-
-import {MyType} from 'my-library';
+import { MyType } from "my-library";
 
 /**
  * @param {MyType} foo - Bar.
  * @param {object<string, number>} foo
  * @param {Array<string>} baz
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 
 /*globals MyType*/
 
@@ -408,9 +377,7 @@ function quux(foo, bar, baz) {
  * @param {MyType} foo - Bar.
  * @param {HisType} bar - Foo.
  */
-  function quux(foo, bar) {
-
-}
+function quux(foo, bar) {}
 
 /**
  * @typedef {object} hello
@@ -420,16 +387,12 @@ function quux(foo, bar, baz) {
 /**
  * @param {hello} foo
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @param {Array<syntaxError} foo
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 
 /**
  * Callback test.
@@ -450,17 +413,13 @@ function testFunction(callback) {
  *
  *
  */
-function foo () {
-
-}
+function foo() {}
 
 /**
  * @param {MyType} foo - Bar.
  * @param {HisType} bar - Foo.
  */
-function quux(foo, bar) {
-
-}
+function quux(foo, bar) {}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType","HisType"]}]
 
 /**
@@ -468,9 +427,7 @@ function quux(foo, bar) {
  * @param {HisType} bar - Foo.
  * @param {HerType} baz - Foo.
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"hertype":{"replacement":"HerType"},"histype":"HisType"}}}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType"]}]
 
@@ -479,9 +436,7 @@ function quux(foo, bar, baz) {
  * @param {HisType} bar - Foo.
  * @param {HerType} baz - Foo.
  */
-function quux(foo, bar, baz) {
-
-}
+function quux(foo, bar, baz) {}
 // Settings: {"jsdoc":{"preferredTypes":{"hertype":{"replacement":"HerType<>"},"histype":"HisType.<>"}}}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"definedTypes":["MyType"]}]
 
@@ -490,8 +445,7 @@ function quux(foo, bar, baz) {
  * @param {TEMPLATE_TYPE} bar
  * @return {TEMPLATE_TYPE}
  */
-function foo (bar) {
-};
+function foo(bar) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
@@ -501,8 +455,7 @@ class Foo {
   /**
    * @return {TEMPLATE_TYPE}
    */
-  bar () {
-  }
+  bar() {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -513,12 +466,12 @@ class Foo {
   /**
    * @return {TEMPLATE_TYPE}
    */
-  bar () {}
+  bar() {}
 
   /**
    * @return {TEMPLATE_TYPE}
    */
-  baz () {}
+  baz() {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -530,8 +483,7 @@ class Foo {
    * @param {TEMPLATE_TYPE_A} baz
    * @return {TEMPLATE_TYPE_B}
    */
-  bar (baz) {
-  }
+  bar(baz) {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -543,8 +495,7 @@ class Foo {
    * @param {TEMPLATE_TYPE_A} baz
    * @return {TEMPLATE_TYPE_B}
    */
-  bar (baz) {
-  }
+  bar(baz) {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -557,9 +508,7 @@ class Foo {
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @typedef {object} BaseObject
@@ -573,35 +522,31 @@ function quux () {
  * @param {(sender: T) => void} callback - callback which should
  * be called when the hooked method was invoked.
  */
-function registerEvent(obj, method, callback) {
-
-}
+function registerEvent(obj, method, callback) {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
- /**
+/**
  * @param {...} varargs
  */
-function quux (varargs) {
-}
+function quux(varargs) {}
 
 /**
  * @param {...number} varargs
  */
-function quux (varargs) {
-}
+function quux(varargs) {}
 
 class Navigator {}
 /**
  * @this {Navigator}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 class SomeType {}
 /**
  * @export {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
@@ -609,10 +554,8 @@ function quux () {}
  * @param {T} arg
  */
 function example(arg) {
-
   /** @param {T} */
-  function inner(x) {
-  }
+  function inner(x) {}
 }
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -622,7 +565,7 @@ const init = () => {
    * @returns {Promise}
    */
   function request() {
-    return Promise.resolve('success');
+    return Promise.resolve("success");
   }
 };
 
@@ -648,13 +591,13 @@ exports.resolve1 = function resolve1(value) {
 /**
  * @aCustomTag {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"aCustomTag":{"type":false}}}}
 
 /**
  * @aCustomTag {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"aCustomTag":{"type":["aType","SomeType"]}}}}
 
 /**
@@ -671,7 +614,7 @@ class Test {
    *
    * @returns {this} Return description.
    */
-  method (): this {
+  method(): this {
     return this;
   }
 }
@@ -680,9 +623,7 @@ class Test {
  * Bad types ignored here and handled instead by `valid-types`.
  * @param {string(} foo - Bar.
  */
-function quux(foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @template T
@@ -690,7 +631,7 @@ function quux(foo) {
  * @returns {[T]}
  */
 function genericFunctionExample(arg) {
-  const result = /** @type {[T]} */ (new Array());
+  const result = /** @type {[T]} */ new Array();
   result[0] = arg;
   return result;
 }
@@ -716,18 +657,15 @@ class A {
  * @param {T} arg
  */
 function example(arg) {
-
   /** @param {T} */
-  function inner(x) {
-  }
+  function inner(x) {}
 }
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
 /**
  * @suppress {visibility}
  */
-function foo () {
-}
+function foo() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
@@ -737,7 +675,7 @@ export class Foo {
   // cast to T
   getType() {
     const x = "hello";
-    const y = /** @type {T} */ (x);
+    const y = /** @type {T} */ x;
     return y;
   }
 }
@@ -746,13 +684,13 @@ export class Foo {
 /**
  * @type {const}
  */
-const a = 'string';
+const a = "string";
 
 /**
-* @typedef Todo
-* @property description
-* @property otherStuff
-*/
+ * @typedef Todo
+ * @property description
+ * @property otherStuff
+ */
 /**
  * @type {Omit<Todo, "description">}
  */
@@ -767,20 +705,17 @@ class Foo {
    * @param {A} baz
    * @return {B}
    */
-  bar (baz) {
-  }
+  bar(baz) {}
 }
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
-import {MyType} from 'my-library';
+import { MyType } from "my-library";
 
 /**
  * @param {MyType} foo - Bar.
  * @param {AnUndefinedType} bar
  */
-function quux(foo, bar) {
-
-}
+function quux(foo, bar) {}
 // "jsdoc/no-undefined-types": ["error"|"warn", {"disableReporting":true}]
 
 class MyClass {}
@@ -847,5 +782,4 @@ quux(0);
 /**
  * @type {Linters}
  */
-````
-
+```

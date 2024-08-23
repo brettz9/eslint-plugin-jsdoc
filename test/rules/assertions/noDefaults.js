@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Defaults are not permitted on @param.',
+          message: "Defaults are not permitted on @param.",
         },
       ],
       output: `
@@ -38,7 +38,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Defaults are not permitted on @param.',
+          message: "Defaults are not permitted on @param.",
         },
       ],
       output: `
@@ -64,7 +64,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Optional param names are not permitted on @param.',
+          message: "Optional param names are not permitted on @param.",
         },
       ],
       options: [
@@ -93,7 +93,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Defaults are not permitted on @arg.',
+          message: "Defaults are not permitted on @arg.",
         },
       ],
       output: `
@@ -107,7 +107,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            param: 'arg',
+            param: "arg",
           },
         },
       },
@@ -124,14 +124,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Defaults are not permitted on @param.',
+          message: "Defaults are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -153,14 +151,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Defaults are not permitted on @param.',
+          message: "Defaults are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -180,14 +176,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Defaults are not permitted on @param.',
+          message: "Defaults are not permitted on @param.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -207,14 +201,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Default values are not permitted on @default.',
+          message: "Default values are not permitted on @default.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -234,14 +226,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Default values are not permitted on @defaultvalue.',
+          message: "Default values are not permitted on @defaultvalue.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -253,7 +243,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            default: 'defaultvalue',
+            default: "defaultvalue",
           },
         },
       },
@@ -288,9 +278,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -334,9 +322,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

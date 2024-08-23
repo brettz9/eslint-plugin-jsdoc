@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,14 +14,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassExpression',
-          ],
+          contexts: ["ClassExpression"],
         },
       ],
     },
@@ -37,15 +35,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Needs to begin with a capital letter and end with an end mark.',
+          message:
+            "Needs to begin with a capital letter and end with an end mark.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassExpression',
-          ],
-          message: 'Needs to begin with a capital letter and end with an end mark.',
+          contexts: ["ClassExpression"],
+          message:
+            "Needs to begin with a capital letter and end with an end mark.",
         },
       ],
     },
@@ -58,14 +56,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -81,14 +77,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ObjectExpression',
-          ],
+          contexts: ["ObjectExpression"],
         },
       ],
     },
@@ -104,7 +98,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -120,7 +114,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -136,12 +130,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          matchDescription: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+          matchDescription: "[\u0410-\u042F][\u0410-\u044F]+\\.",
         },
       ],
     },
@@ -157,13 +151,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Needs to begin with a capital letter and end with an end mark.',
+          message:
+            "Needs to begin with a capital letter and end with an end mark.",
         },
       ],
       options: [
         {
-          matchDescription: '[\u0410-\u042F][\u0410-\u044F]+\\.',
-          message: 'Needs to begin with a capital letter and end with an end mark.',
+          matchDescription: "[\u0410-\u042F][\u0410-\u044F]+\\.",
+          message:
+            "Needs to begin with a capital letter and end with an end mark.",
         },
       ],
     },
@@ -179,12 +175,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          mainDescription: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+          mainDescription: "[\u0410-\u042F][\u0410-\u044F]+\\.",
           tags: {
             param: true,
           },
@@ -203,14 +199,16 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Needs to begin with a Cyrillic capital letter and end with a period.',
+          message:
+            "Needs to begin with a Cyrillic capital letter and end with a period.",
         },
       ],
       options: [
         {
           mainDescription: {
-            match: '[\u0410-\u042F][\u0410-\u044F]+\\.',
-            message: 'Needs to begin with a Cyrillic capital letter and end with a period.',
+            match: "[\u0410-\u042F][\u0410-\u044F]+\\.",
+            message:
+              "Needs to begin with a Cyrillic capital letter and end with a period.",
           },
           tags: {
             param: true,
@@ -230,7 +228,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -248,7 +246,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -273,7 +271,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -298,7 +296,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -323,7 +321,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -341,13 +339,13 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
           tags: {
-            author: '.+',
+            author: ".+",
           },
         },
       ],
@@ -366,13 +364,13 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
           tags: {
-            'x-tag': '.+',
+            "x-tag": ".+",
           },
         },
       ],
@@ -391,7 +389,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -409,12 +407,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          mainDescription: '^[a-zA-Z]*\\s*$',
+          mainDescription: "^[a-zA-Z]*\\s*$",
           tags: {
             param: true,
           },
@@ -435,19 +433,21 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Needs to begin with a capital letter and end with a period.',
+          message:
+            "Needs to begin with a capital letter and end with a period.",
         },
       ],
       options: [
         {
           mainDescription: {
-            match: '^[a-zA-Z]*\\s*$',
-            message: 'Letters only',
+            match: "^[a-zA-Z]*\\s*$",
+            message: "Letters only",
           },
           tags: {
             param: {
               match: true,
-              message: 'Needs to begin with a capital letter and end with a period.',
+              message:
+                "Needs to begin with a capital letter and end with a period.",
             },
           },
         },
@@ -467,7 +467,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -493,7 +493,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -516,7 +516,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -534,7 +534,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -559,7 +559,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -587,7 +587,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
     },
@@ -603,7 +603,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -626,7 +626,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -649,7 +649,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -674,7 +674,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -698,13 +698,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
           tags: {
-            param: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+            param: "[\u0410-\u042F][\u0410-\u044F]+\\.",
           },
         },
       ],
@@ -722,13 +722,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
           tags: {
-            description: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+            description: "[\u0410-\u042F][\u0410-\u044F]+\\.",
           },
         },
       ],
@@ -745,14 +745,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       ],
     },
@@ -768,19 +766,17 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'JSDoc description does not satisfy the regex pattern.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
+      options: [
+        {
+          contexts: ["PropertyDefinition"],
+        },
+      ],
     },
     {
       code: `
@@ -794,19 +790,17 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
-        },
-      ],
-      options: [
-        {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
+      options: [
+        {
+          contexts: ["TSInterfaceDeclaration"],
+        },
+      ],
     },
     {
       code: `
@@ -820,14 +814,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'Property',
-          ],
+          contexts: ["Property"],
         },
       ],
     },
@@ -843,7 +835,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
@@ -873,7 +865,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       settings: {
@@ -897,12 +889,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          matchDescription: '[\\s\\S]*\\S$',
+          matchDescription: "[\\s\\S]*\\S$",
         },
       ],
     },
@@ -919,12 +911,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          matchDescription: '^\\S[\\s\\S]*\\S$',
+          matchDescription: "^\\S[\\s\\S]*\\S$",
         },
       ],
     },
@@ -938,15 +930,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
-          matchDescription: '^\\S[\\s\\S]*\\S$',
+          contexts: ["any"],
+          matchDescription: "^\\S[\\s\\S]*\\S$",
         },
       ],
     },
@@ -958,22 +948,22 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description does not satisfy the regex pattern.',
+          message: "JSDoc description does not satisfy the regex pattern.",
         },
       ],
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[endLine=0]',
+              comment: "JsdocBlock[endLine=0]",
             },
           ],
-          matchDescription: '^\\S[\\s\\S]*\\S$',
+          matchDescription: "^\\S[\\s\\S]*\\S$",
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -986,7 +976,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc description must not be empty.',
+          message: "JSDoc description must not be empty.",
         },
       ],
     },
@@ -1072,7 +1062,7 @@ export default {
       `,
       options: [
         {
-          message: 'This won\'t be shown',
+          message: "This won't be shown",
         },
       ],
     },
@@ -1087,7 +1077,7 @@ export default {
       `,
       options: [
         {
-          matchDescription: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+          matchDescription: "[\u0410-\u042F][\u0410-\u044F]+\\.",
         },
       ],
     },
@@ -1104,7 +1094,7 @@ export default {
       options: [
         {
           tags: {
-            returns: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+            returns: "[\u0410-\u042F][\u0410-\u044F]+\\.",
           },
         },
       ],
@@ -1122,7 +1112,7 @@ export default {
       options: [
         {
           tags: {
-            description: '[\u0410-\u042F][\u0410-\u044F]+\\.',
+            description: "[\u0410-\u042F][\u0410-\u044F]+\\.",
           },
         },
       ],
@@ -1342,16 +1332,14 @@ export default {
         myClassField = 1
       }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'PropertyDefinition',
-          ],
+          contexts: ["PropertyDefinition"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1362,16 +1350,14 @@ export default {
 
           }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          contexts: [
-            'TSInterfaceDeclaration',
-          ],
+          contexts: ["TSInterfaceDeclaration"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1461,7 +1447,7 @@ export default {
       options: [
         {
           tags: {
-            author: '.+',
+            author: ".+",
           },
         },
       ],
@@ -1480,7 +1466,7 @@ export default {
       options: [
         {
           tags: {
-            'x-tag': '.+',
+            "x-tag": ".+",
           },
         },
       ],
@@ -1571,11 +1557,9 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
-          mainDescription: '/^[A-Z`-].*\\.$/us',
-          matchDescription: '^([A-Z`-].*(\\.|:)|-\\s.*)$',
+          contexts: ["any"],
+          mainDescription: "/^[A-Z`-].*\\.$/us",
+          matchDescription: "^([A-Z`-].*(\\.|:)|-\\s.*)$",
           tags: {
             param: true,
             returns: true,
@@ -1593,9 +1577,7 @@ export default {
       ignoreReadme: true,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -1622,19 +1604,19 @@ export default {
         /** Does something very important. */
         function foo(): string;
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[endLine!=0]',
+              comment: "JsdocBlock[endLine!=0]",
             },
           ],
-          matchDescription: '^\\S[\\s\\S]*\\S$',
+          matchDescription: "^\\S[\\s\\S]*\\S$",
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -1645,19 +1627,19 @@ export default {
          */
         function foo(): void;
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
           contexts: [
             {
-              comment: 'JsdocBlock[endLine!=0]:not(:has(JsdocTag))',
+              comment: "JsdocBlock[endLine!=0]:not(:has(JsdocTag))",
             },
           ],
-          matchDescription: '^\\S[\\s\\S]*\\S$',
+          matchDescription: "^\\S[\\s\\S]*\\S$",
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `

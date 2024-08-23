@@ -10,17 +10,20 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_a".',
-        }, {
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_a".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -36,18 +39,21 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_a".',
-        }, {
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_a".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              replacement: '',
+              disallowName: "/^opt_/i",
+              replacement: "",
             },
           ],
         },
@@ -69,15 +75,16 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Only allowing names matching `/^[a-z]+$/i` but ' +
-          'found "opt_b".',
+          message:
+            "Only allowing names matching `/^[a-z]+$/i` but " +
+            'found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              allowName: '/^[a-z]+$/i',
+              allowName: "/^[a-z]+$/i",
             },
           ],
         },
@@ -93,20 +100,22 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^arg/i` but ' +
-          'found "arg".',
-        }, {
+          message:
+            "Only allowing names not matching `/^arg/i` but " + 'found "arg".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names matching `/^[a-z]+$/i` but ' +
-          'found "opt_b".',
+          message:
+            "Only allowing names matching `/^[a-z]+$/i` but " +
+            'found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              allowName: '/^[a-z]+$/i',
-              disallowName: '/^arg/i',
+              allowName: "/^[a-z]+$/i",
+              disallowName: "/^arg/i",
             },
           ],
         },
@@ -122,22 +131,24 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but ' +
-          'found "opt_a".',
-        }, {
+          message:
+            "Only allowing names not matching `/^opt_/i` but " +
+            'found "opt_a".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names not matching `/^arg$/i` but ' +
-          'found "arg".',
+          message:
+            "Only allowing names not matching `/^arg$/i` but " + 'found "arg".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^arg$/i',
+              disallowName: "/^arg$/i",
             },
             {
-              disallowName: '/^opt_/i',
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -153,17 +164,16 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              tags: [
-                'param',
-              ],
+              disallowName: "/^opt_/i",
+              tags: ["param"],
             },
           ],
         },
@@ -179,17 +189,16 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              tags: [
-                'param',
-              ],
+              disallowName: "/^opt_/i",
+              tags: ["param"],
             },
           ],
         },
@@ -198,7 +207,7 @@ export default {
         jsdoc: {
           structuredTags: {
             someTag: {
-              name: 'namepath-defining',
+              name: "namepath-defining",
             },
           },
         },
@@ -214,20 +223,21 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_a".',
-        }, {
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_a".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              tags: [
-                '*',
-              ],
+              disallowName: "/^opt_/i",
+              tags: ["*"],
             },
           ],
         },
@@ -245,18 +255,21 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_a".',
-        }, {
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_a".',
+        },
+        {
           line: 4,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_b".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_b".',
         },
       ],
       options: [
         {
           match: [
             {
-              context: 'FunctionDeclaration',
-              disallowName: '/^opt_/i',
+              context: "FunctionDeclaration",
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -279,7 +292,8 @@ export default {
         {
           match: [
             {
-              comment: 'JsdocBlock:has(JsdocTag[tag="param"][name=/opt_/] > JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1)))',
+              comment:
+                'JsdocBlock:has(JsdocTag[tag="param"][name=/opt_/] > JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1)))',
             },
           ],
         },
@@ -295,15 +309,16 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Don\'t use `opt_` prefixes with Bar|...',
+          message: "Don't use `opt_` prefixes with Bar|...",
         },
       ],
       options: [
         {
           match: [
             {
-              comment: 'JsdocBlock:has(JsdocTag[tag="param"][name=/opt_/] > JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1)))',
-              message: 'Don\'t use `opt_` prefixes with Bar|...',
+              comment:
+                'JsdocBlock:has(JsdocTag[tag="param"][name=/opt_/] > JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1)))',
+              message: "Don't use `opt_` prefixes with Bar|...",
             },
           ],
         },
@@ -320,7 +335,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Rule `no-restricted-syntax` is missing a `match` option.',
+          message: "Rule `no-restricted-syntax` is missing a `match` option.",
         },
       ],
       options: [],
@@ -336,15 +351,16 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Only allowing names not matching `/^opt_/i` but found "opt_a".',
+          message:
+            'Only allowing names not matching `/^opt_/i` but found "opt_a".',
         },
       ],
       options: [
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              replacement: '',
+              disallowName: "/^opt_/i",
+              replacement: "",
             },
           ],
         },
@@ -373,10 +389,8 @@ export default {
         {
           match: [
             {
-              disallowName: '/^$/',
-              tags: [
-                'template',
-              ],
+              disallowName: "/^$/",
+              tags: ["template"],
             },
           ],
         },
@@ -395,7 +409,7 @@ export default {
         {
           match: [
             {
-              disallowName: '/^arg/i',
+              disallowName: "/^arg/i",
             },
           ],
         },
@@ -412,7 +426,7 @@ export default {
         {
           match: [
             {
-              allowName: '/^[a-z_]+$/i',
+              allowName: "/^[a-z_]+$/i",
             },
           ],
         },
@@ -429,8 +443,8 @@ export default {
         {
           match: [
             {
-              allowName: '/^[a-z]+$/i',
-              disallowName: '/^arg/i',
+              allowName: "/^[a-z]+$/i",
+              disallowName: "/^arg/i",
             },
           ],
         },
@@ -447,10 +461,10 @@ export default {
         {
           match: [
             {
-              disallowName: '/^arg$/i',
+              disallowName: "/^arg$/i",
             },
             {
-              disallowName: '/^opt_/i',
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -467,10 +481,8 @@ export default {
         {
           match: [
             {
-              disallowName: '/^opt_/i',
-              tags: [
-                'property',
-              ],
+              disallowName: "/^opt_/i",
+              tags: ["property"],
             },
           ],
         },
@@ -479,7 +491,7 @@ export default {
         jsdoc: {
           structuredTags: {
             someTag: {
-              name: 'namepath-defining',
+              name: "namepath-defining",
             },
           },
         },
@@ -496,10 +508,8 @@ export default {
         {
           match: [
             {
-              disallowName: '/^arg/i',
-              tags: [
-                '*',
-              ],
+              disallowName: "/^arg/i",
+              tags: ["*"],
             },
           ],
         },
@@ -518,8 +528,8 @@ export default {
         {
           match: [
             {
-              context: 'FunctionDeclaration',
-              disallowName: '/^opt_/i',
+              context: "FunctionDeclaration",
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -536,8 +546,9 @@ export default {
         {
           match: [
             {
-              comment: 'JsdocBlock:has(JsdocTag[tag="param"]:has(JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1))))',
-              disallowName: '/^opt_/i',
+              comment:
+                'JsdocBlock:has(JsdocTag[tag="param"]:has(JsdocTypeUnion:has(JsdocTypeName[value="Bar"]:nth-child(1))))',
+              disallowName: "/^opt_/i",
             },
           ],
         },
@@ -551,13 +562,17 @@ export default {
          * @property {T} test
          */
       `,
-      options: [{
-        match: [{
-          allowName: "/^[A-Z]{1}$/",
-          message: "The name should be a single capital letter.",
-          tags: ["template"],
-        }],
-      }],
+      options: [
+        {
+          match: [
+            {
+              allowName: "/^[A-Z]{1}$/",
+              message: "The name should be a single capital letter.",
+              tags: ["template"],
+            },
+          ],
+        },
+      ],
     },
   ],
 };

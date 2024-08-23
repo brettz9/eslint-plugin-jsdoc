@@ -1,10 +1,6 @@
-import {
-  expect,
-} from 'chai';
-import {parser as typescriptEslintParser} from 'typescript-eslint';
-import {
-  getJsdocProcessorPlugin
-} from '../src/getJsdocProcessorPlugin.js';
+import { getJsdocProcessorPlugin } from "../src/getJsdocProcessorPlugin.js";
+import { expect } from "chai";
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 /**
  * @param {{
@@ -14,17 +10,15 @@ import {
  *   result: (string|import('eslint').Linter.ProcessorFile)[]
  * }} cfg
  */
-function check ({options, filename, text, result}) {
+const check = function ({ filename, options, result, text }) {
   const plugin = getJsdocProcessorPlugin(options);
-  const results = plugin.processors.examples.preprocess(
-    text, filename
-  );
+  const results = plugin.processors.examples.preprocess(text, filename);
   expect(results).to.deep.equal(result);
-}
+};
 
-describe('`getJsdocProcessorPlugin`', function () {
-  it('returns text and files', function () {
-    const filename = 'something.js';
+describe("`getJsdocProcessorPlugin`", () => {
+  it("returns text and files", () => {
+    const filename = "something.js";
     const text = `
     /**
      * @example
@@ -34,34 +28,32 @@ describe('`getJsdocProcessorPlugin`', function () {
     `;
     check({
       filename,
-      text,
       result: [
         text,
         {
-          text: `\ndoSth('a');`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "\ndoSth('a');",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (recovering from fatal error)', function () {
-    const filename = 'something.js';
-    const text = `doSth(`;
+  it("returns text and files (recovering from fatal error)", () => {
+    const filename = "something.js";
+    const text = "doSth(";
     check({
       filename,
+      result: [text],
       text,
-      result: [
-        text
-      ]
     });
   });
 
-  it('returns text and files with `exampleCodeRegex`', function () {
+  it("returns text and files with `exampleCodeRegex`", () => {
     const options = {
-      exampleCodeRegex: '```js([\\s\\S]*)```',
+      exampleCodeRegex: "```js([\\s\\S]*)```",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
     /**
      * @example
@@ -72,24 +64,24 @@ describe('`getJsdocProcessorPlugin`', function () {
     function doSth () {}
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `\ndoSth('a');\n`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "\ndoSth('a');\n",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files with `exampleCodeRegex` (no parentheses)', function () {
+  it("returns text and files with `exampleCodeRegex` (no parentheses)", () => {
     const options = {
-      exampleCodeRegex: '// begin[\\s\\S]*// end',
+      exampleCodeRegex: "// begin[\\s\\S]*// end",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example // begin
@@ -101,24 +93,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `// begin\nalert('hello')\n// end`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "// begin\nalert('hello')\n// end",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files with missing caption', function () {
+  it("returns text and files with missing caption", () => {
     const options = {
       captionRequired: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example <caption>Valid usage</caption>
@@ -133,27 +125,22 @@ describe('`getJsdocProcessorPlugin`', function () {
     `;
 
     const plugin = getJsdocProcessorPlugin(options);
-    const results = plugin.processors.examples.preprocess(
-      text, filename
-    );
+    const results = plugin.processors.examples.preprocess(text, filename);
     expect(results).to.deep.equal([
       text,
       {
-        text: `\nquux(); // does something useful\n`,
-        filename: 'something.md/*.js'
-      }
+        filename: "something.md/*.js",
+        text: "\nquux(); // does something useful\n",
+      },
     ]);
 
-    const postResults = plugin.processors.examples.postprocess(
-      [[]], filename
-    );
+    const postResults = plugin.processors.examples.postprocess([[]], filename);
     expect(postResults.length).to.equal(1);
   });
 
-  it('returns text and files (inline example)', function () {
-    const options = {
-    };
-    const filename = 'something.js';
+  it("returns text and files (inline example)", () => {
+    const options = {};
+    const filename = "something.js";
     const text = `
       /**
        * @example alert('hello')
@@ -163,24 +150,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `alert('hello')`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "alert('hello')",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (no asterisk example)', function () {
+  it("returns text and files (no asterisk example)", () => {
     const options = {
-      exampleCodeRegex: '```js([\\s\\S]*)```',
+      exampleCodeRegex: "```js([\\s\\S]*)```",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example \`\`\`js
@@ -192,24 +179,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `\nalert('hello');\n`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "\nalert('hello');\n",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with `rejectExampleCodeRegex`)', function () {
+  it("returns text and files (with `rejectExampleCodeRegex`)", () => {
     const options = {
-      rejectExampleCodeRegex: '^\\s*<.*>\\s*$',
+      rejectExampleCodeRegex: "^\\s*<.*>\\s*$",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example <b>Not JavaScript</b>
@@ -225,24 +212,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `quux2();`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "quux2();",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with `matchingFileName`)', function () {
+  it("returns text and files (with `matchingFileName`)", () => {
     const options = {
-      matchingFileName: '../../jsdocUtils.js',
+      matchingFileName: "../../jsdocUtils.js",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example const j = 5;
@@ -253,24 +240,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `const j = 5;\nquux2();`,
-          filename: '../../jsdocUtils.js'
-        }
-      ]
+          filename: "../../jsdocUtils.js",
+          text: "const j = 5;\nquux2();",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with `paddedIndent`)', function () {
+  it("returns text and files (with `paddedIndent`)", () => {
     const options = {
-      paddedIndent: 2
+      paddedIndent: 2,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example const i = 5;
@@ -281,24 +268,24 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `const i = 5;\nquux2()`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "const i = 5;\nquux2()",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with `parser`)', function () {
+  it("returns text and files (with `parser`)", () => {
     const options = {
-      parser: typescriptEslintParser
+      parser: typescriptEslintParser,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example
@@ -310,25 +297,25 @@ describe('`getJsdocProcessorPlugin`', function () {
       }
     `;
     check({
+      filename,
       // @ts-expect-error Ok?
       options,
-      filename,
-      text,
       result: [
         text,
         {
-          text: `\nconst list: number[] = [1, 2, 3]\nquux(list);`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "\nconst list: number[] = [1, 2, 3]\nquux(list);",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with multiple fenced blocks)', function () {
+  it("returns text and files (with multiple fenced blocks)", () => {
     const options = {
-      exampleCodeRegex: '/^```(?:js|javascript)\\n([\\s\\S]*?)```$/gm',
+      exampleCodeRegex: "/^```(?:js|javascript)\\n([\\s\\S]*?)```$/gm",
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
       /**
        * @example <caption>Say \`Hello!\` to the user.</caption>
@@ -352,28 +339,28 @@ describe('`getJsdocProcessorPlugin`', function () {
        */
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `import popup from './popup'\nconst aConstInSameScope = 5;\n`,
-          filename: 'something.md/*.js'
+          filename: "something.md/*.js",
+          text: "import popup from './popup'\nconst aConstInSameScope = 5;\n",
         },
         {
-          text: `const aConstInSameScope = 7;\npopup('Hello!')\n`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: "const aConstInSameScope = 7;\npopup('Hello!')\n",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (for @default)', function () {
+  it("returns text and files (for @default)", () => {
     const options = {
       checkDefaults: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * @default 'abc'
@@ -381,24 +368,24 @@ describe('`getJsdocProcessorPlugin`', function () {
         const str = 'abc';
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `('abc')`,
-          filename: 'something.jsdoc-defaults'
-        }
-      ]
+          filename: "something.jsdoc-defaults",
+          text: "('abc')",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (for @param)', function () {
+  it("returns text and files (for @param)", () => {
     const options = {
       checkParams: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * @param {myType} [name='abc']
@@ -407,24 +394,24 @@ describe('`getJsdocProcessorPlugin`', function () {
         }
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `('abc')`,
-          filename: 'something.jsdoc-params'
-        }
-      ]
+          filename: "something.jsdoc-params",
+          text: "('abc')",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (for @property)', function () {
+  it("returns text and files (for @property)", () => {
     const options = {
       checkProperties: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * @property {myType} [name='abc']
@@ -432,24 +419,24 @@ describe('`getJsdocProcessorPlugin`', function () {
         const obj = {};
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `('abc')`,
-          filename: 'something.jsdoc-properties'
-        }
-      ]
+          filename: "something.jsdoc-properties",
+          text: "('abc')",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with caption)', function () {
+  it("returns text and files (with caption)", () => {
     const options = {
       captionRequired: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * Test function.
@@ -468,24 +455,24 @@ describe('`getJsdocProcessorPlugin`', function () {
         };
     `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: ` test()\n`,
-          filename: 'something.md/*.js'
-        }
-      ]
+          filename: "something.md/*.js",
+          text: " test()\n",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with dummy filename)', function () {
+  it("returns text and files (with dummy filename)", () => {
     const options = {
       checkProperties: true,
     };
-    const filename = '';
+    const filename = "";
     const text = `
         /**
          * @example const i = 5;
@@ -495,24 +482,24 @@ describe('`getJsdocProcessorPlugin`', function () {
         }
       `;
     check({
-      options,
       filename,
-      text,
+      options,
       result: [
         text,
         {
-          text: `const i = 5;`,
-          filename: 'dummy.md/*.js'
-        }
-      ]
+          filename: "dummy.md/*.js",
+          text: "const i = 5;",
+        },
+      ],
+      text,
     });
   });
 
-  it('returns text and files (with empty default)', function () {
+  it("returns text and files (with empty default)", () => {
     const options = {
       checkDefaults: true,
     };
-    const filename = '';
+    const filename = "";
     const text = `
         /**
          * @default
@@ -520,20 +507,18 @@ describe('`getJsdocProcessorPlugin`', function () {
         const str = 'abc';
       `;
     check({
-      options,
       filename,
+      options,
+      result: [text],
       text,
-      result: [
-        text
-      ]
     });
   });
 
-  it('returns text and files (with property default missing)', function () {
+  it("returns text and files (with property default missing)", () => {
     const options = {
       checkProperties: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * @property {myType} [name]
@@ -541,20 +526,18 @@ describe('`getJsdocProcessorPlugin`', function () {
         const obj = {};
     `;
     check({
-      options,
       filename,
+      options,
+      result: [text],
       text,
-      result: [
-        text
-      ]
     });
   });
 
-  it('returns text and files (with param default missing)', function () {
+  it("returns text and files (with param default missing)", () => {
     const options = {
       checkParams: true,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
         /**
          * @param {myType} name
@@ -563,19 +546,16 @@ describe('`getJsdocProcessorPlugin`', function () {
         }
     `;
     check({
-      options,
       filename,
+      options,
+      result: [text],
       text,
-      result: [
-        text
-      ]
     });
   });
 
-  it('returns text and files and postprocesses error', function () {
-    const options = {
-    };
-    const filename = 'something.js';
+  it("returns text and files and postprocesses error", () => {
+    const options = {};
+    const filename = "something.js";
     const text = `
 /**
  * @example alert('a');
@@ -583,47 +563,48 @@ describe('`getJsdocProcessorPlugin`', function () {
     `;
 
     const plugin = getJsdocProcessorPlugin(options);
-    const results = plugin.processors.examples.preprocess(
-      text, filename
-    );
+    const results = plugin.processors.examples.preprocess(text, filename);
     expect(results).to.deep.equal([
       text,
       {
-        text: `alert('a');`,
-        filename: 'something.md/*.js'
-      }
+        filename: "something.md/*.js",
+        text: "alert('a');",
+      },
     ]);
 
     const postResults = plugin.processors.examples.postprocess(
-      [[], [
-        {
-          ruleId: 'no-alert',
-          severity: 2,
-          message: 'Unexpected alert.',
-          line: 1,
-          column: 1,
-          endLine: 1,
-          endColumn: 11
-        }
-      ]], filename
+      [
+        [],
+        [
+          {
+            column: 1,
+            endColumn: 11,
+            endLine: 1,
+            line: 1,
+            message: "Unexpected alert.",
+            ruleId: "no-alert",
+            severity: 2,
+          },
+        ],
+      ],
+      filename,
     );
     expect(postResults).to.deep.equal([
       {
-        ruleId: 'no-alert',
+        column: 4,
+        endColumn: 14,
+        endLine: 4,
+        line: 3,
+        message: "@example error (no-alert): Unexpected alert.",
+        ruleId: "no-alert",
         severity: 2,
-        message: '@example error (no-alert): Unexpected alert.',
-        line: 3,
-        column: 4,
-        endLine: 4,
-        endColumn: 14
-      }
+      },
     ]);
   });
 
-  it('returns text and files and postprocesses warning', function () {
-    const options = {
-    };
-    const filename = 'something.js';
+  it("returns text and files and postprocesses warning", () => {
+    const options = {};
+    const filename = "something.js";
     const text = `
 /**
  * @example alert('a');
@@ -631,47 +612,48 @@ describe('`getJsdocProcessorPlugin`', function () {
     `;
 
     const plugin = getJsdocProcessorPlugin(options);
-    const results = plugin.processors.examples.preprocess(
-      text, filename
-    );
+    const results = plugin.processors.examples.preprocess(text, filename);
     expect(results).to.deep.equal([
       text,
       {
-        text: `alert('a');`,
-        filename: 'something.md/*.js'
-      }
+        filename: "something.md/*.js",
+        text: "alert('a');",
+      },
     ]);
 
     const postResults = plugin.processors.examples.postprocess(
-      [[], [
-        {
-          ruleId: 'no-alert',
-          severity: 1,
-          message: 'Unexpected alert.',
-          line: 1,
-          column: 1,
-          endLine: 1,
-          endColumn: 11
-        }
-      ]], filename
+      [
+        [],
+        [
+          {
+            column: 1,
+            endColumn: 11,
+            endLine: 1,
+            line: 1,
+            message: "Unexpected alert.",
+            ruleId: "no-alert",
+            severity: 1,
+          },
+        ],
+      ],
+      filename,
     );
     expect(postResults).to.deep.equal([
       {
-        ruleId: 'no-alert',
-        severity: 1,
-        message: '@example warning (no-alert): Unexpected alert.',
-        line: 3,
         column: 4,
+        endColumn: 14,
         endLine: 4,
-        endColumn: 14
-      }
+        line: 3,
+        message: "@example warning (no-alert): Unexpected alert.",
+        ruleId: "no-alert",
+        severity: 1,
+      },
     ]);
   });
 
-  it('returns text and files and postprocesses fatal error', function () {
-    const options = {
-    };
-    const filename = 'something.js';
+  it("returns text and files and postprocesses fatal error", () => {
+    const options = {};
+    const filename = "something.js";
     const text = `
       /**
        * @example
@@ -680,48 +662,50 @@ describe('`getJsdocProcessorPlugin`', function () {
     `;
 
     const plugin = getJsdocProcessorPlugin(options);
-    const results = plugin.processors.examples.preprocess(
-      text, filename
-    );
+    const results = plugin.processors.examples.preprocess(text, filename);
     expect(results).to.deep.equal([
       text,
       {
-        text: `\nalert(`,
-        filename: 'something.md/*.js'
-      }
+        filename: "something.md/*.js",
+        text: "\nalert(",
+      },
     ]);
 
     const postResults = plugin.processors.examples.postprocess(
-      [[], [
-        {
-          ruleId: null,
-          fatal: true,
-          severity: 2,
-          message: 'Parsing error: Unexpected token',
-          line: 2,
-          column: 7
-        }
-      ]], filename
+      [
+        [],
+        [
+          {
+            column: 7,
+            fatal: true,
+            line: 2,
+            message: "Parsing error: Unexpected token",
+            ruleId: null,
+            severity: 2,
+          },
+        ],
+      ],
+      filename,
     );
     expect(postResults).to.deep.equal([
       {
-        ruleId: null,
-        fatal: true,
-        severity: 2,
-        message: '@example error: Fatal: Parsing error: Unexpected token',
-        line: 4,
         column: 16,
+        endColumn: 16,
         endLine: 4,
-        endColumn: 16
-      }
+        fatal: true,
+        line: 4,
+        message: "@example error: Fatal: Parsing error: Unexpected token",
+        ruleId: null,
+        severity: 2,
+      },
     ]);
   });
 
-  it('returns text and files, with `checkExamples: false`', function () {
+  it("returns text and files, with `checkExamples: false`", () => {
     const options = {
-      checkExamples: false
+      checkExamples: false,
     };
-    const filename = 'something.js';
+    const filename = "something.js";
     const text = `
     /**
      * @example
@@ -730,12 +714,10 @@ describe('`getJsdocProcessorPlugin`', function () {
     function doSth () {}
     `;
     check({
-      options,
       filename,
+      options,
+      result: [text],
       text,
-      result: [
-        text
-      ]
     });
   });
 });

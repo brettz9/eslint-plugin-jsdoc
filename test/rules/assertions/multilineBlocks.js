@@ -74,7 +74,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Single line blocks are not permitted by your configuration.',
+          message:
+            "Single line blocks are not permitted by your configuration.",
         },
       ],
       options: [
@@ -95,7 +96,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Single line blocks are not permitted by your configuration.',
+          message:
+            "Single line blocks are not permitted by your configuration.",
         },
       ],
       options: [
@@ -116,7 +118,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Single line blocks are not permitted by your configuration.',
+          message:
+            "Single line blocks are not permitted by your configuration.",
         },
       ],
       options: [
@@ -137,15 +140,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Single line blocks are not permitted by your configuration.',
+          message:
+            "Single line blocks are not permitted by your configuration.",
         },
       ],
       options: [
         {
           noSingleLineBlocks: true,
-          singleLineTags: [
-            'someOtherTag',
-          ],
+          singleLineTags: ["someOtherTag"],
         },
       ],
       output: `
@@ -161,15 +163,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Single line blocks are not permitted by your configuration.',
+          message:
+            "Single line blocks are not permitted by your configuration.",
         },
       ],
       options: [
         {
           noSingleLineBlocks: true,
-          singleLineTags: [
-            '*',
-          ],
+          singleLineTags: ["*"],
         },
       ],
       output: `
@@ -187,8 +188,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -209,8 +210,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -231,10 +232,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration but fixing would result in a single ' +
-                  'line block which you have prohibited with ' +
-                  '`noSingleLineBlocks`.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " +
+            "your configuration but fixing would result in a single " +
+            "line block which you have prohibited with " +
+            "`noSingleLineBlocks`.",
         },
       ],
       options: [
@@ -253,8 +255,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -275,8 +277,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -298,8 +300,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -323,16 +325,15 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by your ' +
-          'configuration but the block has a description with a tag.',
+          message:
+            "Multiline jsdoc blocks are prohibited by your " +
+            "configuration but the block has a description with a tag.",
         },
       ],
       options: [
         {
           allowMultipleTags: false,
-          multilineTags: [
-            'onlyThisIsExempted',
-          ],
+          multilineTags: ["onlyThisIsExempted"],
           noMultilineBlocks: true,
         },
       ],
@@ -348,8 +349,9 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration but the block has multiple tags.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " +
+            "your configuration but the block has multiple tags.",
         },
       ],
       options: [
@@ -370,8 +372,9 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by your ' +
-          'configuration but the block has a description with a tag.',
+          message:
+            "Multiline jsdoc blocks are prohibited by your " +
+            "configuration but the block has a description with a tag.",
         },
       ],
       options: [
@@ -391,15 +394,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
         {
-          multilineTags: [
-            '*',
-          ],
+          multilineTags: ["*"],
           noMultilineBlocks: true,
         },
       ],
@@ -417,17 +418,16 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by your ' +
-          'configuration but the block has a description with a tag.',
+          message:
+            "Multiline jsdoc blocks are prohibited by your " +
+            "configuration but the block has a description with a tag.",
         },
       ],
       options: [
         {
           allowMultipleTags: false,
           minimumLengthForMultiline: 500,
-          multilineTags: [
-            'onlyThisIsExempted',
-          ],
+          multilineTags: ["onlyThisIsExempted"],
           noMultilineBlocks: true,
         },
       ],
@@ -441,8 +441,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -465,8 +465,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -489,8 +489,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -512,10 +512,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration but fixing would result in a single ' +
-                  'line block which you have prohibited with ' +
-                  '`noSingleLineBlocks`.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " +
+            "your configuration but fixing would result in a single " +
+            "line block which you have prohibited with " +
+            "`noSingleLineBlocks`.",
         },
       ],
       options: [
@@ -561,8 +562,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Multiline jsdoc blocks are prohibited by ' +
-                  'your configuration.',
+          message:
+            "Multiline jsdoc blocks are prohibited by " + "your configuration.",
         },
       ],
       options: [
@@ -583,7 +584,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should have no text on the final line (before the `*/`).',
+          message: "Should have no text on the final line (before the `*/`).",
         },
       ],
       options: [
@@ -605,7 +606,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Should have no text on the final line (before the `*/`).',
+          message: "Should have no text on the final line (before the `*/`).",
         },
       ],
       options: [
@@ -667,9 +668,7 @@ export default {
       options: [
         {
           noSingleLineBlocks: true,
-          singleLineTags: [
-            'tag',
-          ],
+          singleLineTags: ["tag"],
         },
       ],
     },
@@ -680,9 +679,7 @@ export default {
       options: [
         {
           noSingleLineBlocks: true,
-          singleLineTags: [
-            '*',
-          ],
+          singleLineTags: ["*"],
         },
       ],
     },
@@ -750,9 +747,7 @@ export default {
       `,
       options: [
         {
-          multilineTags: [
-            'theRightTag',
-          ],
+          multilineTags: ["theRightTag"],
           noMultilineBlocks: true,
         },
       ],
@@ -763,9 +758,7 @@ export default {
       `,
       options: [
         {
-          multilineTags: [
-            '*',
-          ],
+          multilineTags: ["*"],
           noMultilineBlocks: true,
         },
       ],
@@ -780,9 +773,7 @@ export default {
       options: [
         {
           minimumLengthForMultiline: 10,
-          multilineTags: [
-            'onlyThisIsExempted',
-          ],
+          multilineTags: ["onlyThisIsExempted"],
           noMultilineBlocks: true,
         },
       ],
@@ -797,9 +788,7 @@ export default {
       options: [
         {
           minimumLengthForMultiline: 500,
-          multilineTags: [
-            'theRightTag',
-          ],
+          multilineTags: ["theRightTag"],
           noMultilineBlocks: true,
         },
       ],
@@ -878,9 +867,7 @@ export default {
       options: [
         {
           allowMultipleTags: false,
-          multilineTags: [
-            'oneTag',
-          ],
+          multilineTags: ["oneTag"],
           noMultilineBlocks: true,
         },
       ],

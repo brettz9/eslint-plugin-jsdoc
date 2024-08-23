@@ -1,12 +1,12 @@
 <a name="user-content-require-property"></a>
 <a name="require-property"></a>
+
 # <code>require-property</code>
 
-* [Fixer](#user-content-require-property-fixer)
-* [Context and settings](#user-content-require-property-context-and-settings)
-* [Failing examples](#user-content-require-property-failing-examples)
-* [Passing examples](#user-content-require-property-passing-examples)
-
+- [Fixer](#user-content-require-property-fixer)
+- [Context and settings](#user-content-require-property-context-and-settings)
+- [Failing examples](#user-content-require-property-failing-examples)
+- [Passing examples](#user-content-require-property-passing-examples)
 
 Requires that all `@typedef` and `@namespace` tags have `@property`
 tags when their type is a plain `object`, `Object`, or `PlainObject`.
@@ -16,37 +16,40 @@ Note that any other type, including a subtype of object such as
 
 <a name="user-content-require-property-fixer"></a>
 <a name="require-property-fixer"></a>
+
 ## Fixer
 
 The fixer for `require-property` will add an empty `@property`.
 
 <a name="user-content-require-property-context-and-settings"></a>
 <a name="require-property-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|Everywhere|
-|Tags|`typedef`, `namespace`|
-|Recommended|true|
+|             |                        |
+| ----------- | ---------------------- |
+| Context     | Everywhere             |
+| Tags        | `typedef`, `namespace` |
+| Recommended | true                   |
 
 <a name="user-content-require-property-failing-examples"></a>
 <a name="require-property-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @typedef {object} SomeTypedef
  */
 // Message: Missing JSDoc @property.
 
 class Test {
-    /**
-     * @typedef {object} SomeTypedef
-     */
-    quux () {}
+  /**
+   * @typedef {object} SomeTypedef
+   */
+  quux() {}
 }
 // Message: Missing JSDoc @property.
 
@@ -60,17 +63,16 @@ class Test {
  * @namespace {Object} SomeName
  */
 // Message: Missing JSDoc @property.
-````
-
-
+```
 
 <a name="user-content-require-property-passing-examples"></a>
 <a name="require-property-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
@@ -121,8 +123,5 @@ The following patterns are not considered problems:
  * @property anotherProp This with a description
  * @property {anotherType} yetAnotherProp This with a type and desc.
  */
-function quux () {
-
-}
-````
-
+function quux() {}
+```

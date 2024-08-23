@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns type.',
+          message: "Missing JSDoc @returns type.",
         },
       ],
     },
@@ -28,7 +28,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns type.',
+          message: "Missing JSDoc @returns type.",
         },
       ],
     },
@@ -44,14 +44,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @returns type.',
+          message: "Missing JSDoc @returns type.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -65,14 +63,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc @returns type.',
+          message: "Missing JSDoc @returns type.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -86,14 +82,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc @returns type.',
+          message: "Missing JSDoc @returns type.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -109,13 +103,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @return type.',
+          message: "Missing JSDoc @return type.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            returns: 'return',
+            returns: "return",
           },
         },
       },
@@ -132,7 +126,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@returns`',
+          message: "Unexpected tag `@returns`",
         },
       ],
       settings: {
@@ -166,9 +160,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

@@ -1,12 +1,12 @@
 <a name="user-content-valid-types"></a>
 <a name="valid-types"></a>
+
 # <code>valid-types</code>
 
-* [Options](#user-content-valid-types-options)
-* [Context and settings](#user-content-valid-types-context-and-settings)
-* [Failing examples](#user-content-valid-types-failing-examples)
-* [Passing examples](#user-content-valid-types-passing-examples)
-
+- [Options](#user-content-valid-types-options)
+- [Context and settings](#user-content-valid-types-context-and-settings)
+- [Failing examples](#user-content-valid-types-failing-examples)
+- [Passing examples](#user-content-valid-types-passing-examples)
 
 Requires all types/namepaths to be valid JSDoc, Closure compiler, or
 TypeScript types (configured by `settings.jsdoc.mode`).
@@ -23,44 +23,44 @@ e.g., `@modifies`):
 
 1. Tags with required types: `@type`, `@implements`
 1. Tags with required types in Closure or TypeScript: `@this`,
-    `@define` (Closure only)
+   `@define` (Closure only)
 1. Tags with optional types: `@enum`, `@member` (`@var`), `@typedef`,
-  `@augments` (or `@extends`), `@class` (or `@constructor`), `@constant`
-  (or `@const`), `@module` (module paths are not planned for TypeScript),
-  `@namespace`, `@throws`, `@exception`, `@yields` (or `@yield`),
-  `@modifies` (undocumented jsdoc); `@param` (`@arg`, `@argument`),
-  `@property` (`@prop`), and `@returns` (`@return`) also fall into this
-  category, but while this rule will check their type validity, we leave
-  the requiring of the type portion to the rules `require-param-type`,
-  `require-property-type`, and `require-returns-type`, respectively.
+   `@augments` (or `@extends`), `@class` (or `@constructor`), `@constant`
+   (or `@const`), `@module` (module paths are not planned for TypeScript),
+   `@namespace`, `@throws`, `@exception`, `@yields` (or `@yield`),
+   `@modifies` (undocumented jsdoc); `@param` (`@arg`, `@argument`),
+   `@property` (`@prop`), and `@returns` (`@return`) also fall into this
+   category, but while this rule will check their type validity, we leave
+   the requiring of the type portion to the rules `require-param-type`,
+   `require-property-type`, and `require-returns-type`, respectively.
 1. Tags with types that are available optionally in Closure: `@export`,
-    `@package`, `@private`, `@protected`, `@public`, `@static`;
-    `@template` (TypeScript also)
+   `@package`, `@private`, `@protected`, `@public`, `@static`;
+   `@template` (TypeScript also)
 1. Tags with optional types that may take free text instead: `@throws`
 
 The following tags have their name/namepath portion (the non-whitespace
 text after the tag name) checked:
 
 1. Name(path)-defining tags requiring namepath: `@event`, `@callback`,
-    `@exports` (JSDoc only),
-    `@external`, `@host`, `@name`, `@typedef` (JSDoc only), and `@template`
-    (TypeScript/Closure only); `@param` (`@arg`, `@argument`) and `@property`
-    (`@prop`) also fall into this category, but while this rule will check
-    their namepath validity, we leave the requiring of the name portion
-    to the rules `require-param-name` and `require-property-name`,
-    respectively.
+   `@exports` (JSDoc only),
+   `@external`, `@host`, `@name`, `@typedef` (JSDoc only), and `@template`
+   (TypeScript/Closure only); `@param` (`@arg`, `@argument`) and `@property`
+   (`@prop`) also fall into this category, but while this rule will check
+   their namepath validity, we leave the requiring of the name portion
+   to the rules `require-param-name` and `require-property-name`,
+   respectively.
 1. Name(path)-defining tags (which may have value without namepath or their
-    namepath can be expressed elsewhere on the block):
-    `@class`, `@constructor`, `@constant`, `@const`, `@function`, `@func`,
-    `@method`, `@interface` (non-Closure only), `@member`, `@var`,
-    `@mixin`, `@namespace`, `@module` (module paths are not planned for
-    TypeScript)
+   namepath can be expressed elsewhere on the block):
+   `@class`, `@constructor`, `@constant`, `@const`, `@function`, `@func`,
+   `@method`, `@interface` (non-Closure only), `@member`, `@var`,
+   `@mixin`, `@namespace`, `@module` (module paths are not planned for
+   TypeScript)
 1. Name(path)-pointing tags requiring namepath: `@alias`, `@augments`,
-    `@extends` (JSDoc only), `@lends`, `@memberof`, `@memberof!`, `@mixes`, `@requires`, `@this`
-    (jsdoc only)
+   `@extends` (JSDoc only), `@lends`, `@memberof`, `@memberof!`, `@mixes`, `@requires`, `@this`
+   (jsdoc only)
 1. Name(path)-pointing tags (which may have value without namepath or their
-    namepath can be expressed elsewhere on the block): `@listens`, `@fires`,
-    `@emits`.
+   namepath can be expressed elsewhere on the block): `@listens`, `@fires`,
+   `@emits`.
 1. Name(path)-pointing tags which may have free text or a namepath: `@see`
 1. Name(path)-pointing tags (multiple names in one): `@borrows`
 
@@ -77,9 +77,9 @@ text after the tag name) checked:
   between them. In the case of `<this namepath>`, it can be preceded by
   one of the name path operators, `#`, `.`, or `~`.
 - For the special case of `@memberof` and `@memberof!` (part of set 3), as
-   per the [specification](https://jsdoc.app/tags-memberof.html), they also
-   allow `#`, `.`, or `~` at the end (which is not allowed at the end of
-   normal paths).
+  per the [specification](https://jsdoc.app/tags-memberof.html), they also
+  allow `#`, `.`, or `~` at the end (which is not allowed at the end of
+  normal paths).
 
 If you define your own tags, `settings.jsdoc.structuredTags` will allow
 these custom tags to be checked, with the name portion of tags checked for
@@ -90,6 +90,7 @@ value). See the setting for more details.
 
 <a name="user-content-valid-types-options"></a>
 <a name="valid-types-options"></a>
+
 ## Options
 
 - `allowEmptyNamepaths` (default: true) - Set to `false` to bulk disallow
@@ -102,119 +103,99 @@ value). See the setting for more details.
 
 <a name="user-content-valid-types-context-and-settings"></a>
 <a name="valid-types-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|For name only unless otherwise stated: `alias`, `augments`, `borrows`, `callback`, `class` (for name and type), `constant` (for name and type), `enum` (for type), `event`, `external`, `fires`, `function`, `implements` (for type), `interface`, `lends`, `listens`, `member` (for name and type),  `memberof`, `memberof!`, `mixes`, `mixin`, `modifies`, `module` (for name and type), `name`, `namespace` (for name and type), `param` (for name and type), `property` (for name and type), `returns` (for type), `see` (optionally for name), `this`, `throws` (for type), `type` (for type), `typedef` (for name and type), `yields` (for type)|
-|Aliases|`extends`, `constructor`, `const`, `host`, `emits`, `func`, `method`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
-|Closure-only|For type only: `package`, `private`, `protected`, `public`, `static`|
-|Recommended|true|
-|Options|`allowEmptyNamepaths`|
-|Settings|`mode`, `structuredTags`|
+|              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context      | everywhere                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Tags         | For name only unless otherwise stated: `alias`, `augments`, `borrows`, `callback`, `class` (for name and type), `constant` (for name and type), `enum` (for type), `event`, `external`, `fires`, `function`, `implements` (for type), `interface`, `lends`, `listens`, `member` (for name and type), `memberof`, `memberof!`, `mixes`, `mixin`, `modifies`, `module` (for name and type), `name`, `namespace` (for name and type), `param` (for name and type), `property` (for name and type), `returns` (for type), `see` (optionally for name), `this`, `throws` (for type), `type` (for type), `typedef` (for name and type), `yields` (for type) |
+| Aliases      | `extends`, `constructor`, `const`, `host`, `emits`, `func`, `method`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Closure-only | For type only: `package`, `private`, `protected`, `public`, `static`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Recommended  | true                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Options      | `allowEmptyNamepaths`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Settings     | `mode`, `structuredTags`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 <a name="user-content-valid-types-failing-examples"></a>
 <a name="valid-types-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @param {Array<string} foo
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in type: Array<string
 
 /**
  * @memberof module:namespace.SomeClass<~
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: module:namespace.SomeClass<~
 
 /**
  * @param someParam<~
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: someParam<~
 
 /**
  * @memberof module:namespace.SomeClass~<
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: module:namespace.SomeClass~<
 
 /**
  * @borrows foo% as bar
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: foo%
 
 /**
  * @borrows #foo as bar
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: #foo
 
 /**
  * @borrows foo as bar%
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: bar%
 
 /**
  * @borrows foo
  */
-function quux() {
-
-}
+function quux() {}
 // Message: @borrows must have an "as" expression. Found ""
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":"namepath-referencing","required":["name"]}}}}
 // Message: Syntax error in namepath: foo%
 
 /**
  * @mixes module:namespace.SomeClass~
  */
-function quux() {
-
-}
+function quux() {}
 // Message: Syntax error in namepath: module:namespace.SomeClass~
 
 /**
  * @callback
  */
-function quux() {
-
-}
+function quux() {}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":false}]
 // Message: Tag @callback must have a name/namepath.
 
 /**
  * @constant {str%ng}
  */
- const FOO = 'foo';
+const FOO = "foo";
 // Message: Syntax error in type: str%ng
 
 /**
@@ -230,7 +211,7 @@ function quux() {
 /**
  * @this
  */
- class Bar {};
+class Bar {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":false}]
 // Message: Tag @this must have either a type or namepath in "jsdoc" mode.
@@ -245,40 +226,40 @@ function quux() {
 /**
  * @type
  */
- let foo;
+let foo;
 // Message: Tag @type must have a type.
 
 /**
  * @modifies {bar | foo<}
  */
-function quux (foo, bar, baz) {}
+function quux(foo, bar, baz) {}
 // Message: Syntax error in type: bar | foo<
 
 /**
  * @private {BadTypeChecked<}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in type: BadTypeChecked<
 
 /**
  * @this {BadTypeChecked<}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in type: BadTypeChecked<
 
 /**
  * @define
  */
- function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Tag @define must have a type in "closure" mode.
 
 /**
  * @this
  */
- let foo;
+let foo;
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Tag @this must have a type in "closure" mode.
 
@@ -324,7 +305,7 @@ function foo(bar) {}
 /**
  * @typedef {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":false}]
 // Message: Tag @typedef must have a name/namepath in "jsdoc" mode.
@@ -332,50 +313,42 @@ function quux () {}
 /**
  * @private {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // Message: @private should not have a bracketed type in "jsdoc" mode.
 
 /**
  * @aCustomTag {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"aCustomTag":{"type":false}}}}
 // Message: @aCustomTag should not have a bracketed type.
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":false,"required":["name"]}}}}
 // Message: Cannot add "name" to `require` with the tag's `name` set to `false`
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"required":["type"],"type":false}}}}
 // Message: Cannot add "type" to `require` with the tag's `type` set to `false`
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":false,"required":["typeOrNameRequired"]}}}}
 // Message: Cannot add "typeOrNameRequired" to `require` with the tag's `name` set to `false`
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"required":["typeOrNameRequired"],"type":false}}}}
 // Message: Cannot add "typeOrNameRequired" to `require` with the tag's `type` set to `false`
 
@@ -384,10 +357,10 @@ function quux() {
  * @param {function(!T): !R} parser
  * @return {function(!Array<!T>): !Array<!R>}
  */
-parseArray = function(parser) {
-    return function(array) {
-        return array.map(parser);
-    };
+parseArray = function (parser) {
+  return function (array) {
+    return array.map(parser);
+  };
 };
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in namepath: T<~
@@ -397,10 +370,10 @@ parseArray = function(parser) {
  * @param {function(!T): !R} parser
  * @return {function(!Array<!T>): !Array<!R>}
  */
-parseArray = function(parser) {
-    return function(array) {
-        return array.map(parser);
-    };
+parseArray = function (parser) {
+  return function (array) {
+    return array.map(parser);
+  };
 };
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in namepath: R<~
@@ -410,10 +383,10 @@ parseArray = function(parser) {
  * @param {function(!T): !R} parser
  * @return {function(!Array<!T>): !Array<!R>}
  */
-parseArray = function(parser) {
-    return function(array) {
-        return array.map(parser);
-    };
+parseArray = function (parser) {
+  return function (array) {
+    return array.map(parser);
+  };
 };
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in namepath: R<~
@@ -421,21 +394,21 @@ parseArray = function(parser) {
 /**
  * @suppress
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Tag @suppress must have a type in "closure" mode.
 
 /**
  * @suppress {visibility} sth
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: @suppress should not have a name in "closure" mode.
 
 /**
  * @suppress {visibility|blah}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in suppress type: blah
 
@@ -443,41 +416,39 @@ function quux () {}
  * @param {Object[]} employees
  * @param {string} employees[.name - The name of an employee.
  */
-function quux () {}
+function quux() {}
 // Message: Invalid name: unpaired brackets
 
 /**
  * @param {Object[]} employees
  * @param {string} [] - The name of an employee.
  */
-function quux () {}
+function quux() {}
 // Message: Invalid name: empty name
 
 /**
  * @param {string} [name=] - The name of an employee.
  */
-function quux () {}
+function quux() {}
 // Message: Invalid name: empty default value
 
 /**
  * @param {string} [name==] - The name of an employee.
  */
-function quux () {}
+function quux() {}
 // Message: Invalid name: invalid default value syntax
 
 /**
  * @type {{message: string?}}
  */
-function quux (items) {
-}
+function quux(items) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Syntax error in type: JsdocTypeNullable
 
 /**
  * @type {[message: string?]}
  */
-function quux (items) {
-}
+function quux(items) {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 // Message: Syntax error in type: JsdocTypeNullable
 
@@ -495,156 +466,123 @@ function quux (items) {
  * @param {SomeType} aName An inline {@link} tag without content.
  */
 // Message: Inline tag "link" missing content
-````
-
-
+```
 
 <a name="user-content-valid-types-passing-examples"></a>
 <a name="valid-types-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param {Array<string>} foo
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @param {string} foo
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @param foo
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @borrows foo as bar
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @borrows foo as #bar
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @see foo%
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @alias module:namespace.SomeClass#event:ext_anevent
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @callback foo
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @callback
  */
-function quux() {
-
-}
+function quux() {}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":true}]
 
 /**
  * @class
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @see {@link foo}
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":"namepath-referencing","required":["name"]}}}}
 
 /**
  *
  * @fires module:namespace.SomeClass#event:ext_anevent
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @memberof module:namespace.SomeClass~
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @memberof! module:namespace.SomeClass.
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  *
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @aCustomTag
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @constant {string}
  */
- const FOO = 'foo';
+const FOO = "foo";
 
 /**
  * @constant {string} FOO
  */
- const FOO = 'foo';
+const FOO = "foo";
 
 /**
  * @extends Foo
  */
- class Bar {};
+class Bar {}
 
 /**
  * @extends Foo<String>
  */
- class Bar {};
+class Bar {}
 
 /**
  * @extends {Foo<String>}
  */
- class Bar {};
+class Bar {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
@@ -660,30 +598,30 @@ let UserDefinedGCCType;
 /**
  * @modifies {foo | bar}
  */
-function quux (foo, bar, baz) {}
+function quux(foo, bar, baz) {}
 
 /**
  * @this {Navigator}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @export {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @define {boolean}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @define
  */
- function quux () {}
+function quux() {}
 
 /**
  * Foo function.
@@ -719,30 +657,26 @@ function foo(bar) {}
 /**
  * @typedef {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":false}]
 
 /**
  * @private {SomeType}
  */
-function quux () {}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  * @param
  */
-function quux() {
-
-}
+function quux() {}
 // "jsdoc/valid-types": ["error"|"warn", {"allowEmptyNamepaths":false}]
 
 /**
  * @see
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"structuredTags":{"see":{"name":"namepath-referencing"}}}}
 
 /**
@@ -750,10 +684,10 @@ function quux() {
  * @param {function(!T): !R} parser
  * @return {function(!Array<!T>): !Array<!R>}
  */
-parseArray = function(parser) {
-    return function(array) {
-        return array.map(parser);
-    };
+parseArray = function (parser) {
+  return function (array) {
+    return array.map(parser);
+  };
 };
 // Settings: {"jsdoc":{"mode":"closure"}}
 
@@ -762,10 +696,10 @@ parseArray = function(parser) {
  * @param {function(!T): !R} parser
  * @return {function(!Array<!T>): !Array<!R>}
  */
-parseArray = function(parser) {
-    return function(array) {
-        return array.map(parser);
-    };
+parseArray = function (parser) {
+  return function (array) {
+    return array.map(parser);
+  };
 };
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 
@@ -802,7 +736,7 @@ function f() {}
  * @template V,W More parameters
  * @template W,X - Also with a hyphen
  */
-type ComplicatedType<T, U, V, W, X> = never
+type ComplicatedType<T, U, V, W, X> = never;
 
 /** Multi-line typedef for an options object type.
  *
@@ -820,8 +754,7 @@ class quux {}
 /**
  * @suppress {visibility|underscore}
  */
-function quux() {
-}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
@@ -830,9 +763,7 @@ function quux() {
  * @param {boolean} options.isSet
  * @param {string} options.module
  */
-function quux ( id, options ) {
-}
-
+function quux(id, options) {}
 
 /**
  * Assign the project to a list of employees.
@@ -850,9 +781,7 @@ function assign(employees) {
  * @param {Parameters<testFunc>[0]} ghi
  * @param {{[key: string]: string}} hjk
  */
-function quux() {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
 /**
@@ -877,12 +806,9 @@ function quux() {
  * @param import
  * @param is
  */
-function quux() {
-
-}
+function quux() {}
 
 /**
  * @import { TestOne, TestTwo } from "./types"
  */
-````
-
+```

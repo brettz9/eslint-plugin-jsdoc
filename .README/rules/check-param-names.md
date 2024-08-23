@@ -21,7 +21,7 @@ actually be a part of the object rest property.
  * @param options
  * @param options.foo
  */
-function quux ({foo, ...extra}) {}
+function quux({ foo, ...extra }) {}
 ```
 
 To require that `extra` be documented--and that any extraneous properties
@@ -87,13 +87,13 @@ Whether to avoid checks for missing `@param` definitions. Defaults to `false`. C
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`|
-|Options|`allowExtraTrailingParamDocs`, `checkDestructured`, `checkRestProperty`, `checkTypesPattern`, `disableExtraPropertyReporting`, `disableMissingParamChecks`, `enableFixer`, `useDefaultObjectProperties`|
-|Tags|`param`|
-|Aliases|`arg`, `argument`|
-|Recommended|true|
+|             |                                                                                                                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`                                                                                                                                  |
+| Options     | `allowExtraTrailingParamDocs`, `checkDestructured`, `checkRestProperty`, `checkTypesPattern`, `disableExtraPropertyReporting`, `disableMissingParamChecks`, `enableFixer`, `useDefaultObjectProperties` |
+| Tags        | `param`                                                                                                                                                                                                 |
+| Aliases     | `arg`, `argument`                                                                                                                                                                                       |
+| Recommended | true                                                                                                                                                                                                    |
 
 ## Failing examples
 

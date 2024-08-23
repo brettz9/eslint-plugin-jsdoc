@@ -1,8 +1,10 @@
 {
-  "plugins": [
-    "add-module-exports",
-    "babel-plugin-transform-import-meta"
-  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  },
+  "plugins": ["add-module-exports", "babel-plugin-transform-import-meta"],
   "presets": [
     [
       "@babel/preset-env",
@@ -12,10 +14,5 @@
         }
       }
     ]
-  ],
-  "env": {
-    "test": {
-      "plugins": [ "istanbul" ]
-    }
-  }
+  ]
 }

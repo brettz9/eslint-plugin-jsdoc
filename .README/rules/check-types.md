@@ -82,10 +82,11 @@ Fortunately we don't have to write `new String()` everywhere in our code.
 Javascript will automatically wrap string primitives into string Objects when
 we're applying a string function to a string primitive. This way the memory
 footprint is a tiny little bit smaller, and the
-[GC](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) has
+[GC](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>) has
 less work to do.
 
 So in a sense, there are two types of strings in Javascript:
+
 1. `{string}` literals, also called primitives
 2. `{String}` Objects.
 
@@ -93,9 +94,9 @@ We use the primitives because it's easier to write and uses less memory.
 `{String}` and `{string}` are technically both valid, but they are not the same.
 
 ```js
-new String('lard') // String {0: "l", 1: "a", 2: "r", 3: "d", length: 4}
-'lard' // "lard"
-new String('lard') === 'lard' // false
+new String("lard"); // String {0: "l", 1: "a", 2: "r", 3: "d", length: 4}
+("lard"); // "lard"
+new String("lard") === "lard"; // false
 ```
 
 To make things more confusing, there are also object literals (like `{}`) and
@@ -135,16 +136,16 @@ identity.)
 
 ## Comparisons
 
-type name | `typeof` | check-types | testcase
---|--|--|--
-**Array** | object | **Array** | `([]) instanceof Array` -> `true`
-**Function** | function | **Function** | `(function f () {}) instanceof Function` -> `true`
-**Date** | object | **Date** | `(new Date()) instanceof Date` -> `true`
-**RegExp** | object | **RegExp** | `(new RegExp(/.+/)) instanceof RegExp` -> `true`
-Object | **object** | **object** | `({}) instanceof Object` -> `true` but `Object.create(null) instanceof Object` -> `false`
-Boolean | **boolean** | **boolean** | `(true) instanceof Boolean` -> **`false`**
-Number | **number** | **number** | `(41) instanceof Number` -> **`false`**
-String | **string** | **string** | `("test") instanceof String` -> **`false`**
+| type name    | `typeof`    | check-types  | testcase                                                                                  |
+| ------------ | ----------- | ------------ | ----------------------------------------------------------------------------------------- |
+| **Array**    | object      | **Array**    | `([]) instanceof Array` -> `true`                                                         |
+| **Function** | function    | **Function** | `(function f () {}) instanceof Function` -> `true`                                        |
+| **Date**     | object      | **Date**     | `(new Date()) instanceof Date` -> `true`                                                  |
+| **RegExp**   | object      | **RegExp**   | `(new RegExp(/.+/)) instanceof RegExp` -> `true`                                          |
+| Object       | **object**  | **object**   | `({}) instanceof Object` -> `true` but `Object.create(null) instanceof Object` -> `false` |
+| Boolean      | **boolean** | **boolean**  | `(true) instanceof Boolean` -> **`false`**                                                |
+| Number       | **number**  | **number**   | `(41) instanceof Number` -> **`false`**                                                   |
+| String       | **string**  | **string**   | `("test") instanceof String` -> **`false`**                                               |
 
 If you define your own tags and don't wish their bracketed portions checked
 for types, you can use `settings.jsdoc.structuredTags` with a tag `type` of
@@ -157,15 +158,15 @@ permitted.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields`|
-|Aliases|`constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`|
-|Closure-only|`package`, `private`, `protected`, `public`, `static`|
-|Recommended|true|
-|Options|`exemptTagContexts`, `noDefaults`, `unifyParentAndChildTypeChecks`|
-|Settings|`preferredTypes`, `mode`, `structuredTags`|
+|              |                                                                                                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context      | everywhere                                                                                                                                                    |
+| Tags         | `augments`, `class`, `constant`, `enum`, `implements`, `member`, `module`, `namespace`, `param`, `property`, `returns`, `throws`, `type`, `typedef`, `yields` |
+| Aliases      | `constructor`, `const`, `extends`, `var`, `arg`, `argument`, `prop`, `return`, `exception`, `yield`                                                           |
+| Closure-only | `package`, `private`, `protected`, `public`, `static`                                                                                                         |
+| Recommended  | true                                                                                                                                                          |
+| Options      | `exemptTagContexts`, `noDefaults`, `unifyParentAndChildTypeChecks`                                                                                            |
+| Settings     | `preferredTypes`, `mode`, `structuredTags`                                                                                                                    |
 
 ## Failing examples
 

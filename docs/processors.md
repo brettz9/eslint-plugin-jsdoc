@@ -1,5 +1,6 @@
 <a name="user-content-processors"></a>
 <a name="processors"></a>
+
 ## Processors
 
 Normally JavaScript content inside JSDoc tags is not discoverable by ESLint.
@@ -11,11 +12,11 @@ The approach below works in ESLint 9. For ESLint 7, please see our [`check-examp
 The approach requires that we first indicate the JavaScript files that will be checked for `@example` tags.
 
 ```js
-import {getJsdocProcessorPlugin} from 'eslint-plugin-jsdoc/getJsdocProcessorPlugin.js';
+import { getJsdocProcessorPlugin } from "eslint-plugin-jsdoc/getJsdocProcessorPlugin.js";
 
 export default [
   {
-    files: ['**/*.js'],
+    files: ["**/*.js"],
     plugins: {
       examples: getJsdocProcessorPlugin({
         // Enable these options if you want the `someDefault` inside of the
@@ -26,9 +27,9 @@ export default [
         // checkDefaults: true,
         // checkParams: true,
         // checkProperties: true
-      })
+      }),
     },
-    processor: 'examples/examples'
+    processor: "examples/examples",
   },
 ];
 ```
@@ -57,10 +58,10 @@ by the following:
 Alternatively you can just use our built-in configs which do the above for you:
 
 ```js
-import jsdoc from 'eslint-plugin-jsdoc';
+import jsdoc from "eslint-plugin-jsdoc";
 
 export default [
-  ...jsdoc.configs.examples
+  ...jsdoc.configs.examples,
 
   // Or for @default, @param and @property default expression processing
   // ...jsdoc.configs['default-expressions']
@@ -82,7 +83,7 @@ going to form a whole statement, but just an expression. With the following:
 /**
  * @param [abc=someDefault]
  */
-function quux (abc) {}
+function quux(abc) {}
 ```
 
 ...`someDefault` can be checked as JavaScript, but we don't want rules like
@@ -97,34 +98,40 @@ For defaults, a couple rules are enabled which are usually useful:
 
 <a name="user-content-processors-options"></a>
 <a name="processors-options"></a>
+
 ### Options
 
 <a name="user-content-processors-options-checkdefaults"></a>
 <a name="processors-options-checkdefaults"></a>
+
 #### <code>checkDefaults</code>
 
 Whether to check `@default` tags. Defaults to `false`.
 
 <a name="user-content-processors-options-checkexamples"></a>
 <a name="processors-options-checkexamples"></a>
+
 #### <code>checkExamples</code>
 
 Whether to check `@example` tags. Defaults to `true`.
 
 <a name="user-content-processors-options-checkparams"></a>
 <a name="processors-options-checkparams"></a>
+
 #### <code>checkParams</code>
 
 Whether to check `@param [name=someDefaultValue]` content. Defaults to `false`.
 
 <a name="user-content-processors-options-checkproperties"></a>
 <a name="processors-options-checkproperties"></a>
+
 #### <code>checkProperties</code>
 
 Whether to check `@property [name=someDefaultValue]` content. Defaults to `false`.
 
 <a name="user-content-processors-options-captionrequired"></a>
 <a name="processors-options-captionrequired"></a>
+
 #### <code>captionRequired</code>
 
 Whether to require the JSDoc `<caption></caption>` content inside the `@example`
@@ -132,6 +139,7 @@ tag. Defaults to `false`.
 
 <a name="user-content-processors-options-paddedindent"></a>
 <a name="processors-options-paddedindent"></a>
+
 #### <code>paddedIndent</code>
 
 The number of spaces to assume at the beginning of each line. Defaults to 0. Should
@@ -139,15 +147,22 @@ only have an effect on whitespace-based rules.
 
 <a name="user-content-processors-options-matchingfilename"></a>
 <a name="processors-options-matchingfilename"></a>
+
 #### <code>matchingFileName</code>
+
 <a name="user-content-processors-options-matchingfilenamedefaults"></a>
 <a name="processors-options-matchingfilenamedefaults"></a>
+
 #### <code>matchingFileNameDefaults</code>
+
 <a name="user-content-processors-options-matchingfilenameparams"></a>
 <a name="processors-options-matchingfilenameparams"></a>
+
 #### <code>matchingFileNameParams</code>
+
 <a name="user-content-processors-options-matchingfilenameproperties"></a>
 <a name="processors-options-matchingfilenameproperties"></a>
+
 #### <code>matchingFileNameProperties</code>
 
 See the [`check-examples`](./rules/check-examples.md#readme) option of the
@@ -155,19 +170,23 @@ same name.
 
 <a name="user-content-processors-options-examplecoderegex-and-rejectexamplecoderegex"></a>
 <a name="processors-options-examplecoderegex-and-rejectexamplecoderegex"></a>
+
 #### <code>exampleCodeRegex</code> and <code>rejectExampleCodeRegex</code>
 
 See the [`check-examples`](./rules/check-examples.md#readme) option of the
-same name.
+same name. The default of `rejectExampleCodeRegex` is, however, changed to
+`^\s*\`\`\``when no`exampleCodeRegex` is provided.
 
 <a name="user-content-processors-options-sourcetype"></a>
 <a name="processors-options-sourcetype"></a>
+
 #### <code>sourceType</code>
 
 Whether to use "script" or "module" with the parser. Defaults to `"module"`.
 
 <a name="user-content-processors-options-parser"></a>
 <a name="processors-options-parser"></a>
+
 #### <code>parser</code>
 
 An alternative parser which has a `parseForESLint` method and returns the AST

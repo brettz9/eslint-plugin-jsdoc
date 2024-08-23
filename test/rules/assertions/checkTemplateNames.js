@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -13,15 +13,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -35,15 +35,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -57,11 +57,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
     },
@@ -76,15 +76,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -98,16 +98,16 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -121,11 +121,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -138,7 +138,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
     },
@@ -154,7 +154,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
       ],
     },
@@ -171,15 +171,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -195,15 +195,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -219,15 +219,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -243,15 +243,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -267,15 +267,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -291,15 +291,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -316,15 +316,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -341,15 +341,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -366,15 +366,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -391,15 +391,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -414,11 +414,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
     },
@@ -434,11 +434,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
     },
@@ -454,11 +454,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@template D not in use',
+          message: "@template D not in use",
         },
         {
           line: 4,
-          message: '@template V not in use',
+          message: "@template V not in use",
         },
       ],
     },
@@ -473,7 +473,7 @@ export default {
         export type Pairs<D, V> = [D, V | undefined];
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -493,7 +493,7 @@ export default {
         export type Extras<D, U, V> = [D, U, V | undefined];
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -542,7 +542,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -555,7 +555,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -568,7 +568,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -581,7 +581,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -594,7 +594,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -607,7 +607,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -621,7 +621,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -635,7 +635,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -649,7 +649,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -663,7 +663,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -681,7 +681,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {

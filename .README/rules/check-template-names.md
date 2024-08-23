@@ -24,13 +24,13 @@ or
  */
 ```
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`@template`|
-|Recommended|false|
-|Settings||
-|Options||
+|             |             |
+| ----------- | ----------- |
+| Context     | everywhere  |
+| Tags        | `@template` |
+| Recommended | false       |
+| Settings    |             |
+| Options     |             |
 
 ## Failing examples
 

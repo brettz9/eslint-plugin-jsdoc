@@ -1,18 +1,18 @@
 <a name="user-content-sort-tags"></a>
 <a name="sort-tags"></a>
+
 # <code>sort-tags</code>
 
-* [Fixer](#user-content-sort-tags-fixer)
-* [Options](#user-content-sort-tags-options)
-    * [`tagSequence`](#user-content-sort-tags-options-tagsequence)
-    * [`alphabetizeExtras`](#user-content-sort-tags-options-alphabetizeextras)
-    * [`linesBetween`](#user-content-sort-tags-options-linesbetween)
-    * [`reportTagGroupSpacing`](#user-content-sort-tags-options-reporttaggroupspacing)
-    * [`reportIntraTagGroupSpacing`](#user-content-sort-tags-options-reportintrataggroupspacing)
-* [Context and settings](#user-content-sort-tags-context-and-settings)
-* [Failing examples](#user-content-sort-tags-failing-examples)
-* [Passing examples](#user-content-sort-tags-passing-examples)
-
+- [Fixer](#user-content-sort-tags-fixer)
+- [Options](#user-content-sort-tags-options)
+  - [`tagSequence`](#user-content-sort-tags-options-tagsequence)
+  - [`alphabetizeExtras`](#user-content-sort-tags-options-alphabetizeextras)
+  - [`linesBetween`](#user-content-sort-tags-options-linesbetween)
+  - [`reportTagGroupSpacing`](#user-content-sort-tags-options-reporttaggroupspacing)
+  - [`reportIntraTagGroupSpacing`](#user-content-sort-tags-options-reportintrataggroupspacing)
+- [Context and settings](#user-content-sort-tags-context-and-settings)
+- [Failing examples](#user-content-sort-tags-failing-examples)
+- [Passing examples](#user-content-sort-tags-passing-examples)
 
 Sorts tags by a specified sequence according to tag name, optionally
 adding line breaks between tag groups.
@@ -33,16 +33,19 @@ You may, however, safely set the "any" option in that rule along with
 
 <a name="user-content-sort-tags-fixer"></a>
 <a name="sort-tags-fixer"></a>
+
 ## Fixer
 
 (TODO)
 
 <a name="user-content-sort-tags-options"></a>
 <a name="sort-tags-options"></a>
+
 ## Options
 
 <a name="user-content-sort-tags-options-tagsequence"></a>
 <a name="sort-tags-options-tagsequence"></a>
+
 ### <code>tagSequence</code>
 
 An array of tag group objects indicating the preferred sequence for sorting tags.
@@ -70,165 +73,170 @@ a fixed order that doesn't change into the future, supply your own
 `tagSequence`.
 
 ```js
-[{tags: [
-  // Brief descriptions
-  'summary',
-  'typeSummary',
+[
+  {
+    tags: [
+      // Brief descriptions
+      "summary",
+      "typeSummary",
 
-  // Module/file-level
-  'module',
-  'exports',
-  'file',
-  'fileoverview',
-  'overview',
-  'import',
+      // Module/file-level
+      "module",
+      "exports",
+      "file",
+      "fileoverview",
+      "overview",
+      "import",
 
-  // Identifying (name, type)
-  'typedef',
-  'interface',
-  'record',
-  'template',
-  'name',
-  'kind',
-  'type',
-  'alias',
-  'external',
-  'host',
-  'callback',
-  'func',
-  'function',
-  'method',
-  'class',
-  'constructor',
+      // Identifying (name, type)
+      "typedef",
+      "interface",
+      "record",
+      "template",
+      "name",
+      "kind",
+      "type",
+      "alias",
+      "external",
+      "host",
+      "callback",
+      "func",
+      "function",
+      "method",
+      "class",
+      "constructor",
 
-  // Relationships
-  'modifies',
-  'mixes',
-  'mixin',
-  'mixinClass',
-  'mixinFunction',
-  'namespace',
-  'borrows',
-  'constructs',
-  'lends',
-  'implements',
-  'requires',
+      // Relationships
+      "modifies",
+      "mixes",
+      "mixin",
+      "mixinClass",
+      "mixinFunction",
+      "namespace",
+      "borrows",
+      "constructs",
+      "lends",
+      "implements",
+      "requires",
 
-  // Long descriptions
-  'desc',
-  'description',
-  'classdesc',
-  'tutorial',
-  'copyright',
-  'license',
+      // Long descriptions
+      "desc",
+      "description",
+      "classdesc",
+      "tutorial",
+      "copyright",
+      "license",
 
-  // Simple annotations
-  'const',
-  'constant',
-  'final',
-  'global',
-  'readonly',
-  'abstract',
-  'virtual',
-  'var',
-  'member',
-  'memberof',
-  'memberof!',
-  'inner',
-  'instance',
-  'inheritdoc',
-  'inheritDoc',
-  'override',
-  'hideconstructor',
+      // Simple annotations
+      "const",
+      "constant",
+      "final",
+      "global",
+      "readonly",
+      "abstract",
+      "virtual",
+      "var",
+      "member",
+      "memberof",
+      "memberof!",
+      "inner",
+      "instance",
+      "inheritdoc",
+      "inheritDoc",
+      "override",
+      "hideconstructor",
 
-  // Core function/object info
-  'param',
-  'arg',
-  'argument',
-  'prop',
-  'property',
-  'return',
-  'returns',
+      // Core function/object info
+      "param",
+      "arg",
+      "argument",
+      "prop",
+      "property",
+      "return",
+      "returns",
 
-  // Important behavior details
-  'async',
-  'generator',
-  'default',
-  'defaultvalue',
-  'enum',
-  'augments',
-  'extends',
-  'throws',
-  'exception',
-  'yield',
-  'yields',
-  'event',
-  'fires',
-  'emits',
-  'listens',
-  'this',
+      // Important behavior details
+      "async",
+      "generator",
+      "default",
+      "defaultvalue",
+      "enum",
+      "augments",
+      "extends",
+      "throws",
+      "exception",
+      "yield",
+      "yields",
+      "event",
+      "fires",
+      "emits",
+      "listens",
+      "this",
 
-  // Access
-  'static',
-  'private',
-  'protected',
-  'public',
-  'access',
-  'package',
+      // Access
+      "static",
+      "private",
+      "protected",
+      "public",
+      "access",
+      "package",
 
-  '-other',
+      "-other",
 
-  // Supplementary descriptions
-  'see',
-  'example',
+      // Supplementary descriptions
+      "see",
+      "example",
 
-  // METADATA
+      // METADATA
 
-  // Other Closure (undocumented) metadata
-  'closurePrimitive',
-  'customElement',
-  'expose',
-  'hidden',
-  'idGenerator',
-  'meaning',
-  'ngInject',
-  'owner',
-  'wizaction',
+      // Other Closure (undocumented) metadata
+      "closurePrimitive",
+      "customElement",
+      "expose",
+      "hidden",
+      "idGenerator",
+      "meaning",
+      "ngInject",
+      "owner",
+      "wizaction",
 
-  // Other Closure (documented) metadata
-  'define',
-  'dict',
-  'export',
-  'externs',
-  'implicitCast',
-  'noalias',
-  'nocollapse',
-  'nocompile',
-  'noinline',
-  'nosideeffects',
-  'polymer',
-  'polymerBehavior',
-  'preserve',
-  'struct',
-  'suppress',
-  'unrestricted',
+      // Other Closure (documented) metadata
+      "define",
+      "dict",
+      "export",
+      "externs",
+      "implicitCast",
+      "noalias",
+      "nocollapse",
+      "nocompile",
+      "noinline",
+      "nosideeffects",
+      "polymer",
+      "polymerBehavior",
+      "preserve",
+      "struct",
+      "suppress",
+      "unrestricted",
 
-  // @homer0/prettier-plugin-jsdoc metadata
-  'category',
+      // @homer0/prettier-plugin-jsdoc metadata
+      "category",
 
-  // Non-Closure metadata
-  'ignore',
-  'author',
-  'version',
-  'variation',
-  'since',
-  'deprecated',
-  'todo',
-]}];
+      // Non-Closure metadata
+      "ignore",
+      "author",
+      "version",
+      "variation",
+      "since",
+      "deprecated",
+      "todo",
+    ],
+  },
+];
 ```
 
 <a name="user-content-sort-tags-options-alphabetizeextras"></a>
 <a name="sort-tags-options-alphabetizeextras"></a>
+
 ### <code>alphabetizeExtras</code>
 
 Defaults to `false`. Alphabetizes any items not within `tagSequence` after any
@@ -240,6 +248,7 @@ If you want all your tags alphabetized, you can supply an empty array for
 
 <a name="user-content-sort-tags-options-linesbetween"></a>
 <a name="sort-tags-options-linesbetween"></a>
+
 ### <code>linesBetween</code>
 
 Indicates the number of lines to be added between tag groups. Defaults to 1.
@@ -248,6 +257,7 @@ set to 1+ if you are using `tag-lines` and `"never"`.
 
 <a name="user-content-sort-tags-options-reporttaggroupspacing"></a>
 <a name="sort-tags-options-reporttaggroupspacing"></a>
+
 ### <code>reportTagGroupSpacing</code>
 
 Whether to enable reporting and fixing of line breaks between tag groups
@@ -257,6 +267,7 @@ may wish to use the `endLines` option of the `tag-lines` rule.
 
 <a name="user-content-sort-tags-options-reportintrataggroupspacing"></a>
 <a name="sort-tags-options-reportintrataggroupspacing"></a>
+
 ### <code>reportIntraTagGroupSpacing</code>
 
 Whether to enable reporting and fixing of line breaks within tags of a given
@@ -265,29 +276,31 @@ such tags. Do not use with `true` if you are using `tag-lines` and `always`.
 
 <a name="user-content-sort-tags-context-and-settings"></a>
 <a name="sort-tags-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|any|
-|Recommended|false|
-|Settings||
-|Options|`alphabetizeExtras`, `linesBetween`, `reportIntraTagGroupSpacing`, `reportTagGroupSpacing`, `tagSequence`|
+|             |                                                                                                           |
+| ----------- | --------------------------------------------------------------------------------------------------------- |
+| Context     | everywhere                                                                                                |
+| Tags        | any                                                                                                       |
+| Recommended | false                                                                                                     |
+| Settings    |                                                                                                           |
+| Options     | `alphabetizeExtras`, `linesBetween`, `reportIntraTagGroupSpacing`, `reportTagGroupSpacing`, `tagSequence` |
 
 <a name="user-content-sort-tags-failing-examples"></a>
 <a name="sort-tags-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @returns {string}
  * @param b
  * @param a
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -296,7 +309,7 @@ function quux () {}
  * @param b
  * @param a
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -305,7 +318,7 @@ function quux () {}
  *   description
  * @param a
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -315,7 +328,7 @@ function quux () {}
  *   description
  * @param a
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -324,7 +337,7 @@ function quux () {}
  * @returns {string}
  * @param a
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -339,7 +352,7 @@ function quux () {}
  * @xyz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"alphabetizeExtras":true}]
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
@@ -348,7 +361,7 @@ function quux () {}
  * @def
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"tagSequence":[{"tags":["def","xyz","abc"]}]}]
 // Message: Tags are not in the prescribed order: def, xyz, abc
 
@@ -357,7 +370,7 @@ function quux () {}
  * @def
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"tagSequence":[{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 // Message: Tags are not in the prescribed order: def, xyz, abc
 
@@ -369,7 +382,7 @@ function quux () {}
  * @param a
  * @module
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -379,7 +392,7 @@ function quux () {}
  * @def
  * @xyz
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"alphabetizeExtras":true}]
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
@@ -388,7 +401,7 @@ function quux () {}
  *   description
  * @module
  */
-function quux () {}
+function quux() {}
 // Message: Tags are not in the prescribed order: summary, typeSummary, module, exports, file, fileoverview, overview, import, template, typedef, interface, record, name, kind, type, alias, external, host, callback, func, function, method, class, constructor, modifies, mixes, mixin, mixinClass, mixinFunction, namespace, borrows, constructs, lends, implements, requires, desc, description, classdesc, tutorial, copyright, license, internal, overload, const, constant, final, global, readonly, abstract, virtual, var, member, memberof, memberof!, inner, instance, inheritdoc, inheritDoc, override, hideconstructor, param, arg, argument, prop, property, return, returns, async, generator, default, defaultvalue, enum, augments, extends, throws, exception, yield, yields, event, fires, emits, listens, this, satisfies, static, private, protected, public, access, package, -other, see, example, closurePrimitive, customElement, expose, hidden, idGenerator, meaning, ngInject, owner, wizaction, define, dict, export, externs, implicitCast, noalias, nocollapse, nocompile, noinline, nosideeffects, polymer, polymerBehavior, preserve, struct, suppress, unrestricted, category, ignore, author, version, variation, since, deprecated, todo
 
 /**
@@ -396,7 +409,7 @@ function quux () {}
  * @xyz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":2,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 // Message: Tag groups do not have the expected whitespace
 
@@ -407,7 +420,7 @@ function quux () {}
  *
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":1,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 // Message: Tag groups do not have the expected whitespace
 
@@ -417,7 +430,7 @@ function quux () {}
  * description
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":2,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 // Message: Tag groups do not have the expected whitespace
 
@@ -429,7 +442,7 @@ function quux () {}
  *
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":1,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 // Message: Tag groups do not have the expected whitespace
 
@@ -492,7 +505,7 @@ function quux () {}
  * @zzz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":1,"tagSequence":[{"tags":["qrs"]},{"tags":["def","-other","xyz"]},{"tags":["abc"]}]}]
 // Message: Tag groups do not have the expected whitespace
 
@@ -501,7 +514,7 @@ function quux () {}
  * @def
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"alphabetizeExtras":true,"tagSequence":[]}]
 // Message: Tags are not in the prescribed order: (alphabetical)
 
@@ -519,30 +532,29 @@ function quux () {}
  */
 // "jsdoc/sort-tags": ["error"|"warn", {"tagSequence":[{"tags":["internal"]},{"tags":["template","param"]},{"tags":["returns"]},{"tags":["throws"]},{"tags":["see"]},{"tags":["example"]},{"tags":["since"]},{"tags":["deprecated"]}]}]
 // Message: Tag groups do not have the expected whitespace
-````
-
-
+```
 
 <a name="user-content-sort-tags-passing-examples"></a>
 <a name="sort-tags-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @param b
  * @param a
  * @returns {string}
  */
-function quux () {}
+function quux() {}
 
 /**
  * @abc
  * @def
  * @xyz
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"alphabetizeExtras":true}]
 
 /**
@@ -550,7 +562,7 @@ function quux () {}
  * @xyz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"alphabetizeExtras":false}]
 
 /**
@@ -558,11 +570,11 @@ function quux () {}
  * @xyz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"tagSequence":[{"tags":["def","xyz","abc"]}]}]
 
 /** @def */
-function quux () {}
+function quux() {}
 
 /**
  * @def
@@ -570,7 +582,7 @@ function quux () {}
  *
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":1,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 
 /**
@@ -580,7 +592,7 @@ function quux () {}
  *
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":1,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
 
 /**
@@ -637,7 +649,6 @@ function quux () {}
  * @xyz
  * @abc
  */
-function quux () {}
+function quux() {}
 // "jsdoc/sort-tags": ["error"|"warn", {"linesBetween":2,"reportTagGroupSpacing":false,"tagSequence":[{"tags":["qrs"]},{"tags":["def","xyz"]},{"tags":["abc"]}]}]
-````
-
+```

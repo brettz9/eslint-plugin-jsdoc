@@ -28,7 +28,7 @@ otherwise noted):
 
 - `ancestorsOnly` - Only check node ancestors to check if node is exported
 - `esm` - ESM exports are checked for JSDoc comments (Defaults to `true`)
-- `cjs` - CommonJS exports are checked for JSDoc comments  (Defaults to `true`)
+- `cjs` - CommonJS exports are checked for JSDoc comments (Defaults to `true`)
 - `window` - Window global exports are checked for JSDoc comments
 
 ### `require`
@@ -115,12 +115,12 @@ empty string.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `ClassDeclaration`, `ClassExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|N/A|
-|Recommended|true|
-|Options|`publicOnly`, `require`, `contexts`, `exemptEmptyConstructors`, `exemptEmptyFunctions`, `enableFixer`, `minLineCount`, `fixerMessage`|
+|             |                                                                                                                                                      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `ClassDeclaration`, `ClassExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | N/A                                                                                                                                                  |
+| Recommended | true                                                                                                                                                 |
+| Options     | `publicOnly`, `require`, `contexts`, `exemptEmptyConstructors`, `exemptEmptyFunctions`, `enableFixer`, `minLineCount`, `fixerMessage`                |
 
 ## Failing examples
 

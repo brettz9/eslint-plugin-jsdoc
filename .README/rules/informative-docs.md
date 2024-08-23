@@ -69,13 +69,13 @@ The default `uselessWords` option is:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|any|
-|Recommended|false|
-|Settings||
-|Options|`aliases`, `excludedTags`, `uselessWords`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | everywhere                                |
+| Tags        | any                                       |
+| Recommended | false                                     |
+| Settings    |                                           |
+| Options     | `aliases`, `excludedTags`, `uselessWords` |
 
 ## Failing examples
 

@@ -1,13 +1,13 @@
 <a name="user-content-require-returns-description"></a>
 <a name="require-returns-description"></a>
+
 # <code>require-returns-description</code>
 
-* [Options](#user-content-require-returns-description-options)
-    * [`contexts`](#user-content-require-returns-description-options-contexts)
-* [Context and settings](#user-content-require-returns-description-context-and-settings)
-* [Failing examples](#user-content-require-returns-description-failing-examples)
-* [Passing examples](#user-content-require-returns-description-passing-examples)
-
+- [Options](#user-content-require-returns-description-options)
+  - [`contexts`](#user-content-require-returns-description-options-contexts)
+- [Context and settings](#user-content-require-returns-description-context-and-settings)
+- [Failing examples](#user-content-require-returns-description-failing-examples)
+- [Passing examples](#user-content-require-returns-description-passing-examples)
 
 Requires that the `@returns` tag has a `description` value. The error
 will not be reported if the return value is `void` or `undefined`
@@ -15,10 +15,12 @@ or if it is `Promise<void>` or `Promise<undefined>`.
 
 <a name="user-content-require-returns-description-options"></a>
 <a name="require-returns-description-options"></a>
+
 ## Options
 
 <a name="user-content-require-returns-description-options-contexts"></a>
 <a name="require-returns-description-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -34,45 +36,41 @@ section of our README for more on the expected format.
 
 <a name="user-content-require-returns-description-context-and-settings"></a>
 <a name="require-returns-description-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`returns`|
-|Aliases|`return`|
-|Recommended|true|
-|Options|`contexts`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `returns`                                                                                                     |
+| Aliases     | `return`                                                                                                      |
+| Recommended | true                                                                                                          |
+| Options     | `contexts`                                                                                                    |
 
 <a name="user-content-require-returns-description-failing-examples"></a>
 <a name="require-returns-description-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @returns
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @returns description.
 
 /**
  * @returns {string}
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing JSDoc @returns description.
 
 /**
  * @returns {string}
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/require-returns-description": ["error"|"warn", {"contexts":["any"]}]
 // Message: Missing JSDoc @returns description.
 
@@ -93,80 +91,61 @@ function quux (foo) {
 /**
  * @return
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":"return"}}}
 // Message: Missing JSDoc @return description.
 
 /**
  * @returns
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":false}}}
 // Message: Unexpected tag `@returns`
-````
-
-
+```
 
 <a name="user-content-require-returns-description-passing-examples"></a>
 <a name="require-returns-description-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns Foo.
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-returns-description": ["error"|"warn", {"contexts":["any"]}]
 
 /**
  * @returns {undefined}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns {void}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns {Promise<void>}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns {Promise<undefined>}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @function
@@ -177,5 +156,4 @@ function quux () {
  * @callback
  * @returns
  */
-````
-
+```

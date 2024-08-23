@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -14,7 +14,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: Array<string',
+          message: "Syntax error in type: Array<string",
         },
       ],
     },
@@ -30,7 +30,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: module:namespace.SomeClass<~',
+          message: "Syntax error in namepath: module:namespace.SomeClass<~",
         },
       ],
     },
@@ -46,7 +46,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: someParam<~',
+          message: "Syntax error in namepath: someParam<~",
         },
       ],
     },
@@ -62,7 +62,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: module:namespace.SomeClass~<',
+          message: "Syntax error in namepath: module:namespace.SomeClass~<",
         },
       ],
     },
@@ -78,7 +78,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: foo%',
+          message: "Syntax error in namepath: foo%",
         },
       ],
     },
@@ -94,7 +94,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: #foo',
+          message: "Syntax error in namepath: #foo",
         },
       ],
     },
@@ -110,7 +110,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: bar%',
+          message: "Syntax error in namepath: bar%",
         },
       ],
     },
@@ -142,17 +142,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: foo%',
+          message: "Syntax error in namepath: foo%",
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             see: {
-              name: 'namepath-referencing',
-              required: [
-                'name',
-              ],
+              name: "namepath-referencing",
+              required: ["name"],
             },
           },
         },
@@ -170,7 +168,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: module:namespace.SomeClass~',
+          message: "Syntax error in namepath: module:namespace.SomeClass~",
         },
       ],
     },
@@ -186,7 +184,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @callback must have a name/namepath.',
+          message: "Tag @callback must have a name/namepath.",
         },
       ],
       options: [
@@ -205,7 +203,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: str%ng',
+          message: "Syntax error in type: str%ng",
         },
       ],
     },
@@ -218,7 +216,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: str%ng',
+          message: "Syntax error in type: str%ng",
         },
       ],
     },
@@ -231,7 +229,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: UserStr%ng',
+          message: "Syntax error in namepath: UserStr%ng",
         },
       ],
     },
@@ -245,7 +243,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @this must have either a type or namepath in "jsdoc" mode.',
+          message:
+            'Tag @this must have either a type or namepath in "jsdoc" mode.',
         },
       ],
       options: [
@@ -255,7 +254,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -268,7 +267,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @aCustomTag must have either a type or namepath.',
+          message: "Tag @aCustomTag must have either a type or namepath.",
         },
       ],
       options: [
@@ -280,9 +279,7 @@ export default {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              required: [
-                'typeOrNameRequired',
-              ],
+              required: ["typeOrNameRequired"],
             },
           },
         },
@@ -298,7 +295,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @type must have a type.',
+          message: "Tag @type must have a type.",
         },
       ],
     },
@@ -312,7 +309,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: bar | foo<',
+          message: "Syntax error in type: bar | foo<",
         },
       ],
     },
@@ -327,12 +324,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: BadTypeChecked<',
+          message: "Syntax error in type: BadTypeChecked<",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -346,12 +343,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: BadTypeChecked<',
+          message: "Syntax error in type: BadTypeChecked<",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -370,7 +367,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -389,7 +386,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -405,12 +402,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Syntax error in type: [number, string]',
+          message: "Syntax error in type: [number, string]",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -423,12 +420,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: name<',
+          message: "Syntax error in namepath: name<",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -441,12 +438,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: name<',
+          message: "Syntax error in namepath: name<",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -459,12 +456,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: module:name<',
+          message: "Syntax error in namepath: module:name<",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -482,7 +479,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -495,7 +492,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@aCustomTag should not have a name.',
+          message: "@aCustomTag should not have a name.",
         },
       ],
       settings: {
@@ -529,7 +526,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -549,7 +546,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -564,7 +561,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@aCustomTag should not have a bracketed type.',
+          message: "@aCustomTag should not have a bracketed type.",
         },
       ],
       settings: {
@@ -589,7 +586,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "name" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -597,9 +595,7 @@ export default {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'name',
-              ],
+              required: ["name"],
             },
           },
         },
@@ -617,16 +613,15 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "type" to `require` with the tag\'s `type` set to `false`',
+          message:
+            'Cannot add "type" to `require` with the tag\'s `type` set to `false`',
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             see: {
-              required: [
-                'type',
-              ],
+              required: ["type"],
               type: false,
             },
           },
@@ -645,7 +640,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "typeOrNameRequired" to `require` with the tag\'s `name` set to `false`',
+          message:
+            'Cannot add "typeOrNameRequired" to `require` with the tag\'s `name` set to `false`',
         },
       ],
       settings: {
@@ -653,9 +649,7 @@ export default {
           structuredTags: {
             see: {
               name: false,
-              required: [
-                'typeOrNameRequired',
-              ],
+              required: ["typeOrNameRequired"],
             },
           },
         },
@@ -673,16 +667,15 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Cannot add "typeOrNameRequired" to `require` with the tag\'s `type` set to `false`',
+          message:
+            'Cannot add "typeOrNameRequired" to `require` with the tag\'s `type` set to `false`',
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             see: {
-              required: [
-                'typeOrNameRequired',
-              ],
+              required: ["typeOrNameRequired"],
               type: false,
             },
           },
@@ -705,12 +698,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: T<~',
+          message: "Syntax error in namepath: T<~",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -730,12 +723,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: R<~',
+          message: "Syntax error in namepath: R<~",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -755,12 +748,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in namepath: R<~',
+          message: "Syntax error in namepath: R<~",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -780,7 +773,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -800,7 +793,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -815,12 +808,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in suppress type: blah',
+          message: "Syntax error in suppress type: blah",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -842,7 +835,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@constructs should not have a bracketed type.',
+          message: "@constructs should not have a bracketed type.",
         },
       ],
       ignoreReadme: true,
@@ -858,7 +851,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @emits must have a name/namepath.',
+          message: "Tag @emits must have a name/namepath.",
         },
       ],
       ignoreReadme: true,
@@ -874,7 +867,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @requires must have a name/namepath.',
+          message: "Tag @requires must have a name/namepath.",
         },
       ],
       ignoreReadme: true,
@@ -896,7 +889,7 @@ export default {
       ignoreReadme: true,
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -911,7 +904,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@external should not have a bracketed type.',
+          message: "@external should not have a bracketed type.",
         },
       ],
       ignoreReadme: true,
@@ -929,7 +922,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@fires should not have a bracketed type.',
+          message: "@fires should not have a bracketed type.",
         },
       ],
       ignoreReadme: true,
@@ -947,7 +940,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Tag @fires must have a name/namepath.',
+          message: "Tag @fires must have a name/namepath.",
         },
       ],
       ignoreReadme: true,
@@ -965,7 +958,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@host should not have a bracketed type.',
+          message: "@host should not have a bracketed type.",
         },
       ],
       ignoreReadme: true,
@@ -981,7 +974,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Tag @listens must have a name/namepath.',
+          message: "Tag @listens must have a name/namepath.",
         },
       ],
       ignoreReadme: true,
@@ -998,7 +991,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid name: unpaired brackets',
+          message: "Invalid name: unpaired brackets",
         },
       ],
     },
@@ -1014,7 +1007,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid name: empty name',
+          message: "Invalid name: empty name",
         },
       ],
     },
@@ -1029,7 +1022,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid name: empty default value',
+          message: "Invalid name: empty default value",
         },
       ],
     },
@@ -1044,7 +1037,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid name: invalid default value syntax',
+          message: "Invalid name: invalid default value syntax",
         },
       ],
     },
@@ -1059,12 +1052,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: JsdocTypeNullable',
+          message: "Syntax error in type: JsdocTypeNullable",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1079,12 +1072,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Syntax error in type: JsdocTypeNullable',
+          message: "Syntax error in type: JsdocTypeNullable",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1247,10 +1240,8 @@ export default {
         jsdoc: {
           structuredTags: {
             see: {
-              name: 'namepath-referencing',
-              required: [
-                'name',
-              ],
+              name: "namepath-referencing",
+              required: ["name"],
             },
           },
         },
@@ -1348,7 +1339,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1368,7 +1359,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1389,7 +1380,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1402,7 +1393,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1415,7 +1406,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1438,7 +1429,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1453,7 +1444,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1467,7 +1458,7 @@ export default {
       function foo(bar) {}
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1481,7 +1472,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -1500,7 +1491,7 @@ export default {
       ],
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1514,7 +1505,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1546,7 +1537,7 @@ export default {
         jsdoc: {
           structuredTags: {
             see: {
-              name: 'namepath-referencing',
+              name: "namepath-referencing",
             },
           },
         },
@@ -1567,7 +1558,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1586,7 +1577,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -1604,7 +1595,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1631,7 +1622,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1648,7 +1639,7 @@ export default {
       type ComplicatedType<T, U, V, W, X> = never
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -1675,7 +1666,7 @@ export default {
       ignoreReadme: true,
       languageOptions: {
         parser: typescriptEslintParser,
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1688,7 +1679,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1702,7 +1693,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1729,7 +1720,7 @@ export default {
       ignoreReadme: true,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1808,7 +1799,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -1851,7 +1842,7 @@ export default {
           function quux() {
 
           }
-      `
+      `,
     },
     {
       code: `
@@ -1859,6 +1850,6 @@ export default {
          * @import { TestOne, TestTwo } from "./types"
          */
       `,
-    }
+    },
   ],
 };

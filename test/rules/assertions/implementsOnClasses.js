@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
     },
@@ -28,14 +28,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -52,14 +50,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -73,14 +69,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -96,7 +90,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@implements`',
+          message: "Unexpected tag `@implements`",
         },
       ],
       settings: {
@@ -124,14 +118,12 @@ export default {
       errors: [
         {
           line: 9,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
       options: [
         {
-          contexts: [
-            'MethodDefinition',
-          ],
+          contexts: ["MethodDefinition"],
         },
       ],
     },
@@ -152,14 +144,12 @@ export default {
       errors: [
         {
           line: 9,
-          message: '@implements used on a non-constructor function',
+          message: "@implements used on a non-constructor function",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -188,9 +178,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },
@@ -202,9 +190,7 @@ export default {
       `,
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
     },

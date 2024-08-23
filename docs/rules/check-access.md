@@ -1,11 +1,11 @@
 <a name="user-content-check-access"></a>
 <a name="check-access"></a>
+
 # <code>check-access</code>
 
-* [Context and settings](#user-content-check-access-context-and-settings)
-* [Failing examples](#user-content-check-access-failing-examples)
-* [Passing examples](#user-content-check-access-passing-examples)
-
+- [Context and settings](#user-content-check-access-context-and-settings)
+- [Failing examples](#user-content-check-access-failing-examples)
+- [Passing examples](#user-content-check-access-passing-examples)
 
 Checks that `@access` tags use one of the following values:
 
@@ -20,55 +20,49 @@ Also reports:
 
 <a name="user-content-check-access-context-and-settings"></a>
 <a name="check-access-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`@access`|
-|Recommended|true|
-|Settings||
-|Options||
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | `@access`  |
+| Recommended | true       |
+| Settings    |            |
+| Options     |            |
 
 <a name="user-content-check-access-failing-examples"></a>
 <a name="check-access-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @access foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Missing valid JSDoc @access level.
 
 /**
  * @access foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 // Message: Missing valid JSDoc @access level.
 
 /**
  * @accessLevel foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"access":"accessLevel"}}}
 // Message: Missing valid JSDoc @accessLevel level.
 
 /**
  * @access
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"access":false}}}
 // Message: Unexpected tag `@access`
 
@@ -76,7 +70,7 @@ class MyClass {
   /**
    * @access
    */
-  myClassField = 1
+  myClassField = 1;
 }
 // Message: Missing valid JSDoc @access level.
 
@@ -84,27 +78,21 @@ class MyClass {
  * @access public
  * @public
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: The @access tag may not be used with specific access-control tags (@package, @private, @protected, or @public).
 
 /**
  * @access public
  * @access private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: At most one access-control tag may be present on a jsdoc block.
 
 /**
  * @access public
  * @access private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 // Message: At most one access-control tag may be present on a jsdoc block.
 
@@ -112,18 +100,14 @@ function quux (foo) {
  * @public
  * @private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: At most one access-control tag may be present on a jsdoc block.
 
 /**
  * @public
  * @private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 // Message: At most one access-control tag may be present on a jsdoc block.
 
@@ -131,63 +115,49 @@ function quux (foo) {
  * @public
  * @public
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: At most one access-control tag may be present on a jsdoc block.
-````
-
-
+```
 
 <a name="user-content-check-access-passing-examples"></a>
 <a name="check-access-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @access public
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @accessLevel package
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"access":"accessLevel"}}}
 
 class MyClass {
   /**
    * @access private
    */
-  myClassField = 1
+  myClassField = 1;
 }
 
 /**
  * @public
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @private
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"ignorePrivate":true}}
-````
-
+```

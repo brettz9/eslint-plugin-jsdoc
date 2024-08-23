@@ -39,14 +39,14 @@ section of our README for more on the expected format.
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`param`|
-|Aliases|`arg`, `argument`|
-|Recommended|true|
-|Options|`contexts`, `defaultDestructuredRootDescription`, `setDefaultDestructuredRootDescription`|
-|Settings|`exemptDestructuredRootsFromChecks`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `param`                                                                                                       |
+| Aliases     | `arg`, `argument`                                                                                             |
+| Recommended | true                                                                                                          |
+| Options     | `contexts`, `defaultDestructuredRootDescription`, `setDefaultDestructuredRootDescription`                     |
+| Settings    | `exemptDestructuredRootsFromChecks`                                                                           |
 
 ## Failing examples
 

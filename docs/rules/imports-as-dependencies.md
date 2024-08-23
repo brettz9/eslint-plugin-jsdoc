@@ -1,25 +1,27 @@
 <a name="user-content-imports-as-dependencies"></a>
 <a name="imports-as-dependencies"></a>
+
 ### <code>imports-as-dependencies</code>
 
 This rule will report an issue if JSDoc `import()` statements point to a package
 which is not listed in `dependencies` or `devDependencies`.
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|(Any)|
-|Recommended|false|
-|Settings||
-|Options||
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | (Any)      |
+| Recommended | false      |
+| Settings    |            |
+| Options     |            |
 
 <a name="user-content-failing-examples"></a>
 <a name="failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @type {null|import('sth').SomeApi}
  */
@@ -40,17 +42,16 @@ The following patterns are considered problems:
  * @type {null|import('@sth/pkg').SomeApi}
  */
 // Message: import points to package which is not found in dependencies
-````
-
-
+```
 
 <a name="user-content-passing-examples"></a>
 <a name="passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @type {null|import('eslint').ESLint}
  */
@@ -95,5 +96,4 @@ The following patterns are not considered problems:
 /**
  * @type {null|import('node:fs').PathLike}
  */
-````
-
+```

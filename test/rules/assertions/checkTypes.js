@@ -12,7 +12,8 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.',
+          message:
+            "Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.",
         },
       ],
       settings: {
@@ -35,13 +36,14 @@ export default {
       errors: [
         {
           line: 1,
-          message: 'Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.',
+          message:
+            "Invalid `settings.jsdoc.preferredTypes`. Values must be falsy, a string, or an object.",
         },
       ],
       ignoreReadme: true,
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
           preferredTypes: {
             abc: 100,
           },
@@ -60,7 +62,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
         },
       ],
       output: `
@@ -138,11 +141,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
         },
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Boolean"; prefer: "boolean".',
+          message:
+            'Invalid JSDoc @param "foo" type "Boolean"; prefer: "boolean".',
         },
       ],
       output: `
@@ -166,11 +171,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
         },
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "String"; prefer: "string".',
+          message:
+            'Invalid JSDoc @param "foo" type "String"; prefer: "string".',
         },
       ],
       output: `
@@ -194,11 +201,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @param "foo" type "Number"; prefer: "number".',
         },
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "String"; prefer: "string".',
+          message:
+            'Invalid JSDoc @param "foo" type "String"; prefer: "string".',
         },
       ],
       output: `
@@ -234,8 +243,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            abc: 'Abc',
-            string: 'Str',
+            abc: "Abc",
+            string: "Str",
           },
         },
       },
@@ -265,9 +274,9 @@ export default {
         jsdoc: {
           preferredTypes: {
             abc: {
-              replacement: 'Abc',
+              replacement: "Abc",
             },
-            string: 'Str',
+            string: "Str",
           },
         },
       },
@@ -297,10 +306,11 @@ export default {
         jsdoc: {
           preferredTypes: {
             abc: {
-              message: 'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc"; prefer: "Abc".',
-              replacement: 'Abc',
+              message:
+                'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc"; prefer: "Abc".',
+              replacement: "Abc",
             },
-            string: 'Str',
+            string: "Str",
           },
         },
       },
@@ -322,11 +332,13 @@ export default {
         },
         {
           line: 4,
-          message: 'More messed up JSDoc @param "bar" type "cde"; prefer: "Cde".',
+          message:
+            'More messed up JSDoc @param "bar" type "cde"; prefer: "Cde".',
         },
         {
           line: 5,
-          message: 'Invalid JSDoc @param "baz" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @param "baz" type "object"; prefer: "Object".',
         },
       ],
       output: `
@@ -342,14 +354,16 @@ export default {
         jsdoc: {
           preferredTypes: {
             abc: {
-              message: 'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc"; prefer: "Abc".',
-              replacement: 'Abc',
+              message:
+                'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc"; prefer: "Abc".',
+              replacement: "Abc",
             },
             cde: {
-              message: 'More messed up JSDoc @{{tagName}}{{tagValue}} type "cde"; prefer: "Cde".',
-              replacement: 'Cde',
+              message:
+                'More messed up JSDoc @{{tagName}}{{tagValue}} type "cde"; prefer: "Cde".',
+              replacement: "Cde",
             },
-            object: 'Object',
+            object: "Object",
           },
         },
       },
@@ -375,7 +389,7 @@ export default {
               message: 'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc".',
               replacement: false,
             },
-            string: 'Str',
+            string: "Str",
           },
         },
       },
@@ -400,7 +414,7 @@ export default {
             abc: {
               message: 'Messed up JSDoc @{{tagName}}{{tagValue}} type "abc".',
             },
-            string: 'Str',
+            string: "Str",
           },
         },
       },
@@ -436,8 +450,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            abc: 'Abc',
-            string: 'Str',
+            abc: "Abc",
+            string: "Str",
           },
         },
       },
@@ -458,7 +472,8 @@ export default {
         },
         {
           line: 4,
-          message: 'Invalid JSDoc @param "bar" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @param "bar" type "Number"; prefer: "number".',
         },
       ],
       output: `
@@ -472,8 +487,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            abc: 'Abc',
-            string: 'Str',
+            abc: "Abc",
+            string: "Str",
           },
         },
       },
@@ -496,7 +511,7 @@ export default {
         jsdoc: {
           preferredTypes: {
             abc: false,
-            string: 'Str',
+            string: "Str",
           },
         },
       },
@@ -541,9 +556,9 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '*': false,
-            abc: 'Abc',
-            string: 'Str',
+            "*": false,
+            abc: "Abc",
+            string: "Str",
           },
         },
       },
@@ -572,9 +587,9 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '*': 'aaa',
-            abc: 'Abc',
-            string: 'Str',
+            "*": "aaa",
+            abc: "Abc",
+            string: "Str",
           },
         },
       },
@@ -591,7 +606,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
         },
       ],
       output: `
@@ -605,7 +621,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'GenericArray',
+            Array: "GenericArray",
           },
         },
       },
@@ -622,7 +638,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
         },
       ],
       output: `
@@ -636,8 +653,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'GenericArray',
-            'Array.<>': 'GenericArray',
+            Array: "GenericArray",
+            "Array.<>": "GenericArray",
           },
         },
       },
@@ -654,7 +671,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
         },
       ],
       output: `
@@ -668,7 +686,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.<>': 'GenericArray',
+            "Array.<>": "GenericArray",
           },
         },
       },
@@ -685,7 +703,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "GenericArray".',
         },
       ],
       output: `
@@ -699,7 +718,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array<>': 'GenericArray',
+            "Array<>": "GenericArray",
           },
         },
       },
@@ -716,7 +735,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".',
         },
       ],
       output: `
@@ -730,7 +750,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'SpecialTypeArray',
+            "[]": "SpecialTypeArray",
           },
         },
       },
@@ -747,7 +767,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "[]"; prefer: "SpecialTypeArray".',
         },
       ],
       options: [
@@ -766,7 +787,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'SpecialTypeArray',
+            "[]": "SpecialTypeArray",
           },
         },
       },
@@ -783,7 +804,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "SpecialTypeArray".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "SpecialTypeArray".',
         },
       ],
       options: [
@@ -802,7 +824,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'SpecialTypeArray',
+            Array: "SpecialTypeArray",
           },
         },
       },
@@ -819,7 +841,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -833,7 +856,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -850,7 +873,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -864,8 +888,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
-            'object.<>': 'GenericObject',
+            object: "GenericObject",
+            "object.<>": "GenericObject",
           },
         },
       },
@@ -882,7 +906,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -896,8 +921,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
-            'object<>': 'GenericObject',
+            object: "GenericObject",
+            "object<>": "GenericObject",
           },
         },
       },
@@ -914,7 +939,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -928,7 +954,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object.<>': 'GenericObject',
+            "object.<>": "GenericObject",
           },
         },
       },
@@ -945,7 +971,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -959,7 +986,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'GenericObject',
+            "object<>": "GenericObject",
           },
         },
       },
@@ -976,7 +1003,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -990,7 +1018,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object.<>': 'GenericObject',
+            "object.<>": "GenericObject",
           },
         },
       },
@@ -1007,7 +1035,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       output: `
@@ -1021,7 +1050,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'GenericObject',
+            "object<>": "GenericObject",
           },
         },
       },
@@ -1038,7 +1067,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       options: [
@@ -1057,7 +1087,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -1074,7 +1104,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       options: [
@@ -1093,7 +1124,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -1110,7 +1141,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       options: [
@@ -1129,7 +1161,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -1197,7 +1229,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       options: [
@@ -1216,7 +1249,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -1233,7 +1266,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "GenericObject".',
         },
       ],
       options: [
@@ -1252,7 +1286,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -1289,7 +1323,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'Array.',
+            "[]": "Array.",
           },
         },
       },
@@ -1326,7 +1360,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'Array.<>',
+            "[]": "Array.<>",
           },
         },
       },
@@ -1363,7 +1397,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'Array<>',
+            "[]": "Array<>",
           },
         },
       },
@@ -1381,11 +1415,13 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
         },
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
         },
       ],
       output: `
@@ -1400,7 +1436,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object.': 'Object',
+            "object.": "Object",
           },
         },
       },
@@ -1418,11 +1454,13 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
         },
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
         },
       ],
       output: `
@@ -1437,7 +1475,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object.': 'Object<>',
+            "object.": "Object<>",
           },
         },
       },
@@ -1455,11 +1493,13 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object.".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object.".',
         },
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object.".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object.".',
         },
       ],
       output: `
@@ -1474,7 +1514,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'Object.',
+            "object<>": "Object.",
           },
         },
       },
@@ -1511,7 +1551,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.': '[]',
+            "Array.": "[]",
           },
         },
       },
@@ -1529,11 +1569,13 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "Array<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "Array<>".',
         },
         {
           line: 4,
-          message: 'Invalid JSDoc @param "foo" type "Array"; prefer: "Array<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "Array"; prefer: "Array<>".',
         },
       ],
       output: `
@@ -1548,7 +1590,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.': 'Array<>',
+            "Array.": "Array<>",
           },
         },
       },
@@ -1585,7 +1627,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.': '<>',
+            "Array.": "<>",
           },
         },
       },
@@ -1618,7 +1660,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.': '<>',
+            "Array.": "<>",
           },
         },
       },
@@ -1651,7 +1693,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'MyArray.': '<>',
+            "MyArray.": "<>",
           },
         },
       },
@@ -1688,7 +1730,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '<>': 'Array.',
+            "<>": "Array.",
           },
         },
       },
@@ -1730,7 +1772,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'Array.',
+            Array: "Array.",
           },
         },
       },
@@ -1767,20 +1809,21 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '<>': '[]',
+            "<>": "[]",
           },
         },
       },
     },
     {
-      code: '/** @typedef {String} foo */',
+      code: "/** @typedef {String} foo */",
       errors: [
         {
           line: 1,
-          message: 'Invalid JSDoc @typedef "foo" type "String"; prefer: "string".',
+          message:
+            'Invalid JSDoc @typedef "foo" type "String"; prefer: "string".',
         },
       ],
-      output: '/** @typedef {string} foo */',
+      output: "/** @typedef {string} foo */",
     },
     {
       code: `
@@ -1803,7 +1846,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1828,7 +1871,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -1842,14 +1885,15 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @property "bar" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @property "bar" type "object"; prefer: "Object".',
         },
       ],
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
+              tag: "typedef",
               types: true,
             },
           ],
@@ -1864,36 +1908,35 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
     },
     {
-      code: '/** @typedef {object} foo */',
+      code: "/** @typedef {object} foo */",
       errors: [
         {
           line: 1,
-          message: 'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object".',
         },
       ],
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
-              types: [
-                'array',
-              ],
+              tag: "typedef",
+              types: ["array"],
             },
           ],
         },
       ],
-      output: '/** @typedef {Object} foo */',
+      output: "/** @typedef {Object} foo */",
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
@@ -1908,17 +1951,16 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @property "bar" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @property "bar" type "object"; prefer: "Object".',
         },
       ],
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
-              types: [
-                'object',
-              ],
+              tag: "typedef",
+              types: ["object"],
             },
           ],
         },
@@ -1932,36 +1974,35 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
     },
     {
-      code: '/** @typedef {object<string, string>} foo */',
+      code: "/** @typedef {object<string, string>} foo */",
       errors: [
         {
           line: 1,
-          message: 'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object<>".',
         },
       ],
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
-              types: [
-                'object',
-              ],
+              tag: "typedef",
+              types: ["object"],
             },
           ],
         },
       ],
-      output: '/** @typedef {Object<string, string>} foo */',
+      output: "/** @typedef {Object<string, string>} foo */",
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'Object<>',
+            "object<>": "Object<>",
           },
         },
       },
@@ -1992,8 +2033,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.<>': '[]',
-            'Array<>': '[]',
+            "Array.<>": "[]",
+            "Array<>": "[]",
           },
         },
       },
@@ -2013,7 +2054,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @typedef "foo" type "object"; prefer: "Object".',
         },
       ],
       output: `
@@ -2029,9 +2071,9 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
@@ -2045,7 +2087,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @aCustomTag "foo" type "Number"; prefer: "number".',
+          message:
+            'Invalid JSDoc @aCustomTag "foo" type "Number"; prefer: "number".',
         },
       ],
       output: `
@@ -2072,16 +2115,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @aCustomTag "foo" type "Number"; prefer: ["otherType","anotherType"].',
+          message:
+            'Invalid JSDoc @aCustomTag "foo" type "Number"; prefer: ["otherType","anotherType"].',
         },
       ],
       settings: {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              type: [
-                'otherType', 'anotherType',
-              ],
+              type: ["otherType", "anotherType"],
             },
           },
         },
@@ -2099,7 +2141,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Object"; prefer: "object".',
+          message:
+            'Invalid JSDoc @param "foo" type "Object"; prefer: "object".',
         },
       ],
       output: `
@@ -2112,9 +2155,9 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
+            Object: "object",
           },
         },
       },
@@ -2131,7 +2174,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object".',
         },
       ],
       output: `
@@ -2144,9 +2188,9 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            'object.<>': 'Object',
+            "object.<>": "Object",
           },
         },
       },
@@ -2162,7 +2206,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
         },
       ],
       output: `
@@ -2174,12 +2219,12 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'Object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "Object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -2195,7 +2240,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "Object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "Object"; prefer: "Object<>".',
         },
       ],
       output: `
@@ -2207,12 +2253,12 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'Object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "Object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -2228,7 +2274,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
         },
       ],
       output: `
@@ -2240,12 +2287,12 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'Object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "Object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -2262,7 +2309,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
+          message:
+            'Invalid JSDoc @param "foo" type "object"; prefer: "Object<>".',
         },
       ],
       output: `
@@ -2275,12 +2323,12 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'Object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "Object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -2297,12 +2345,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Use object shorthand or index signatures instead of `object`, e.g., `{[key: string]: string}`',
+          message:
+            "Use object shorthand or index signatures instead of `object`, e.g., `{[key: string]: string}`",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -2322,7 +2371,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Invalid JSDoc @param "param" type "Object"; prefer: "object".',
+          message:
+            'Invalid JSDoc @param "param" type "Object"; prefer: "object".',
         },
         {
           line: 5,
@@ -2471,7 +2521,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
@@ -2498,7 +2548,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'GenericArray',
+            Array: "GenericArray",
           },
         },
       },
@@ -2515,7 +2565,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'GenericArray',
+            Array: "GenericArray",
           },
         },
       },
@@ -2532,9 +2582,9 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            Array: 'SpecialTypeArray',
-            'Array.<>': 'SpecialTypeArray',
-            'Array<>': 'SpecialTypeArray',
+            Array: "SpecialTypeArray",
+            "Array.<>": "SpecialTypeArray",
+            "Array<>": "SpecialTypeArray",
           },
         },
       },
@@ -2556,8 +2606,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.<>': 'SpecialTypeArray',
-            'Array<>': 'SpecialTypeArray',
+            "Array.<>": "SpecialTypeArray",
+            "Array<>": "SpecialTypeArray",
           },
         },
       },
@@ -2574,7 +2624,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'SpecialTypeArray',
+            "[]": "SpecialTypeArray",
           },
         },
       },
@@ -2596,7 +2646,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': 'SpecialTypeArray',
+            "[]": "SpecialTypeArray",
           },
         },
       },
@@ -2613,7 +2663,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array.<>': 'GenericArray',
+            "Array.<>": "GenericArray",
           },
         },
       },
@@ -2630,7 +2680,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'Array<>': 'GenericArray',
+            "Array<>": "GenericArray",
           },
         },
       },
@@ -2657,7 +2707,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -2674,7 +2724,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -2691,7 +2741,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -2708,7 +2758,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'GenericObject',
+            object: "GenericObject",
           },
         },
       },
@@ -2725,7 +2775,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object.<>': 'GenericObject',
+            "object.<>": "GenericObject",
           },
         },
       },
@@ -2742,7 +2792,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'GenericObject',
+            "object<>": "GenericObject",
           },
         },
       },
@@ -2772,7 +2822,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -2785,7 +2835,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -2795,12 +2845,12 @@ export default {
       `,
     },
     {
-      code: '/** @typedef {object} foo */',
+      code: "/** @typedef {object} foo */",
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
+              tag: "typedef",
               types: true,
             },
           ],
@@ -2809,31 +2859,29 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
     },
     {
-      code: '/** @typedef {object<string, string>} foo */',
+      code: "/** @typedef {object<string, string>} foo */",
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
+            object: "Object",
           },
         },
       },
     },
     {
-      code: '/** @typedef {object<string, string>} foo */',
+      code: "/** @typedef {object<string, string>} foo */",
       options: [
         {
           exemptTagContexts: [
             {
-              tag: 'typedef',
-              types: [
-                'object<string, string>',
-              ],
+              tag: "typedef",
+              types: ["object<string, string>"],
             },
           ],
         },
@@ -2841,7 +2889,7 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            'object<>': 'Object<>',
+            "object<>": "Object<>",
           },
         },
       },
@@ -2859,8 +2907,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
-            Object: 'object',
+            object: "Object",
+            Object: "object",
           },
         },
       },
@@ -2880,8 +2928,8 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            object: 'Object',
-            Object: 'object',
+            object: "Object",
+            Object: "object",
           },
         },
       },
@@ -2900,7 +2948,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -2930,9 +2978,7 @@ export default {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              type: [
-                'otherType', 'anotherType',
-              ],
+              type: ["otherType", "anotherType"],
             },
           },
         },
@@ -2948,9 +2994,7 @@ export default {
         jsdoc: {
           structuredTags: {
             aCustomTag: {
-              type: [
-                'otherType', 'anotherType',
-              ],
+              type: ["otherType", "anotherType"],
             },
           },
         },
@@ -2978,7 +3022,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
         },
       },
     },
@@ -2991,11 +3035,11 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -3009,11 +3053,11 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'typescript',
+          mode: "typescript",
           preferredTypes: {
-            Object: 'object',
-            'object.<>': 'Object<>',
-            'object<>': 'Object<>',
+            Object: "object",
+            "object.<>": "Object<>",
+            "object<>": "Object<>",
           },
         },
       },
@@ -3033,7 +3077,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'jsdoc',
+          mode: "jsdoc",
         },
       },
     },
@@ -3049,7 +3093,7 @@ export default {
         jsdoc: {
           preferredTypes: {
             object: {
-              message: 'Won\'t see this message',
+              message: "Won't see this message",
               skipRootChecking: true,
             },
           },
@@ -3071,9 +3115,9 @@ export default {
       settings: {
         jsdoc: {
           preferredTypes: {
-            '[]': {
-              message: 'Do not use *[], use Array<*> instead',
-              replacement: 'Array',
+            "[]": {
+              message: "Do not use *[], use Array<*> instead",
+              replacement: "Array",
             },
           },
         },

@@ -1,5 +1,6 @@
 <a name="user-content-check-template-names"></a>
 <a name="check-template-names"></a>
+
 # <code>check-template-names</code>
 
 Checks that any `@template` names are actually used in the connected
@@ -26,21 +27,22 @@ or
  */
 ```
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`@template`|
-|Recommended|false|
-|Settings||
-|Options||
+|             |             |
+| ----------- | ----------- |
+| Context     | everywhere  |
+| Tags        | `@template` |
+| Recommended | false       |
+| Settings    |             |
+| Options     |             |
 
 <a name="user-content-check-template-names-failing-examples"></a>
 <a name="check-template-names-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @template D
  * @template V
@@ -185,7 +187,7 @@ export default class GenericNumber<NumType> {
  * @template D
  * @template V
  */
-export default class <NumType> {
+export default class<NumType> {
   zeroValue: NumType;
   add: (x: NumType, y: NumType) => NumType;
 }
@@ -214,17 +216,16 @@ export default class <NumType> {
  * @param {[X, Y | undefined]} someParam
  */
 // Message: @template D not in use
-````
-
-
+```
 
 <a name="user-content-check-template-names-passing-examples"></a>
 <a name="check-template-names-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @template D
  * @template V
@@ -335,7 +336,7 @@ export default class GenericNumber<NumType> {
 /**
  * @template NumType
  */
-export default class <NumType> {
+export default class<NumType> {
   zeroValue: NumType;
   add: (x: NumType, y: NumType) => NumType;
 }
@@ -349,8 +350,7 @@ export default class <NumType> {
  * @param {(value: T, index: number) => string} callbackFn
  * @returns {Map<string, T[]>}
  */
-export function mapGroupBy(array, callbackFn) {
-}
+export function mapGroupBy(array, callbackFn) {}
 
 /**
  * @template D
@@ -372,5 +372,4 @@ export function mapGroupBy(array, callbackFn) {
  * @function
  * @param {[D, V | undefined]} someParam
  */
-````
-
+```

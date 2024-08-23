@@ -12,21 +12,19 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example error (no-alert): Unexpected alert.',
+          message: "@example error (no-alert): Unexpected alert.",
         },
         {
           line: 3,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              'no-alert': 2,
-              semi: [
-                'error', 'always',
-              ],
+              "no-alert": 2,
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -45,21 +43,19 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example error (no-alert): Unexpected alert.',
+          message: "@example error (no-alert): Unexpected alert.",
         },
         {
           line: 3,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              'no-alert': 2,
-              semi: [
-                'error', 'always',
-              ],
+              "no-alert": 2,
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -80,20 +76,18 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Extra semicolon.',
+          message: "@example error (semi): Extra semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```js([\\s\\S]*)```',
+          exampleCodeRegex: "```js([\\s\\S]*)```",
         },
       ],
     },
@@ -111,20 +105,18 @@ export default {
       errors: [
         {
           line: 5,
-          message: '@example error (semi): Extra semicolon.',
+          message: "@example error (semi): Extra semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```js ([\\s\\S]*)```',
+          exampleCodeRegex: "```js ([\\s\\S]*)```",
         },
       ],
     },
@@ -141,20 +133,18 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Extra semicolon.',
+          message: "@example error (semi): Extra semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```js ([\\s\\S]*)```',
+          exampleCodeRegex: "```js ([\\s\\S]*)```",
         },
       ],
     },
@@ -171,20 +161,18 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Extra semicolon.',
+          message: "@example error (semi): Extra semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```\njs ([\\s\\S]*)```',
+          exampleCodeRegex: "```\njs ([\\s\\S]*)```",
         },
       ],
     },
@@ -206,20 +194,18 @@ export default {
       errors: [
         {
           line: 9,
-          message: '@example error (semi): Extra semicolon.',
+          message: "@example error (semi): Extra semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          rejectExampleCodeRegex: '^\\s*<.*>\\s*$',
+          rejectExampleCodeRegex: "^\\s*<.*>\\s*$",
         },
       ],
     },
@@ -236,16 +222,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (no-undef): \'quux\' is not defined.',
+          message: "@example error (no-undef): 'quux' is not defined.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              'no-undef': [
-                'error',
-              ],
+              "no-undef": ["error"],
             },
           },
           checkEslintrc: false,
@@ -269,7 +253,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Caption is expected for examples.',
+          message: "Caption is expected for examples.",
         },
       ],
       options: [
@@ -291,16 +275,15 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example error (indent): Expected indentation of 0 spaces but found 1.',
+          message:
+            "@example error (indent): Expected indentation of 0 spaces but found 1.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              indent: [
-                'error',
-              ],
+              indent: ["error"],
             },
           },
           checkEslintrc: false,
@@ -318,7 +301,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example error: Unused eslint-disable directive (no problems were reported from \'semi\').',
+          message:
+            "@example error: Unused eslint-disable directive (no problems were reported from 'semi').",
         },
       ],
       options: [
@@ -340,7 +324,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
@@ -348,9 +332,7 @@ export default {
           allowInlineConfig: false,
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -371,12 +353,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example warning (id-length): Identifier name \'j\' is too short (< 2).',
+          message:
+            "@example warning (id-length): Identifier name 'j' is too short (< 2).",
         },
       ],
       options: [
         {
-          matchingFileName: '../../jsdocUtils.js',
+          matchingFileName: "../../jsdocUtils.js",
         },
       ],
     },
@@ -393,13 +376,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example warning (id-length): Identifier name \'k\' is too short (< 2).',
+          message:
+            "@example warning (id-length): Identifier name 'k' is too short (< 2).",
         },
       ],
       options: [
         {
-          configFile: '.eslintrc.json',
-          matchingFileName: '../../jsdocUtils.js',
+          configFile: ".eslintrc.json",
+          matchingFileName: "../../jsdocUtils.js",
         },
       ],
     },
@@ -416,10 +400,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example warning (id-length): Identifier name \'m\' is too short (< 2).',
+          message:
+            "@example warning (id-length): Identifier name 'm' is too short (< 2).",
         },
       ],
-      filename: 'test/rules/data/jsdocUtils.js',
+      filename: "test/rules/data/jsdocUtils.js",
     },
     {
       code: `
@@ -434,11 +419,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example warning (id-length): Identifier name \'i\' is too short (< 2).',
+          message:
+            "@example warning (id-length): Identifier name 'i' is too short (< 2).",
         },
         {
           line: 4,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
@@ -461,11 +447,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example warning (id-length): Identifier name \'i\' is too short (< 2).',
+          message:
+            "@example warning (id-length): Identifier name 'i' is too short (< 2).",
         },
         {
           line: 5,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
     },
@@ -482,12 +469,12 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
         {
-          matchingFileName: 'dummy.js',
+          matchingFileName: "dummy.js",
         },
       ],
     },
@@ -505,12 +492,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
         {
-          matchingFileName: 'dummy.js',
+          matchingFileName: "dummy.js",
         },
       ],
     },
@@ -528,13 +515,14 @@ export default {
       errors: [
         {
           line: 3,
-          message: '@example error: Parsing error: The keyword \'const\' is reserved',
+          message:
+            "@example error: Parsing error: The keyword 'const' is reserved",
         },
       ],
       options: [
         {
           checkEslintrc: false,
-          matchingFileName: 'dummy.js',
+          matchingFileName: "dummy.js",
         },
       ],
     },
@@ -552,20 +540,18 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example warning (semi): Missing semicolon.',
+          message: "@example warning (semi): Missing semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'warn', 'always',
-              ],
+              semi: ["warn", "always"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '// begin[\\s\\S]*// end',
+          exampleCodeRegex: "// begin[\\s\\S]*// end",
           noDefaultExampleRules: true,
         },
       ],
@@ -581,7 +567,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Caption is expected for examples.',
+          message: "Caption is expected for examples.",
         },
       ],
       options: [
@@ -605,20 +591,18 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
-            parser: '@typescript-eslint/parser',
+            parser: "@typescript-eslint/parser",
             parserOptions: {
               ecmaVersion: 6,
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -640,7 +624,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
@@ -650,9 +634,7 @@ export default {
               ecmaVersion: 6,
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
         },
@@ -684,11 +666,11 @@ export default {
       errors: [
         {
           line: 7,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
         {
           line: 15,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
@@ -696,16 +678,14 @@ export default {
           baseConfig: {
             parserOptions: {
               ecmaVersion: 2_015,
-              sourceType: 'module',
+              sourceType: "module",
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '/^```(?:js|javascript)\\n([\\s\\S]*?)```$/gm',
+          exampleCodeRegex: "/^```(?:js|javascript)\\n([\\s\\S]*?)```$/gm",
         },
       ],
     },
@@ -727,24 +707,22 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example warning (semi): Missing semicolon.',
+          message: "@example warning (semi): Missing semicolon.",
         },
         {
           line: 8,
-          message: '@example warning (semi): Missing semicolon.',
+          message: "@example warning (semi): Missing semicolon.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              semi: [
-                'warn', 'always',
-              ],
+              semi: ["warn", "always"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '/\\/\\/ begin[\\s\\S]*?// end/g',
+          exampleCodeRegex: "/\\/\\/ begin[\\s\\S]*?// end/g",
           noDefaultExampleRules: true,
         },
       ],
@@ -762,16 +740,15 @@ export default {
       errors: [
         {
           line: 4,
-          message: '@example error (indent): Expected indentation of 0 spaces but found 2.',
+          message:
+            "@example error (indent): Expected indentation of 0 spaces but found 2.",
         },
       ],
       options: [
         {
           baseConfig: {
             rules: {
-              indent: [
-                'error',
-              ],
+              indent: ["error"],
             },
           },
           checkEslintrc: false,
@@ -789,7 +766,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '@default error (quotes): Strings must use doublequote.',
+          message: "@default error (quotes): Strings must use doublequote.",
         },
       ],
       options: [
@@ -809,7 +786,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '@param error (quotes): Strings must use doublequote.',
+          message: "@param error (quotes): Strings must use doublequote.",
         },
       ],
       options: [
@@ -828,7 +805,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: '@property error (quotes): Strings must use doublequote.',
+          message: "@property error (quotes): Strings must use doublequote.",
         },
       ],
       options: [
@@ -858,7 +835,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: '@example error (semi): Missing semicolon.',
+          message: "@example error (semi): Missing semicolon.",
         },
       ],
       options: [
@@ -866,12 +843,10 @@ export default {
           baseConfig: {
             parserOptions: {
               ecmaVersion: 2_015,
-              sourceType: 'module',
+              sourceType: "module",
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           captionRequired: true,
@@ -896,13 +871,11 @@ export default {
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```js([\\s\\S]*)```',
+          exampleCodeRegex: "```js([\\s\\S]*)```",
         },
       ],
     },
@@ -921,13 +894,11 @@ export default {
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '/```js([\\s\\S]*)```/',
+          exampleCodeRegex: "/```js([\\s\\S]*)```/",
         },
       ],
     },
@@ -961,9 +932,7 @@ export default {
         {
           baseConfig: {
             rules: {
-              'no-undef': [
-                'error',
-              ],
+              "no-undef": ["error"],
             },
           },
           checkEslintrc: false,
@@ -984,9 +953,7 @@ export default {
         {
           baseConfig: {
             rules: {
-              indent: [
-                'error',
-              ],
+              indent: ["error"],
             },
           },
           checkEslintrc: false,
@@ -1042,9 +1009,7 @@ export default {
           allowInlineConfig: true,
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -1067,13 +1032,11 @@ export default {
         {
           baseConfig: {
             rules: {
-              semi: [
-                'error', 'never',
-              ],
+              semi: ["error", "never"],
             },
           },
           checkEslintrc: false,
-          exampleCodeRegex: '```js([\\s\\S]*)```',
+          exampleCodeRegex: "```js([\\s\\S]*)```",
         },
       ],
     },
@@ -1091,9 +1054,7 @@ export default {
         {
           baseConfig: {
             rules: {
-              indent: [
-                'error',
-              ],
+              indent: ["error"],
             },
           },
           checkEslintrc: false,
@@ -1115,14 +1076,12 @@ export default {
       options: [
         {
           baseConfig: {
-            parser: '@typescript-eslint/parser',
+            parser: "@typescript-eslint/parser",
             parserOptions: {
               ecmaVersion: 6,
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           checkEslintrc: false,
@@ -1162,9 +1121,7 @@ export default {
         {
           baseConfig: {
             rules: {
-              indent: [
-                'error',
-              ],
+              indent: ["error"],
             },
           },
           checkEslintrc: false,
@@ -1180,7 +1137,7 @@ export default {
       export default {};
       `,
       languageOptions: {
-        sourceType: 'module',
+        sourceType: "module",
       },
     },
     {
@@ -1207,13 +1164,9 @@ export default {
       options: [
         {
           baseConfig: {
-            plugins: [
-              'jsdoc',
-            ],
+            plugins: ["jsdoc"],
             rules: {
-              'jsdoc/require-file-overview': [
-                'error',
-              ],
+              "jsdoc/require-file-overview": ["error"],
             },
           },
           checkEslintrc: false,
@@ -1311,7 +1264,7 @@ export default {
       options: [
         {
           checkDefaults: false,
-          matchingFileNameDefaults: 'dummy.js',
+          matchingFileNameDefaults: "dummy.js",
         },
       ],
     },
@@ -1326,7 +1279,7 @@ export default {
       options: [
         {
           checkParams: false,
-          matchingFileNameParams: 'dummy.js',
+          matchingFileNameParams: "dummy.js",
         },
       ],
     },
@@ -1340,7 +1293,7 @@ export default {
       options: [
         {
           checkProperties: false,
-          matchingFileNameProperties: 'dummy.js',
+          matchingFileNameProperties: "dummy.js",
         },
       ],
     },
@@ -1367,12 +1320,10 @@ export default {
           baseConfig: {
             parserOptions: {
               ecmaVersion: 2_015,
-              sourceType: 'module',
+              sourceType: "module",
             },
             rules: {
-              semi: [
-                'error', 'always',
-              ],
+              semi: ["error", "always"],
             },
           },
           captionRequired: true,

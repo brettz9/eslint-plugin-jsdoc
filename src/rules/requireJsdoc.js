@@ -1,21 +1,19 @@
-import exportParser from '../exportParser.js';
+import exportParser from "../exportParser.js";
+import { getSettings } from "../iterateJsdoc.js";
 import {
-  getSettings,
-} from '../iterateJsdoc.js';
-import {
-  exemptSpeciaMethods,
-  isConstructor,
-  getFunctionParameterNames,
-  hasReturnValue,
-  getIndent,
-  getContextObject,
   enforcedContexts,
-} from '../jsdocUtils.js';
+  exemptSpeciaMethods,
+  getContextObject,
+  getFunctionParameterNames,
+  getIndent,
+  hasReturnValue,
+  isConstructor,
+} from "../jsdocUtils.js";
 import {
   getDecorator,
   getJSDocComment,
   getReducedASTNode,
-} from '@es-joy/jsdoccomment';
+} from "@es-joy/jsdoccomment";
 
 /**
  * @typedef {{
@@ -37,18 +35,16 @@ const OPTIONS_SCHEMA = {
   properties: {
     checkConstructors: {
       default: true,
-      type: 'boolean',
+      type: "boolean",
     },
     checkGetters: {
       anyOf: [
         {
-          type: 'boolean',
+          type: "boolean",
         },
         {
-          enum: [
-            'no-setter',
-          ],
-          type: 'string',
+          enum: ["no-setter"],
+          type: "string",
         },
       ],
       default: true,
@@ -56,13 +52,11 @@ const OPTIONS_SCHEMA = {
     checkSetters: {
       anyOf: [
         {
-          type: 'boolean',
+          type: "boolean",
         },
         {
-          enum: [
-            'no-getter',
-          ],
-          type: 'string',
+          enum: ["no-getter"],
+          type: "string",
         },
       ],
       default: true,
@@ -71,70 +65,70 @@ const OPTIONS_SCHEMA = {
       items: {
         anyOf: [
           {
-            type: 'string',
+            type: "string",
           },
           {
             additionalProperties: false,
             properties: {
               context: {
-                type: 'string',
+                type: "string",
               },
               inlineCommentBlock: {
-                type: 'boolean',
+                type: "boolean",
               },
               minLineCount: {
-                type: 'integer',
+                type: "integer",
               },
             },
-            type: 'object',
+            type: "object",
           },
         ],
       },
-      type: 'array',
+      type: "array",
     },
     enableFixer: {
       default: true,
-      type: 'boolean',
+      type: "boolean",
     },
     exemptEmptyConstructors: {
       default: false,
-      type: 'boolean',
+      type: "boolean",
     },
     exemptEmptyFunctions: {
       default: false,
-      type: 'boolean',
+      type: "boolean",
     },
     fixerMessage: {
-      default: '',
-      type: 'string',
+      default: "",
+      type: "string",
     },
     minLineCount: {
-      type: 'integer',
+      type: "integer",
     },
     publicOnly: {
       oneOf: [
         {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
         {
           additionalProperties: false,
           default: {},
           properties: {
             ancestorsOnly: {
-              type: 'boolean',
+              type: "boolean",
             },
             cjs: {
-              type: 'boolean',
+              type: "boolean",
             },
             esm: {
-              type: 'boolean',
+              type: "boolean",
             },
             window: {
-              type: 'boolean',
+              type: "boolean",
             },
           },
-          type: 'object',
+          type: "object",
         },
       ],
     },
@@ -144,33 +138,33 @@ const OPTIONS_SCHEMA = {
       properties: {
         ArrowFunctionExpression: {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
         ClassDeclaration: {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
         ClassExpression: {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
         FunctionDeclaration: {
           default: true,
-          type: 'boolean',
+          type: "boolean",
         },
         FunctionExpression: {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
         MethodDefinition: {
           default: false,
-          type: 'boolean',
+          type: "boolean",
         },
       },
-      type: 'object',
+      type: "object",
     },
   },
-  type: 'object',
+  type: "object",
 };
 
 /**
@@ -181,11 +175,13 @@ const OPTIONS_SCHEMA = {
  * @returns {boolean|undefined}
  */
 const getOption = (context, baseObject, option, key) => {
-  if (context.options[0] && option in context.options[0] &&
+  if (
+    context.options[0] &&
+    option in context.options[0] &&
     // Todo: boolean shouldn't be returning property, but
     //   tests currently require
-    (typeof context.options[0][option] === 'boolean' ||
-    key in context.options[0][option])
+    (typeof context.options[0][option] === "boolean" ||
+      key in context.options[0][option])
   ) {
     return context.options[0][option][key];
   }
@@ -215,13 +211,13 @@ const getOption = (context, baseObject, option, key) => {
  */
 const getOptions = (context, settings) => {
   const {
-    publicOnly,
     contexts = settings.contexts || [],
+    enableFixer = true,
     exemptEmptyConstructors = true,
     exemptEmptyFunctions = false,
-    enableFixer = true,
-    fixerMessage = '',
+    fixerMessage = "",
     minLineCount = undefined,
+    publicOnly,
   } = context.options[0] || {};
 
   return {
@@ -240,14 +236,14 @@ const getOptions = (context, settings) => {
       const properties = {};
       for (const prop of Object.keys(
         /** @type {import('json-schema').JSONSchema4Object} */ (
-        /** @type {import('json-schema').JSONSchema4Object} */ (
-            baseObj
-          ).properties),
+          /** @type {import('json-schema').JSONSchema4Object} */ (baseObj)
+            .properties
+        ),
       )) {
         const opt = getOption(
           context,
           /** @type {import('json-schema').JSONSchema4Object} */ (baseObj),
-          'publicOnly',
+          "publicOnly",
           prop,
         );
 
@@ -261,9 +257,7 @@ const getOptions = (context, settings) => {
         /** @type {import('json-schema').JSONSchema4Object} */
         (
           /** @type {import('json-schema').JSONSchema4Object} */
-          (
-            OPTIONS_SCHEMA.properties
-          ).publicOnly
+          (OPTIONS_SCHEMA.properties).publicOnly
         ).oneOf
       )[1],
     ),
@@ -272,15 +266,15 @@ const getOptions = (context, settings) => {
       const properties = {};
       for (const prop of Object.keys(
         /** @type {import('json-schema').JSONSchema4Object} */ (
-        /** @type {import('json-schema').JSONSchema4Object} */ (
-            baseObj
-          ).properties),
+          /** @type {import('json-schema').JSONSchema4Object} */ (baseObj)
+            .properties
+        ),
       )) {
         const opt = getOption(
           context,
           /** @type {import('json-schema').JSONSchema4Object} */
           (baseObj),
-          'require',
+          "require",
           prop,
         );
         properties[prop] = opt;
@@ -296,11 +290,9 @@ const getOptions = (context, settings) => {
 
 /** @type {import('eslint').Rule.RuleModule} */
 export default {
-  create (context) {
+  create(context) {
     /* c8 ignore next -- Fallback to deprecated method */
-    const {
-      sourceCode = context.getSourceCode(),
-    } = context;
+    const { sourceCode = context.getSourceCode() } = context;
     const settings = getSettings(context);
     if (!settings) {
       return {};
@@ -309,24 +301,20 @@ export default {
     const opts = getOptions(context, settings);
 
     const {
-      require: requireOption,
       contexts,
-      exemptEmptyFunctions,
-      exemptEmptyConstructors,
       enableFixer,
+      exemptEmptyConstructors,
+      exemptEmptyFunctions,
       fixerMessage,
       minLineCount,
+      require: requireOption,
     } = opts;
 
-    const publicOnly =
-
-      /**
-       * @type {{
-       *   [key: string]: boolean | undefined;
-       * }}
-       */ (
-        opts.publicOnly
-      );
+    const publicOnly = /**
+     * @type {{
+     *   [key: string]: boolean | undefined;
+     * }}
+     */ (opts.publicOnly);
 
     /**
      * @type {import('../iterateJsdoc.js').CheckJsdoc}
@@ -334,14 +322,13 @@ export default {
     const checkJsDoc = (info, _handler, node) => {
       if (
         // Optimize
-        minLineCount !== undefined || contexts.some((ctxt) => {
-          if (typeof ctxt === 'string') {
+        minLineCount !== undefined ||
+        contexts.some((ctxt) => {
+          if (typeof ctxt === "string") {
             return false;
           }
 
-          const {
-            minLineCount: count,
-          } = ctxt;
+          const { minLineCount: count } = ctxt;
           return count !== undefined;
         })
       ) {
@@ -349,33 +336,33 @@ export default {
          * @param {undefined|import('../iterateJsdoc.js').Integer} count
          */
         const underMinLine = (count) => {
-          return count !== undefined && count >
-            (sourceCode.getText(node).match(/\n/gu)?.length ?? 0) + 1;
+          return (
+            count !== undefined &&
+            count > (sourceCode.getText(node).match(/\n/gu)?.length ?? 0) + 1
+          );
         };
 
         if (underMinLine(minLineCount)) {
           return;
         }
 
-        const {
-          minLineCount: contextMinLineCount,
-        } =
+        const { minLineCount: contextMinLineCount } =
           /**
            * @type {{
            *   context: string;
            *   inlineCommentBlock: boolean;
            *   minLineCount: number;
            * }}
-           */ (contexts.find((ctxt) => {
-            if (typeof ctxt === 'string') {
-              return false;
-            }
+           */ (
+            contexts.find((ctxt) => {
+              if (typeof ctxt === "string") {
+                return false;
+              }
 
-            const {
-              context: ctx,
-            } = ctxt;
-            return ctx === (info.selector || node.type);
-          })) || {};
+              const { context: ctx } = ctxt;
+              return ctx === (info.selector || node.type);
+            })
+          ) || {};
         if (underMinLine(contextMinLineCount)) {
           return;
         }
@@ -389,31 +376,30 @@ export default {
 
       // For those who have options configured against ANY constructors (or
       //  setters or getters) being reported
-      if (exemptSpeciaMethods(
-        {
-          description: '',
-          inlineTags: [],
-          problems: [],
-          source: [],
-          tags: [],
-        },
-        node,
-        context,
-        [
-          OPTIONS_SCHEMA,
-        ],
-      )) {
+      if (
+        exemptSpeciaMethods(
+          {
+            description: "",
+            inlineTags: [],
+            problems: [],
+            source: [],
+            tags: [],
+          },
+          node,
+          context,
+          [OPTIONS_SCHEMA],
+        )
+      ) {
         return;
       }
 
       if (
         // Avoid reporting param-less, return-less functions (when
         //  `exemptEmptyFunctions` option is set)
-        exemptEmptyFunctions && info.isFunctionContext ||
-
+        (exemptEmptyFunctions && info.isFunctionContext) ||
         // Avoid reporting  param-less, return-less constructor methods (when
         //  `exemptEmptyConstructors` option is set)
-        exemptEmptyConstructors && isConstructor(node)
+        (exemptEmptyConstructors && isConstructor(node))
       ) {
         const functionParameterNames = getFunctionParameterNames(node);
         if (!functionParameterNames.length && !hasReturnValue(node)) {
@@ -423,13 +409,16 @@ export default {
 
       const fix = /** @type {import('eslint').Rule.ReportFixer} */ (fixer) => {
         // Default to one line break if the `minLines`/`maxLines` settings allow
-        const lines = settings.minLines === 0 && settings.maxLines >= 1 ? 1 : settings.minLines;
+        const lines =
+          settings.minLines === 0 && settings.maxLines >= 1
+            ? 1
+            : settings.minLines;
         /** @type {ESLintOrTSNode|import('@typescript-eslint/types').TSESTree.Decorator} */
         let baseNode = getReducedASTNode(node, sourceCode);
 
         const decorator = getDecorator(
           /** @type {import('eslint').Rule.Node} */
-          (baseNode)
+          (baseNode),
         );
         if (decorator) {
           baseNode = decorator;
@@ -439,35 +428,33 @@ export default {
           text: sourceCode.getText(
             /** @type {import('eslint').Rule.Node} */ (baseNode),
             /** @type {import('eslint').AST.SourceLocation} */
-            (
-              /** @type {import('eslint').Rule.Node} */ (baseNode).loc
-            ).start.column,
+            (/** @type {import('eslint').Rule.Node} */ (baseNode).loc).start
+              .column,
           ),
         });
 
-        const {
-          inlineCommentBlock,
-        } =
+        const { inlineCommentBlock } =
           /**
            * @type {{
            *     context: string,
            *     inlineCommentBlock: boolean,
            *     minLineCount: import('../iterateJsdoc.js').Integer
            *   }}
-           */ (contexts.find((contxt) => {
-            if (typeof contxt === 'string') {
-              return false;
-            }
+           */ (
+            contexts.find((contxt) => {
+              if (typeof contxt === "string") {
+                return false;
+              }
 
-            const {
-              context: ctxt,
-            } = contxt;
-            return ctxt === node.type;
-          })) || {};
-        const insertion = (inlineCommentBlock ?
-          `/** ${fixerMessage}` :
-          `/**\n${indent}*${fixerMessage}\n${indent}`) +
-            `*/${'\n'.repeat(lines)}${indent.slice(0, -1)}`;
+              const { context: ctxt } = contxt;
+              return ctxt === node.type;
+            })
+          ) || {};
+        const insertion =
+          (inlineCommentBlock
+            ? `/** ${fixerMessage}`
+            : `/**\n${indent}*${fixerMessage}\n${indent}`) +
+          `*/${"\n".repeat(lines)}${indent.slice(0, -1)}`;
 
         return fixer.insertTextBefore(
           /** @type {import('eslint').Rule.Node} */
@@ -477,9 +464,9 @@ export default {
       };
 
       const report = () => {
-        const {
-          start,
-        } = /** @type {import('eslint').AST.SourceLocation} */ (node.loc);
+        const { start } = /** @type {import('eslint').AST.SourceLocation} */ (
+          node.loc
+        );
         const loc = {
           end: {
             column: 0,
@@ -490,7 +477,7 @@ export default {
         context.report({
           fix: enableFixer ? fix : null,
           loc,
-          messageId: 'missingJsDoc',
+          messageId: "missingJsDoc",
           node,
         });
       };
@@ -503,7 +490,12 @@ export default {
           initModuleExports: Boolean(publicOnly?.cjs ?? true),
           initWindow: Boolean(publicOnly?.window ?? false),
         };
-        const exported = exportParser.isUncommentedExport(node, sourceCode, opt, settings);
+        const exported = exportParser.isUncommentedExport(
+          node,
+          sourceCode,
+          opt,
+          settings,
+        );
 
         if (exported) {
           report();
@@ -518,27 +510,34 @@ export default {
      * @returns {boolean}
      */
     const hasOption = (prop) => {
-      return requireOption[prop] || contexts.some((ctxt) => {
-        return typeof ctxt === 'object' ? ctxt.context === prop : ctxt === prop;
-      });
+      return (
+        requireOption[prop] ||
+        contexts.some((ctxt) => {
+          return typeof ctxt === "object"
+            ? ctxt.context === prop
+            : ctxt === prop;
+        })
+      );
     };
 
     return {
-      ...getContextObject(
-        enforcedContexts(context, [], settings),
-        checkJsDoc,
-      ),
-      ArrowFunctionExpression (node) {
-        if (!hasOption('ArrowFunctionExpression')) {
+      ...getContextObject(enforcedContexts(context, [], settings), checkJsDoc),
+      ArrowFunctionExpression(node) {
+        if (!hasOption("ArrowFunctionExpression")) {
           return;
         }
 
         if (
           [
-            'VariableDeclarator', 'AssignmentExpression', 'ExportDefaultDeclaration',
+            "AssignmentExpression",
+            "ExportDefaultDeclaration",
+            "VariableDeclarator",
           ].includes(node.parent.type) ||
-          [
-            'Property', 'ObjectProperty', 'ClassProperty', 'PropertyDefinition',
+          ([
+            "ClassProperty",
+            "ObjectProperty",
+            "Property",
+            "PropertyDefinition",
           ].includes(node.parent.type) &&
             node ===
               /**
@@ -546,55 +545,76 @@ export default {
                *   import('@typescript-eslint/types').TSESTree.PropertyDefinition
                * }
                */
-              (node.parent).value
+              (node.parent).value)
         ) {
-          checkJsDoc({
+          checkJsDoc(
+            {
+              isFunctionContext: true,
+            },
+            null,
+            node,
+          );
+        }
+      },
+
+      ClassDeclaration(node) {
+        if (!hasOption("ClassDeclaration")) {
+          return;
+        }
+
+        checkJsDoc(
+          {
+            isFunctionContext: false,
+          },
+          null,
+          node,
+        );
+      },
+
+      ClassExpression(node) {
+        if (!hasOption("ClassExpression")) {
+          return;
+        }
+
+        checkJsDoc(
+          {
+            isFunctionContext: false,
+          },
+          null,
+          node,
+        );
+      },
+
+      FunctionDeclaration(node) {
+        if (!hasOption("FunctionDeclaration")) {
+          return;
+        }
+
+        checkJsDoc(
+          {
             isFunctionContext: true,
-          }, null, node);
-        }
+          },
+          null,
+          node,
+        );
       },
 
-      ClassDeclaration (node) {
-        if (!hasOption('ClassDeclaration')) {
-          return;
-        }
-
-        checkJsDoc({
-          isFunctionContext: false,
-        }, null, node);
-      },
-
-      ClassExpression (node) {
-        if (!hasOption('ClassExpression')) {
-          return;
-        }
-
-        checkJsDoc({
-          isFunctionContext: false,
-        }, null, node);
-      },
-
-      FunctionDeclaration (node) {
-        if (!hasOption('FunctionDeclaration')) {
-          return;
-        }
-
-        checkJsDoc({
-          isFunctionContext: true,
-        }, null, node);
-      },
-
-      FunctionExpression (node) {
-        if (!hasOption('FunctionExpression')) {
+      FunctionExpression(node) {
+        if (!hasOption("FunctionExpression")) {
           return;
         }
 
         if (
           [
-            'VariableDeclarator', 'AssignmentExpression', 'ExportDefaultDeclaration',
+            "AssignmentExpression",
+            "ExportDefaultDeclaration",
+            "VariableDeclarator",
           ].includes(node.parent.type) ||
-          [
-            'Property', 'ObjectProperty', 'ClassProperty', 'PropertyDefinition',
+          ([
+            "ClassProperty",
+            "ObjectProperty",
+            "Property",
+            "PropertyDefinition",
           ].includes(node.parent.type) &&
             node ===
               /**
@@ -602,44 +622,50 @@ export default {
                *   import('@typescript-eslint/types').TSESTree.PropertyDefinition
                * }
                */
-              (node.parent).value
+              (node.parent).value)
         ) {
-          checkJsDoc({
-            isFunctionContext: true,
-          }, null, node);
+          checkJsDoc(
+            {
+              isFunctionContext: true,
+            },
+            null,
+            node,
+          );
         }
       },
 
-      MethodDefinition (node) {
-        if (!hasOption('MethodDefinition')) {
+      MethodDefinition(node) {
+        if (!hasOption("MethodDefinition")) {
           return;
         }
 
-        checkJsDoc({
-          isFunctionContext: true,
-          selector: 'MethodDefinition',
-        }, null, /** @type {import('eslint').Rule.Node} */ (node.value));
+        checkJsDoc(
+          {
+            isFunctionContext: true,
+            selector: "MethodDefinition",
+          },
+          null,
+          /** @type {import('eslint').Rule.Node} */ (node.value),
+        );
       },
     };
   },
   meta: {
     docs: {
-      category: 'Stylistic Issues',
-      description: 'Require JSDoc comments',
+      category: "Stylistic Issues",
+      description: "Require JSDoc comments",
       recommended: true,
-      url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md#repos-sticky-header',
+      url: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md#repos-sticky-header",
     },
 
-    fixable: 'code',
+    fixable: "code",
 
     messages: {
-      missingJsDoc: 'Missing JSDoc comment.',
+      missingJsDoc: "Missing JSDoc comment.",
     },
 
-    schema: [
-      OPTIONS_SCHEMA,
-    ],
+    schema: [OPTIONS_SCHEMA],
 
-    type: 'suggestion',
+    type: "suggestion",
   },
 };

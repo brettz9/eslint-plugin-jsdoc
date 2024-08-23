@@ -38,13 +38,13 @@ templates of this format:
 
 Defaults to `false`.
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|`template`|
-|Recommended|false|
-|Settings||
-|Options|`requireSeparateTemplates`|
+|             |                            |
+| ----------- | -------------------------- |
+| Context     | everywhere                 |
+| Tags        | `template`                 |
+| Recommended | false                      |
+| Settings    |                            |
+| Options     | `requireSeparateTemplates` |
 
 ## Failing examples
 

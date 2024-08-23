@@ -1,17 +1,17 @@
 <a name="user-content-check-tag-names"></a>
 <a name="check-tag-names"></a>
+
 # <code>check-tag-names</code>
 
-* [Fixer](#user-content-check-tag-names-fixer)
-* [Options](#user-content-check-tag-names-options)
-    * [`definedTags`](#user-content-check-tag-names-options-definedtags)
-    * [`enableFixer`](#user-content-check-tag-names-options-enablefixer)
-    * [`jsxTags`](#user-content-check-tag-names-options-jsxtags)
-    * [`typed`](#user-content-check-tag-names-options-typed)
-* [Context and settings](#user-content-check-tag-names-context-and-settings)
-* [Failing examples](#user-content-check-tag-names-failing-examples)
-* [Passing examples](#user-content-check-tag-names-passing-examples)
-
+- [Fixer](#user-content-check-tag-names-fixer)
+- [Options](#user-content-check-tag-names-options)
+  - [`definedTags`](#user-content-check-tag-names-options-definedtags)
+  - [`enableFixer`](#user-content-check-tag-names-options-enablefixer)
+  - [`jsxTags`](#user-content-check-tag-names-options-jsxtags)
+  - [`typed`](#user-content-check-tag-names-options-typed)
+- [Context and settings](#user-content-check-tag-names-context-and-settings)
+- [Failing examples](#user-content-check-tag-names-failing-examples)
+- [Passing examples](#user-content-check-tag-names-passing-examples)
 
 Reports invalid block tag names.
 
@@ -192,29 +192,32 @@ tag to `false`:
 
 ```json
 {
-    "rules": {},
-    "settings": {
-        "jsdoc": {
-            "tagNamePreference": {
-                "todo": false
-            }
-        }
+  "rules": {},
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "todo": false
+      }
     }
+  }
 }
 ```
 
 <a name="user-content-check-tag-names-fixer"></a>
 <a name="check-tag-names-fixer"></a>
+
 ## Fixer
 
 (Todo)
 
 <a name="user-content-check-tag-names-options"></a>
 <a name="check-tag-names-options"></a>
+
 ## Options
 
 <a name="user-content-check-tag-names-options-definedtags"></a>
 <a name="check-tag-names-options-definedtags"></a>
+
 ### <code>definedTags</code>
 
 Use an array of `definedTags` strings to configure additional, allowed tags.
@@ -228,12 +231,14 @@ The format is as follows:
 
 <a name="user-content-check-tag-names-options-enablefixer"></a>
 <a name="check-tag-names-options-enablefixer"></a>
+
 ### <code>enableFixer</code>
 
 Set to `false` to disable auto-removal of types that are redundant with the [`typed` option](#user-content-typed).
 
 <a name="user-content-check-tag-names-options-jsxtags"></a>
 <a name="check-tag-names-options-jsxtags"></a>
+
 ### <code>jsxTags</code>
 
 If this is set to `true`, all of the following tags used to control JSX output are allowed:
@@ -249,6 +254,7 @@ For more information, see the [babel documentation](https://babeljs.io/docs/en/b
 
 <a name="user-content-check-tag-names-options-typed"></a>
 <a name="check-tag-names-options-typed"></a>
+
 ### <code>typed</code>
 
 If this is set to `true`, additionally checks for tag names that are redundant when using a type checker such as TypeScript.
@@ -306,28 +312,30 @@ this
 
 <a name="user-content-check-tag-names-context-and-settings"></a>
 <a name="check-tag-names-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|true|
-|Options|`definedTags`, `enableFixer`, `jsxTags`, `typed`|
-|Settings|`tagNamePreference`, `mode`|
+|             |                                                  |
+| ----------- | ------------------------------------------------ |
+| Context     | everywhere                                       |
+| Tags        | N/A                                              |
+| Recommended | true                                             |
+| Options     | `definedTags`, `enableFixer`, `jsxTags`, `typed` |
+| Settings    | `tagNamePreference`, `mode`                      |
 
 <a name="user-content-check-tag-names-failing-examples"></a>
 <a name="check-tag-names-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
-/** @type {string} */let a;
+```ts
+/** @type {string} */ let a;
 // "jsdoc/check-tag-names": ["error"|"warn", {"typed":true}]
 // Message: '@type' is redundant when using a type system.
 
-/** @type {string} */let a;
+/** @type {string} */ let a;
 // "jsdoc/check-tag-names": ["error"|"warn", {"enableFixer":false,"typed":true}]
 // Message: '@type' is redundant when using a type system.
 
@@ -401,77 +409,59 @@ let a;
 /**
  * @Param
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Invalid JSDoc tag name "Param".
 
 /**
  * @foo
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Invalid JSDoc tag name "foo".
 
 /**
  * @arg foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "param".
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 // Message: Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "arg".
 
 /**
  * @constructor foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"tag constructor":"cons"}}}
 // Message: Invalid JSDoc tag (preference). Replace "constructor" JSDoc tag with "cons".
 
 /**
  * @arg foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"arg":"somethingDifferent"}}}
 // Message: Invalid JSDoc tag (preference). Replace "arg" JSDoc tag with "somethingDifferent".
 
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"parameter"}}}
 // Message: Invalid JSDoc tag (preference). Replace "param" JSDoc tag with "parameter".
 
 /**
  * @bar foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Message: Invalid JSDoc tag name "bar".
 
 /**
  * @baz @bar foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-tag-names": ["error"|"warn", {"definedTags":["bar"]}]
 // Message: Invalid JSDoc tag name "baz".
 
@@ -479,45 +469,35 @@ function quux (foo) {
  * @bar
  * @baz
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-tag-names": ["error"|"warn", {"definedTags":["bar"]}]
 // Message: Invalid JSDoc tag name "baz".
 
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"todo":false}}}
 // Message: Blacklisted tag found (`@todo`)
 
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"todo":{"message":"Please resolve to-dos or add to the tracker"}}}}
 // Message: Please resolve to-dos or add to the tracker
 
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"todo":{"message":"Please use x-todo instead of todo","replacement":"x-todo"}}}}
 // Message: Please use x-todo instead of todo
 
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"todo":55}}}
 // Message: Invalid `settings.jsdoc.tagNamePreference`. Values must be falsy, a string, or an object.
 
@@ -525,18 +505,14 @@ function quux () {
  * @property {object} a
  * @prop {boolean} b
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Invalid JSDoc tag (preference). Replace "prop" JSDoc tag with "property".
 
 /**
  * @abc foo
  * @abcd bar
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"abc":"abcd"}}}
 // "jsdoc/check-tag-names": ["error"|"warn", {"definedTags":["abcd"]}]
 // Message: Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".
@@ -545,20 +521,18 @@ function quux () {
  * @abc
  * @abcd
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"abc":"abcd"}}}
 // Message: Invalid JSDoc tag (preference). Replace "abc" JSDoc tag with "abcd".
 
 /**
  * @returns
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 // Message: Invalid JSDoc tag (preference). Replace "returns" JSDoc tag with "return".
 
-/** 
+/**
  * @modifies
  * @abstract
  * @access
@@ -630,11 +604,11 @@ function quux (foo) {}
  * @version
  * @yields
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"badMode"}}
 // Message: Unrecognized value `badMode` for `settings.jsdoc.mode`.
 
-/** 
+/**
  * @modifies
  * @abstract
  * @access
@@ -711,14 +685,14 @@ function quux (foo) {}
  * @satisfies
  * @template
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"jsdoc"}}
 // Message: Invalid JSDoc tag name "import".
 
-/** 
+/**
  * @externs
  */
-function quux (foo) {}
+function quux(foo) {}
 // Message: Invalid JSDoc tag name "externs".
 
 /** @jsx h */
@@ -760,17 +734,14 @@ function Test() {
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"todo":{"message":"Please don't use todo"}}}}
 // Message: Please don't use todo
-````
-
-
+```
 
 <a name="user-content-check-tag-names-passing-examples"></a>
 <a name="check-tag-names-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
@@ -793,7 +764,9 @@ declare let a;
 // "jsdoc/check-tag-names": ["error"|"warn", {"typed":true}]
 
 /** @abstract */
-{ declare let a; }
+{
+  declare let a;
+}
 // "jsdoc/check-tag-names": ["error"|"warn", {"typed":true}]
 
 function test() {
@@ -813,69 +786,55 @@ function takesOne(param) {}
 /**
  * @param foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @memberof! foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @arg foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"arg"}}}
 
 /**
  * @parameter foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"structuredTags":{"parameter":{"name":"namepath-referencing","required":["type","name"],"type":true}}}}
 
 /**
  * @bar foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-tag-names": ["error"|"warn", {"definedTags":["bar"]}]
 
 /**
  * @baz @bar foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // "jsdoc/check-tag-names": ["error"|"warn", {"definedTags":["baz","bar"]}]
 
 /**
  * @baz @bar foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 // Settings: {"jsdoc":{"tagNamePreference":{"param":"baz","returns":{"message":"Prefer `bar`","replacement":"bar"},"todo":false}}}
 
 /**
  * @returns
  */
-function quux (foo) {}
+function quux(foo) {}
 
 /**
  * @return
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
-/** 
+/**
  * @modifies
  * @abstract
  * @access
@@ -947,9 +906,9 @@ function quux (foo) {}
  * @version
  * @yields
  */
-function quux (foo) {}
+function quux(foo) {}
 
-/** 
+/**
  * @modifies
  * @abstract
  * @access
@@ -1026,35 +985,29 @@ function quux (foo) {}
  * @satisfies
  * @template
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"typescript"}}
 
-/** 
+/**
  * @externs
  */
-function quux (foo) {}
+function quux(foo) {}
 // Settings: {"jsdoc":{"mode":"closure"}}
 
 /**
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * @todo
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @extends Foo
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"augments":{"message":"@extends is to be used over @augments.","replacement":"extends"}}}}
 
 /**
@@ -1063,8 +1016,7 @@ function quux () {
  * @augments Bar
  * @extends Foo
  */
-function quux () {
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"extends":"extends"}}}
 
 /**
@@ -1122,4 +1074,3 @@ interface WebTwain {
  */
 // "jsdoc/check-tag-names": ["error"|"warn", {"typed":true}]
 ````
-

@@ -13,13 +13,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -44,13 +42,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
 				/**
 				 * With tabs.
@@ -75,13 +71,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -105,13 +99,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -135,13 +127,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -165,13 +155,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -195,13 +183,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -227,13 +213,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         const object = {
           /**
@@ -261,13 +245,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         class ClassName {
           /**
@@ -293,13 +275,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -326,13 +306,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * @namespace
@@ -360,13 +338,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * My object.
@@ -394,13 +370,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * My object.
@@ -430,15 +404,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
-          tags: [
-            'typedef', 'property',
-          ],
+        "always",
+        {
+          tags: ["typedef", "property"],
         },
       ],
       output: `
@@ -467,18 +440,16 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
         /**
          * My function.
@@ -502,13 +473,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
         /**
          * My function.
@@ -532,13 +501,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
         /**
          * My function.
@@ -562,8 +529,8 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       output: `
@@ -590,13 +557,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -624,15 +589,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
-          tags: [
-            'param',
-          ],
+        "always",
+        {
+          tags: ["param"],
         },
       ],
       output: `
@@ -660,13 +624,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Only return doc.
@@ -689,18 +651,16 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Creates OS based shortcuts for files, folders, and applications.
@@ -724,13 +684,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Creates OS based shortcuts for files, folders, and applications.
@@ -754,13 +712,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Creates OS based shortcuts for files, folders, and applications.
@@ -784,13 +740,11 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Creates OS based shortcuts for files, folders, and applications.
@@ -815,15 +769,14 @@ export default {
       errors: [
         {
           line: 7,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never', {
-          tags: [
-            'param', 'return',
-          ],
+        "never",
+        {
+          tags: ["param", "return"],
         },
       ],
       output: `
@@ -852,23 +805,21 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
         {
           line: 7,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
         {
           line: 8,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
       /**
        * Returns the value stored in the process.env for a given
@@ -895,13 +846,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
       /**
        * Function description
@@ -928,12 +877,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           customSpacings: {
             postDelimiter: 2,
             postTag: 3,
@@ -968,12 +918,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           customSpacings: {
             postName: 3,
           },
@@ -1004,12 +955,13 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           customSpacings: {
             postDelimiter: 2,
             postTag: 3,
@@ -1040,12 +992,13 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           customSpacings: {
             postName: 3,
           },
@@ -1076,13 +1029,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `\r
         /**\r
          * Function description.\r
@@ -1109,13 +1060,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'always',
-      ],
+      options: ["always"],
       output: `
         /**
          * Function description.
@@ -1140,13 +1089,11 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
-      options: [
-        'never',
-      ],
+      options: ["never"],
       output: `
         /**
          * Function description.
@@ -1170,12 +1117,12 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never',
+        "never",
         {
           customSpacings: {
             postHyphen: 2,
@@ -1205,12 +1152,12 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never',
+        "never",
         {
           customSpacings: {
             postHyphen: 2,
@@ -1240,12 +1187,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           customSpacings: {
             postHyphen: 2,
           },
@@ -1274,12 +1222,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always', {
+        "always",
+        {
           customSpacings: {
             postHyphen: 2,
           },
@@ -1308,12 +1257,13 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never', {
+        "never",
+        {
           customSpacings: {
             postHyphen: 2,
           },
@@ -1341,14 +1291,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected wrap indent',
-          type: 'Block',
+          message: "Expected wrap indent",
+          type: "Block",
         },
       ],
       options: [
-        'any',
+        "any",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
       output: `
@@ -1374,14 +1324,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Expected JSDoc block lines to be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'always',
+        "always",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
       output: `
@@ -1409,14 +1359,14 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'Expected JSDoc block lines to not be aligned.',
-          type: 'Block',
+          message: "Expected JSDoc block lines to not be aligned.",
+          type: "Block",
         },
       ],
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
       output: `
@@ -1441,14 +1391,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected wrap indent',
-          type: 'Block',
+          message: "Expected wrap indent",
+          type: "Block",
         },
       ],
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '   ',
+          wrapIndent: "   ",
         },
       ],
       output: `
@@ -1470,14 +1420,14 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Expected wrap indent',
-          type: 'Block',
+          message: "Expected wrap indent",
+          type: "Block",
         },
       ],
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '',
+          wrapIndent: "",
         },
       ],
       output: `
@@ -1500,9 +1450,7 @@ export default {
          */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     /* eslint-disable no-tabs */
     {
@@ -1515,9 +1463,7 @@ export default {
 				 */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     /* eslint-enable no-tabs */
     {
@@ -1530,9 +1476,7 @@ export default {
          */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1542,9 +1486,7 @@ export default {
          */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1554,9 +1496,7 @@ export default {
          */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1565,17 +1505,13 @@ export default {
          */
         const fn = () => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1587,9 +1523,7 @@ export default {
          */
         function fn( lorem, sit ) {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1603,9 +1537,7 @@ export default {
           fn( lorem, sit ) {},
         }
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1619,9 +1551,7 @@ export default {
           fn( lorem, sit ) {}
         }
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1633,9 +1563,7 @@ export default {
          */
         const fn = ( lorem, sit ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1650,9 +1578,7 @@ export default {
             }
         }
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1665,9 +1591,7 @@ export default {
          * @property {int}    sit   Description multi words.
          */
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1682,9 +1606,7 @@ export default {
          * @property {Object.<string, Class>}    dolor
          */
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1700,10 +1622,9 @@ export default {
          */
       `,
       options: [
-        'always', {
-          tags: [
-            'typedef', 'property',
-          ],
+        "always",
+        {
+          tags: ["typedef", "property"],
         },
       ],
     },
@@ -1721,10 +1642,9 @@ export default {
          */
       `,
       options: [
-        'always', {
-          tags: [
-            'template', 'param',
-          ],
+        "always",
+        {
+          tags: ["template", "param"],
         },
       ],
     },
@@ -1733,9 +1653,7 @@ export default {
         /** @param {number} lorem */
         const fn = ( lorem ) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1747,9 +1665,7 @@ export default {
        */
        function quux () {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1761,9 +1677,7 @@ export default {
        */
        function quux () {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1774,9 +1688,7 @@ export default {
        */
        function quux () {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1812,10 +1724,9 @@ export default {
        function quux () {}
       `,
       options: [
-        'never', {
-          tags: [
-            'param',
-          ],
+        "never",
+        {
+          tags: ["param"],
         },
       ],
     },
@@ -1841,7 +1752,8 @@ export default {
         const fn = ( lorem, sit ) => {}
       `,
       options: [
-        'always', {
+        "always",
+        {
           preserveMainDescriptionPostDelimiter: true,
         },
       ],
@@ -1859,7 +1771,8 @@ export default {
         const fn = ( lorem, sit ) => {}
       `,
       options: [
-        'always', {
+        "always",
+        {
           customSpacings: {
             postDelimiter: 2,
             postTag: 3,
@@ -1881,7 +1794,8 @@ export default {
         const fn = ( lorem, sit ) => {}
       `,
       options: [
-        'never', {
+        "never",
+        {
           customSpacings: {
             postDelimiter: 2,
             postTag: 3,
@@ -1899,9 +1813,7 @@ export default {
          */
         const fn = ({ids}) => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `\r
@@ -1915,9 +1827,7 @@ export default {
          */\r
         const fn = ( lorem, sit ) => {}\r
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1936,9 +1846,7 @@ export default {
        */
       const fn2 = () => {}
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1969,9 +1877,7 @@ export default {
        */
       const fn3 = ( a, b ) => {};
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -1991,9 +1897,7 @@ export default {
        */
       const fn2 = ( lorem ) => {};
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -2005,9 +1909,7 @@ export default {
        */
       const fn = ( a ) => {};
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -2019,9 +1921,7 @@ export default {
        */
       const fn = ( lorem, sit ) => {};
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -2034,9 +1934,7 @@ export default {
        */
       const fn = ( a, b ) => {};
       `,
-      options: [
-        'always',
-      ],
+      options: ["always"],
     },
     {
       code: `
@@ -2048,9 +1946,9 @@ export default {
         }
       `,
       options: [
-        'any',
+        "any",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },
@@ -2064,9 +1962,9 @@ export default {
         }
       `,
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },
@@ -2082,9 +1980,9 @@ export default {
       const fn = ( lorem, sit ) => {}
       `,
       options: [
-        'always',
+        "always",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },
@@ -2101,9 +1999,9 @@ export default {
       const fn = ( lorem, sit ) => {}
       `,
       options: [
-        'always',
+        "always",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },
@@ -2119,9 +2017,9 @@ export default {
         }
       `,
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },
@@ -2134,9 +2032,9 @@ export default {
       function quux () {}
       `,
       options: [
-        'never',
+        "never",
         {
-          wrapIndent: '   ',
+          wrapIndent: "   ",
         },
       ],
     },
@@ -2148,9 +2046,7 @@ export default {
        * @returns {number} -1 if world transform has negative scale, 1 otherwise.
        */
       `,
-      options: [
-        'never',
-      ],
+      options: ["never"],
     },
     {
       code: `
@@ -2162,7 +2058,7 @@ export default {
         }
       `,
       options: [
-        'any',
+        "any",
         {
           disableWrapIndent: true,
         },
@@ -2180,10 +2076,10 @@ export default {
         const fn = ( lorem ) => {}
       `,
       options: [
-        'any',
+        "any",
         {
           disableWrapIndent: true,
-          wrapIndent: '  ',
+          wrapIndent: "  ",
         },
       ],
     },

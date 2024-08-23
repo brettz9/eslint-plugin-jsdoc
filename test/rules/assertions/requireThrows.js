@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -30,7 +30,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
       ignoreReadme: true,
@@ -47,7 +47,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -63,7 +63,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -81,7 +81,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -99,7 +99,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -117,7 +117,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -135,7 +135,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -153,7 +153,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -171,7 +171,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -189,11 +189,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
       languageOptions: {
-        sourceType: 'script'
+        sourceType: "script",
       },
     },
     {
@@ -210,7 +210,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -230,7 +230,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -250,7 +250,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -270,7 +270,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -290,7 +290,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -306,7 +306,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@throws`',
+          message: "Unexpected tag `@throws`",
         },
       ],
       settings: {
@@ -333,7 +333,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @throws declaration.',
+          message: "Missing JSDoc @throws declaration.",
         },
       ],
     },
@@ -349,7 +349,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @throws declaration set to "never" but throw value found.',
+          message:
+            'JSDoc @throws declaration set to "never" but throw value found.',
         },
       ],
     },
@@ -427,9 +428,7 @@ export default {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },

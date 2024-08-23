@@ -1,22 +1,24 @@
 <a name="user-content-require-returns-type"></a>
 <a name="require-returns-type"></a>
+
 # <code>require-returns-type</code>
 
-* [Options](#user-content-require-returns-type-options)
-    * [`contexts`](#user-content-require-returns-type-options-contexts)
-* [Context and settings](#user-content-require-returns-type-context-and-settings)
-* [Failing examples](#user-content-require-returns-type-failing-examples)
-* [Passing examples](#user-content-require-returns-type-passing-examples)
-
+- [Options](#user-content-require-returns-type-options)
+  - [`contexts`](#user-content-require-returns-type-options-contexts)
+- [Context and settings](#user-content-require-returns-type-context-and-settings)
+- [Failing examples](#user-content-require-returns-type-failing-examples)
+- [Passing examples](#user-content-require-returns-type-passing-examples)
 
 Requires that `@returns` tag has a `type` value (in curly brackets).
 
 <a name="user-content-require-returns-type-options"></a>
 <a name="require-returns-type-options"></a>
+
 ## Options
 
 <a name="user-content-require-returns-type-options-contexts"></a>
 <a name="require-returns-type-options-contexts"></a>
+
 ### <code>contexts</code>
 
 Set this to an array of strings representing the AST context (or an object with
@@ -32,45 +34,41 @@ section of our README for more on the expected format.
 
 <a name="user-content-require-returns-type-context-and-settings"></a>
 <a name="require-returns-type-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|`ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled|
-|Tags|`returns`|
-|Aliases|`return`|
-|Recommended|true|
-|Options|`contexts`|
+|             |                                                                                                               |
+| ----------- | ------------------------------------------------------------------------------------------------------------- |
+| Context     | `ArrowFunctionExpression`, `FunctionDeclaration`, `FunctionExpression`; others when `contexts` option enabled |
+| Tags        | `returns`                                                                                                     |
+| Aliases     | `return`                                                                                                      |
+| Recommended | true                                                                                                          |
+| Options     | `contexts`                                                                                                    |
 
 <a name="user-content-require-returns-type-failing-examples"></a>
 <a name="require-returns-type-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
  * @returns
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Missing JSDoc @returns type.
 
 /**
  * @returns Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Message: Missing JSDoc @returns type.
 
 /**
  * @returns Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-returns-type": ["error"|"warn", {"contexts":["any"]}]
 // Message: Missing JSDoc @returns type.
 
@@ -91,44 +89,35 @@ function quux () {
 /**
  * @return Foo.
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":"return"}}}
 // Message: Missing JSDoc @return type.
 
 /**
  * @returns
  */
-function quux () {
-
-}
+function quux() {}
 // Settings: {"jsdoc":{"tagNamePreference":{"returns":false}}}
 // Message: Unexpected tag `@returns`
-````
-
-
+```
 
 <a name="user-content-require-returns-type-passing-examples"></a>
 <a name="require-returns-type-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * @returns {number}
  */
-function quux () {
-
-}
+function quux() {}
 
 /**
  * @returns {number}
  */
-function quux () {
-
-}
+function quux() {}
 // "jsdoc/require-returns-type": ["error"|"warn", {"contexts":["any"]}]
 
 /**
@@ -140,5 +129,4 @@ function quux () {
  * @callback
  * @returns Foo.
  */
-````
-
+```

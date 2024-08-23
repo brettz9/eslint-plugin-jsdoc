@@ -7,7 +7,7 @@ Reports invalid padding inside JSDoc blocks.
 Ignores parts enclosed in Markdown "code block"'s. For example,
 the following description is not reported:
 
-```js
+````js
 /**
  * Some description:
  * ```html
@@ -16,7 +16,7 @@ the following description is not reported:
  * </section>
  * ```
  */
-```
+````
 
 ## Options
 
@@ -32,7 +32,7 @@ That would include `@example` blocks too, which can get in the way
 of adding full, readable examples of code without ending up with multiple
 linting issues.
 
-When disabled (by passing `excludeTags: []` option), the following code *will*
+When disabled (by passing `excludeTags: []` option), the following code _will_
 report a padding issue:
 
 ```js
@@ -46,12 +46,12 @@ report a padding issue:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|false|
-|Options|`excludeTags`|
+|             |               |
+| ----------- | ------------- |
+| Context     | everywhere    |
+| Tags        | N/A           |
+| Recommended | false         |
+| Options     | `excludeTags` |
 
 ## Failing examples
 

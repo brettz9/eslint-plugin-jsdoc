@@ -30,7 +30,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            property: 'prop',
+            property: "prop",
           },
         },
       },
@@ -45,7 +45,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Unexpected tag `@property`',
+          message: "Unexpected tag `@property`",
         },
       ],
       settings: {

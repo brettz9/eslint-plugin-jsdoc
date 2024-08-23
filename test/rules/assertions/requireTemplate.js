@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -12,15 +12,15 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 2,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -33,15 +33,15 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 2,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -53,11 +53,11 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 3,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
     },
@@ -70,16 +70,16 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 3,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
       settings: {
         jsdoc: {
-          mode: 'permissive',
+          mode: "permissive",
         },
       },
     },
@@ -93,11 +93,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -110,7 +110,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
     },
@@ -124,16 +124,16 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing separate @template for V',
+          message: "Missing separate @template for V",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
       options: [
         {
           requireSeparateTemplates: true,
-        }
+        },
       ],
     },
     {
@@ -146,13 +146,13 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Missing separate @template for V',
+          message: "Missing separate @template for V",
         },
       ],
       options: [
         {
           requireSeparateTemplates: true,
-        }
+        },
       ],
     },
     {
@@ -167,7 +167,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
       ],
     },
@@ -183,11 +183,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -202,11 +202,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -221,11 +221,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -240,11 +240,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -259,11 +259,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -278,11 +278,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template Type',
+          message: "Missing @template Type",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -298,11 +298,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template NumType',
+          message: "Missing @template NumType",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -318,11 +318,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template NumType',
+          message: "Missing @template NumType",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -338,11 +338,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template NumType',
+          message: "Missing @template NumType",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -358,11 +358,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing @template NumType',
+          message: "Missing @template NumType",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -375,11 +375,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 4,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
     },
@@ -393,11 +393,11 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'Missing @template D',
+          message: "Missing @template D",
         },
         {
           line: 4,
-          message: 'Missing @template V',
+          message: "Missing @template V",
         },
       ],
     },
@@ -412,7 +412,7 @@ export default {
         export type Pairs<D, V> = [D, V | undefined];
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -432,7 +432,7 @@ export default {
         export type Extras<D, U, V> = [D, U, V | undefined];
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -480,7 +480,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -493,7 +493,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -506,7 +506,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -519,7 +519,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -532,7 +532,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -545,7 +545,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -559,7 +559,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -573,7 +573,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -587,7 +587,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -601,7 +601,7 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {

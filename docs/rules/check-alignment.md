@@ -1,141 +1,134 @@
 <a name="user-content-check-alignment"></a>
 <a name="check-alignment"></a>
+
 # <code>check-alignment</code>
 
-* [Fixer](#user-content-check-alignment-fixer)
-* [Context and settings](#user-content-check-alignment-context-and-settings)
-* [Failing examples](#user-content-check-alignment-failing-examples)
-* [Passing examples](#user-content-check-alignment-passing-examples)
-
+- [Fixer](#user-content-check-alignment-fixer)
+- [Context and settings](#user-content-check-alignment-context-and-settings)
+- [Failing examples](#user-content-check-alignment-failing-examples)
+- [Passing examples](#user-content-check-alignment-passing-examples)
 
 Reports invalid alignment of JSDoc block asterisks.
 
 <a name="user-content-check-alignment-fixer"></a>
 <a name="check-alignment-fixer"></a>
+
 ## Fixer
 
 Fixes alignment.
 
 <a name="user-content-check-alignment-context-and-settings"></a>
 <a name="check-alignment-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|N/A|
-|Recommended|true|
+|             |            |
+| ----------- | ---------- |
+| Context     | everywhere |
+| Tags        | N/A        |
+| Recommended | true       |
 
 <a name="user-content-check-alignment-failing-examples"></a>
 <a name="check-alignment-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /**
-  * @param {Number} foo
+ * @param {Number} foo
  */
-function quux (foo) {
-  // with spaces
-}
-// Message: Expected JSDoc block to be aligned.
-
-/**
-  * @param {Number} foo
- */
-function quux (foo) {
-	// with tabs
-}
-// Message: Expected JSDoc block to be aligned.
-
-/**
-  * @param {Number} foo
- */
-function quux (foo) {
-  // with spaces
-}
-// Message: Expected JSDoc block to be aligned.
-
-/**
-* @param {Number} foo
-*/
-function quux (foo) {
+function quux(foo) {
   // with spaces
 }
 // Message: Expected JSDoc block to be aligned.
 
 /**
  * @param {Number} foo
-  */
-function quux (foo) {
-
+ */
+function quux(foo) {
+  // with tabs
 }
 // Message: Expected JSDoc block to be aligned.
 
- /**
+/**
  * @param {Number} foo
  */
-function quux (foo) {
-
+function quux(foo) {
+  // with spaces
 }
 // Message: Expected JSDoc block to be aligned.
 
- /**
-  * @param {Number} foo
+/**
+ * @param {Number} foo
  */
-function quux (foo) {
-
+function quux(foo) {
+  // with spaces
 }
 // Message: Expected JSDoc block to be aligned.
 
 /**
-  * @param {Number} foo
-  */
- function quux (foo) {
-
- }
+ * @param {Number} foo
+ */
+function quux(foo) {}
 // Message: Expected JSDoc block to be aligned.
 
 /**
-   * A jsdoc not attached to any node.
+ * @param {Number} foo
+ */
+function quux(foo) {}
+// Message: Expected JSDoc block to be aligned.
+
+/**
+ * @param {Number} foo
+ */
+function quux(foo) {}
+// Message: Expected JSDoc block to be aligned.
+
+/**
+ * @param {Number} foo
+ */
+function quux(foo) {}
+// Message: Expected JSDoc block to be aligned.
+
+/**
+ * A jsdoc not attached to any node.
  */
 // Message: Expected JSDoc block to be aligned.
 
 class Foo {
   /**
    *  Some method
-    * @param a
+   * @param a
    */
   quux(a) {}
 }
 // Message: Expected JSDoc block to be aligned.
 
-export const myVar = {/**
-  * This is JSDoc
-  */
-  myProperty: 'hello'
-}
+export const myVar = {
+  /**
+   * This is JSDoc
+   */
+  myProperty: "hello",
+};
 // Message: Expected JSDoc block to be aligned.
-````
-
-
+```
 
 <a name="user-content-check-alignment-passing-examples"></a>
 <a name="check-alignment-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**
  * Desc
  *
  * @param {Number} foo
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /**
  * Desc
@@ -146,31 +139,28 @@ function quux (foo) {
  * }} foo
  *
  */
-function quux (foo) {
-
-}
+function quux(foo) {}
 
 /*  <- JSDoc must start with 2 stars.
-  *    So this is unchecked.
+ *    So this is unchecked.
  */
-function quux (foo) {}
+function quux(foo) {}
 
 /**
-  * @param {Number} foo
-  * @private
+ * @param {Number} foo
+ * @private
  */
-function quux (foo) {
+function quux(foo) {
   // with spaces
 }
 // Settings: {"jsdoc":{"ignorePrivate":true}}
 
 /**
-  * @param {Number} foo
-  * @access private
+ * @param {Number} foo
+ * @access private
  */
-function quux (foo) {
+function quux(foo) {
   // with spaces
 }
 // Settings: {"jsdoc":{"ignorePrivate":true}}
-````
-
+```

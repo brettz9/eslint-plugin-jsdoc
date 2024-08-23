@@ -1,9 +1,9 @@
 ---
 name: Bug Report
 about: Report a bug
-title: ''
+title: ""
 labels: bug-unconfirmed
-assignees: ''
+assignees: ""
 ---
 
 <!--
@@ -34,10 +34,12 @@ https://eslint.org/docs/user-guide/command-line-interface#print-config
 -->
 
 ## Expected behavior
+
 <!-- Provide a detailed description of how you expected the software to -->
 <!-- behave. -->
 
 ## Actual behavior
+
 <!-- Provide a detailed description of how the software actually behaved, -->
 <!-- including any rationale for why that behavior is incorrect. -->
 
@@ -52,6 +54,7 @@ with the minimal number of options or settings that are needed to trigger
 the error).
 
 -->
+
 ```js
 // Format JS (or JSON) code here
 ```

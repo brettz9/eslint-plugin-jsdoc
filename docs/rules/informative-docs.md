@@ -1,15 +1,15 @@
 <a name="user-content-informative-docs"></a>
 <a name="informative-docs"></a>
+
 # <code>informative-docs</code>
 
-* [Options](#user-content-informative-docs-options)
-    * [`aliases`](#user-content-informative-docs-options-aliases)
-    * [`excludedTags`](#user-content-informative-docs-options-excludedtags)
-    * [`uselessWords`](#user-content-informative-docs-options-uselesswords)
-* [Context and settings](#user-content-informative-docs-context-and-settings)
-* [Failing examples](#user-content-informative-docs-failing-examples)
-* [Passing examples](#user-content-informative-docs-passing-examples)
-
+- [Options](#user-content-informative-docs-options)
+  - [`aliases`](#user-content-informative-docs-options-aliases)
+  - [`excludedTags`](#user-content-informative-docs-options-excludedtags)
+  - [`uselessWords`](#user-content-informative-docs-options-uselesswords)
+- [Context and settings](#user-content-informative-docs-context-and-settings)
+- [Failing examples](#user-content-informative-docs-failing-examples)
+- [Passing examples](#user-content-informative-docs-passing-examples)
 
 Reports on JSDoc texts that serve only to restate their attached name.
 
@@ -25,10 +25,12 @@ This rule requires all docs comments contain at least one word not already in th
 
 <a name="user-content-informative-docs-options"></a>
 <a name="informative-docs-options"></a>
+
 ## Options
 
 <a name="user-content-informative-docs-options-aliases"></a>
 <a name="informative-docs-options-aliases"></a>
+
 ### <code>aliases</code>
 
 The `aliases` option allows indicating words as synonyms (aliases) of each other.
@@ -50,6 +52,7 @@ The default `aliases` option is:
 
 <a name="user-content-informative-docs-options-excludedtags"></a>
 <a name="informative-docs-options-excludedtags"></a>
+
 ### <code>excludedTags</code>
 
 Tags that should not be checked for valid contents.
@@ -67,6 +70,7 @@ No tags are excluded by default.
 
 <a name="user-content-informative-docs-options-uselesswords"></a>
 <a name="informative-docs-options-uselesswords"></a>
+
 ### <code>uselessWords</code>
 
 Words that are ignored when searching for one that adds meaning.
@@ -86,23 +90,25 @@ The default `uselessWords` option is:
 
 <a name="user-content-informative-docs-context-and-settings"></a>
 <a name="informative-docs-context-and-settings"></a>
+
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|any|
-|Recommended|false|
-|Settings||
-|Options|`aliases`, `excludedTags`, `uselessWords`|
+|             |                                           |
+| ----------- | ----------------------------------------- |
+| Context     | everywhere                                |
+| Tags        | any                                       |
+| Recommended | false                                     |
+| Settings    |                                           |
+| Options     | `aliases`, `excludedTags`, `uselessWords` |
 
 <a name="user-content-informative-docs-failing-examples"></a>
 <a name="informative-docs-failing-examples"></a>
+
 ## Failing examples
 
 The following patterns are considered problems:
 
-````ts
+```ts
 /** the  */
 let myValue = 3;
 // Message: This description only repeats the name it describes.
@@ -134,7 +140,7 @@ function foo() {}
 /**
  * the value foo.
  */
-const value = function foo() {}
+const value = function foo() {};
 // Message: This description only repeats the name it describes.
 
 const value = {
@@ -142,7 +148,7 @@ const value = {
    * the  prop.
    */
   prop: true,
-}
+};
 // Message: This description only repeats the name it describes.
 
 /**
@@ -154,7 +160,7 @@ class Name {}
 /**
  * abc def
  */
-const abc = class Def {}
+const abc = class Def {};
 // Message: This description only repeats the name it describes.
 
 class Abc {
@@ -166,12 +172,12 @@ class Abc {
 const _ = class Abc {
   /** the abc def! */
   def;
-}
+};
 // Message: This description only repeats the name it describes.
 
 class Abc {
   /** the abc def! */
-  def() {};
+  def() {}
 }
 // Message: This description only repeats the name it describes.
 
@@ -278,7 +284,9 @@ let emoji;
  */
 export function packageNameFromPath(path) {
   const base = basename(path);
-  return /^vd+(.d+)?$/.exec(base) || /^tsd.d/.exec(base) ? basename(dirname(path)) : base;
+  return /^v\d+(\.\d+)?$/.exec(base) || /^ts\d\.\d/.exec(base)
+    ? basename(dirname(path))
+    : base;
 }
 // Message: This description only repeats the name it describes.
 
@@ -287,20 +295,21 @@ export function packageNameFromPath(path) {
  */
 export default function packageNameFromPath(path) {
   const base = basename(path);
-  return /^vd+(.d+)?$/.exec(base) || /^tsd.d/.exec(base) ? basename(dirname(path)) : base;
+  return /^v\d+(\.\d+)?$/.exec(base) || /^ts\d\.\d/.exec(base)
+    ? basename(dirname(path))
+    : base;
 }
 // Message: This description only repeats the name it describes.
-````
-
-
+```
 
 <a name="user-content-informative-docs-passing-examples"></a>
 <a name="informative-docs-passing-examples"></a>
+
 ## Passing examples
 
 The following patterns are not considered problems:
 
-````ts
+```ts
 /**   */
 let myValue = 3;
 
@@ -324,19 +333,19 @@ const value = {
    * the truthiness of the prop.
    */
   prop: true,
-}
+};
 
 const value = {
   /**
    * the truthiness of the prop.
    */
-  ['prop']: true,
-}
+  ["prop"]: true,
+};
 
 /**
  * abc def ghi
  */
-const abc = function def() {}
+const abc = function def() {};
 
 /**
  * name extra
@@ -346,7 +355,7 @@ class Name {}
 /**
  * abc name extra
  */
-const abc = class Name {}
+const abc = class Name {};
 
 class Abc {
   /** ghi */
@@ -448,5 +457,4 @@ function MyAmazingThing(value) {}
  * The
  */
 // "jsdoc/informative-docs": ["error"|"warn", {"uselessWords":["an"]}]
-````
-
+```

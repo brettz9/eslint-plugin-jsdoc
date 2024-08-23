@@ -60,13 +60,13 @@ following keys:
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|everywhere|
-|Tags|Any|
-|Recommended|true|
-|Settings|N/A|
-|Options|string ("always", "any", "never") followed by object with `applyToEndTag`, `count`, `endLines`, `startLines`, `tags`|
+|             |                                                                                                                      |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| Context     | everywhere                                                                                                           |
+| Tags        | Any                                                                                                                  |
+| Recommended | true                                                                                                                 |
+| Settings    | N/A                                                                                                                  |
+| Options     | string ("always", "any", "never") followed by object with `applyToEndTag`, `count`, `endLines`, `startLines`, `tags` |
 
 ## Failing examples
 

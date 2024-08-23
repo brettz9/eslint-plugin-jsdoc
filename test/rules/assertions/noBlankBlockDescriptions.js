@@ -11,7 +11,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'There should be no blank lines in block descriptions followed by tags.',
+          message:
+            "There should be no blank lines in block descriptions followed by tags.",
         },
       ],
       output: `
@@ -32,7 +33,8 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There should be no extra blank lines in block descriptions not followed by tags.',
+          message:
+            "There should be no extra blank lines in block descriptions not followed by tags.",
         },
       ],
       output: `

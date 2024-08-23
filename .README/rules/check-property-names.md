@@ -22,13 +22,13 @@ be removed even if it has a different type or description).
 
 ## Context and settings
 
-|||
-|---|---|
-|Context|Everywhere|
-|Options|`enableFixer`|
-|Tags|`property`|
-|Aliases|`prop`|
-|Recommended|true|
+|             |               |
+| ----------- | ------------- |
+| Context     | Everywhere    |
+| Options     | `enableFixer` |
+| Tags        | `property`    |
+| Aliases     | `prop`        |
+| Recommended | true          |
 
 ## Failing examples
 

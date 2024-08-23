@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       output: `
@@ -37,7 +37,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
@@ -66,7 +66,7 @@ function quux () {
       errors: [
         {
           line: 1,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       output: `/**
@@ -90,7 +90,7 @@ function quux () {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @example description.',
+          message: "Missing JSDoc @example description.",
         },
       ],
     },
@@ -106,7 +106,7 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       output: `
@@ -132,7 +132,7 @@ function quux () {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc @example description.',
+          message: "Missing JSDoc @example description.",
         },
       ],
     },
@@ -148,14 +148,12 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       ],
       output: `
@@ -177,14 +175,12 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
         {
-          contexts: [
-            'any',
-          ],
+          contexts: ["any"],
         },
       ],
       output: `
@@ -205,14 +201,12 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
         {
-          exemptedBy: [
-            'notPresent',
-          ],
+          exemptedBy: ["notPresent"],
         },
       ],
       output: `
@@ -236,7 +230,7 @@ function quux () {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
@@ -266,7 +260,7 @@ function quux () {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc @example description.',
+          message: "Missing JSDoc @example description.",
         },
       ],
       options: [
@@ -287,7 +281,7 @@ function quux () {
       errors: [
         {
           line: 3,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
@@ -317,7 +311,7 @@ function quux () {
       errors: [
         {
           line: 4,
-          message: 'Missing JSDoc @example description.',
+          message: "Missing JSDoc @example description.",
         },
       ],
       options: [
@@ -338,7 +332,7 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
@@ -368,7 +362,7 @@ function quux () {
       errors: [
         {
           line: 2,
-          message: 'Missing JSDoc @example declaration.',
+          message: "Missing JSDoc @example declaration.",
         },
       ],
       options: [
@@ -492,9 +486,7 @@ function quux () {
       `,
       options: [
         {
-          exemptedBy: [
-            'type',
-          ],
+          exemptedBy: ["type"],
         },
       ],
     },
@@ -509,9 +501,7 @@ function quux () {
       `,
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       ],
     },
@@ -526,9 +516,7 @@ function quux () {
       `,
       options: [
         {
-          contexts: [
-            'ClassDeclaration',
-          ],
+          contexts: ["ClassDeclaration"],
         },
       ],
     },

@@ -12,7 +12,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
     },
@@ -28,7 +29,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
       options: [
@@ -49,7 +51,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @next declaration present but yield expression with return value not available in function.',
+          message:
+            "JSDoc @next declaration present but yield expression with return value not available in function.",
         },
       ],
       options: [
@@ -71,7 +74,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @next declaration present but yield expression with return value not available in function.',
+          message:
+            "JSDoc @next declaration present but yield expression with return value not available in function.",
         },
       ],
       options: [
@@ -92,7 +96,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @next declaration present but yield expression with return value not available in function.',
+          message:
+            "JSDoc @next declaration present but yield expression with return value not available in function.",
         },
       ],
       options: [
@@ -113,7 +118,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @next declaration present but yield expression with return value not available in function.',
+          message:
+            "JSDoc @next declaration present but yield expression with return value not available in function.",
         },
       ],
       options: [
@@ -134,13 +140,14 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yield declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yield declaration present but yield expression not available in function.",
         },
       ],
       settings: {
         jsdoc: {
           tagNamePreference: {
-            yields: 'yield',
+            yields: "yield",
           },
         },
       },
@@ -157,7 +164,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yield-returns declaration present but yield expression with return value not available in function.',
+          message:
+            "JSDoc @yield-returns declaration present but yield expression with return value not available in function.",
         },
       ],
       options: [
@@ -168,7 +176,7 @@ export default {
       settings: {
         jsdoc: {
           tagNamePreference: {
-            next: 'yield-returns',
+            next: "yield-returns",
           },
         },
       },
@@ -187,7 +195,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'Found more than one @yields declaration.',
+          message: "Found more than one @yields declaration.",
         },
       ],
     },
@@ -204,7 +212,8 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
     },
@@ -220,7 +229,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@yields`',
+          message: "Unexpected tag `@yields`",
         },
       ],
       settings: {
@@ -243,7 +252,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'Unexpected tag `@next`',
+          message: "Unexpected tag `@next`",
         },
       ],
       options: [
@@ -273,7 +282,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
     },
@@ -287,7 +297,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
       languageOptions: {
@@ -304,7 +315,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration present but yield expression not available in function.',
+          message:
+            "JSDoc @yields declaration present but yield expression not available in function.",
         },
       ],
       languageOptions: {
@@ -323,7 +335,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @yields declaration set with "never" but yield expression is present in function.',
+          message:
+            'JSDoc @yields declaration set with "never" but yield expression is present in function.',
         },
       ],
     },
@@ -339,7 +352,8 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'JSDoc @next declaration set with "never" but yield expression with return value is present in function.',
+          message:
+            'JSDoc @next declaration set with "never" but yield expression with return value is present in function.',
         },
       ],
       options: [
@@ -458,7 +472,7 @@ export default {
       `,
       settings: {
         jsdoc: {
-          mode: 'closure',
+          mode: "closure",
         },
       },
     },
@@ -714,8 +728,8 @@ export default {
           }
       `,
       languageOptions: {
-        sourceType: 'script'
-      }
+        sourceType: "script",
+      },
     },
     {
       code: `

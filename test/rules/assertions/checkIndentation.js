@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -12,7 +12,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -31,7 +31,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -46,7 +46,7 @@ export default {
       errors: [
         {
           line: 4,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -67,7 +67,7 @@ export default {
       errors: [
         {
           line: 7,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
       options: [
@@ -93,7 +93,7 @@ export default {
       errors: [
         {
           line: 8,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -116,7 +116,7 @@ export default {
       errors: [
         {
           line: 10,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -135,7 +135,7 @@ export default {
       errors: [
         {
           line: 6,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
     },
@@ -157,7 +157,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
       options: [
@@ -183,7 +183,7 @@ export default {
       errors: [
         {
           line: 10,
-          message: 'There must be no indentation.',
+          message: "There must be no indentation.",
         },
       ],
       options: [
@@ -248,9 +248,7 @@ export default {
       `,
       options: [
         {
-          excludeTags: [
-            'example', 'returns',
-          ],
+          excludeTags: ["example", "returns"],
         },
       ],
     },
@@ -318,16 +316,14 @@ export default {
         return (Base: Function) => {};
       }
       `,
+      languageOptions: {
+        parser: typescriptEslintParser,
+      },
       options: [
         {
-          excludeTags: [
-            'example', 'MyDecorator',
-          ],
+          excludeTags: ["example", "MyDecorator"],
         },
       ],
-      languageOptions: {
-        parser: typescriptEslintParser
-      },
     },
     {
       code: `
@@ -344,7 +340,7 @@ export default {
       }
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
   ],

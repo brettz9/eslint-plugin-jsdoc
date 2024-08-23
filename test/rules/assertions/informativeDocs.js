@@ -1,4 +1,4 @@
-import {parser as typescriptEslintParser} from 'typescript-eslint';
+import { parser as typescriptEslintParser } from "typescript-eslint";
 
 export default {
   invalid: [
@@ -10,7 +10,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -22,11 +22,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -37,7 +37,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -50,7 +50,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -63,7 +63,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -78,7 +78,7 @@ export default {
         {
           endLine: 4,
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -93,7 +93,7 @@ export default {
         {
           endLine: 4,
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -109,7 +109,7 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -123,7 +123,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -137,7 +137,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -151,12 +151,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -169,12 +169,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -187,12 +187,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -205,12 +205,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -223,12 +223,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -241,12 +241,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -259,12 +259,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -277,12 +277,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -293,12 +293,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -312,12 +312,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -328,12 +328,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -344,12 +344,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -362,12 +362,12 @@ export default {
       errors: [
         {
           line: 3,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -378,12 +378,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -394,12 +394,12 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -414,7 +414,7 @@ export default {
       errors: [
         {
           line: 5,
-          message: 'This tag description only repeats the name it describes.',
+          message: "This tag description only repeats the name it describes.",
         },
       ],
     },
@@ -426,7 +426,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This tag description only repeats the name it describes.',
+          message: "This tag description only repeats the name it describes.",
         },
       ],
     },
@@ -438,7 +438,7 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This tag description only repeats the name it describes.',
+          message: "This tag description only repeats the name it describes.",
         },
       ],
     },
@@ -453,11 +453,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
         {
           line: 4,
-          message: 'This tag description only repeats the name it describes.',
+          message: "This tag description only repeats the name it describes.",
         },
       ],
     },
@@ -472,11 +472,11 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
         {
           line: 4,
-          message: 'This tag description only repeats the name it describes.',
+          message: "This tag description only repeats the name it describes.",
         },
       ],
     },
@@ -488,15 +488,13 @@ export default {
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
       options: [
         {
           aliases: {
-            emoji: [
-              'smiley', 'winkey',
-            ],
+            emoji: ["smiley", "winkey"],
           },
         },
       ],
@@ -508,13 +506,13 @@ export default {
          */
         export function packageNameFromPath(path) {
           const base = basename(path);
-          return /^v\d+(\.\d+)?$/.exec(base) || /^ts\d\.\d/.exec(base) ? basename(dirname(path)) : base;
+          return /^v\\d+(\\.\\d+)?$/.exec(base) || /^ts\\d\\.\\d/.exec(base) ? basename(dirname(path)) : base;
         }
       `,
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
     },
@@ -525,16 +523,16 @@ export default {
          */
         export default function packageNameFromPath(path) {
           const base = basename(path);
-          return /^v\d+(\.\d+)?$/.exec(base) || /^ts\d\.\d/.exec(base) ? basename(dirname(path)) : base;
+          return /^v\\d+(\\.\\d+)?$/.exec(base) || /^ts\\d\\.\\d/.exec(base) ? basename(dirname(path)) : base;
         }
       `,
       errors: [
         {
           line: 2,
-          message: 'This description only repeats the name it describes.',
+          message: "This description only repeats the name it describes.",
         },
       ],
-    }
+    },
   ],
   valid: [
     {
@@ -555,7 +553,7 @@ export default {
         let userId: string;
       `,
       languageOptions: {
-        parser: typescriptEslintParser
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -625,8 +623,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -637,8 +635,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -649,8 +647,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -661,8 +659,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -673,8 +671,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -685,8 +683,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -695,8 +693,8 @@ export default {
         namespace Def {}
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -708,8 +706,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -718,8 +716,8 @@ export default {
         declare function def();
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -728,8 +726,8 @@ export default {
         enum Def {}
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -740,8 +738,8 @@ export default {
         }
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -750,8 +748,8 @@ export default {
         interface Def {}
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -760,8 +758,8 @@ export default {
         type Def = {};
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -770,8 +768,8 @@ export default {
         type Def = {};
       `,
       languageOptions: {
-        parser: typescriptEslintParser,
         ecmaVersion: 2_022,
+        parser: typescriptEslintParser,
       },
     },
     {
@@ -829,9 +827,7 @@ export default {
       `,
       options: [
         {
-          excludedTags: [
-            'default',
-          ],
+          excludedTags: ["default"],
         },
       ],
     },
@@ -843,9 +839,7 @@ export default {
       `,
       options: [
         {
-          uselessWords: [
-            'an',
-          ],
+          uselessWords: ["an"],
         },
       ],
     },
