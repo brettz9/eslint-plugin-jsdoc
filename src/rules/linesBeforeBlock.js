@@ -3,31 +3,35 @@ import iterateJsdoc from '../iterateJsdoc.js';
 export default iterateJsdoc(({
   context,
   jsdocNode,
-  sourceCode,
   report,
+  sourceCode,
   utils,
 }) => {
   const {
     checkBlockStarts,
-    lines = 1,
+    excludedTags = [
+      'type',
+    ],
     ignoreSameLine = true,
-    excludedTags = ['type']
+    lines = 1,
   } = context.options[0] || {};
 
   if (utils.hasATag(excludedTags)) {
     return;
   }
 
-  const tokensBefore = sourceCode.getTokensBefore(jsdocNode, {includeComments: true});
+  const tokensBefore = sourceCode.getTokensBefore(jsdocNode, {
+    includeComments: true,
+  });
   const tokenBefore = tokensBefore.slice(-1)[0];
   if (!tokenBefore || (tokenBefore.value === '{' && !checkBlockStarts)) {
     return;
   }
 
   if (tokenBefore.loc?.end?.line + lines >=
-    /** @type {number} */
+  /** @type {number} */
       (jsdocNode.loc?.start?.line)
-    ) {
+  ) {
     const startLine = jsdocNode.loc?.start?.line;
     const sameLine = tokenBefore.loc?.end?.line === startLine;
 
@@ -40,11 +44,11 @@ export default iterateJsdoc(({
       let indent = '';
       if (sameLine) {
         const spaceDiff = /** @type {number} */ (jsdocNode.loc?.start?.column) -
-          /** @type {number} */ (tokenBefore.loc?.end?.column);
+        /** @type {number} */ (tokenBefore.loc?.end?.column);
         // @ts-expect-error Should be a comment
         indent = /** @type {import('estree').Comment} */ (
           jsdocNode
-        ).value.match(/^\*\n([ \t]*) \*/)?.[1]?.slice(spaceDiff);
+        ).value.match(/^\*\n([\t ]*) \*/u)?.[1]?.slice(spaceDiff);
         if (!indent) {
           /** @type {import('eslint').AST.Token|import('estree').Comment|undefined} */
           let tokenPrior = tokenBefore;
@@ -53,9 +57,10 @@ export default iterateJsdoc(({
             startColumn = tokenPrior.loc?.start?.column;
             tokenPrior = tokensBefore.pop();
           }
+
           indent = ' '.repeat(
             /* c8 ignore next */
-            /** @type {number} */ (startColumn ? startColumn - 1 : 0)
+            /** @type {number} */ (startColumn ? startColumn - 1 : 0),
           );
         }
       }
@@ -64,19 +69,20 @@ export default iterateJsdoc(({
         /** @type {import('eslint').AST.Token} */
         (tokenBefore),
         '\n'.repeat(lines) +
-        (sameLine ? '\n' + indent : '')
+        (sameLine ? '\n' + indent : ''),
       );
     };
+
     report(`Required ${lines} line(s) before JSDoc block`, fix);
   }
 }, {
   iterateAllJsdocs: true,
   meta: {
-    fixable: 'code',
     docs: {
       description: 'Enforces minimum number of newlines before JSDoc comment blocks',
       url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/lines-before-block.md#repos-sticky-header',
     },
+    fixable: 'code',
     schema: [
       {
         additionalProperties: false,
@@ -85,17 +91,17 @@ export default iterateJsdoc(({
             type: 'boolean',
           },
           excludedTags: {
-            type: 'array',
             items: {
-              type: 'string'
-            }
+              type: 'string',
+            },
+            type: 'array',
           },
           ignoreSameLine: {
             type: 'boolean',
           },
           lines: {
-            type: 'integer'
-          }
+            type: 'integer',
+          },
         },
         type: 'object',
       },

@@ -1,23 +1,21 @@
 /* eslint-disable no-console -- CLI */
 
+import camelCase from 'camelcase';
 import {
   existsSync,
 } from 'fs';
 import fs from 'fs/promises';
-import {
-  resolve,
-} from 'path';
-
+// Todo: Add back `@example` when reject other langs from processing
 /**
- * @example
  *
  * ```shell
  * npm run create-rule my-new-rule -- --recommended
  * ```
  */
-
-import camelCase from 'camelcase';
 import open from 'open-editor';
+import {
+  resolve,
+} from 'path';
 
 // Todo: Would ideally have prompts, e.g., to ask for whether
 //   type was problem/layout, etc.
@@ -152,11 +150,11 @@ export default iterateJsdoc(({
    * @returns {Promise<void>}
    */
   const replaceInOrder = async ({
-    path,
-    oldRegex,
     checkName,
     newLine,
     oldIsCamel,
+    oldRegex,
+    path,
   }) => {
     /**
      * @typedef {number} Integer

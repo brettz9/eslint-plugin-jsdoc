@@ -15,8 +15,8 @@ import semver from 'semver';
 
 /**
  * @typedef {object} TestCases
- * @property {import('eslint').RuleTester.ValidTestCase[]} valid
- * @property {import('eslint').RuleTester.InvalidTestCase[]} invalid
+ * @property {import('eslint').RuleTester.ValidTestCase[]} valid Valid test cases
+ * @property {import('eslint').RuleTester.InvalidTestCase[]} invalid Invalid test cases
  */
 
 const ruleTester = new RuleTester();
@@ -24,7 +24,7 @@ const ruleTester = new RuleTester();
 // eslint-disable-next-line complexity -- Temporary
 const main = async () => {
   const ruleNames = JSON.parse(readFileSync(join(
-    import.meta.dirname, './ruleNames.json'
+    import.meta.dirname, './ruleNames.json',
   ), 'utf8'));
 
   if (!config.rules) {

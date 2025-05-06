@@ -35,8 +35,8 @@ export default /** @type {import('../index.js').TestCases} */ ({
       ],
       options: [
         {
-          ignoreSameLine: false
-        }
+          ignoreSameLine: false,
+        },
       ],
       output: `
         someCode;
@@ -58,8 +58,8 @@ export default /** @type {import('../index.js').TestCases} */ ({
       ],
       options: [
         {
-          ignoreSameLine: false
-        }
+          ignoreSameLine: false,
+        },
       ],
       output: `
         someCode;
@@ -173,10 +173,14 @@ export default /** @type {import('../index.js').TestCases} */ ({
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block'
-        }
+          message: 'Required 1 line(s) before JSDoc block',
+        },
       ],
-      options: [{ checkBlockStarts: true }],
+      options: [
+        {
+          checkBlockStarts: true,
+        },
+      ],
       output: `
         {
 
@@ -199,10 +203,14 @@ export default /** @type {import('../index.js').TestCases} */ ({
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block'
-        }
+          message: 'Required 1 line(s) before JSDoc block',
+        },
       ],
-      options: [{ checkBlockStarts: true }],
+      options: [
+        {
+          checkBlockStarts: true,
+        },
+      ],
       output: `
         class MyClass {
 
@@ -225,10 +233,14 @@ export default /** @type {import('../index.js').TestCases} */ ({
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block'
-        }
+          message: 'Required 1 line(s) before JSDoc block',
+        },
       ],
-      options: [{ checkBlockStarts: true }],
+      options: [
+        {
+          checkBlockStarts: true,
+        },
+      ],
       output: `
         function myFunction() {
 
@@ -251,10 +263,14 @@ export default /** @type {import('../index.js').TestCases} */ ({
       errors: [
         {
           line: 3,
-          message: 'Required 1 line(s) before JSDoc block'
-        }
+          message: 'Required 1 line(s) before JSDoc block',
+        },
       ],
-      options: [{ checkBlockStarts: true }],
+      options: [
+        {
+          checkBlockStarts: true,
+        },
+      ],
       output: `
         const values = [
 
@@ -264,11 +280,11 @@ export default /** @type {import('../index.js').TestCases} */ ({
           value,
         ];
       `,
-    }
+    },
   ],
   valid: [
     {
-      code: `/**\n *\n */`,
+      code: '/**\n *\n */',
     },
     {
       code: `
@@ -341,10 +357,12 @@ export default /** @type {import('../index.js').TestCases} */ ({
       `,
       options: [
         {
-          excludedTags: ['lends'],
-          ignoreSameLine: false
-        }
-      ]
+          excludedTags: [
+            'lends',
+          ],
+          ignoreSameLine: false,
+        },
+      ],
     },
     {
       code: `
@@ -375,6 +393,6 @@ export default /** @type {import('../index.js').TestCases} */ ({
           let value;
         }
       `,
-    }
+    },
   ],
 });
