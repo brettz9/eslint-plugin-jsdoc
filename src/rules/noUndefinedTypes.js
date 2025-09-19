@@ -178,6 +178,7 @@ export default iterateJsdoc(({
       }
 
       if (namespaceImports.default) {
+        console.log('11111', namespaceImports.default);
         types.push(namespaceImports.default);
       }
     }
