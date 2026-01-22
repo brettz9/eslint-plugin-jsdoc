@@ -14,6 +14,7 @@ import {
   getJsdocProcessorPlugin,
 } from './getJsdocProcessorPlugin.js';
 import checkAccess from './rules/checkAccess.js';
+import checkAccessModifiers from './rules/checkAccessModifiers.js';
 import checkAlignment from './rules/checkAlignment.js';
 import checkExamples from './rules/checkExamples.js';
 import checkIndentation from './rules/checkIndentation.js';
@@ -100,6 +101,7 @@ const index = {};
 index.configs = {};
 index.rules = {
   'check-access': checkAccess,
+  'check-access-modifiers': checkAccessModifiers,
   'check-alignment': checkAlignment,
   'check-examples': checkExamples,
   'check-indentation': checkIndentation,
@@ -290,6 +292,7 @@ const createRecommendedRuleset = (warnOrError, flatName) => {
       ],
     rules: {
       'jsdoc/check-access': warnOrError,
+      'jsdoc/check-access-modifiers': warnOrError,
       'jsdoc/check-alignment': warnOrError,
       'jsdoc/check-examples': 'off',
       'jsdoc/check-indentation': 'off',
