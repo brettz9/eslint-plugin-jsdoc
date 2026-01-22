@@ -2,6 +2,22 @@ export interface Rules {
   /** Checks that `@access` tags have a valid value. */
   "jsdoc/check-access": [];
 
+  /** Require # symbol on private elements (class fields and methods) that use @private JSDoc tag */
+  "jsdoc/check-access-modifiers": 
+    | []
+    | [
+        {
+          /**
+           * Whether to enable the fixer for redundant access modifier tags
+           */
+          enableRedundantAccessTagsFixer?: boolean;
+          /**
+           * Whether to report redundant access modifier tags like @public or @private. Defaults to `true`.
+           */
+          reportRedundantAccessTags?: boolean;
+        }
+      ];
+
   /** Reports invalid alignment of JSDoc block asterisks. */
   "jsdoc/check-alignment": 
     | []

@@ -1,5 +1,6 @@
 [
   "check-access",
+  "check-access-modifiers",
   "check-alignment",
   "check-examples",
   "check-indentation",

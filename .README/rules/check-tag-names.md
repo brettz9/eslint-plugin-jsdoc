@@ -125,8 +125,8 @@ considered as valid (as their defining an expected structure for tags implies
 the tags may be used).
 
 For [TypeScript](https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#supported-jsdoc)
-(or Closure), when `settings.jsdoc.mode` is set to `typescript` or `closure`,
-one may also use the following:
+(or Closure), when `settings.jsdoc.mode` is set to the default `typescript`
+or `closure`, one may also use the following:
 
 ```
 template

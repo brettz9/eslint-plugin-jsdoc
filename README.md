@@ -439,6 +439,7 @@ non-default-recommended fixer).
 |recommended|fixable|rule|description|
 |-|-|-|-|
 |:heavy_check_mark:|| [check-access](./docs/rules/check-access.md#readme) | Checks that `@access` tags have a valid value. |
+|:heavy_check_mark:|:wrench:| [check-access-modifiers](./docs/rules/check-access-modifiers.md#readme) | Require # symbol on private elements (class fields and methods) that use @private JSDoc tag |
 |:heavy_check_mark:|:wrench:| [check-alignment](./docs/rules/check-alignment.md#readme) | Reports invalid alignment of JSDoc block asterisks. |
 ||| [check-examples](./docs/rules/check-examples.md#readme) | @deprecated - Use `getJsdocProcessorPlugin` processor; ensures that (JavaScript) samples within `@example` tags adhere to ESLint rules. |
 ||| [check-indentation](./docs/rules/check-indentation.md#readme) | Reports invalid padding inside JSDoc blocks. |
